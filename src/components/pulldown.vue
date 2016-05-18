@@ -98,6 +98,7 @@
 
     data() {
       return {
+        uuid: null,
         translate: 0,
         scrollEventTarget: null,
         containerFilled: false,
@@ -151,17 +152,19 @@
         }, 200);
       },
 
-      onBottomLoaded() {
+      onBottomLoaded(id) {
         this.bottomStatus = 'pull';
         this.bottomDropped = false;
-        this.$nextTick(() => {
-          if (this.scrollEventTarget === window) {
-            document.body.scrollTop += 50;
-          } else {
-            this.scrollEventTarget.scrollTop += 50;
-          }
-          this.translate = 0;
-        });
+        if (id === this.uuid) {
+          this.$nextTick(() => {
+            if (this.scrollEventTarget === window) {
+              document.body.scrollTop += 50;
+            } else {
+              this.scrollEventTarget.scrollTop += 50;
+            }
+            this.translate = 0;
+          });
+        }
         if (!this.bottomAllLoaded && !this.containerFilled) {
           this.fillContainer();
         }
@@ -218,7 +221,7 @@
           }
           if (!this.containerFilled) {
             this.bottomStatus = 'loading';
-            this.bottomMethod();
+            this.bottomMethod(this.uuid);
           }
         });
       },
@@ -294,7 +297,7 @@
           if (this.bottomStatus === 'drop') {
             this.translate = '-50';
             this.bottomStatus = 'loading';
-            this.bottomMethod();
+            this.bottomMethod(this.uuid);
           } else {
             this.translate = '0';
             this.bottomStatus = 'pull';
@@ -305,6 +308,7 @@
     },
 
     ready() {
+      this.uuid = Math.random().toString(36).substring(3, 8);
       this.init();
     }
   };

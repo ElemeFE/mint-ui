@@ -8,9 +8,10 @@ cooking.set({
     vendor: ['vue']
   },
   dist: './example/dist',
-  template: './example/index.tpl',
+  template: './example/index.html',
   devServer: {
-    port: 8789
+    port: 8789,
+    hostname: require('my-local-ip')()
   },
 
   clean: true,

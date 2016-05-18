@@ -4,6 +4,7 @@
   "description": "A vue project.",
   "private": false,
   "keywords": [],
+  "main": "lib/index/index.js",
   "files": [
     "lib"
   ],
@@ -20,7 +21,7 @@
   "bugs": {
     "url": "https://github.com/kebab-ui/kebab-ui/issues"
   },
-  "author": "qingwei-li<qingwei.li@ele.me>",
+  "author": "elemefe",
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {

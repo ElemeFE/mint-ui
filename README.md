@@ -2,8 +2,7 @@
 Mobile UI elements for vue.js
 
 ## 注册新组件
-步骤 1. 在 components.json 注册组件名和路径
-步骤 2. 在 example/entry.js 引用组件
+在 components.json 注册组件名和路径，路径需要是数组 [issue](https://github.com/webpack/webpack/issues/300)
 
 ## Development
 

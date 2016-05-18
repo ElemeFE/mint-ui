@@ -7,7 +7,7 @@ cooking.set({
     app: './example/entry.js',
     vendor: ['vue']
   },
-  dist: './dist',
+  dist: './example/dist',
   template: './example/index.tpl',
   devServer: {
     port: 8789

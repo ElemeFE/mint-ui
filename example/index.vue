@@ -33,7 +33,6 @@
     },
 
     compiled() {
-      console.log(routes);
       this.routes = Object.keys(routes).filter(item => item !== '/').map(item => {
         return { name: routes[item].title, path: routes[item].path };
       });

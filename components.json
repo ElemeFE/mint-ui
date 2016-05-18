@@ -1,3 +1,4 @@
 {
-  "header": "src/components/header.vue"
+  "header": "src/components/header.vue",
+  "pulldown": "src/components/pulldown.vue"
 }

@@ -1,6 +1,5 @@
 <template>
-  <h1>kebab-ui</h1>
-  <p>A vue project.</p>
+  <router-view></router-view>
 </template>
 
 <script>

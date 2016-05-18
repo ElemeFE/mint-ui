@@ -1,15 +1,19 @@
 <template>
-  <div class="example-wrapper">
-    <kb-pulldown :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded">
+  <p class="example-title">上拉/下拉刷新</p>
+  <div class="example-wrapper1">
+    <kb-pulldown :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" :top-status.sync="topStatus">
       <ul class="example-list">
         <li v-for="item in list" class="example-listitem">{{ item }}</li>
       </ul>
+      <div slot="top" class="kebab-pulldown-top">
+        <span>{{ topStatus }}</span>
+      </div>
     </kb-pulldown>
   </div>
 
 </template>
 
-<style>
+<style scoped>
   .example-title {
     height: 40px;
     line-height: 40px;
@@ -18,18 +22,14 @@
     background-color: #dddddd;
   }
 
-  .example-list {
-    padding: 4px 4px 0;
-    list-style: none;
-  }
-
   .example-listitem {
     height: 50px;
     line-height: 50px;
-    border: solid 1px #999;
-    border-radius: 2px;
-    margin-bottom: 4px;
+    border-bottom: solid 1px #eee;
     text-align: center;
+    &:first-child {
+      border-top: solid 1px #eee;
+    }
   }
 
   .example-listitem:last-child {
@@ -47,7 +47,8 @@
     data() {
       return {
         list: [],
-        allLoaded: false
+        allLoaded: false,
+        topStatus: ''
       };
     },
 

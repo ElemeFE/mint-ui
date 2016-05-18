@@ -1,43 +1,42 @@
 <template>
-  <div class="loadmore">
-    <div class="loadmore-content" :class="{ 'dropped': topDropped || bottomDropped}" :style="{ 'transform': 'translate3d(0, ' + translate + 'px, 0)' }" v-el:loadmore-content>
-      <div class="loadmore-top">{{ topText }}</div>
+  <div class="kebab-pulldown">
+    <div class="kebab-pulldown-content" :class="{ 'is-dropped': topDropped || bottomDropped}" :style="{ 'transform': 'translate3d(0, ' + translate + 'px, 0)' }" v-el:loadmore-content>
+      <slot name="top">
+        <div class="kebab-pulldown-top">{{ topText }}</div>
+      </slot>
       <slot></slot>
-      <div class="loadmore-bottom">{{ bottomText }}</div>
+      <slot name="down">
+        <div class="kebab-pulldown-bottom">{{ bottomText }}</div>
+      </slot>
     </div>
   </div>
 </template>
 
 <style>
-  .loadmore {
-    overflow: hidden;
-  }
+  @component-namespace kebab {
+    @component pulldown {
+      overflow: hidden;
 
-  .loadmore-content {
-    position: relative;
-    &.dropped {
-      transition: .2s;
+      @descendent content {
+        @when dropped {
+          transition: .2s;
+        }
+      }
+
+      @descendent top, bottom {
+        text-align: center;
+        height: 50px;
+        line-height: 50px;
+      }
+
+      @descendent top {
+        margin-top: -50px;
+      }
+
+      @descendent bottom {
+        margin-bottom: -50px;
+      }
     }
-  }
-
-  .loadmore-top {
-    margin-top: -50px;
-    position: relative;
-    text-align: center;
-    overflow: hidden;
-    height: 50px;
-    line-height: 50px;
-    transform: translateZ(0);
-  }
-
-  .loadmore-bottom {
-    text-align: center;
-    height: 50px;
-    line-height: 50px;
-    /*margin-bottom: -50px;*/
-    position: absolute;
-    bottom: -50px;
-    width: 100%;
   }
 </style>
 
@@ -64,6 +63,10 @@
       topMethod: {
         type: Function
       },
+      topStatus: {
+        type: String,
+        default: ''
+      },
       bottomPullText: {
         type: String,
         default: '上拉刷新'
@@ -83,6 +86,10 @@
       bottomMethod: {
         type: Function
       },
+      bottomStatus: {
+        type: String,
+        default: ''
+      },
       bottomAllLoaded: {
         type: Boolean,
         default: false
@@ -94,16 +101,11 @@
         translate: 0,
         scrollEventTarget: null,
         containerFilled: false,
-        loadingTop: false,
         topText: '',
-        topReady: false,
         topDropped: false,
-        loadingBottom: false,
         bottomText: '',
-        bottomReady: false,
         bottomDropped: false,
         bottomReached: false,
-        showBottomText: false,
         direction: '',
         startY: 0,
         startScrollTop: 0,
@@ -111,15 +113,46 @@
       };
     },
 
+    watch: {
+      topStatus(val) {
+        switch (val) {
+          case 'pull':
+            this.topText = this.topPullText;
+            break;
+          case 'drop':
+            this.topText = this.topDropText;
+            break;
+          case 'loading':
+            this.topText = this.topLoadingText;
+            break;
+        }
+      },
+
+      bottomStatus(val) {
+        switch (val) {
+          case 'pull':
+            this.bottomText = this.bottomPullText;
+            break;
+          case 'drop':
+            this.bottomText = this.bottomDropText;
+            break;
+          case 'loading':
+            this.bottomText = this.bottomLoadingText;
+            break;
+        }
+      }
+    },
+
     events: {
       onTopLoaded() {
-        this.loadingTop = false;
         this.translate = 0;
+        setTimeout(() => {
+          this.topStatus = 'pull';
+        }, 200);
       },
 
       onBottomLoaded() {
-        this.loadingBottom = false;
-        this.showBottomText = false;
+        this.bottomStatus = 'pull';
         this.bottomDropped = false;
         this.$nextTick(() => {
           if (this.scrollEventTarget === window) {
@@ -163,6 +196,8 @@
       },
 
       init() {
+        this.topStatus = 'pull';
+        this.bottomStatus = 'pull';
         this.topText = this.topPullText;
         this.scrollEventTarget = this.getScrollEventTarget(this.$el);
         if (typeof this.bottomMethod === 'function') {
@@ -182,8 +217,7 @@
             this.containerFilled = this.$el.getBoundingClientRect().bottom >= this.scrollEventTarget.getBoundingClientRect().bottom;
           }
           if (!this.containerFilled) {
-            this.loadingBottom = true;
-            this.bottomText = this.bottomLoadingText;
+            this.bottomStatus = 'loading';
             this.bottomMethod();
           }
         });
@@ -198,16 +232,16 @@
       },
 
       handleTouchStart(event) {
-        this.startY = event.touches[0].pageY;
+        this.startY = event.touches[0].clientY;
         this.startScrollTop = this.getScrollTop(this.scrollEventTarget);
         this.bottomReached = false;
-        if (!this.loadingTop) {
+        if (this.topStatus !== 'loading') {
+          this.topStatus = 'pull';
           this.topDropped = false;
-          this.topText = this.topPullText;
         }
-        if (!this.loadingBottom) {
+        if (this.bottomStatus !== 'loading') {
+          this.bottomStatus = 'pull';
           this.bottomDropped = false;
-          this.bottomText = this.bottomPullText;
         }
       },
 
@@ -215,67 +249,55 @@
         if (this.startY < this.$el.getBoundingClientRect().top && this.startY > this.$el.getBoundingClientRect().bottom) {
           return;
         }
-        this.currentY = event.touches[0].pageY;
-        let distance = this.currentY - this.startY - this.startScrollTop;
-        this.direction = this.currentY - this.startY > 0 ? 'down' : 'up';
-        if (typeof this.topMethod === 'function' && this.direction === 'down' && this.getScrollTop(this.scrollEventTarget) === 0 && !this.loadingTop) {
+        this.currentY = event.touches[0].clientY;
+        let distance = this.currentY - this.startY;
+        this.direction = distance > 0 ? 'down' : 'up';
+        if (typeof this.topMethod === 'function' && this.direction === 'down' && this.getScrollTop(this.scrollEventTarget) === 0 && this.topStatus !== 'loading') {
           event.preventDefault();
           event.stopPropagation();
-          this.translate = distance + this.startScrollTop;
-          if (this.translate >= this.topDistance) {
-            this.topText = this.topDropText;
-            this.topReady = true;
-          } else {
-            this.topText = this.topPullText;
-            this.topReady = false;
+          this.translate = distance - this.startScrollTop;
+          if (this.translate < 0) {
+            this.translate = 0;
           }
+          this.topStatus = this.translate >= this.topDistance ? 'drop' : 'pull';
         }
 
-        this.bottomReached = this.bottomReached || this.checkBottomReached();
-        if (typeof this.bottomMethod === 'function' && this.direction === 'up' && this.bottomReached && !this.loadingBottom && !this.bottomAllLoaded) {
+        if (this.direction === 'up') {
+          this.bottomReached = this.bottomReached || this.checkBottomReached();
+        }
+        if (typeof this.bottomMethod === 'function' && this.direction === 'up' && this.bottomReached && this.bottomStatus !== 'loading' && !this.bottomAllLoaded) {
           event.preventDefault();
           event.stopPropagation();
-          this.showBottomText = true;
-          this.translate = (this.scrollEventTarget === window ? this.startScrollTop : this.getScrollTop(this.scrollEventTarget)) + distance;
-          if (-this.translate >= this.bottomDistance) {
-            this.bottomText = this.bottomDropText;
-            this.bottomReady = true;
-          } else {
-            this.bottomText = this.bottomPullText;
-            this.bottomReady = false;
+          this.translate = this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance;
+          if (this.translate > 0) {
+            this.translate = 0;
           }
+          this.bottomStatus = -this.translate >= this.bottomDistance ? 'drop' : 'pull';
         }
       },
 
       handleTouchEnd() {
         if (this.direction === 'down' && this.getScrollTop(this.scrollEventTarget) === 0 && this.translate > 0) {
           this.topDropped = true;
-          if (this.topReady) {
+          if (this.topStatus === 'drop') {
             this.translate = '50';
-            this.topText = this.topLoadingText;
-            this.loadingTop = true;
-            this.topReady = false;
+            this.topStatus = 'loading';
             this.topMethod();
           } else {
             this.translate = '0';
-            this.topText = this.topPullText;
+            this.topStatus = 'pull';
           }
         }
         if (this.direction === 'up' && this.bottomReached && this.translate < 0) {
           this.bottomDropped = true;
           this.bottomReached = false;
-          if (this.bottomReady) {
+          if (this.bottomStatus === 'drop') {
             this.translate = '-50';
-            this.bottomText = this.bottomLoadingText;
-            this.loadingBottom = true;
-            this.bottomReady = false;
+            this.bottomStatus = 'loading';
             this.bottomMethod();
           } else {
             this.translate = '0';
-            this.bottomText = this.bottomPullText;
-            setTimeout(() => {
-              this.showBottomText = false;
-            }, 200);
+            this.bottomStatus = 'pull';
           }
         }
         this.direction = '';

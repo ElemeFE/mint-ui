@@ -4,8 +4,7 @@
   </ul>
 </template>
 
-<style>
-  @reset-global mobile;
+<style scoped>
   li {
     height: 40px;
     line-height: 40px;

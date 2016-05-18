@@ -5,7 +5,6 @@
 </template>
 
 <style>
-  @reset-global mobile;
   li {
     height: 40px;
     line-height: 40px;

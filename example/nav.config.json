@@ -1,0 +1,20 @@
+[
+  {
+    "title": "分组标题1",
+    "list": [
+      {
+        "path": "/pulldown",
+        "name": "pulldown"
+      }
+    ]
+  },
+  {
+    "title": "CSS 组件",
+    "list": [
+      {
+        "path": "/header",
+        "name": "header"
+      }
+    ]
+  }
+]

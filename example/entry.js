@@ -15,3 +15,8 @@ router.start(Vue.extend({
     app: App
   }
 }), 'body');
+
+router.beforeEach(transition => {
+  document.title = transition.to.title || document.title;
+  transition.next();
+});

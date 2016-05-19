@@ -1,62 +1,61 @@
 <template>
-  <p class="example-title">下拉 / 上拉刷新</p>
-  <div class="example-wrapper">
-    <kb-pulldown :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded">
-      <ul class="example-list">
-        <li v-for="item in list" class="example-listitem">{{ item }}</li>
+  <p class="loadmore-title">下拉 / 上拉刷新</p>
+  <div class="loadmore-wrapper">
+    <kb-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded">
+      <ul class="loadmore-list">
+        <li v-for="item in list" class="loadmore-listitem">{{ item }}</li>
       </ul>
-    </kb-pulldown>
+    </kb-loadmore>
   </div>
-  <p class="example-title">自定义 HTML template</p>
-  <div class="example-wrapper">
-    <kb-pulldown :top-method="loadTop2" :top-status.sync="topStatus">
-      <ul class="example-list">
-        <li v-for="item in list2" class="example-listitem">{{ item }}</li>
+  <p class="loadmore-title">自定义 HTML template</p>
+  <div class="loadmore-wrapper">
+    <kb-loadmore :top-method="loadTop2" :top-status.sync="topStatus">
+      <ul class="loadmore-list">
+        <li v-for="item in list2" class="loadmore-listitem">{{ item }}</li>
       </ul>
-      <div slot="top" class="kebab-pulldown-top">
-        <span v-show="topStatus !== 'loading'" :class="{ 'rotate': topStatus === 'drop' }">↓</span>
+      <div slot="top" class="kebab-loadmore-top">
+        <span v-show="topStatus !== 'loading'" :class="{ 'is-rotate': topStatus === 'drop' }">↓</span>
         <span v-show="topStatus === 'loading'">{{ topStatus }}</span>
       </div>
-    </kb-pulldown>
+    </kb-loadmore>
   </div>
-
 </template>
 
-<style scoped>
-  .example-title {
-    height: 40px;
-    line-height: 40px;
-    text-align: center;
-    font-size: 20px;
-    background-color: #dddddd;
-  }
+<style>
+  @component loadmore {
+    @descendent title {
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      font-size: 20px;
+      background-color: #dddddd;
+    }
 
-  .example-listitem {
-    height: 50px;
-    line-height: 50px;
-    border-bottom: solid 1px #eee;
-    text-align: center;
-    &:first-child {
-      border-top: solid 1px #eee;
+    @descendent listitem {
+      height: 50px;
+      line-height: 50px;
+      border-bottom: solid 1px #eee;
+      text-align: center;
+      &:first-child {
+        border-top: solid 1px #eee;
+      }
+    }
+
+    @descendent wrapper {
+      height: 300px;
+      overflow: scroll;
     }
   }
 
-  .example-listitem:last-child {
-    margin-bottom: 0;
-  }
+  @component kebab-loadmore-top {
+    span {
+      display: inline-block;
+      transition: .2s linear;
 
-  .example-wrapper {
-    height: 300px;
-    overflow: scroll;
-  }
-
-  .kebab-pulldown-top span {
-    display: inline-block;
-    transition: .2s linear;
-  }
-
-  .rotate {
-    transform: rotate(180deg);
+      @when rotate {
+        transform: rotate(180deg);
+      }
+    }
   }
 </style>
 

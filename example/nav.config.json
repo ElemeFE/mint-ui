@@ -3,8 +3,20 @@
     "title": "分组标题1",
     "list": [
       {
-        "path": "/pulldown",
-        "name": "pulldown"
+        "path": "/toast",
+        "name": "toast"
+      },
+      {
+        "path": "/indicator",
+        "name": "indicator"
+      },
+      {
+        "path": "/loadmore",
+        "name": "loadmore"
+      },
+      {
+        "path": "/infinite-scroll",
+        "name": "infinite scroll"
       }
     ]
   },

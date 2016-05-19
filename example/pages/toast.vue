@@ -1,7 +1,22 @@
 <template>
-  <button @click="openToast">点击弹出 Toast</button>
-  <button @click="openToastWithIcon">点击弹出带有 icon 的 Toast</button>
+  <div class="toast-wrapper">
+    <kb-button @click="openToast" size="large" type="primary">点击弹出 Toast</kb-button>
+    <kb-button @click="openToastWithIcon" size="large" type="primary">点击弹出带有 icon 的 Toast</kb-button>
+  </div>
 </template>
+
+<style>
+  .toast-wrapper {
+    padding: 0 20px;
+    position: absolute 50% * * *;
+    width: 100%;
+    transform: translateY(-50%);
+  }
+
+  .kebab-button:first-child {
+    margin-bottom: 20px;
+  }
+</style>
 
 <script type="text/babel">
   import { Toast } from 'src/index';
@@ -15,7 +30,7 @@
       openToastWithIcon() {
         Toast({
           message: '操作成功',
-          iconClass: 'd-icon-success'
+          iconClass: 'icon icon-more'
         });
       }
     }

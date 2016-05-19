@@ -3,5 +3,6 @@
 .DS_Store
 .idea
 build
+dist
 lib
 node_modules

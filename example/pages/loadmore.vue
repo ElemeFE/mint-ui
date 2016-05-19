@@ -1,5 +1,5 @@
 <template>
-  <p class="loadmore-title">下拉 / 上拉刷新</p>
+  <kb-header title="下拉 / 上拉刷新"></kb-header>
   <div class="loadmore-wrapper">
     <kb-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded">
       <ul class="loadmore-list">
@@ -7,7 +7,7 @@
       </ul>
     </kb-loadmore>
   </div>
-  <p class="loadmore-title">自定义 HTML template</p>
+  <kb-header title="自定义 HTML template"></kb-header>
   <div class="loadmore-wrapper">
     <kb-loadmore :top-method="loadTop2" :top-status.sync="topStatus">
       <ul class="loadmore-list">
@@ -23,14 +23,6 @@
 
 <style>
   @component loadmore {
-    @descendent title {
-      height: 40px;
-      line-height: 40px;
-      text-align: center;
-      font-size: 20px;
-      background-color: #dddddd;
-    }
-
     @descendent listitem {
       height: 50px;
       line-height: 50px;

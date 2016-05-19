@@ -8,4 +8,4 @@ dist:
 
 deploy:
 	@cooking build -c cooking.demo.js -p
-	./node_modules/.bin/gh-pages -d example/dist
+	./node_modules/.bin/gh-pages -d example/dist --remote eleme

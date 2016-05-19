@@ -1,4 +1,20 @@
 :root {
-  //colors
   --color-blue: #26a2ff;
+  --color-white: #fff;
+
+  /* Cell Component */
+
+  /* Header Component */
+  --header-height: 40px;
+
+  /* Button Component */
+  --button-default-font-color: #454545;
+  --button-default-background-color: #f7f7f7;
+  --button-primary-font-color: #fff;
+  --button-primary-background-color: #26a2ff;
+  --button-danger-font-color: #fff;
+  --button-danger-background-color: #ef4f4f;
+
+  /* z-index */
+  --z-index-normal: 1;
 }

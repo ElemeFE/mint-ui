@@ -15,6 +15,7 @@ cooking.set({
   },
 
   clean: true,
+  hash: true,
   chunk: 'vendor',
   publicPath: '/kebab-ui/',
   assetsPath: 'static',

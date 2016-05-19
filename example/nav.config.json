@@ -26,6 +26,10 @@
       {
         "path": "/header",
         "name": "header"
+      },
+      {
+        "path": "/button",
+        "name": "button"
       }
     ]
   }

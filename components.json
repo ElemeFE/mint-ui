@@ -1,6 +1,7 @@
 {
   "index": ["src/index.js"],
   "header": ["src/components/header.vue"],
+  "button": ["src/components/button.vue"],
   "toast": ["vue-toast-mobile"],
   "indicator": ["vue-indicator"],
   "infiniteScroll": ["vue-infinite-scroll"]

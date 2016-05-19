@@ -1,26 +1,35 @@
 <template>
-  <ul class="infinite-list" v-infinite-scroll="loadMore()" infinite-scroll-disabled="loading" infinite-scroll-distance="50">
-    <li v-for="item in list" class="infinite-listitem">{{ item }}</li>
-  </ul>
-  <p v-show="loading" class="infinite-loading">加载中...</p>
+  <div class="page-infinite">
+    <kb-header title="Infinite scroll" fixed></kb-header>
+    <ul class="page-infinite-list" v-infinite-scroll="loadMore()" infinite-scroll-disabled="loading" infinite-scroll-distance="50">
+      <li v-for="item in list" class="page-infinite-listitem">{{ item }}</li>
+    </ul>
+    <p v-show="loading" class="page-infinite-loading">加载中...</p>
+  </div>
 </template>
 
 <style>
-  @component infinite {
-    @descendent listitem {
-      height: 50px;
-      line-height: 50px;
-      border-bottom: solid 1px #eee;
-      text-align: center;
-      &:first-child {
-        border-top: solid 1px #eee;
+  @component-namespace page {
+    @component infinite {
+      @descendent list {
+        padding-top: 40px;
       }
-    }
 
-    @descendent loading {
-      text-align: center;
-      height: 50px;
-      line-height: 50px;
+      @descendent listitem {
+        height: 50px;
+        line-height: 50px;
+        border-bottom: solid 1px #eee;
+        text-align: center;
+      &:first-child {
+         border-top: solid 1px #eee;
+       }
+      }
+
+      @descendent loading {
+        text-align: center;
+        height: 50px;
+        line-height: 50px;
+      }
     }
   }
 </style>

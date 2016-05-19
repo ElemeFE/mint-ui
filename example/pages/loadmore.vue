@@ -1,41 +1,45 @@
 <template>
-  <kb-header title="下拉 / 上拉刷新"></kb-header>
-  <div class="loadmore-wrapper">
-    <kb-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded">
-      <ul class="loadmore-list">
-        <li v-for="item in list" class="loadmore-listitem">{{ item }}</li>
-      </ul>
-    </kb-loadmore>
-  </div>
-  <kb-header title="自定义 HTML template"></kb-header>
-  <div class="loadmore-wrapper">
-    <kb-loadmore :top-method="loadTop2" :top-status.sync="topStatus">
-      <ul class="loadmore-list">
-        <li v-for="item in list2" class="loadmore-listitem">{{ item }}</li>
-      </ul>
-      <div slot="top" class="kebab-loadmore-top">
-        <span v-show="topStatus !== 'loading'" :class="{ 'is-rotate': topStatus === 'drop' }">↓</span>
-        <span v-show="topStatus === 'loading'">{{ topStatus }}</span>
-      </div>
-    </kb-loadmore>
+  <div class="page-loadmore">
+    <kb-header title="下拉 / 上拉刷新"></kb-header>
+    <div class="page-loadmore-wrapper">
+      <kb-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded">
+        <ul class="page-loadmore-list">
+          <li v-for="item in list" class="page-loadmore-listitem">{{ item }}</li>
+        </ul>
+      </kb-loadmore>
+    </div>
+    <kb-header title="自定义 HTML template"></kb-header>
+    <div class="page-loadmore-wrapper">
+      <kb-loadmore :top-method="loadTop2" :top-status.sync="topStatus">
+        <ul class="page-loadmore-list">
+          <li v-for="item in list2" class="page-loadmore-listitem">{{ item }}</li>
+        </ul>
+        <div slot="top" class="kebab-loadmore-top">
+          <span v-show="topStatus !== 'loading'" :class="{ 'is-rotate': topStatus === 'drop' }">↓</span>
+          <span v-show="topStatus === 'loading'">{{ topStatus }}</span>
+        </div>
+      </kb-loadmore>
+    </div>
   </div>
 </template>
 
 <style>
-  @component loadmore {
-    @descendent listitem {
-      height: 50px;
-      line-height: 50px;
-      border-bottom: solid 1px #eee;
-      text-align: center;
-      &:first-child {
-        border-top: solid 1px #eee;
+  @component-namespace page {
+    @component loadmore {
+      @descendent listitem {
+        height: 50px;
+        line-height: 50px;
+        border-bottom: solid 1px #eee;
+        text-align: center;
+        &:first-child {
+          border-top: solid 1px #eee;
+        }
       }
-    }
 
-    @descendent wrapper {
-      height: 300px;
-      overflow: scroll;
+      @descendent wrapper {
+        height: 300px;
+        overflow: scroll;
+      }
     }
   }
 

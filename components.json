@@ -1,5 +1,7 @@
 {
   "index": ["src/index.js"],
-  "pulldown": ["src/components/pulldown.vue"],
-  "header": ["src/components/header.vue"]
+  "header": ["src/components/header.vue"],
+  "toast": ["vue-toast-mobile"],
+  "indicator": ["vue-indicator"],
+  "infiniteScroll": ["vue-infinite-scroll"]
 }

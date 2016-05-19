@@ -23,7 +23,12 @@
   },
   "author": "elemefe",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "vue-indicator": "0.0.2",
+    "vue-infinite-scroll": "^0.2.3",
+    "vue-loadmore": "^0.2.0",
+    "vue-toast-mobile": "^0.1.1"
+  },
   "devDependencies": {
     "gh-pages": "^0.11.0",
     "my-local-ip": "^1.0.0"

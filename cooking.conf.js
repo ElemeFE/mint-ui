@@ -24,5 +24,6 @@ cooking.add('resolve.alias', {
   'src': path.join(__dirname, 'src')
 });
 cooking.add('output.filename', '[name]/index.js');
+cooking.add('externals.vue', 'vue');
 
 module.exports = cooking.resolve();

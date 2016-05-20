@@ -24,9 +24,10 @@
   "author": "elemefe",
   "license": "MIT",
   "dependencies": {
-    "vue-indicator": "0.0.2",
+    "vue-indicator": "^0.0.3",
     "vue-infinite-scroll": "^0.2.3",
     "vue-loadmore": "^0.2.0",
+    "vue-msgbox": "^0.2.0",
     "vue-toast-mobile": "^0.1.1"
   },
   "devDependencies": {

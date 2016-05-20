@@ -17,6 +17,10 @@
       {
         "path": "/infinite-scroll",
         "name": "infinite scroll"
+      },
+      {
+        "path": "/message-box",
+        "name": "message box"
       }
     ]
   },

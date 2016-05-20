@@ -9,6 +9,8 @@ import Loadmore from 'vue-loadmore';
 // published services
 import Toast from 'vue-toast-mobile';
 import Indicator from 'vue-indicator';
+import MessageBox from 'vue-msgbox';
+require('./style/message-box.css');
 
 // published directives
 const infiniteScroll = require('vue-infinite-scroll');
@@ -23,5 +25,6 @@ module.exports = {
     Vue.use(infiniteScroll);
   },
   Toast,
-  Indicator
+  Indicator,
+  MessageBox
 };

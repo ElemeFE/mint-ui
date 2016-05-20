@@ -52,6 +52,26 @@
   }
 }
 
+.modal-enter {
+  animation: modal-in .2s ease
+}
+
+.modal-leave {
+  animation: modal-out .2s ease
+}
+
+@keyframes modal-in {
+  0% {
+    opacity: 0
+  }
+}
+
+@keyframes modal-out {
+  to {
+    opacity: 0
+  }
+}
+
 .v-modal {
   position: fixed;
   left: 0;

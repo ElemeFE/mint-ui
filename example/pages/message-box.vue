@@ -1,0 +1,41 @@
+<template>
+  <div class="page-msgbox">
+    <h1 class="page-title">Message Box</h1>
+    <div class="page-msgbox-wrapper">
+      <kb-button @click="openAlert" size="large" type="primary">打开 alert 提示框</kb-button>
+      <kb-button @click="openConfirm" size="large" type="primary">打开 confirm 提示框</kb-button>
+    </div>
+  </div>
+</template>
+
+<style>
+  @component-namespace page {
+    @component msgbox {
+      @descendent wrapper {
+        padding: 0 20px;
+        position: absolute 50% * * *;
+        width: 100%;
+        transform: translateY(-50%);
+        a:first-child {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+</style>
+
+<script type="text/babel">
+  import { MessageBox } from 'src/index';
+
+  export default {
+    methods: {
+      openAlert() {
+        MessageBox.alert('操作成功!', '提示');
+      },
+
+      openConfirm() {
+        MessageBox.confirm('确定执行此操作?', '提示');
+      }
+    }
+  };
+</script>

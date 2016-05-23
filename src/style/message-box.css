@@ -1,141 +1,19 @@
 @import "./var.css";
 
-.pop-bounce-enter {
-  animation: pop-bounce-in .3s cubic-bezier(.3,0,0,1.5);
-}
-
-.pop-bounce-leave {
-  animation: pop-bounce-out .2s cubic-bezier(.895,.03,.685,.22);
-}
-
-@keyframes pop-bounce-in {
-  0% {
-    transform: translate(-50%, -50%) scale(.8);
-  }
-  to {
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-@keyframes pop-bounce-out {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-  }
-  to {
-    transform: translate(-50%, -50%) scale(.7);
-  }
-}
-
-.pop-fade-enter {
-  animation: pop-fade-in .3s linear;
-}
-
-.pop-fade-leave{
-  animation: pop-fade-out .3s linear;
-}
-
-@keyframes pop-fade-in {
-  0% {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes pop-fade-out {
-  0% {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-.modal-enter {
-  animation: modal-in .2s ease;
-}
-
-.modal-leave {
-  animation: modal-out .2s ease;
-}
-
-@keyframes modal-in {
-  0% {
-    opacity: 0;
-  }
-}
-
-@keyframes modal-out {
-  to {
-    opacity: 0;
-  }
-}
-
-.v-modal {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  opacity: .5;
-  background: #000;
-}
-
-.msgbox {
-  position: fixed;
-  background-color: #fff;
-  width: 85%;
-  border-radius: 3px;
-  overflow: hidden;
-  font-size: 16px;
-  -webkit-user-select: none;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .msgbox-header {
   padding: 15px 0 0;
   text-align: center;
+  border-bottom: none;
 }
 
 .msgbox-content {
   padding: 10px 20px 15px;
-  min-height: 36px;
-  position: relative;
   border-bottom: 1px solid #ddd;
 }
 
-.msgbox-close {
-  display: inline-block;
-  position: absolute;
-  top: 14px;
-  right: 15px;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  line-height: 20px;
-  text-align: center;
-}
-
-.msgbox-input > input {
-  border: 1px solid #dedede;
-  border-radius: 5px;
-  padding: 4px 5px;
-  width: 100%
-}
-
-.msgbox-errormsg {
-  color: red;
-  font-size: 12px;
-  min-height: 16px
-}
-
 .msgbox-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: #333;
+  padding-left: 0;
+  margin-bottom: 0;
 }
 
 .msgbox-status {
@@ -144,14 +22,7 @@
 
 .msgbox-message {
   color: #999;
-  line-height: 36px;
-  text-align: center;
-  font-size: 16px;
-}
-
-.msgbox-btns {
-  font-size: 16px;
-  text-align: center;
+  margin: 0;
 }
 
 .msgbox-btns {
@@ -164,13 +35,6 @@
 }
 
 .msgbox-btn {
-  display: block;
-  background-color: #fff;
-  border: 0;
-  -webkit-box-flex: 1;
-  flex: 1;
-  margin: 0;
-  border-radius: 0;
   line-height: 35px;
 }
 
@@ -178,29 +42,18 @@
   outline: none;
 }
 
+.msgbox-btn:active {
+  background-color: #fff;
+}
+
+.msgbox-cancel:active {
+  color: #000;
+}
+
+.msgbox-confirm:active {
+  color: #26a2ff;
+}
+
 .msgbox-confirm {
   color: var(--color-blue);
-  width: 50%;
-}
-
-.msgbox-cancel {
-  width: 50%;
-  border-right: 1px solid #ddd;
-}
-
-.msgbox-cancel-highlight,
-.msgbox-confirm-highlight {
-  font-weight: 800;
-}
-
-.msgbox-btns-reverse {
-  -webkit-box-direction: reverse;
-}
-
-.msgbox-btns-reverse .msgbox-confirm {
-  border-right: 1px solid #ddd;
-}
-
-.msgbox-btns-reverse .msgbox-cancel {
-  border-right: 0;
 }

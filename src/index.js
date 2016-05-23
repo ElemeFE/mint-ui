@@ -10,7 +10,7 @@ import Actionsheet from 'vue-actionsheet';
 // published services
 import Toast from 'vue-toast-mobile';
 import Indicator from 'vue-indicator';
-import MessageBox from 'vue-msgbox';
+import MessageBox from 'babel!vue-msgbox/src';
 require('./style/message-box.css');
 
 // published directives

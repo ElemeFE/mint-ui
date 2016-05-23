@@ -19,6 +19,8 @@
  * @desc 顶部导航
  * @param {boolean} [fixed=false] - 固定顶部
  * @param {string} [title] - 标题
+ * @param {slot} [left] - 显示在左侧区域
+ * @param {slot} [right] - 显示在右侧区域
  *
  * @example
  * <kb-header title="我是标题" fixed>
@@ -43,12 +45,14 @@ export default {
     @component header {
       align-items: center;
       background-color: var(--color-blue);
+      box-sizing: border-box;
       color: var(--color-white);
       display: flex;
+      font-size: 14px;
       height: var(--header-height);
+      padding: 0 10px;
       position: relative;
       text-align: center;
-      padding: 0 10px;
 
       & .kebab-button {
         background-color: transparent;
@@ -78,6 +82,7 @@ export default {
 
       @descendent title {
         @utils-ellipsis;
+        font-size: inherit;
         flex: 1;
       }
 

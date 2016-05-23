@@ -1,19 +1,40 @@
 :root {
   --color-blue: #26a2ff;
   --color-white: #fff;
+  --color-grey: #d9d9d9;
+  --border-color: #c8c8cd;
 
   /* Cell Component */
+  --cell-value-color: #888;
 
   /* Header Component */
   --header-height: 40px;
 
   /* Button Component */
-  --button-default-font-color: #454545;
+  --button-default-color: #454545;
   --button-default-background-color: #f7f7f7;
-  --button-primary-font-color: #fff;
+  --button-primary-color: #fff;
   --button-primary-background-color: #26a2ff;
-  --button-danger-font-color: #fff;
+  --button-danger-color: #fff;
   --button-danger-background-color: #ef4f4f;
+
+  /* Tab Item Component */
+  --tab-item-font-size: 12px;
+
+  /* Tabbar Component */
+  --tabbar-background-color: #fafafa;
+  --tabbar-tab-item-selected-background-color: #eaeaea;
+  --tabbar-tab-item-selected-color: var(--color-blue);
+
+  /* Navbar Component */
+  --navbar-background-color: #fafafa;
+  --tabbar-tab-item-selected-background-color: #eaeaea;
+
+  /* Checklist Component */
+  --checklist-title-color: #888;
+
+  /* Radio Component */
+  --radio-title-color: #888;
 
   /* z-index */
   --z-index-normal: 1;

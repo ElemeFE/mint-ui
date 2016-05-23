@@ -11,6 +11,7 @@ cooking.set({
   template: './example/index.html',
   devServer: {
     port: 8789,
+    log: false,
     hostname: require('my-local-ip')()
   },
 

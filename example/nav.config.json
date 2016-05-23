@@ -1,6 +1,6 @@
 [
   {
-    "title": "分组标题1",
+    "title": "JS 组件",
     "list": [
       {
         "path": "/toast",
@@ -25,15 +25,48 @@
     ]
   },
   {
-    "title": "CSS 组件",
+    "title": "UI 组件",
     "list": [
       {
         "path": "/header",
         "name": "header"
       },
       {
+        "path": "/tabbar",
+        "name": "tabbar"
+      },
+      {
+        "path": "/navbar",
+        "name": "navbar"
+      },
+      {
         "path": "/button",
         "name": "button"
+      },
+      {
+        "path": "/cell",
+        "name": "cell"
+      },
+      {
+        "path": "/spinner",
+        "name": "spinner"
+      }
+    ]
+  },
+  {
+    "title": "表单组件",
+    "list": [
+      {
+        "path": "/switch",
+        "name": "switch"
+      },
+      {
+        "path": "/checklist",
+        "name": "checklist"
+      },
+      {
+        "path": "/radio",
+        "name": "radio"
       }
     ]
   }

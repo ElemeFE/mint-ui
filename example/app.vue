@@ -4,10 +4,7 @@
 
 <style>
   @reset-global mobile;
+  body {
+    background-color: #fafafa;
+  }
 </style>
-
-<script>
-  export default {
-    name: 'app'
-  };
-</script>

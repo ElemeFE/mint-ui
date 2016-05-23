@@ -2,6 +2,7 @@
   <div>
     <kb-header fixed title="固定在顶部"></kb-header>
     <div class="page-header-main">
+      <div class="page-title">Header</div>
       <kb-header title="标题过长会隐藏后面的内容啊哈哈哈哈">
         <kb-button @click="handleBack" icon="back" slot="left">返回</kb-button>
         <kb-button icon="more" slot="right"></kb-button>

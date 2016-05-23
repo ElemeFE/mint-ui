@@ -68,11 +68,12 @@ export default {
   @component-namespace kebab {
     @component button {
       border-radius: 4px;
+      box-sizing: border-box;
       color: inherit;
       display: block;
       font-size: 18px;
       line-height: 2.6rem;
-      overflow-y: hidden;
+      overflow: hidden;
       position: relative;
       text-align: center;
 
@@ -88,18 +89,18 @@ export default {
       }
 
       @modifier default {
-        color: var(--button-default-font-color);
+        color: var(--button-default-color);
         background-color: var(--button-default-background-color);
-        box-shadow: 0 0 1px #ccc;
+        box-shadow: 0 0 1px var(--color-grey);
       }
 
       @modifier primary {
-        color: var(--button-primary-font-color);
+        color: var(--button-primary-color);
         background-color: var(--button-primary-background-color);
       }
 
       @modifier danger {
-        color: var(--button-danger-font-color);
+        color: var(--button-danger-color);
         background-color: var(--button-danger-background-color);
       }
 

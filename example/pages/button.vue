@@ -40,11 +40,6 @@ export default {
 
 <style lang="css">
   @component-namespace page {
-    @component title {
-      font-size: 20px;
-      margin: 20px auto;
-      text-align: center;
-    }
     @component button {
       padding: 0 15px;
 

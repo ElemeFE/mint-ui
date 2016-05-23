@@ -24,6 +24,7 @@
   "author": "elemefe",
   "license": "MIT",
   "dependencies": {
+    "vue-actionsheet": "0.0.1",
     "vue-indicator": "^0.0.3",
     "vue-infinite-scroll": "^0.2.3",
     "vue-loadmore": "^0.2.0",

@@ -5,6 +5,7 @@ const modules = requireAll(require.context('src/components', true, /\.vue$/));
 
 // published components
 import Loadmore from 'vue-loadmore';
+import Actionsheet from 'vue-actionsheet';
 
 // published services
 import Toast from 'vue-toast-mobile';
@@ -22,6 +23,7 @@ module.exports = {
       Vue.component(module.name, module);
     });
     Vue.component('kb-loadmore', Loadmore);
+    Vue.component('kb-actionsheet', Actionsheet);
     Vue.use(infiniteScroll);
   },
   Toast,

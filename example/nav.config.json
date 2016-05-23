@@ -21,6 +21,10 @@
       {
         "path": "/message-box",
         "name": "message box"
+      },
+      {
+        "path": "/action-sheet",
+        "name": "action sheet"
       }
     ]
   },

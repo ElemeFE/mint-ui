@@ -25,6 +25,14 @@
       {
         "path": "/action-sheet",
         "name": "action sheet"
+      },
+      {
+        "path": "/swipe",
+        "name": "swipe"
+      },
+      {
+        "path": "/lazyload",
+        "name": "lazy load"
       }
     ]
   },

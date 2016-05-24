@@ -1,20 +1,19 @@
 <template>
   <div class="page-infinite">
-    <kb-header title="Infinite scroll" fixed></kb-header>
+    <h1 class="page-title">Infinite scroll</h1>
     <ul class="page-infinite-list" v-infinite-scroll="loadMore()" infinite-scroll-disabled="loading" infinite-scroll-distance="50">
       <li v-for="item in list" class="page-infinite-listitem">{{ item }}</li>
     </ul>
-    <p v-show="loading" class="page-infinite-loading">加载中...</p>
+    <p v-show="loading" class="page-infinite-loading">
+      <kb-spinner type="fading-circle"></kb-spinner>
+      加载中...
+    </p>
   </div>
 </template>
 
 <style>
   @component-namespace page {
     @component infinite {
-      @descendent list {
-        padding-top: 40px;
-      }
-
       @descendent listitem {
         height: 50px;
         line-height: 50px;
@@ -29,6 +28,12 @@
         text-align: center;
         height: 50px;
         line-height: 50px;
+
+        .kebab-spinner {
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 5px;
+        }
       }
     }
   }

@@ -29,10 +29,12 @@
   "license": "MIT",
   "dependencies": {
     "vue-actionsheet": "0.0.1",
-    "vue-indicator": "^0.0.3",
+    "vue-indicator": "^0.0.5",
     "vue-infinite-scroll": "^0.2.3",
-    "vue-loadmore": "^0.2.0",
+    "vue-lazyload": "^0.4.2",
+    "vue-loadmore": "^0.2.3",
     "vue-msgbox": "^0.2.2",
+    "vue-swipe": "^0.2.3",
     "vue-toast-mobile": "^0.1.1"
   },
   "devDependencies": {

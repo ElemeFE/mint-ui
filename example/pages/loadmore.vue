@@ -1,5 +1,6 @@
 <template>
   <div class="page-loadmore">
+    <h1 class="page-title">Loadmore</h1>
     <kb-header title="下拉 / 上拉刷新"></kb-header>
     <div class="page-loadmore-wrapper">
       <kb-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded">
@@ -16,7 +17,9 @@
         </ul>
         <div slot="top" class="kebab-loadmore-top">
           <span v-show="topStatus !== 'loading'" :class="{ 'is-rotate': topStatus === 'drop' }">↓</span>
-          <span v-show="topStatus === 'loading'">{{ topStatus }}</span>
+          <span v-show="topStatus === 'loading'">
+            <kb-spinner type="snake"></kb-spinner>
+          </span>
         </div>
       </kb-loadmore>
     </div>
@@ -39,6 +42,11 @@
       @descendent wrapper {
         height: 300px;
         overflow: scroll;
+      }
+
+      .kebab-spinner {
+        display: inline-block;
+        vertical-align: middle;
       }
     }
   }
@@ -67,25 +75,25 @@
     },
 
     methods: {
-      loadTop() {
+      loadTop(id) {
         setTimeout(() => {
           if (this.list[0] === 1) {
             for (let i = 0; i >= -10; i--) {
               this.list.unshift(i);
             }
           }
-          this.$broadcast('onTopLoaded');
+          this.$broadcast('onTopLoaded', id);
         }, 1500);
       },
 
-      loadTop2() {
+      loadTop2(id) {
         setTimeout(() => {
           if (this.list2[0] === 1) {
             for (let i = 0; i >= -10; i--) {
               this.list2.unshift(i);
             }
           }
-          this.$broadcast('onTopLoaded');
+          this.$broadcast('onTopLoaded', id);
         }, 1500);
       },
 

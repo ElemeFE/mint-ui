@@ -31,6 +31,7 @@
  * @param {string[]} value - 选中值的数组
  * @param {string} title - 标题
  * @param {number} [max] - 最多可选的个数
+ * @param {string} [align=left] - icon 对齐方式，`left`, `right`
  *
  * @example
  * <mt-checklist :value.sync="value" :options="['a', 'b', 'c']"></mt-checklist>
@@ -41,6 +42,7 @@ export default {
   props: {
     max: Number,
     title: String,
+    align: String,
     options: {
       type: Array,
       required: true
@@ -92,13 +94,14 @@ export default {
       @descendent label {
         vertical-align: middle;
         font-size: 14px;
+        margin-left: 6px;
       }
 
       @descendent core {
         appearance: none;
         outline: 0;
         background-color: var(--color-white);
-        border-radius: 2px;
+        border-radius: 100%;
         border: 1px solid #ccc;
         position: relative;
         size: 20px;

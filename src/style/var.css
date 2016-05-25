@@ -13,6 +13,7 @@
   /* Button Component */
   --button-default-color: #454545;
   --button-default-background-color: #f7f7f7;
+  --button-default-plain-color: #5a5a5a;
   --button-primary-color: #fff;
   --button-primary-background-color: #26a2ff;
   --button-danger-color: #fff;

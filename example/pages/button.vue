@@ -24,6 +24,12 @@
       <mt-button disabled size="large" type="primary">primary</mt-button>
       <mt-button disabled size="large" type="danger">danger</mt-button>
     </div>
+
+    <div class="page-button-group">
+      <mt-button plain size="large">default</mt-button>
+      <mt-button plain size="large" type="primary">primary</mt-button>
+      <mt-button plain size="large" type="danger">danger</mt-button>
+    </div>
   </div>
 </template>
 

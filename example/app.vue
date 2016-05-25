@@ -5,6 +5,6 @@
 <style>
   @reset-global mobile;
   body {
-    background-color: #fafafa;
+    background-color: #fbf9fe;
   }
 </style>

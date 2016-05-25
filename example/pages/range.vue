@@ -2,45 +2,45 @@
   <div class="page-range">
     <h1 class="page-title">range</h1>
     <p class="page-range-header">基本功能</p>
-    <kb-cell v-for="item in cells1">
+    <mt-cell v-for="item in cells1">
       <div slot="title" class="page-range-desc">
         <p class="page-range-title">{{ item.title }}</p>
         <p class="page-range-value">value: {{ item.value }}</p>
       </div>
-      <kb-range :value.sync="item.value">
+      <mt-range :value.sync="item.value">
         <div slot="start" v-if="item.start">{{ item.start }}</div>
         <div slot="end" v-if="item.end">{{ item.end }}</div>
-      </kb-range>
-    </kb-cell>
+      </mt-range>
+    </mt-cell>
     <p class="page-range-header">自定义</p>
-    <kb-cell v-for="item in cells2">
+    <mt-cell v-for="item in cells2">
       <div slot="title" class="page-range-desc">
         <p class="page-range-title">{{ item.title }}</p>
         <p class="page-range-value">value: {{ item.value }}</p>
       </div>
-      <kb-range :value.sync="item.value" :min="item.min || 0" :max="item.max || 100" :step="item.step || 1" :bar-height="item.barHeight || 1" :disabled="item.disabled">
+      <mt-range :value.sync="item.value" :min="item.min || 0" :max="item.max || 100" :step="item.step || 1" :bar-height="item.barHeight || 1" :disabled="item.disabled">
         <div slot="start" v-if="item.start">{{ item.start }}</div>
         <div slot="end" v-if="item.end">{{ item.end }}</div>
-      </kb-range>
-    </kb-cell>
+      </mt-range>
+    </mt-cell>
     <p class="page-range-header">场景举例</p>
-    <kb-cell v-for="item in cells3">
+    <mt-cell v-for="item in cells3">
       <div slot="title" class="page-range-desc">
         <p class="page-range-title">{{ item.title }}</p>
         <p class="page-range-value">字体: {{ item.value }}px</p>
       </div>
-      <kb-range :value.sync="item.value" :min="item.min || 0" :max="item.max || 100" :step="item.step || 1">
+      <mt-range :value.sync="item.value" :min="item.min || 0" :max="item.max || 100" :step="item.step || 1">
         <div slot="start" v-if="item.start" :style="{ 'font-size': item.start + 'px' }">{{ item.start }}</div>
         <div slot="end" v-if="item.end" :style="{ 'font-size': item.end + 'px' }">{{ item.end }}</div>
-      </kb-range>
-    </kb-cell>
+      </mt-range>
+    </mt-cell>
   </div>
 </template>
 
 <style>
   @component-namespace page {
     @component range {
-      .kebab-cell-value {
+      .mint-cell-value {
         flex: 2.5;
       }
 

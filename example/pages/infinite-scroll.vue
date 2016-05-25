@@ -29,7 +29,7 @@
         height: 50px;
         line-height: 50px;
 
-        .mint-spinner {
+        div {
           display: inline-block;
           vertical-align: middle;
           margin-right: 5px;

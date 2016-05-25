@@ -55,6 +55,7 @@
     span {
       display: inline-block;
       transition: .2s linear;
+      vertical-align: middle;
 
       @when rotate {
         transform: rotate(180deg);

@@ -2,7 +2,7 @@
   <div class="page-swipe">
     <h1 class="page-title">Swipe</h1>
     <p class="page-swipe-desc">基础用法</p>
-    <mt-swipe>
+    <mt-swipe :auto="4000">
       <mt-swipe-item class="slide1">1</mt-swipe-item>
       <mt-swipe-item class="slide2">2</mt-swipe-item>
       <mt-swipe-item class="slide3">3</mt-swipe-item>

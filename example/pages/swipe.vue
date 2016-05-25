@@ -2,7 +2,7 @@
   <div class="page-swipe">
     <h1 class="page-title">Swipe</h1>
     <p class="page-swipe-desc">基础用法</p>
-    <kb-swipe>
+    <kb-swipe :auto="4000">
       <kb-swipe-item class="slide1">1</kb-swipe-item>
       <kb-swipe-item class="slide2">2</kb-swipe-item>
       <kb-swipe-item class="slide3">3</kb-swipe-item>

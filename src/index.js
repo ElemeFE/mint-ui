@@ -8,6 +8,8 @@ import Loadmore from 'vue-loadmore';
 import Actionsheet from 'vue-actionsheet';
 import { Swipe, SwipeItem } from 'vue-swipe';
 require('vue-swipe/dist/vue-swipe.css');
+import { MintRange } from 'mint-range';
+require('mint-range/dist/index.css');
 
 // published services
 import Toast from 'vue-toast-mobile';
@@ -25,10 +27,11 @@ module.exports = {
       const module = modules[key];
       Vue.component(module.name, module);
     });
-    Vue.component('kb-loadmore', Loadmore);
-    Vue.component('kb-actionsheet', Actionsheet);
-    Vue.component('kb-swipe', Swipe);
-    Vue.component('kb-swipe-item', SwipeItem);
+    Vue.component('mt-loadmore', Loadmore);
+    Vue.component('mt-actionsheet', Actionsheet);
+    Vue.component('mt-swipe', Swipe);
+    Vue.component('mt-swipe-item', SwipeItem);
+    Vue.component('mt-range', MintRange);
     Vue.use(infiniteScroll);
     Vue.use(lazyload, {
       loading: require('./assets/loading-spin.svg'),

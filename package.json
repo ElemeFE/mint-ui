@@ -28,6 +28,7 @@
   "author": "elemefe",
   "license": "MIT",
   "dependencies": {
+    "mint-range": "0.0.1",
     "vue-actionsheet": "0.0.1",
     "vue-indicator": "^0.0.5",
     "vue-infinite-scroll": "^0.2.3",

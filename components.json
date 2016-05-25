@@ -10,7 +10,13 @@
   "tabbar": ["src/components/tabbar.vue"],
   "checklist": ["src/components/checklist.vue"],
   "radio": ["src/components/radio.vue"],
+  "loadmore": ["src/components/loadmore.js"],
+  "actionsheet": ["src/components/actionsheet.js"],
+  "swipe": ["src/components/swipe.js"],
+  "range": ["src/components/range.js"],
   "toast": ["vue-toast-mobile"],
   "indicator": ["vue-indicator"],
-  "infiniteScroll": ["vue-infinite-scroll"]
+  "msgbox": ["src/components/msgbox.js"],
+  "infiniteScroll": ["vue-infinite-scroll"],
+  "lazyload": ["vue-lazyload"]
 }

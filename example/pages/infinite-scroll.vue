@@ -58,7 +58,7 @@
             this.list.push(last + i);
           }
           this.loading = false;
-        }, 1500);
+        }, 2500);
       }
     },
 

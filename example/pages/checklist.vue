@@ -2,33 +2,34 @@
   <div class="page-checklist">
     <div class="page-title">Checklist</div>
 
-    <kb-checklist
+    <mt-checklist
       class="page-part"
       title="复选框列表"
       :value.sync="value1"
+      :index="index1"
       :options="options1">
-    </kb-checklist>
+    </mt-checklist>
 
-    <kb-cell title="选中的项">{{ value1 | json }}</kb-cell>
+    <mt-cell title="选中的项">{{ value1 | json }}</mt-cell>
 
-    <kb-checklist
+    <mt-checklist
       class="page-part"
       title="第二个复选框列表"
       :value.sync="value2"
       :options="options2">
-    </kb-checklist>
+    </mt-checklist>
 
-    <kb-cell title="选中的项">{{ value2 | json }}</kb-cell>
+    <mt-cell title="选中的项">{{ value2 | json }}</mt-cell>
 
-    <kb-checklist
+    <mt-checklist
       class="page-part"
       title="最多选两个"
       :max="2"
       :value.sync="value3"
       :options="options3">
-    </kb-checklist>
+    </mt-checklist>
 
-    <kb-cell title="选中的项">{{ value3 | json }}</kb-cell>
+    <mt-cell title="选中的项">{{ value3 | json }}</mt-cell>
   </div>
 </template>
 

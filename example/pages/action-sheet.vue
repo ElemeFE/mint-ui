@@ -2,9 +2,9 @@
   <div class="page-actionsheet">
     <h1 class="page-title">Action sheet</h1>
     <div class="page-actionsheet-wrapper">
-      <kb-button @click="sheetVisible = true" size="large" type="primary">点击上拉 action sheet</kb-button>
+      <mt-button @click="sheetVisible = true" size="large" type="primary">点击上拉 action sheet</mt-button>
     </div>
-    <kb-actionsheet :actions="actions" :visible.sync="sheetVisible"></kb-actionsheet>
+    <mt-actionsheet :actions="actions" :visible.sync="sheetVisible"></mt-actionsheet>
   </div>
 </template>
 

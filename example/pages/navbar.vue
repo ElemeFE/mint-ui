@@ -1,19 +1,19 @@
 <template>
   <div class="page-navbar">
     <div class="page-title">Nabbar</div>
-    <kb-navbar class="page-part" :selected.sync="selected">
-      <kb-tab-item value="选项一">
+    <mt-navbar class="page-part" :selected.sync="selected">
+      <mt-tab-item value="选项一">
         <span slot="label">选项一</span>
-      </kb-tab-item>
-      <kb-tab-item value="选项二">
+      </mt-tab-item>
+      <mt-tab-item value="选项二">
         <span slot="label">选项二</span>
-      </kb-tab-item>
-      <kb-tab-item value="选项三">
+      </mt-tab-item>
+      <mt-tab-item value="选项三">
         <span slot="label">选项三</span>
-      </kb-tab-item>
-    </kb-navbar>
+      </mt-tab-item>
+    </mt-navbar>
 
-    <kb-cell title="当前选中">{{ selected }}</kb-cell>
+    <mt-cell title="当前选中">{{ selected }}</mt-cell>
   </div>
 </template>
 

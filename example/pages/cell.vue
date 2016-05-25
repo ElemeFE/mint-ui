@@ -1,25 +1,21 @@
 <template>
   <div class="page-cell">
     <div class="page-title">Cell</div>
-    <kb-cell title="标题文字"></kb-cell>
-    <kb-cell title="标题文字" value="说明文字"></kb-cell>
-    <kb-cell title="标题文字" icon="more" value="带 icon"></kb-cell>
-    <kb-cell title="标题文字" icon="more">
+    <mt-cell title="标题文字"></mt-cell>
+    <mt-cell title="标题文字" value="说明文字"></mt-cell>
+    <mt-cell title="标题文字" icon="more" value="带 icon"></mt-cell>
+    <mt-cell title="标题文字" icon="more">
       <span> icon 是图片</span>
       <img slot="icon" src="../assets/100x100.png">
-    </kb-cell>
-    <kb-cell title="标题文字" is-link value="带链接"></kb-cell>
-    <kb-cell title="标题文字" is-link>
+    </mt-cell>
+    <mt-cell title="标题文字" is-link value="带链接"></mt-cell>
+    <mt-cell title="标题文字" is-link>
       <span style="color: green">这里是元素</span>
-    </kb-cell>
-    <kb-cell title="标题文字">
-      <kb-button size="small" type="primary" icon="back">按钮</kb-button>
-    </kb-cell>
+    </mt-cell>
+    <mt-cell title="标题文字">
+      <mt-button size="small" type="primary" icon="back">按钮</mt-button>
+    </mt-cell>
+
+    <mt-cell title="标题" label="描述信息" is-link></mt-cell>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'page-cell'
-};
-</script>

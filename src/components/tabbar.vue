@@ -1,5 +1,5 @@
 <template>
-  <div class="kebab-tabbar" :class="{
+  <div class="mint-tabbar" :class="{
       'is-fixed': fixed
     }">
     <slot></slot>
@@ -8,29 +8,29 @@
 
 <script>
 /**
- * kb-tabbar
+ * mt-tabbar
  * @module components/tabbar
  * @desc 底部 tab，依赖 tab-item
  * @param {boolean} [fixed=false] - 固定底部
  * @param {*} selected - 返回 item component 传入的 value
  *
  * @example
- * <kb-tabbar :selected.sync="selected">
- *   <kb-tab-item value="订单">
+ * <mt-tabbar :selected.sync="selected">
+ *   <mt-tab-item value="订单">
  *     <img slot="icon" src="http://placehold.it/100x100">
  *     <span slot="label">订单</span>
- *   </kb-tab-item>
- * </kb-tabbar>
+ *   </mt-tab-item>
+ * </mt-tabbar>
  *
- * <kb-tabbar :selected.sync="selected" fixed>
- *   <kb-tab-item :value="['传入数组', '也是可以的']">
+ * <mt-tabbar :selected.sync="selected" fixed>
+ *   <mt-tab-item :value="['传入数组', '也是可以的']">
  *     <img slot="icon" src="http://placehold.it/100x100">
  *     <span slot="label">订单</span>
- *   </kb-tab-item>
- * </kb-tabbar>
+ *   </mt-tab-item>
+ * </mt-tabbar>
  */
 export default {
-  name: 'kb-tabbar',
+  name: 'mt-tabbar',
 
   data() {
     return {
@@ -50,7 +50,7 @@ export default {
 <style lang="css">
   @import "../style/var.css";
 
-  @component-namespace kebab {
+  @component-namespace mint {
     @component tabbar {
       background-color: var(--tabbar-background-color);
       border-top: 1px solid var(--border-color);
@@ -63,7 +63,7 @@ export default {
         z-index: var(--z-index-normal);
       }
 
-      > .kebab-tab-item.is-selected {
+      > .mint-tab-item.is-selected {
         background-color: var(--tabbar-tab-item-selected-background-color);
         color: var(--tabbar-tab-item-selected-color);
       }

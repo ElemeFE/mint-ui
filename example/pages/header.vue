@@ -1,20 +1,20 @@
 <template>
   <div>
-    <kb-header fixed title="固定在顶部"></kb-header>
+    <mt-header fixed title="固定在顶部"></mt-header>
     <div class="page-header-main">
       <div class="page-title">Header</div>
-      <kb-header title="标题过长会隐藏后面的内容啊哈哈哈哈">
-        <kb-button @click="handleBack" icon="back" slot="left">返回</kb-button>
-        <kb-button icon="more" slot="right"></kb-button>
-      </kb-header>
+      <mt-header title="标题过长会隐藏后面的内容啊哈哈哈哈">
+        <mt-button @click="handleBack" icon="back" slot="left">返回</mt-button>
+        <mt-button icon="more" slot="right"></mt-button>
+      </mt-header>
 
-      <kb-header title="标题">
+      <mt-header title="标题">
         <div slot="left">
-          <kb-button @click="handleBack" icon="back">返回</kb-button>
-          <kb-button @click="handleClose">close</kb-button>
+          <mt-button @click="handleBack" icon="back">返回</mt-button>
+          <mt-button @click="handleClose">close</mt-button>
         </div>
-        <kb-button icon="more" slot="right"></kb-button>
-      </kb-header>
+        <mt-button icon="more" slot="right"></mt-button>
+      </mt-header>
     </div>
 
   </div>

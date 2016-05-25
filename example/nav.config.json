@@ -79,6 +79,10 @@
       {
         "path": "/radio",
         "name": "radio"
+      },
+      {
+        "path": "/field",
+        "name": "field"
       }
     ]
   }

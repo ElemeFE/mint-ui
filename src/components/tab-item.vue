@@ -1,13 +1,13 @@
 <template>
-  <a class="kebab-tab-item" @click="selectedItem" :class="{ 'is-selected': selected }">
-    <div class="kebab-tab-item-icon"><slot name="icon"></slot></div>
-    <div class="kebab-tab-item-label"><slot name="label"></slot></div>
+  <a class="mint-tab-item" @click="selectedItem" :class="{ 'is-selected': selected }">
+    <div class="mint-tab-item-icon"><slot name="icon"></slot></div>
+    <div class="mint-tab-item-label"><slot name="label"></slot></div>
   </a>
 </template>
 
 <script>
 /**
- * kb-tab-item
+ * mt-tab-item
  * @module components/tab-item
  * @desc 搭配 tabbar 或 navbar 使用
  * @param {*} [value] - 选中后的返回值，任意类型
@@ -15,13 +15,13 @@
  * @param {slot} [label] - 文字
  *
  * @example
- * <kb-tab-item>
+ * <mt-tab-item>
  *   <img slot="icon" src="http://placehold.it/100x100">
  *   <span slot="label">订单</span>
- * </kb-tab-item>
+ * </mt-tab-item>
  */
 export default {
-  name: 'kb-tab-item',
+  name: 'mt-tab-item',
 
   props: {
     value: {
@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style lang="css">
-  @component-namespace kebab {
+  @component-namespace mint {
     @component tab-item {
       display: block;
       padding: 7px 0;

@@ -1,25 +1,25 @@
 <template>
   <div class="page-tabbar">
     <div class="page-title">Tabbar</div>
-    <kb-cell title="当前选中">{{selected | json}}</kb-cell>
-    <kb-tabbar :selected.sync="selected">
-      <kb-tab-item value="外卖">
+    <mt-cell title="当前选中">{{selected | json}}</mt-cell>
+    <mt-tabbar :selected.sync="selected">
+      <mt-tab-item value="外卖">
         <img slot="icon" src="../assets/100x100.png">
         <span slot="label">外卖</span>
-      </kb-tab-item>
-      <kb-tab-item :value="['订单', '测试数组']">
+      </mt-tab-item>
+      <mt-tab-item :value="['订单', '测试数组']">
         <img slot="icon" src="../assets/100x100.png">
         <span slot="label">订单</span>
-      </kb-tab-item>
-      <kb-tab-item value="{item: '发现'}">
+      </mt-tab-item>
+      <mt-tab-item value="{item: '发现'}">
         <img slot="icon" src="../assets/100x100.png">
         <span slot="label">发现</span>
-      </kb-tab-item>
-      <kb-tab-item :value="true">
+      </mt-tab-item>
+      <mt-tab-item :value="true">
         <img slot="icon" src="../assets/100x100.png">
         <span slot="label">我的</span>
-      </kb-tab-item>
-    </kb-tabbar>
+      </mt-tab-item>
+    </mt-tabbar>
   </div>
 </template>
 

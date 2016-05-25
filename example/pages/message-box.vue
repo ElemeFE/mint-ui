@@ -2,8 +2,8 @@
   <div class="page-msgbox">
     <h1 class="page-title">Message Box</h1>
     <div class="page-msgbox-wrapper">
-      <kb-button @click="openAlert" size="large" type="primary">打开 alert 提示框</kb-button>
-      <kb-button @click="openConfirm" size="large" type="primary">打开 confirm 提示框</kb-button>
+      <mt-button @click="openAlert" size="large" type="primary">打开 alert 提示框</mt-button>
+      <mt-button @click="openConfirm" size="large" type="primary">打开 confirm 提示框</mt-button>
     </div>
   </div>
 </template>

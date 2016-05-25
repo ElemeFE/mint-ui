@@ -1,11 +1,10 @@
 .PHONY: dist
 
 dev:
-	@cooking watch -c cooking.demo.js
+	npm run dev
 
 dist:
-	@cooking build -p
+	npm run dist
 
 deploy:
-	@cooking build -c cooking.demo.js -p
-	./node_modules/.bin/gh-pages -d example/dist --remote eleme
+	npm run deploy

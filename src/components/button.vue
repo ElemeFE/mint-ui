@@ -1,7 +1,7 @@
 <template>
   <a
-    class="kebab-button"
-    :class="[ { 'is-disabled': disabled }, 'kebab-button--' + type, 'kebab-button--' + size ]"
+    class="mint-button"
+    :class="[ { 'is-disabled': disabled }, 'mint-button--' + type, 'mint-button--' + size ]"
     @touchstart="handleClick">
     <i v-if="icon" class="icon" :class="'icon-' + icon"></i>
     <slot></slot>
@@ -10,7 +10,7 @@
 
 <script>
 /**
- * kb-header
+ * mt-header
  * @module components/button
  * @desc 按钮
  * @param {string} [type=default] - 显示类型，接受 default, primary, danger
@@ -19,10 +19,10 @@
  * @param {string} [icon] - 图标，提供 more, back，或者自定义的图标（传入不带前缀的图标类名，最后拼接成 .icon-xxx）
  *
  * @example
- * <kb-button size="large" icon="back" type="primary">按钮</kb-button>
+ * <mt-button size="large" icon="back" type="primary">按钮</mt-button>
  */
 export default {
-  name: 'kb-button',
+  name: 'mt-button',
 
   props: {
     icon: String,
@@ -65,7 +65,7 @@ export default {
 <style lang="css">
   @import "../style/var.css";
 
-  @component-namespace kebab {
+  @component-namespace mint {
     @component button {
       border-radius: 4px;
       box-sizing: border-box;

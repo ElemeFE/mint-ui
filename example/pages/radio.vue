@@ -2,23 +2,23 @@
   <div class="page-radio">
     <div class="page-title">radio</div>
 
-    <kb-radio
+    <mt-radio
       class="page-part"
       title="单选框列表"
       :value.sync="value1"
       :options="options1">
-    </kb-radio>
+    </mt-radio>
 
-    <kb-cell title="选中的项">{{ value1 | json }}</kb-cell>
+    <mt-cell title="选中的项">{{ value1 | json }}</mt-cell>
 
-    <kb-radio
+    <mt-radio
       class="page-part"
       title="第二个单选框列表"
       :value.sync="value2"
       :options="options2">
-    </kb-radio>
+    </mt-radio>
 
-    <kb-cell title="选中的项">{{ value2 | json }}</kb-cell>
+    <mt-cell title="选中的项">{{ value2 | json }}</mt-cell>
   </div>
 </template>
 

@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import App from './app';
 import routes from './route';
-import Kebab from 'src/index';
+import Mint from 'src/index';
 import VueRouter from 'vue-router';
 
-Vue.use(Kebab);
+Vue.use(Mint);
 Vue.use(VueRouter);
 
 const router = new VueRouter();

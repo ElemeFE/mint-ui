@@ -5,7 +5,7 @@
       <li v-for="item in list" class="page-infinite-listitem">{{ item }}</li>
     </ul>
     <p v-show="loading" class="page-infinite-loading">
-      <kb-spinner type="fading-circle"></kb-spinner>
+      <mt-spinner type="fading-circle"></mt-spinner>
       加载中...
     </p>
   </div>
@@ -29,7 +29,7 @@
         height: 50px;
         line-height: 50px;
 
-        .kebab-spinner {
+        .mint-spinner {
           display: inline-block;
           vertical-align: middle;
           margin-right: 5px;

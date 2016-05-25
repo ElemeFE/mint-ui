@@ -1,25 +1,26 @@
 <template>
-  <a class="kebab-cell" :class="{ 'is-link': isLink }">
-    <label class="kebab-cell-title">
+  <a class="mint-cell" :class="{ 'is-link': isLink }">
+    <label class="mint-cell-title">
       <slot name="icon">
         <i v-if="icon" class="icon" :class="'icon-' + icon"></i>
       </slot>
       <slot name="title">
-        <span class="kebab-cell-label" v-text="title"></span>
+        <span class="mint-cell-text" v-text="title"></span>
+        <span v-if="label" class="mint-cell-label" v-text="label"></span>
       </slot>
     </label>
-    <div class="kebab-cell-value">
+    <div class="mint-cell-value">
       <slot>
         <span v-text="value"></span>
       </slot>
     </div>
-    <i v-if="isLink" class="kebab-cell-allow-right"></i>
+    <i v-if="isLink" class="mint-cell-allow-right"></i>
   </a>
 </template>
 
 <script>
 /**
- * kb-cell
+ * mt-cell
  * @module components/cell
  * @desc 单元格
  * @param {string} [icon] - 图标，提供 more, back，或者自定义的图标（传入不带前缀的图标类名，最后拼接成 .icon-xxx）
@@ -31,17 +32,18 @@
  * @param {slot} [icon] - 同 icon, 会覆盖 icon 属性，例如可以传入图片
  *
  * @example
- * <kb-cell title="标题文字" icon="back" is-link value="描述文字"></kb-cell>
- * <kb-cell title="标题文字" icon="back">
+ * <mt-cell title="标题文字" icon="back" is-link value="描述文字"></mt-cell>
+ * <mt-cell title="标题文字" icon="back">
  *   <div slot="value">描述文字啊哈</div>
- * </kb-cell>
+ * </mt-cell>
  */
 export default {
-  name: 'kb-cell',
+  name: 'mt-cell',
 
   props: {
     icon: String,
     title: String,
+    label: String,
     isLink: Boolean,
     value: String
   }
@@ -51,7 +53,7 @@ export default {
 <style lang="css">
   @import "../style/var.css";
 
-  @component-namespace kebab {
+  @component-namespace mint {
     @component cell {
       align-items: center;
       background-color: var(--color-white);
@@ -60,9 +62,9 @@ export default {
       color: inherit;
       display: flex;
       font-size: 18px;
-      line-height: 2.6rem;
-      padding: 0 10px;
       position: relative;
+      line-height: 1;
+      padding: 10px;
 
       @when link {
         &::after {
@@ -77,8 +79,15 @@ export default {
         }
       }
 
-      @descendent label {
+      @descendent text {
         vertical-align: middle;
+      }
+
+      @descendent label {
+        color: #888;
+        display: block;
+        font-size: 14px;
+        margin-top: 14px;
       }
 
       img {

@@ -1,11 +1,47 @@
-# kebab-ui
+# mint-ui
 Mobile UI elements for vue.js
 
-## 注册新组件
-在 components.json 注册组件名和路径，路径需要是数组 [issue](https://github.com/webpack/webpack/issues/300)
+## Installation
+```shell
+npm i mint-ui -S
+```
 
-## 写组件 DEMO
-在 example/nav.config.json 注册组件信息，并创建对应页面到 pages 目录下
+## Usage
+```javascript
+import Vue from 'vue'
+import Mint from 'mint-ui';
+
+Vue.use(Mint);
+```
+
+or import Specified components (Use [babel-plugin-component](https://www.npmjs.com/package/babel-plugin-component))
+
+```javascript
+import { Cell, Checklist } from 'mint-ui';
+
+Vue.component(Cell.name, Cell);
+Vue.component(Checklist.name, Checklist);
+```
+
+## babel-plugin-component
+- Auto import css file
+- Modular import component
+
+Installation
+```shell
+npm i babel-plugin-component -D
+```
+
+Usage
+
+.babelrc
+```json
+{
+  "plugins": ["other-plugin", ["component", [
+    { "libraryName": "mint-ui", "style": true }
+  ]]]
+}
+```
 
 ## Development
 

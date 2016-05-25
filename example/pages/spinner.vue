@@ -2,21 +2,21 @@
   <div class="page-spinner">
     <div class="page-title">Spinner</div>
 
-    <kb-cell title="snake">
-      <kb-spinner type="snake"></kb-spinner>
-    </kb-cell>
+    <mt-cell title="snake">
+      <mt-spinner type="snake"></mt-spinner>
+    </mt-cell>
 
-    <kb-cell title="double-bounce">
-      <kb-spinner type="double-bounce"></kb-spinner>
-    </kb-cell>
+    <mt-cell title="double-bounce">
+      <mt-spinner type="double-bounce"></mt-spinner>
+    </mt-cell>
 
-    <kb-cell title="three-bounce">
-      <kb-spinner type="three-bounce"></kb-spinner>
-    </kb-cell>
+    <mt-cell title="three-bounce">
+      <mt-spinner type="triple-bounce"></mt-spinner>
+    </mt-cell>
 
-    <kb-cell title="fading-circle">
-      <kb-spinner type="fading-circle"></kb-spinner>
-    </kb-cell>
+    <mt-cell title="fading-circle">
+      <mt-spinner type="fading-circle"></mt-spinner>
+    </mt-cell>
   </div>
 </template>
 

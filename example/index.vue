@@ -2,12 +2,12 @@
   <section class="page-home">
     <div v-for="group in navs">
       <div class="page-title" v-text="group.title"></div>
-      <kb-cell
+      <mt-cell
         v-for="item in group.list"
         v-link="{ path: item.path }"
         is-link
         :title="item.name">
-      </kb-cell>
+      </mt-cell>
     </div>
   </section>
 </template>

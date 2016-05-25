@@ -1,27 +1,29 @@
 <template>
-  <div class="kebab-checklist" :class="{ 'is-limit': max <= value.length }">
-    <label class="kebab-checklist-title" v-text="title"></label>
-    <kb-cell v-for="option in options">
+  <div class="mint-checklist" :class="{ 'is-limit': max <= value.length }">
+    <label class="mint-checklist-title" v-text="title"></label>
+    <mt-cell v-for="option in options" index="$index">
       <div slot="title">
         <label>
-          <span class="kebab-checkbox">
+          <span class="mint-checkbox">
             <input
-              class="kebab-checkbox-core"
+              class="mint-checkbox-core"
               type="checkbox"
               v-model="value"
               :disabled="option.disabled"
               :value="option.value || option">
           </span>
-          <span class="kebab-checkbox-label" v-text="option.label || option"></span>
+          <slot>
+            <span class="mint-checkbox-label" v-text="option.label || option"></span>
+          </slot>
         </label>
       </div>
-    </kb-cell>
+    </mt-cell>
   </div>
 </template>
 
 <script>
 /**
- * kb-checklist
+ * mt-checklist
  * @module components/checklist
  * @desc 复选框列表，依赖 cell 组件
  *
@@ -31,10 +33,10 @@
  * @param {number} [max] - 最多可选的个数
  *
  * @example
- * <kb-checklist :value.sync="value" :options="['a', 'b', 'c']"></kb-checklist>
+ * <mt-checklist :value.sync="value" :options="['a', 'b', 'c']"></mt-checklist>
  */
 export default {
-  name: 'kb-checklist',
+  name: 'mt-checklist',
 
   props: {
     max: Number,
@@ -69,7 +71,7 @@ export default {
 <style lang="css">
   @import "../style/var.css";
 
-  @component-namespace kebab {
+  @component-namespace mint {
     @component checklist {
       @descendent title {
         font-size: 12px;
@@ -79,7 +81,7 @@ export default {
       }
 
       @when limit {
-        & .kebab-checkbox-core:not(:checked) {
+        & .mint-checkbox-core:not(:checked) {
           background-color: var(--color-grey);
           border-color: var(--color-grey);
         }

@@ -1,27 +1,27 @@
 <template>
   <div class="page-loadmore">
     <h1 class="page-title">Loadmore</h1>
-    <kb-header title="下拉 / 上拉刷新"></kb-header>
+    <mt-header title="下拉 / 上拉刷新"></mt-header>
     <div class="page-loadmore-wrapper">
-      <kb-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded">
+      <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded">
         <ul class="page-loadmore-list">
           <li v-for="item in list" class="page-loadmore-listitem">{{ item }}</li>
         </ul>
-      </kb-loadmore>
+      </mt-loadmore>
     </div>
-    <kb-header title="自定义 HTML template"></kb-header>
+    <mt-header title="自定义 HTML template"></mt-header>
     <div class="page-loadmore-wrapper">
-      <kb-loadmore :top-method="loadTop2" :top-status.sync="topStatus">
+      <mt-loadmore :top-method="loadTop2" :top-status.sync="topStatus">
         <ul class="page-loadmore-list">
           <li v-for="item in list2" class="page-loadmore-listitem">{{ item }}</li>
         </ul>
-        <div slot="top" class="kebab-loadmore-top">
+        <div slot="top" class="mint-loadmore-top">
           <span v-show="topStatus !== 'loading'" :class="{ 'is-rotate': topStatus === 'drop' }">↓</span>
           <span v-show="topStatus === 'loading'">
-            <kb-spinner type="snake"></kb-spinner>
+            <mt-spinner type="snake"></mt-spinner>
           </span>
         </div>
-      </kb-loadmore>
+      </mt-loadmore>
     </div>
   </div>
 </template>
@@ -44,14 +44,14 @@
         overflow: scroll;
       }
 
-      .kebab-spinner {
+      .mint-spinner {
         display: inline-block;
         vertical-align: middle;
       }
     }
   }
 
-  @component kebab-loadmore-top {
+  @component mint-loadmore-top {
     span {
       display: inline-block;
       transition: .2s linear;

@@ -1,27 +1,27 @@
 <template>
-  <div class="kebab-radiolist">
-    <label class="kebab-radiolist-title" v-text="title"></label>
-    <kb-cell v-for="option in options">
+  <div class="mint-radiolist">
+    <label class="mint-radiolist-title" v-text="title"></label>
+    <mt-cell v-for="option in options">
       <div slot="title">
         <label>
-          <span class="kebab-radio">
+          <span class="mint-radio">
             <input
-              class="kebab-radio-core"
+              class="mint-radio-core"
               type="radio"
               v-model="value"
               :disabled="option.disabled"
               :value="option.value || option">
           </span>
-          <span class="kebab-radio-label" v-text="option.label || option"></span>
+          <span class="mint-radio-label" v-text="option.label || option"></span>
         </label>
       </div>
-    </kb-cell>
+    </mt-cell>
   </div>
 </template>
 
 <script>
 /**
- * kb-radio
+ * mt-radio
  * @module components/radio
  * @desc 单选框列表，依赖 cell 组件
  *
@@ -30,10 +30,10 @@
  * @param {string} title - 标题
  *
  * @example
- * <kb-radio :value.sync="value" :options="['a', 'b', 'c']"></kb-radio>
+ * <mt-radio :value.sync="value" :options="['a', 'b', 'c']"></mt-radio>
  */
 export default {
-  name: 'kb-radio',
+  name: 'mt-radio',
 
   props: {
     title: String,
@@ -52,7 +52,7 @@ export default {
 <style lang="css">
   @import "../style/var.css";
 
-  @component-namespace kebab {
+  @component-namespace mint {
     @component radiolist {
       @descendent title {
         font-size: 12px;

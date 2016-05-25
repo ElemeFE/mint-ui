@@ -1,23 +1,23 @@
 <template>
-  <div class="kebab-switch">
-    <input class="kebab-switch-core" type="checkbox" v-model="value">
-    <div class="kebab-switch-label"><slot></slot></div>
+  <div class="mint-switch">
+    <input class="mint-switch-core" type="checkbox" v-model="value">
+    <div class="mint-switch-label"><slot></slot></div>
   </div>
 </template>
 
 <script>
 /**
- * kb-switch
+ * mt-switch
  * @module components/switch
  * @desc 切换按钮
  * @param {boolean} [value] - 绑定值，支持双向绑定
  * @param {slot} - 显示内容
  *
  * @example
- * <kb-switch :value.sync="value"></kb-switch>
+ * <mt-switch :value.sync="value"></mt-switch>
  */
 export default {
-  name: 'kb-switch',
+  name: 'mt-switch',
 
   props: {
     value: Boolean
@@ -28,7 +28,7 @@ export default {
 <style lang="css">
   @import "../style/var.css";
 
-  @component-namespace kebab {
+  @component-namespace mint {
     @component switch {
       display: flex;
       align-items: center;

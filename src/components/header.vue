@@ -1,12 +1,12 @@
 <template>
   <header
-    class="kebab-header"
+    class="mint-header"
     :class="{ 'is-fixed': fixed }">
-    <div class="kebab-header-button is-left">
+    <div class="mint-header-button is-left">
       <slot name="left"></slot>
     </div>
-    <h1 class="kebab-header-title" v-text="title"></h1>
-    <div class="kebab-header-button is-right">
+    <h1 class="mint-header-title" v-text="title"></h1>
+    <div class="mint-header-button is-right">
       <slot name="right"></slot>
     </div>
   </header>
@@ -14,7 +14,7 @@
 
 <script>
 /**
- * kb-header
+ * mt-header
  * @module components/header
  * @desc 顶部导航
  * @param {boolean} [fixed=false] - 固定顶部
@@ -23,13 +23,13 @@
  * @param {slot} [right] - 显示在右侧区域
  *
  * @example
- * <kb-header title="我是标题" fixed>
- *   <kb-button slot="left" icon="back" @click="handleBack">返回</kb-button>
- *   <kb-button slot="right" icon="more"></kb-button>
- * </kb-header>
+ * <mt-header title="我是标题" fixed>
+ *   <mt-button slot="left" icon="back" @click="handleBack">返回</mt-button>
+ *   <mt-button slot="right" icon="more"></mt-button>
+ * </mt-header>
  */
 export default {
-  name: 'kb-header',
+  name: 'mt-header',
 
   props: {
     fixed: Boolean,
@@ -41,7 +41,7 @@ export default {
 <style lang="css">
   @import '../style/var.css';
 
-  @component-namespace kebab {
+  @component-namespace mint {
     @component header {
       align-items: center;
       background-color: var(--color-blue);
@@ -54,7 +54,7 @@ export default {
       position: relative;
       text-align: center;
 
-      & .kebab-button {
+      & .mint-button {
         background-color: transparent;
         border: 0;
         box-shadow: none;

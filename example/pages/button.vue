@@ -2,27 +2,27 @@
   <div class="page-button">
     <h1 class="page-title">Button</h1>
     <div class="page-button-group">
-      <kb-button size="large">default</kb-button>
-      <kb-button size="large" type="primary">primary</kb-button>
-      <kb-button size="large" type="danger">danger</kb-button>
+      <mt-button size="large">default</mt-button>
+      <mt-button size="large" type="primary">primary</mt-button>
+      <mt-button size="large" type="danger">danger</mt-button>
     </div>
 
     <div class="page-button-group">
-      <kb-button>default</kb-button>
-      <kb-button type="primary">primary</kb-button>
-      <kb-button type="danger">danger</kb-button>
+      <mt-button>default</mt-button>
+      <mt-button type="primary">primary</mt-button>
+      <mt-button type="danger">danger</mt-button>
     </div>
 
     <div class="page-button-group">
-      <kb-button size="small">default</kb-button>
-      <kb-button size="small" type="primary">primary</kb-button>
-      <kb-button size="small" type="danger">danger</kb-button>
+      <mt-button size="small">default</mt-button>
+      <mt-button size="small" type="primary">primary</mt-button>
+      <mt-button size="small" type="danger">danger</mt-button>
     </div>
 
     <div class="page-button-group">
-      <kb-button disabled size="large">default</kb-button>
-      <kb-button disabled size="large" type="primary">primary</kb-button>
-      <kb-button disabled size="large" type="danger">danger</kb-button>
+      <mt-button disabled size="large">default</mt-button>
+      <mt-button disabled size="large" type="primary">primary</mt-button>
+      <mt-button disabled size="large" type="danger">danger</mt-button>
     </div>
   </div>
 </template>

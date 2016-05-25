@@ -25,10 +25,10 @@ module.exports = {
       const module = modules[key];
       Vue.component(module.name, module);
     });
-    Vue.component('kb-loadmore', Loadmore);
-    Vue.component('kb-actionsheet', Actionsheet);
-    Vue.component('kb-swipe', Swipe);
-    Vue.component('kb-swipe-item', SwipeItem);
+    Vue.component('mt-loadmore', Loadmore);
+    Vue.component('mt-actionsheet', Actionsheet);
+    Vue.component('mt-swipe', Swipe);
+    Vue.component('mt-swipe-item', SwipeItem);
     Vue.use(infiniteScroll);
     Vue.use(lazyload, {
       loading: require('./assets/loading-spin.svg'),

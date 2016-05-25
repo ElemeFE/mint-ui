@@ -18,7 +18,7 @@ cooking.set({
   clean: true,
   hash: true,
   chunk: 'vendor',
-  publicPath: '/kebab-ui/',
+  publicPath: '/mint-ui/',
   assetsPath: 'static',
   urlLoaderLimit: 10000,
   extractCSS: true,

@@ -1,7 +1,7 @@
 <template>
   <div class="mint-radiolist">
     <label class="mint-radiolist-title" v-text="title"></label>
-    <mt-cell v-for="option in options">
+    <x-cell v-for="option in options">
       <div slot="title">
         <label>
           <span class="mint-radio">
@@ -15,11 +15,13 @@
           <span class="mint-radio-label" v-text="option.label || option"></span>
         </label>
       </div>
-    </mt-cell>
+    </x-cell>
   </div>
 </template>
 
 <script>
+import XCell from 'src/components/cell';
+
 /**
  * mt-radio
  * @module components/radio
@@ -45,6 +47,10 @@ export default {
       type: String,
       twoWay: true
     }
+  },
+
+  components: {
+    XCell
   }
 };
 </script>

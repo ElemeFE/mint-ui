@@ -3,6 +3,8 @@
   "header": ["src/components/header.vue"],
   "button": ["src/components/button.vue"],
   "cell": ["src/components/cell.vue"],
+  "field": ["src/components/field.vue"],
+  "badge": ["src/components/badge.vue"],
   "switch": ["src/components/switch.vue"],
   "spinner": ["src/components/spinner.vue"],
   "tab-item": ["src/components/tab-item.vue"],
@@ -18,6 +20,6 @@
   "toast": ["src/components/toast.js"],
   "indicator": ["src/components/indicator.js"],
   "msgbox": ["src/components/msgbox.js"],
-  "infiniteScroll": ["vue-infinite-scroll"],
+  "infinite-scroll": ["vue-infinite-scroll"],
   "lazyload": ["vue-lazyload"]
 }

@@ -2,33 +2,21 @@
   <div class="page-range">
     <h1 class="page-title">range</h1>
     <p class="page-range-header">基本功能</p>
-    <mt-cell v-for="item in cells1">
-      <div slot="title" class="page-range-desc">
-        <p class="page-range-title">{{ item.title }}</p>
-        <p class="page-range-value">value: {{ item.value }}</p>
-      </div>
+    <mt-cell v-for="item in cells1" :title="item.title" :label="'value:' + item.value">
       <mt-range :value.sync="item.value">
         <div slot="start" v-if="item.start">{{ item.start }}</div>
         <div slot="end" v-if="item.end">{{ item.end }}</div>
       </mt-range>
     </mt-cell>
     <p class="page-range-header">自定义</p>
-    <mt-cell v-for="item in cells2">
-      <div slot="title" class="page-range-desc">
-        <p class="page-range-title">{{ item.title }}</p>
-        <p class="page-range-value">value: {{ item.value }}</p>
-      </div>
+    <mt-cell v-for="item in cells2" :title="item.title" :label="'value:' + item.value">
       <mt-range :value.sync="item.value" :min="item.min || 0" :max="item.max || 100" :step="item.step || 1" :bar-height="item.barHeight || 1" :disabled="item.disabled">
         <div slot="start" v-if="item.start">{{ item.start }}</div>
         <div slot="end" v-if="item.end">{{ item.end }}</div>
       </mt-range>
     </mt-cell>
     <p class="page-range-header">场景举例</p>
-    <mt-cell v-for="item in cells3">
-      <div slot="title" class="page-range-desc">
-        <p class="page-range-title">{{ item.title }}</p>
-        <p class="page-range-value">字体: {{ item.value }}px</p>
-      </div>
+    <mt-cell v-for="item in cells3" :title="item.title" :label="'value:' + item.value">
       <mt-range :value.sync="item.value" :min="item.min || 0" :max="item.max || 100" :step="item.step || 1">
         <div slot="start" v-if="item.start" :style="{ 'font-size': item.start + 'px' }">{{ item.start }}</div>
         <div slot="end" v-if="item.end" :style="{ 'font-size': item.end + 'px' }">{{ item.end }}</div>
@@ -40,8 +28,15 @@
 <style>
   @component-namespace page {
     @component range {
+      .mt-range {
+        width: 100%;
+        position: absolute;
+        top: -7px;
+      }
+
       .mint-cell-value {
         flex: 2.5;
+        position: relative;
       }
 
       @descendent header {
@@ -55,18 +50,6 @@
 
       @descendent desc {
         padding: 5px 0 5px 5%;
-      }
-
-      @descendent title {
-        font-size: 16px;
-        color: #333;
-        line-height: 2;
-      }
-
-      @descendent value {
-        font-size: 14px;
-        color: #999;
-        line-height: 2;
       }
     }
   }

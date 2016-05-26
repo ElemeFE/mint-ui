@@ -32,14 +32,15 @@
   "devDependencies": {
     "gh-pages": "^0.11.0",
     "my-local-ip": "^1.0.0",
-    "mint-range": "0.0.1",
     "kb-spinner": "^0.1.9",
-    "vue-actionsheet": "0.0.1",
-    "vue-indicator": "^0.0.5",
+    "mint-actionsheet": "^0.0.2",
+    "mint-loadmore": "^0.0.1",
+    "mint-range": "0.0.1",
+    "vue-indicator": "^0.0.6",
     "vue-infinite-scroll": "^0.2.3",
     "vue-lazyload": "^0.4.2",
-    "vue-loadmore": "^0.2.3",
     "vue-msgbox": "^0.2.2",
+    "mint-picker": "^0.0.2",
     "vue-swipe": "^0.2.3",
     "vue-toast-mobile": "^0.1.1"
   }

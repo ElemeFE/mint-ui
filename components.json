@@ -16,8 +16,9 @@
   "actionsheet": ["src/components/actionsheet.js"],
   "swipe": ["src/components/swipe.js"],
   "range": ["src/components/range.js"],
-  "toast": ["vue-toast-mobile"],
-  "indicator": ["vue-indicator"],
+  "picker": ["src/components/picker.js"],
+  "toast": ["src/components/toast.js"],
+  "indicator": ["src/components/indicator.js"],
   "msgbox": ["src/components/msgbox.js"],
   "infinite-scroll": ["vue-infinite-scroll"],
   "lazyload": ["vue-lazyload"]

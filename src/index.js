@@ -4,17 +4,22 @@ const requireAll = requireContext => {
 const modules = requireAll(require.context('src/components', true, /\.vue$/));
 
 // published components
-import Loadmore from 'vue-loadmore';
-require('vue-loadmore/lib/index.css');
-import Actionsheet from 'vue-actionsheet';
+import Loadmore from 'mint-loadmore';
+require('mint-loadmore/lib/index.css');
+import Actionsheet from 'mint-actionsheet';
+require('mint-actionsheet/lib/index.css');
 import { Swipe, SwipeItem } from 'vue-swipe';
 require('vue-swipe/dist/vue-swipe.css');
 import { MintRange } from 'mint-range';
 require('mint-range/dist/index.css');
+import Picker from 'mint-picker';
+require('mint-picker/lib/index.css');
 
 // published services
 import Toast from 'vue-toast-mobile';
+require('vue-toast-mobile/lib/index.css');
 import Indicator from 'vue-indicator';
+require('vue-indicator/lib/index.css');
 import MessageBox from 'babel!vue-msgbox/src';
 require('./style/message-box.css');
 
@@ -33,6 +38,7 @@ module.exports = {
     Vue.component('mt-swipe', Swipe);
     Vue.component('mt-swipe-item', SwipeItem);
     Vue.component('mt-range', MintRange);
+    Vue.component('mt-picker', Picker);
     Vue.use(infiniteScroll);
     Vue.use(lazyload, {
       loading: require('./assets/loading-spin.svg'),

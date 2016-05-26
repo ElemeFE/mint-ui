@@ -1,6 +1,6 @@
 <template>
   <div class="page-actionsheet">
-    <h1 class="page-title">Action sheet</h1>
+    <h1 class="page-title">Action Sheet</h1>
     <div class="page-actionsheet-wrapper">
       <mt-button @click="sheetVisible = true" size="large" type="primary">点击上拉 action sheet</mt-button>
     </div>

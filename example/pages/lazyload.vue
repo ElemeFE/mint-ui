@@ -1,6 +1,6 @@
 <template>
   <div class="page-lazyload">
-    <h1 class="page-title">Lazy load</h1>
+    <h1 class="page-title">Lazy Load</h1>
     <ul class="page-lazyload-list">
       <li class="page-lazyload-listitem" v-for="item in list">
         <img v-lazy="item" class="page-lazyload-image">

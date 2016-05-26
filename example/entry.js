@@ -4,6 +4,10 @@ import routes from './route';
 import Mint from 'src/index';
 import VueRouter from 'vue-router';
 
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.FastClick) window.FastClick.attach(document.body);
+}, false);
+
 Vue.use(Mint);
 Vue.use(VueRouter);
 

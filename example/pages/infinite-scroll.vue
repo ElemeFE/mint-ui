@@ -1,6 +1,6 @@
 <template>
   <div class="page-infinite">
-    <h1 class="page-title">Infinite scroll</h1>
+    <h1 class="page-title">Infinite Scroll</h1>
     <ul class="page-infinite-list" v-infinite-scroll="loadMore()" infinite-scroll-disabled="loading" infinite-scroll-distance="50">
       <li v-for="item in list" class="page-infinite-listitem">{{ item }}</li>
     </ul>

@@ -4,6 +4,7 @@
     <div class="page-msgbox-wrapper">
       <mt-button @click="openAlert" size="large" type="primary">打开 alert 提示框</mt-button>
       <mt-button @click="openConfirm" size="large" type="primary">打开 confirm 提示框</mt-button>
+      <mt-button @click="openPrompt" size="large" type="primary">打开 prompt 提示框</mt-button>
     </div>
   </div>
 </template>
@@ -16,7 +17,7 @@
         position: absolute 50% * * *;
         width: 100%;
         transform: translateY(-50%);
-        a:first-child {
+        a:not(:last-child) {
           margin-bottom: 20px;
         }
       }
@@ -35,6 +36,14 @@
 
       openConfirm() {
         MessageBox.confirm('确定执行此操作?', '提示');
+      },
+
+      openPrompt() {
+        MessageBox.prompt(' ', '请输入姓名').then(value => {
+          if (value) {
+            MessageBox.alert(`你的名字是 ${ value }`, '输入成功');
+          }
+        });
       }
     }
   };

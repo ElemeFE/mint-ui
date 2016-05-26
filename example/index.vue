@@ -5,8 +5,11 @@
       <mt-cell
         v-for="item in group.list"
         v-link="{ path: item.path }"
-        is-link
-        :title="item.name">
+        is-link>
+        <div slot="title">
+          <i class="indexicon icon-{{ item.icon }}"></i>
+          <span>{{ item.name }}</span>
+        </div>
       </mt-cell>
     </div>
   </section>
@@ -15,6 +18,12 @@
 <style>
   .page-home {
     padding-bottom: 50px;
+
+    .indexicon {
+      color: #26a2ff;
+      display: inline-block;
+      width: 20px;
+    }
   }
   @component-namespace page {
     @component title {

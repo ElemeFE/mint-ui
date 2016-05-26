@@ -36,7 +36,7 @@
       openToastWithIcon() {
         Toast({
           message: '操作成功',
-          iconClass: 'icon icon-more'
+          iconClass: 'icon icon-success'
         });
       }
     }

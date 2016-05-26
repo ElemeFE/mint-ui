@@ -1,6 +1,6 @@
 <template>
   <div class="page-navbar">
-    <div class="page-title">Nabbar</div>
+    <div class="page-title">Navbar</div>
     <mt-navbar class="page-part" :selected.sync="selected">
       <mt-tab-item value="选项一">
         <span slot="label">选项一</span>

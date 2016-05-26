@@ -7,6 +7,9 @@ npm i mint-ui -S
 ```
 
 ## Usage
+
+import all components.
+
 ```javascript
 import Vue from 'vue'
 import Mint from 'mint-ui';
@@ -14,13 +17,31 @@ import Mint from 'mint-ui';
 Vue.use(Mint);
 ```
 
-or import Specified components (Use [babel-plugin-component](https://www.npmjs.com/package/babel-plugin-component))
+Or import specified component. (Use [babel-plugin-component](https://www.npmjs.com/package/babel-plugin-component))
 
 ```javascript
 import { Cell, Checklist } from 'mint-ui';
 
 Vue.component(Cell.name, Cell);
 Vue.component(Checklist.name, Checklist);
+```
+
+
+Equal to
+
+```javascript
+import Vue from 'vue';
+import Mint from 'mint-ui';
+import 'mint-ui/lib/style.css';
+
+Vue.use(Mint);
+
+// import specified component
+
+import MtRadio from 'mint-ui/lib/radio';
+import 'mint-ui/lib/radio/style.css';
+
+Vue.component.(MtRadio.name, MtRadio);
 ```
 
 ## babel-plugin-component

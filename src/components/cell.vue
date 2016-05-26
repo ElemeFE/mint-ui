@@ -1,5 +1,6 @@
 <template>
-  <a class="mint-cell" :class="{ 'is-link': isLink }">
+  <a class="mint-cell">
+    <span class="mint-cell-mask" v-if="isLink"></span>
     <label class="mint-cell-title">
       <slot name="icon">
         <i v-if="icon" class="icon" :class="'icon-' + icon"></i>
@@ -24,7 +25,7 @@
  * @module components/cell
  * @desc 单元格
  * @param {string} [icon] - 图标，提供 more, back，或者自定义的图标（传入不带前缀的图标类名，最后拼接成 .icon-xxx）
- * @paran {string} [title] - 标题
+ * @param {string} [title] - 标题
  * @param {boolean} [is-link=false] - 可点击的链接
  * @param {string} [value] - 右侧显示文字
  * @param {slot} - 同 value, 会覆盖 value 属性
@@ -55,9 +56,8 @@ export default {
 
   @component-namespace mint {
     @component cell {
-      align-items: center;
+      align-items: baseline;
       background-color: var(--color-white);
-      box-shadow: 0 0 1px var(--color-grey);
       box-sizing: border-box;
       color: inherit;
       display: flex;
@@ -66,12 +66,37 @@ export default {
       line-height: 1;
       padding: 10px;
 
-      @when link {
+      @media screen and (-webkit-min-device-pixel-ratio: 2) {
+        & + .mint-cell::after {
+          content: none;
+        }
+
+        &::after, &::before {
+          color: var(--color-grey);
+          content: " ";
+          size: 100% 1;
+          transform: scaleY(.5);
+        }
+
+        &::after {
+          border-top: 1px solid;
+          position: absolute 0 * * 0;
+          transform-origin: 0 0;
+        }
+
+        &::before {
+          border-bottom: 1px solid;
+          position: absolute * * 0 0;
+          transform-origin: 0 100%;
+        }
+      }
+
+      @descendent mask {
         &::after {
           background-color: #000;
           content: " ";
           opacity: 0;
-          position: absolute 0 0 0 0;
+          position: absolute 0;
         }
 
         &:active::after {
@@ -91,8 +116,6 @@ export default {
       }
 
       img {
-        size: 24px;
-        display: inline-block;
         vertical-align: middle;
       }
 
@@ -103,10 +126,8 @@ export default {
 
       @descendent value {
         color: var(--cell-value-color);
-
-        & > * {
-          display: block;
-        }
+        display: flex;
+        align-items: center;
       }
 
       @descendent allow-right {

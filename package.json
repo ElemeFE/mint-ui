@@ -8,7 +8,7 @@
     "mobile",
     "eleme"
   ],
-  "main": "lib/index/index.js",
+  "main": "lib/index.js",
   "files": [
     "lib"
   ],
@@ -28,6 +28,10 @@
   "author": "elemefe",
   "license": "MIT",
   "dependencies": {
+  },
+  "devDependencies": {
+    "gh-pages": "^0.11.0",
+    "my-local-ip": "^1.0.0",
     "mint-range": "0.0.1",
     "kb-spinner": "^0.1.9",
     "vue-actionsheet": "0.0.1",
@@ -38,9 +42,5 @@
     "vue-msgbox": "^0.2.2",
     "vue-swipe": "^0.2.3",
     "vue-toast-mobile": "^0.1.1"
-  },
-  "devDependencies": {
-    "gh-pages": "^0.11.0",
-    "my-local-ip": "^1.0.0"
   }
 }

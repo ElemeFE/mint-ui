@@ -1,7 +1,7 @@
 <template>
   <div class="mint-checklist" :class="{ 'is-limit': max <= value.length }">
     <label class="mint-checklist-title" v-text="title"></label>
-    <mt-cell v-for="option in options" index="$index">
+    <x-cell v-for="option in options">
       <div slot="title">
         <label>
           <span class="mint-checkbox">
@@ -17,11 +17,13 @@
           </slot>
         </label>
       </div>
-    </mt-cell>
+    </x-cell>
   </div>
 </template>
 
 <script>
+import XCell from 'src/components/cell';
+
 /**
  * mt-checklist
  * @module components/checklist
@@ -52,6 +54,10 @@ export default {
       default: [],
       twoWay: true
     }
+  },
+
+  components: {
+    XCell
   },
 
   computed: {

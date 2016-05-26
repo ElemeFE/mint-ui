@@ -1,27 +1,120 @@
 <template>
+  <x-cell
+    class="mint-field"
+    :title="label"
+    :class="[{ 'is-nolabel': !label }]">
+    <textarea
+      class="mint-field-core"
+      :placeholder="placeholder"
+      v-if="type === 'textarea'"
+      :rows="rows"
+      v-model="value">
+    </textarea>
+    <input
+      class="mint-field-core"
+      :placeholder="placeholder"
+      :number="type === 'number'"
+      v-else
+      :type="type"
+      v-model="value">
+    <span class="mint-field-state" v-if="state" :class="['is-' + state]">
+      <i class="icon" :class="['icon-field-' + state]"></i>
+    </span>
+  </x-cell>
 </template>
 
 <script>
+import XCell from 'src/components/cell';
+
 /**
  * mt-field
- * @desc 编辑器，依赖 mt-cell
+ * @desc 编辑器，依赖 cell
  * @module components/field
  *
- * @paran {string} type - 标题
- *
+ * @param {string} [type=text] - field 类型，接受 text, number, email, url, tel, date, datetime, password, textarea 等
+ * @param {string} [label] - 标签
+ * @param {string} [rows] - textarea 的 rows
+ * @param {string} [placeholder] - placeholder
+ * @param {string} [state] - 表单校验状态样式，接受 error, warning, success
  *
  * @example
+ * <mt-field label="用户名"></mt-field>
+ * <mt-field label="密码" placeholder="请输入密码"></mt-field>
+ * <mt-field label="自我介绍" placeholder="自我介绍" type="textarea" rows="4"></mt-field>
+ * <mt-field label="邮箱" placeholder="成功状态" state="success"></mt-field>
  */
 export default {
   name: 'mt-field',
 
-  data() {
-    return {
+  props: {
+    type: {
+      type: String,
+      default: 'text'
+    },
+    rows: String,
+    label: String,
+    placeholder: String,
+    state: {
+      type: String,
+      default: 'default'
+    },
+    value: ''
+  },
 
-    };
+  components: {
+    XCell
   }
 };
 </script>
 
 <style lang="css">
+  @import "../style/var.css";
+
+  @component-namespace mint {
+    @component field {
+      & .mint-cell-title {
+        width: 105px;
+        flex: none;
+      }
+
+      & .mint-cell-value {
+        flex: 1;
+        color: inherit;
+        display: flex;
+      }
+
+      @descendent core {
+        appearance: none;
+        border-radius: 0;
+        border: 0;
+        flex: 1;
+        outline: 0;
+
+        @when input {
+          height: 30px;
+        }
+      }
+
+      @descendent state {
+        color: inherit;
+        @when error {
+          color: var(--error-color);
+        }
+
+        @when warning {
+          color: var(--warning-color);
+        }
+
+        @when success {
+          color: var(--success-color);
+        }
+      }
+
+      @when nolabel {
+        & .mint-cell-title {
+          display: none;
+        }
+      }
+    }
+  }
 </style>

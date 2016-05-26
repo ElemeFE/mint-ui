@@ -15,7 +15,7 @@ cooking.set({
 
   clean: true,
   format: 'umd',
-  moduleName: ['KEBAB', '[name]'],
+  moduleName: ['MINT', '[name]'],
   extractCSS: '[name]/style.css',
   extends: ['vue', 'lint', 'saladcss']
 });
@@ -24,6 +24,19 @@ cooking.add('resolve.alias', {
   'src': path.join(__dirname, 'src')
 });
 cooking.add('output.filename', '[name]/index.js');
-cooking.add('externals.vue', 'vue');
+cooking.add('externals', {
+  vue: {
+    root: 'Vue',
+    commonjs: 'vue',
+    commonjs2: 'vue',
+    amd: 'vue'
+  },
+  'src/components/cell': {
+    root: 'MINT.cell',
+    commonjs: 'mint-ui/lib/cell',
+    commonjs2: 'mint-ui/lib/cell',
+    amd: 'mint-ui/lib/cell'
+  }
+});
 
 module.exports = cooking.resolve();

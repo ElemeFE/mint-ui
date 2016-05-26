@@ -4,48 +4,53 @@
     "list": [
       {
         "path": "/toast",
-        "name": "toast",
+        "name": "Toast",
         "icon": "toast"
       },
       {
         "path": "/indicator",
-        "name": "indicator",
+        "name": "Indicator",
         "icon": "indicator"
       },
       {
         "path": "/loadmore",
-        "name": "loadmore",
+        "name": "Loadmore",
         "icon": "loadmore"
       },
       {
         "path": "/infinite-scroll",
-        "name": "infinite scroll",
+        "name": "Infinite scroll",
         "icon": "infinite-scroll"
       },
       {
         "path": "/message-box",
-        "name": "message box",
+        "name": "Message box",
         "icon": "message-box"
       },
       {
         "path": "/action-sheet",
-        "name": "action sheet",
+        "name": "Action sheet",
         "icon": "action-sheet"
       },
       {
         "path": "/swipe",
-        "name": "swipe",
+        "name": "Swipe",
         "icon": "swipe"
       },
       {
         "path": "/lazyload",
-        "name": "lazy load",
+        "name": "Lazy load",
         "icon": "lazyload"
       },
       {
         "path": "/range",
-        "name": "range",
+        "name": "Range",
         "icon": "range"
+      },
+      {
+        "path": "/picker",
+        "name": "Picker",
+        "icon": "picker"
       }
     ]
   },
@@ -54,32 +59,32 @@
     "list": [
       {
         "path": "/header",
-        "name": "header",
+        "name": "Header",
         "icon": "header"
       },
       {
         "path": "/tabbar",
-        "name": "tabbar",
+        "name": "Tabbar",
         "icon": "tabbar"
       },
       {
         "path": "/navbar",
-        "name": "navbar",
+        "name": "Navbar",
         "icon": "navbar"
       },
       {
         "path": "/button",
-        "name": "button",
+        "name": "Button",
         "icon": "button"
       },
       {
         "path": "/cell",
-        "name": "cell",
+        "name": "Cell",
         "icon": "cell"
       },
       {
         "path": "/spinner",
-        "name": "spinner",
+        "name": "Spinner",
         "icon": "spinner"
       }
     ]
@@ -89,27 +94,27 @@
     "list": [
       {
         "path": "/switch",
-        "name": "switch",
+        "name": "Switch",
         "icon": "switch"
       },
       {
         "path": "/checklist",
-        "name": "checklist",
+        "name": "Checklist",
         "icon": "checklist"
       },
       {
         "path": "/radio",
-        "name": "radio",
+        "name": "Radio",
         "icon": "radio"
       },
       {
         "path": "/field",
-        "name": "field",
+        "name": "Field",
         "icon": "field"
       },
       {
         "path": "/badge",
-        "name": "badge",
+        "name": "Badge",
         "icon": "badge"
       }
     ]

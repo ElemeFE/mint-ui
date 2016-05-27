@@ -14,6 +14,8 @@ import { MintRange } from 'mint-range';
 require('mint-range/dist/index.css');
 import Picker from 'mint-picker';
 require('mint-picker/lib/index.css');
+import { MintProgress } from 'mint-progress';
+require('mint-progress/dist/index.css');
 
 // published services
 import Toast from 'vue-toast-mobile';
@@ -39,6 +41,7 @@ module.exports = {
     Vue.component('mt-swipe-item', SwipeItem);
     Vue.component('mt-range', MintRange);
     Vue.component('mt-picker', Picker);
+    Vue.component('mt-progress', MintProgress);
     Vue.use(infiniteScroll);
     Vue.use(lazyload, {
       loading: require('./assets/loading-spin.svg'),

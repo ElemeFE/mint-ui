@@ -24,3 +24,7 @@ router.beforeEach(transition => {
   document.title = transition.to.title || document.title;
   transition.next();
 });
+
+router.afterEach(() => {
+  document.body.scrollTop = 0;
+});

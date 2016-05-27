@@ -14,6 +14,7 @@
   "radio": ["src/components/radio.vue"],
   "loadmore": ["src/components/loadmore.js"],
   "actionsheet": ["src/components/actionsheet.js"],
+  "popup": ["src/components/popup.js"],
   "swipe": ["src/components/swipe.js"],
   "range": ["src/components/range.js"],
   "picker": ["src/components/picker.js"],

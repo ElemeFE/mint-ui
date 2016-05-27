@@ -29,4 +29,9 @@ cooking.add('resolve.alias', {
   'src': path.join(__dirname, 'src')
 });
 
+// 开发模式不需要将不存在的 style.css 打包进去
+cooking.add('externals', {
+  'cell/style.css': 'null'
+});
+
 module.exports = cooking.resolve();

@@ -9,7 +9,9 @@
       :options="options1">
     </mt-radio>
 
-    <mt-cell title="选中的项">{{ value1 | json }}</mt-cell>
+    <div>
+      <mt-cell title="选中的项">{{ value1 | json }}</mt-cell>
+    </div>
 
     <mt-radio
       class="page-part"
@@ -18,7 +20,17 @@
       :options="options2">
     </mt-radio>
 
-    <mt-cell title="选中的项">{{ value2 | json }}</mt-cell>
+    <div>
+      <mt-cell title="选中的项">{{ value2 | json }}</mt-cell>
+    </div>
+
+    <mt-radio
+      align="right"
+      class="page-part"
+      title="右对齐"
+      :value.sync="value3"
+      :options="options3">
+    </mt-radio>
   </div>
 </template>
 
@@ -29,12 +41,14 @@ export default {
   data() {
     return {
       value1: '',
-      value2: '值A'
+      value2: '值A',
+      value3: ''
     };
   },
 
   created() {
     this.options1 = ['选项A', '选项B', '选项C'];
+    this.options3 = ['选项A', '选项B', '选项C'];
     this.options2 = [
       {
         label: '被禁用',

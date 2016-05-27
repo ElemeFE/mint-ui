@@ -48,6 +48,11 @@
         "icon": "range"
       },
       {
+        "path": "/progress",
+        "name": "Progress",
+        "icon": "progress"
+      },
+      {
         "path": "/picker",
         "name": "Picker",
         "icon": "picker"

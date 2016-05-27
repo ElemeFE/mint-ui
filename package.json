@@ -34,12 +34,13 @@
     "mint-spinner": "^0.1.9",
     "mint-actionsheet": "^0.0.2",
     "mint-loadmore": "^0.0.1",
-    "mint-range": "0.0.1",
+    "mint-range": "^0.0.2",
     "vue-indicator": "^0.0.6",
     "vue-infinite-scroll": "^0.2.3",
     "vue-lazyload": "^0.4.2",
     "vue-msgbox": "^0.2.2",
-    "mint-picker": "^0.0.2",
+    "mint-picker": "^0.0.3",
+    "mint-progress": "0.0.1",
     "vue-swipe": "^0.2.3",
     "vue-toast-mobile": "^0.1.1"
   }

@@ -2,6 +2,11 @@ const requireAll = requireContext => {
   return requireContext.keys().map(requireContext);
 };
 const modules = requireAll(require.context('src/components', true, /\.vue$/));
+const components = {};
+
+modules.forEach(item => {
+  components[item.name.replace(/mt-/, '')] = item;
+});
 
 // published components
 import Loadmore from 'mint-loadmore';
@@ -31,11 +36,11 @@ require('./style/message-box.css');
 import infiniteScroll from 'vue-infinite-scroll';
 import lazyload from 'vue-lazyload';
 
-module.exports = {
+module.exports = Object.assign({}, {
   install(Vue) {
     Object.keys(modules).forEach(key => {
-      const module = modules[key];
-      Vue.component(module.name, module);
+      const item = modules[key];
+      Vue.component(item.name, item);
     });
     Vue.component('mt-loadmore', Loadmore);
     Vue.component('mt-actionsheet', Actionsheet);
@@ -54,4 +59,4 @@ module.exports = {
   Toast,
   Indicator,
   MessageBox
-};
+}, components);

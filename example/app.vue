@@ -4,6 +4,7 @@
 
 <style>
   @reset-global mobile;
+
   body {
     background-color: #fbf9fe;
   }

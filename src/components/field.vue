@@ -24,7 +24,9 @@
 </template>
 
 <script>
+import 'src/assets/font/iconfont.css';
 import XCell from 'src/components/cell';
+import 'cell/style.css';
 
 /**
  * mt-field
@@ -72,6 +74,8 @@ export default {
 
   @component-namespace mint {
     @component field {
+      align-items: baseline;
+
       & .mint-cell-title {
         width: 105px;
         flex: none;

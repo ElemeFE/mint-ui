@@ -30,8 +30,6 @@
     @component range {
       .mt-range {
         width: 100%;
-        position: absolute;
-        top: -7px;
       }
 
       .mint-cell-value {

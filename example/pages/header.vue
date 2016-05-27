@@ -4,16 +4,29 @@
     <div class="page-header-main">
       <div class="page-title">Header</div>
       <mt-header title="标题过长会隐藏后面的内容啊哈哈哈哈">
-        <mt-button @click="handleBack" icon="back" slot="left">返回</mt-button>
+        <mt-button v-link="'/'" icon="back" slot="left">返回</mt-button>
         <mt-button icon="more" slot="right"></mt-button>
       </mt-header>
 
-      <mt-header title="标题">
+      <mt-header title="多个按钮">
         <div slot="left">
-          <mt-button @click="handleBack" icon="back">返回</mt-button>
-          <mt-button @click="handleClose">close</mt-button>
+          <mt-button v-link="'/'" icon="back">返回</mt-button>
+          <mt-button @click="handleClose">关闭</mt-button>
         </div>
         <mt-button icon="more" slot="right"></mt-button>
+      </mt-header>
+
+      <mt-header title="左侧仅文字">
+        <mt-button v-link="'/'" slot="left">返回</mt-button>
+      </mt-header>
+
+      <mt-header title="右侧仅文字">
+        <mt-button v-link="'/'" slot="right">分享</mt-button>
+      </mt-header>
+
+      <mt-header title="仅图标">
+        <mt-button slot="left" icon="back"></mt-button>
+        <mt-button slot="right" icon="more"></mt-button>
       </mt-header>
     </div>
 
@@ -31,10 +44,6 @@ export default {
   },
 
   methods: {
-    handleBack() {
-      history.back();
-    },
-
     handleClose() {
       alert('close this page');
     }

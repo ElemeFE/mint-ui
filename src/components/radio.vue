@@ -4,7 +4,9 @@
     <x-cell v-for="option in options">
       <div slot="title">
         <label>
-          <span class="mint-radio">
+          <span
+            :class="{'is-right': align === 'right'}"
+            class="mint-radio">
             <input
               class="mint-radio-core"
               type="radio"
@@ -21,6 +23,7 @@
 
 <script>
 import XCell from 'src/components/cell';
+import 'cell/style.css';
 
 /**
  * mt-radio
@@ -30,6 +33,7 @@ import XCell from 'src/components/cell';
  * @param {string[], object[]} options - 选项数组，可以传入 [{label: 'label', value: 'value', disabled: true}] 或者 ['ab', 'cd', 'ef']
  * @param {string} value - 选中值
  * @param {string} title - 标题
+ * @param {string} [align=left] - checkbox 对齐位置，`left`, `right`
  *
  * @example
  * <mt-radio :value.sync="value" :options="['a', 'b', 'c']"></mt-radio>
@@ -39,14 +43,12 @@ export default {
 
   props: {
     title: String,
+    align: String,
     options: {
       type: Array,
       required: true
     },
-    value: {
-      type: String,
-      twoWay: true
-    }
+    value: String
   },
 
   components: {
@@ -69,9 +71,12 @@ export default {
     }
 
     @component radio {
+      @when right {
+        float: right;
+      }
+
       @descendent label {
         vertical-align: middle;
-        font-size: 14px;
       }
 
       @descendent core {
@@ -86,7 +91,6 @@ export default {
 
         &::after {
           content: " ";
-          display: table;
           border-radius: 100%;
           position: absolute 5px * * 5px;
           size: 8px;

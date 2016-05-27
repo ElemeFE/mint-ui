@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import 'src/assets/font/iconfont.css';
+
 /**
  * mt-cell
  * @module components/cell
@@ -56,39 +58,41 @@ export default {
 
   @component-namespace mint {
     @component cell {
-      align-items: baseline;
+      align-items: center;
       background-color: var(--color-white);
       box-sizing: border-box;
       color: inherit;
       display: flex;
-      font-size: 18px;
-      position: relative;
+      font-size: 16px;
       line-height: 1;
-      padding: 10px;
+      padding: 16px 10px;
+      position: relative;
 
-      @media screen and (-webkit-min-device-pixel-ratio: 2) {
-        & + .mint-cell::after {
-          content: none;
-        }
+      & + .mint-cell::after {
+        content: none;
+      }
 
-        &::after, &::before {
-          color: var(--color-grey);
-          content: " ";
-          size: 100% 1;
-          transform: scaleY(.5);
-        }
+      &::after, &::before {
+        color: var(--color-grey);
+        content: " ";
+        size: 100% 1;
+        transform: scaleY(.5);
+      }
 
-        &::after {
-          border-top: 1px solid;
-          position: absolute 0 * * 0;
-          transform-origin: 0 0;
-        }
+      &::after {
+        border-top: 1px solid;
+        position: absolute 0 * * 0;
+        transform-origin: 0 0;
+      }
 
-        &::before {
-          border-bottom: 1px solid;
-          position: absolute * * 0 0;
-          transform-origin: 0 100%;
-        }
+      &::before {
+        border-bottom: 1px solid;
+        position: absolute * * 0 10px;
+        transform-origin: 0 100%;
+      }
+
+      &:last-child::before {
+        left: 0;
       }
 
       @descendent mask {

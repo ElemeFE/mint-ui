@@ -10,7 +10,9 @@
       :options="options1">
     </mt-checklist>
 
-    <mt-cell title="选中的项">{{ value1 | json }}</mt-cell>
+    <div>
+      <mt-cell title="选中的项">{{ value1 | json }}</mt-cell>
+    </div>
 
     <mt-checklist
       class="page-part"
@@ -19,7 +21,9 @@
       :options="options2">
     </mt-checklist>
 
-    <mt-cell title="选中的项">{{ value2 | json }}</mt-cell>
+    <div>
+      <mt-cell title="选中的项">{{ value2 | json }}</mt-cell>
+    </div>
 
     <mt-checklist
       class="page-part"
@@ -29,7 +33,17 @@
       :options="options3">
     </mt-checklist>
 
-    <mt-cell title="选中的项">{{ value3 | json }}</mt-cell>
+    <div>
+      <mt-cell title="选中的项">{{ value3 | json }}</mt-cell>
+    </div>
+
+    <mt-checklist
+      align="right"
+      class="page-part"
+      title="右对齐"
+      :value.sync="value4"
+      :options="options4">
+    </mt-checklist>
   </div>
 </template>
 
@@ -41,13 +55,15 @@ export default {
     return {
       value1: [],
       value2: ['选中禁用的值'],
-      value3: ['选项A']
+      value3: ['选项A'],
+      value4: []
     };
   },
 
   created() {
     this.options1 = ['选项A', '选项B', '选项C'];
     this.options3 = ['选项A', '选项B', '选项C', '选项D'];
+    this.options4 = ['选项A', '选项B', '选项C', '选项D'];
     this.options2 = [
       {
         label: '被禁用',

@@ -1,6 +1,6 @@
 <script>
-  import Spinner from 'kb-spinner';
-  require('kb-spinner/lib/style.css');
+  import Spinner from 'mint-spinner';
+  require('mint-spinner/lib/style.css');
 
   export default Spinner.Spinner;
 </script>

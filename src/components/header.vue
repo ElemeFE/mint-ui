@@ -53,6 +53,7 @@ export default {
       padding: 0 10px;
       position: relative;
       text-align: center;
+      line-height: 1;
 
       & .mint-button {
         background-color: transparent;

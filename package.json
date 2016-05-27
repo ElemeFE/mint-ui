@@ -30,7 +30,7 @@
   "dependencies": {},
   "devDependencies": {
     "gh-pages": "^0.11.0",
-    "kb-spinner": "^0.1.9",
+    "mint-spinner": "^0.1.9",
     "mint-actionsheet": "^0.0.2",
     "mint-loadmore": "^0.0.1",
     "mint-picker": "^0.0.3",

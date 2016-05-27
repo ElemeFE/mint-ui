@@ -37,6 +37,7 @@
       .mt-progress {
         width: 100%;
         position: absolute;
+        top: 5px;
       }
 
       @descendent wrapper {

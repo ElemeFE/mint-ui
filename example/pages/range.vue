@@ -1,6 +1,6 @@
 <template>
   <div class="page-range">
-    <h1 class="page-title">range</h1>
+    <h1 class="page-title">Range</h1>
     <p class="page-range-header">基本功能</p>
     <mt-cell v-for="item in cells1" :title="item.title" :label="'value:' + item.value">
       <mt-range :value.sync="item.value">
@@ -100,7 +100,7 @@
       }, {
         title: '定义线宽',
         value: this.value6,
-        barHeight: 3
+        barHeight: 5
       }, {
         title: '置为无效',
         value: this.value7,

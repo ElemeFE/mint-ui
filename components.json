@@ -17,6 +17,7 @@
   "swipe": ["src/components/swipe.js"],
   "range": ["src/components/range.js"],
   "picker": ["src/components/picker.js"],
+  "progress": ["src/components/progress.js"],
   "toast": ["src/components/toast.js"],
   "indicator": ["src/components/indicator.js"],
   "msgbox": ["src/components/msgbox.js"],

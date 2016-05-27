@@ -33,6 +33,11 @@
         "icon": "action-sheet"
       },
       {
+        "path": "/popup",
+        "name": "Popup",
+        "icon": "popup"
+      },
+      {
         "path": "/swipe",
         "name": "Swipe",
         "icon": "swipe"

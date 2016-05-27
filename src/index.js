@@ -13,6 +13,8 @@ import Loadmore from 'mint-loadmore';
 require('mint-loadmore/lib/index.css');
 import Actionsheet from 'mint-actionsheet';
 require('mint-actionsheet/lib/index.css');
+import Popup from 'mint-popup';
+require('mint-popup/lib/index.css');
 import { Swipe, SwipeItem } from 'vue-swipe';
 require('vue-swipe/dist/vue-swipe.css');
 import { MintRange } from 'mint-range';
@@ -42,6 +44,7 @@ module.exports = Object.assign({}, {
     });
     Vue.component('mt-loadmore', Loadmore);
     Vue.component('mt-actionsheet', Actionsheet);
+    Vue.component('mt-popup', Popup);
     Vue.component('mt-swipe', Swipe);
     Vue.component('mt-swipe-item', SwipeItem);
     Vue.component('mt-range', MintRange);

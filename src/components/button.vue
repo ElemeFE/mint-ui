@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import 'src/assets/font/iconfont.css';
+
 /**
  * mt-header
  * @module components/button

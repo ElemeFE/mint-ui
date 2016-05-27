@@ -21,5 +21,6 @@
   "indicator": ["src/components/indicator.js"],
   "msgbox": ["src/components/msgbox.js"],
   "infinite-scroll": ["vue-infinite-scroll"],
-  "lazyload": ["vue-lazyload"]
+  "lazyload": ["vue-lazyload"],
+  "font": ["./src/assets/font/iconfont.css"]
 }

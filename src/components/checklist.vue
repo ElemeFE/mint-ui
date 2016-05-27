@@ -4,7 +4,9 @@
     <x-cell v-for="option in options">
       <div slot="title">
         <label>
-          <span class="mint-checkbox">
+          <span
+            :class="{'is-right': align === 'right'}"
+            class="mint-checkbox">
             <input
               class="mint-checkbox-core"
               type="checkbox"
@@ -12,9 +14,7 @@
               :disabled="option.disabled"
               :value="option.value || option">
           </span>
-          <slot>
-            <span class="mint-checkbox-label" v-text="option.label || option"></span>
-          </slot>
+          <span class="mint-checkbox-label" v-text="option.label || option"></span>
         </label>
       </div>
     </x-cell>
@@ -23,6 +23,7 @@
 
 <script>
 import XCell from 'src/components/cell';
+import 'cell/style.css';
 
 /**
  * mt-checklist
@@ -33,7 +34,8 @@ import XCell from 'src/components/cell';
  * @param {string[]} value - 选中值的数组
  * @param {string} title - 标题
  * @param {number} [max] - 最多可选的个数
- * @param {string} [align=left] - icon 对齐方式，`left`, `right`
+ * @param {string} [align=left] - checkbox 对齐位置，`left`, `right`
+ *
  *
  * @example
  * <mt-checklist :value.sync="value" :options="['a', 'b', 'c']"></mt-checklist>
@@ -49,11 +51,7 @@ export default {
       type: Array,
       required: true
     },
-    value: {
-      type: Array,
-      default: [],
-      twoWay: true
-    }
+    value: Array
   },
 
   components: {
@@ -97,9 +95,12 @@ export default {
     }
 
     @component checkbox {
+      @when right {
+        float: right;
+      }
+
       @descendent label {
         vertical-align: middle;
-        font-size: 14px;
         margin-left: 6px;
       }
 
@@ -118,7 +119,6 @@ export default {
           border-left: 0;
           border-top: 0;
           content: " ";
-          display: table;
           position: absolute 3px * * 6px;
           size: 4px 8px;
           transform: rotate(45deg);

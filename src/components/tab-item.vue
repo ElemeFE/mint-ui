@@ -1,5 +1,7 @@
 <template>
-  <a class="mint-tab-item" @click="selectedItem" :class="{ 'is-selected': selected }">
+  <a class="mint-tab-item"
+    @click="$parent.selected = id"
+    :class="{ 'is-selected': $parent.selected === id }">
     <div class="mint-tab-item-icon"><slot name="icon"></slot></div>
     <div class="mint-tab-item-label"><slot name="label"></slot></div>
   </a>
@@ -10,7 +12,7 @@
  * mt-tab-item
  * @module components/tab-item
  * @desc 搭配 tabbar 或 navbar 使用
- * @param {*} [value] - 选中后的返回值，任意类型
+ * @param {*} [id] - 选中后的返回值，任意类型
  * @param {slot} [icon] - icon 图标
  * @param {slot} [label] - 文字
  *
@@ -24,22 +26,7 @@ export default {
   name: 'mt-tab-item',
 
   props: {
-    value: {
-      default: ''
-    }
-  },
-
-  methods: {
-    selectedItem() {
-      this.$parent.selectedItem = this;
-      this.$parent.selected = this.value;
-    }
-  },
-
-  computed: {
-    selected() {
-      return this.$parent.selectedItem === this;
-    }
+    id: ''
   }
 };
 </script>

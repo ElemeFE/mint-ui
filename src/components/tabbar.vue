@@ -23,7 +23,7 @@
  * </mt-tabbar>
  *
  * <mt-tabbar :selected.sync="selected" fixed>
- *   <mt-tab-item :value="['传入数组', '也是可以的']">
+ *   <mt-tab-item :id="['传入数组', '也是可以的']">
  *     <img slot="icon" src="http://placehold.it/100x100">
  *     <span slot="label">订单</span>
  *   </mt-tab-item>
@@ -32,17 +32,9 @@
 export default {
   name: 'mt-tabbar',
 
-  data() {
-    return {
-      selectedItem: ''
-    };
-  },
-
   props: {
     fixed: Boolean,
-    selected: {
-      twoWay: true
-    }
+    selected: ''
   }
 };
 </script>

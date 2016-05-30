@@ -2,28 +2,42 @@
   <div class="page-picker">
     <h1 class="page-title">Picker</h1>
     <div class="page-picker-wrapper">
+      <mt-picker :slots="yearSlot" @change="onYearChange" rotate-effect :visible-item-count="3" :show-toolbar="false"></mt-picker>
+    </div>
+    <p class="page-picker-desc">出生年份: {{ year }}</p>
+
+    <div class="page-picker-wrapper">
       <mt-picker :slots="dateSlots" @change="onDateChange" rotate-effect :visible-item-count="3" :show-toolbar="false"></mt-picker>
     </div>
-    <p class="page-picker-desc">起止日期: {{ dateStart }} 至 {{ dateEnd }}</p>
+    <p class="page-picker-desc">在校时间: {{ dateStart }} 至 {{ dateEnd }}</p>
+
     <div class="page-picker-wrapper">
       <mt-picker :slots="addressSlots" @change="onAddressChange" :visible-item-count="5" :show-toolbar="false"></mt-picker>
     </div>
     <p class="page-picker-desc">地址: {{ addressProvince }} {{ addressCity }}</p>
+
+    <div class="page-picker-wrapper">
+      <mt-picker :slots="numberSlots" :visible-item-count="3" :show-toolbar="false" v-ref:picker></mt-picker>
+    </div>
+    <mt-button size="large" type="primary" @click="roll" plain>手气不错</mt-button>
   </div>
 </template>
 
 <style>
   @component-namespace page {
     @component picker {
+      padding: 0 10px 20px;
       @descendent wrapper {
-        margin: 0 10px;
         background-color: #fff;
         text-align: center;
       }
 
       @descendent desc {
         margin: 10px 0 50px;
-        padding-left: 10px;
+      }
+
+      .mint-button {
+        margin-top: 15px;
       }
     }
   }
@@ -69,6 +83,10 @@
 
   export default {
     methods: {
+      onYearChange(picker, values) {
+        this.year = values[0];
+      },
+
       onDateChange(picker, values) {
         if (values[0] > values[1]) {
           picker.setSlotValue(1, values[0]);
@@ -81,15 +99,41 @@
         this.addressSlots[2].values = address[values[0]];
         this.addressProvince = values[0];
         this.addressCity = values[1];
+      },
+
+      roll() {
+        let time = new Date();
+        let slotTimer = new Array(3).fill(0);
+        slotTimer.forEach((item, index) => {
+          item = setInterval(() => {
+            let random = Math.random();
+            if ((new Date()) - time < 1500 || random < 0.7) {
+              if (this.$refs.picker.getSlotValue(index) === 1) {
+                this.$refs.picker.setSlotValue(index, 9);
+              } else {
+                this.$refs.picker.setSlotValue(index, 1);
+              }
+            } else {
+              this.$refs.picker.setSlotValue(index, Math.floor(Math.random() * 9) + 1);
+              clearTimeout(item);
+            }
+          }, 200);
+        });
       }
     },
 
     data() {
       return {
+        year: '1984',
+        yearSlot: [{
+          flex: 1,
+          values: ['1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995'],
+          className: 'slot1'
+        }],
         dateSlots: [
           {
             flex: 1,
-            values: ['2016-01', '2016-02', '2016-03', '2016-04', '2016-05', '2016-06'],
+            values: ['2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016'],
             className: 'slot1',
             textAlign: 'right'
           }, {
@@ -98,13 +142,13 @@
             className: 'slot2'
           }, {
             flex: 1,
-            values: ['2016-01', '2016-02', '2016-03', '2016-04', '2016-05', '2016-06'],
+            values: ['2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016'],
             className: 'slot3',
             textAlign: 'left'
           }
         ],
-        dateStart: '2016-01',
-        dateEnd: '2016-01',
+        dateStart: '2002',
+        dateEnd: '2002',
         addressSlots: [
           {
             flex: 1,
@@ -123,7 +167,19 @@
           }
         ],
         addressProvince: '北京',
-        addressCity: '北京'
+        addressCity: '北京',
+        numberSlots: [
+          {
+            flex: 1,
+            values: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          }, {
+            flex: 1,
+            values: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          }, {
+            flex: 1,
+            values: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          }
+        ]
       };
     }
   };

@@ -5,7 +5,9 @@
 <style>
   @reset-global mobile;
 
-  body {
+  html, body {
     background-color: #fbf9fe;
+    -webkit-overflow-scrolling: touch;
+    user-select: none;
   }
 </style>

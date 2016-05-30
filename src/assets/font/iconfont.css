@@ -1,7 +1,7 @@
 
 @font-face {font-family: "icon";
-  src: url('iconfont.ttf?t=1464247624') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('iconfont.svg?t=1464247624#icon') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.ttf?t=1464578902') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1464578902#icon') format('svg'); /* iOS 4.1- */
 }
 
 .icon {
@@ -13,6 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 .icon-more:before { content: "\e601"; }
+.icon-search:before { content: "\e603"; }
 .icon-back:before { content: "\e600"; }
 .icon-field-error:before { content: "\e605"; }
 .icon-field-warning:before { content: "\e608"; }

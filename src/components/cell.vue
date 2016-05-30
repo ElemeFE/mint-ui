@@ -55,9 +55,12 @@ export default {
 
 <style lang="css">
   @import "../style/var.css";
+  @import "../style/border.css";
 
   @component-namespace mint {
     @component cell {
+      @mixin border-top var(--color-grey);
+      @mixin border-bottom var(--color-grey);
       align-items: center;
       background-color: var(--color-white);
       box-sizing: border-box;
@@ -65,6 +68,7 @@ export default {
       display: flex;
       font-size: 16px;
       line-height: 1;
+      overflow: hidden;
       padding: 16px 10px;
       position: relative;
 
@@ -72,23 +76,8 @@ export default {
         content: none;
       }
 
-      &::after, &::before {
-        color: var(--color-grey);
-        content: " ";
-        size: 100% 1;
-        transform: scaleY(.5);
-      }
-
-      &::after {
-        border-top: 1px solid;
-        position: absolute 0 * * 0;
-        transform-origin: 0 0;
-      }
-
       &::before {
-        border-bottom: 1px solid;
-        position: absolute * * 0 10px;
-        transform-origin: 0 100%;
+        left: 10px;
       }
 
       &:last-child::before {

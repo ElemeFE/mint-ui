@@ -1,9 +1,9 @@
 <template>
   <div class="page-loadmore">
-    <h1 class="page-title">Loadmore</h1>
-    <mt-header title="下拉 / 上拉刷新"></mt-header>
+    <h1 class="page-title">Pull down</h1>
+    <mt-header title="下拉刷新"></mt-header>
     <div class="page-loadmore-wrapper">
-      <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded">
+      <mt-loadmore :top-method="loadTop">
         <ul class="page-loadmore-list">
           <li v-for="item in list" class="page-loadmore-listitem">{{ item }}</li>
         </ul>
@@ -78,10 +78,9 @@
     methods: {
       loadTop(id) {
         setTimeout(() => {
-          if (this.list[0] === 1) {
-            for (let i = 0; i >= -10; i--) {
-              this.list.unshift(i);
-            }
+          let firstValue = this.list[0];
+          for (let i = 1; i <= 10; i++) {
+            this.list.unshift(firstValue - i);
           }
           this.$broadcast('onTopLoaded', id);
         }, 1500);
@@ -89,26 +88,11 @@
 
       loadTop2(id) {
         setTimeout(() => {
-          if (this.list2[0] === 1) {
-            for (let i = 0; i >= -10; i--) {
-              this.list2.unshift(i);
-            }
+          let firstValue = this.list2[0];
+          for (let i = 1; i <= 10; i++) {
+            this.list2.unshift(firstValue - i);
           }
           this.$broadcast('onTopLoaded', id);
-        }, 1500);
-      },
-
-      loadBottom(id) {
-        setTimeout(() => {
-          let lastValue = this.list[this.list.length - 1];
-          if (lastValue < 40) {
-            for (let i = 1; i <= 10; i++) {
-              this.list.push(lastValue + i);
-            }
-          } else {
-            this.allLoaded = true;
-          }
-          this.$broadcast('onBottomLoaded', id);
         }, 1500);
       }
     },

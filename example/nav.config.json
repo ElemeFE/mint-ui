@@ -13,9 +13,14 @@
         "icon": "indicator"
       },
       {
-        "path": "/loadmore",
-        "name": "Loadmore",
-        "icon": "loadmore"
+        "path": "/pull-down",
+        "name": "Pull down",
+        "icon": "pull-down"
+      },
+      {
+        "path": "/pull-up",
+        "name": "Pull up",
+        "icon": "pull-up"
       },
       {
         "path": "/infinite-scroll",

@@ -41,11 +41,12 @@ export default {
 
 <style lang="css">
   @import "../style/var.css";
+  @import "../style/border.css";
 
   @component-namespace mint {
     @component tabbar {
+      @mixin border-top var(--color-grey);
       background-color: var(--tabbar-background-color);
-      border-top: 1px solid var(--border-color);
       display: flex;
       position: absolute * 0 0 0;
       text-align: center;

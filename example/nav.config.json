@@ -101,6 +101,11 @@
         "path": "/spinner",
         "name": "Spinner",
         "icon": "spinner"
+      },
+      {
+        "path": "/search",
+        "name": "Search",
+        "icon": "searchbar"
       }
     ]
   },

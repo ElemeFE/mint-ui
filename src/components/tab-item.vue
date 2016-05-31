@@ -12,7 +12,7 @@
  * mt-tab-item
  * @module components/tab-item
  * @desc 搭配 tabbar 或 navbar 使用
- * @param {*} [id] - 选中后的返回值，任意类型
+ * @param {*} id - 选中后的返回值，任意类型
  * @param {slot} [icon] - icon 图标
  * @param {slot} [label] - 文字
  *

@@ -103,6 +103,11 @@
         "icon": "spinner"
       },
       {
+        "path": "/panel",
+        "name": "Panel",
+        "icon": "panel"
+      },
+      {
         "path": "/search",
         "name": "Search",
         "icon": "searchbar"

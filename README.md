@@ -1,5 +1,8 @@
 # mint-ui
-Mobile UI elements for vue.js
+> Mobile UI elements for vue.js
+
+- [Homepage](http://mint-ui.github.io)
+- [Documentation](http://mint-ui.github.io/docs)
 
 ## Installation
 ```shell
@@ -41,7 +44,7 @@ Vue.use(Mint);
 import MtRadio from 'mint-ui/lib/radio';
 import 'mint-ui/lib/radio/style.css';
 
-Vue.component.(MtRadio.name, MtRadio);
+Vue.component(MtRadio.name, MtRadio);
 ```
 
 ## babel-plugin-component

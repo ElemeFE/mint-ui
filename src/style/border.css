@@ -2,7 +2,9 @@
   color: $(color);
   content: " ";
   size: 100% 1;
-  transform: scaleY(.5);
+  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    transform: scaleY(.5);
+  }
 }
 
 @define-mixin border-top  $color {

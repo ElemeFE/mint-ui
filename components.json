@@ -10,6 +10,7 @@
   "tab-item": ["src/components/tab-item.vue"],
   "navbar": ["src/components/navbar.vue"],
   "tabbar": ["src/components/tabbar.vue"],
+  "search": ["src/components/search.vue"],
   "checklist": ["src/components/checklist.vue"],
   "radio": ["src/components/radio.vue"],
   "loadmore": ["src/components/loadmore.js"],

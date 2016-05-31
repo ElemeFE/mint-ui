@@ -46,6 +46,8 @@ import 'cell/style.css';
  * @param {string} value - 绑定值
  * @param {string} [cancel-text=取消] - 取消按钮文字
  * @param {string} [placeholder=取消] - 搜索框占位内容
+ * @param {string[]} [result] - 结果列表
+ * @param {slot} 结果列表
  *
  * @example
  * <mt-search :value.sync="value" :result.sync="result"></mt-search>

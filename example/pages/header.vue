@@ -25,7 +25,7 @@
       </mt-header>
 
       <mt-header title="仅图标">
-        <mt-button slot="left" icon="back"></mt-button>
+        <mt-button v-link="'/'" slot="left" icon="back"></mt-button>
         <mt-button slot="right" icon="more"></mt-button>
       </mt-header>
     </div>

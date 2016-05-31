@@ -47,7 +47,7 @@ export default {
 <style lang="css">
   @component-namespace page {
     @component button {
-      padding: 0 15px;
+      padding: 0 15px 15px;
 
       @descendent group {
         margin-bottom: 15px;

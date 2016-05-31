@@ -60,7 +60,9 @@ export default {
         }
 
         &.is-selected {
-          background-color: var(--tabbar-tab-item-selected-background-color);
+          border-bottom: 3px solid var(--color-blue);
+          color: var(--color-blue);
+          margin-bottom: -3px;
         }
       }
     }

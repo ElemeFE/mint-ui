@@ -4,7 +4,7 @@ const registerRoute = (config) => {
   let route = {};
   config.map(nav => nav.list.map(page => {
     try {
-      route[page.path] = {
+      route[`/Demos${page.path}`] = {
         component: require(`./pages${page.path}`),
         title: page.title || page.name,
         description: page.description
@@ -22,7 +22,7 @@ const route = registerRoute(NavConfig);
 
 export const navs = route.navs;
 export default Object.assign({
-  '/': {
-    component: require('./index.vue')
+  '/Demos': {
+    component: require('./demos.vue')
   }
 }, route.route);

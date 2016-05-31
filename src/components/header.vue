@@ -50,10 +50,11 @@ export default {
       display: flex;
       font-size: 14px;
       height: var(--header-height);
+      line-height: 1;
       padding: 0 10px;
       position: relative;
       text-align: center;
-      line-height: 1;
+      white-space: nowrap;
 
       & .mint-button {
         background-color: transparent;

@@ -2,12 +2,12 @@
   <div class="page-picker">
     <h1 class="page-title">Picker</h1>
     <div class="page-picker-wrapper">
-      <mt-picker :slots="yearSlot" @change="onYearChange" rotate-effect :visible-item-count="3" :show-toolbar="false"></mt-picker>
+      <mt-picker :slots="yearSlot" @change="onYearChange" :visible-item-count="3" :show-toolbar="false"></mt-picker>
     </div>
     <p class="page-picker-desc">出生年份: {{ year }}</p>
 
     <div class="page-picker-wrapper">
-      <mt-picker :slots="dateSlots" @change="onDateChange" rotate-effect :visible-item-count="3" :show-toolbar="false"></mt-picker>
+      <mt-picker :slots="dateSlots" @change="onDateChange" :visible-item-count="3" :show-toolbar="false"></mt-picker>
     </div>
     <p class="page-picker-desc">在校时间: {{ dateStart }} 至 {{ dateEnd }}</p>
 

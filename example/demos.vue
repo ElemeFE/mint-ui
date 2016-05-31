@@ -4,7 +4,7 @@
       <div class="page-title" v-text="group.title"></div>
       <mt-cell
         v-for="item in group.list"
-        v-link="{ path: `/Demos${item.path}` }"
+        v-link="{ path: item.path }"
         is-link>
         <div slot="title">
           <i class="indexicon icon-{{ item.icon }}"></i>

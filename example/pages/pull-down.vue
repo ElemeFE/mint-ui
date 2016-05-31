@@ -1,19 +1,11 @@
 <template>
   <div class="page-loadmore">
     <h1 class="page-title">Pull down</h1>
-    <mt-header title="下拉刷新"></mt-header>
+    <mt-header title="下拉列表进行刷新"></mt-header>
     <div class="page-loadmore-wrapper">
-      <mt-loadmore :top-method="loadTop">
+      <mt-loadmore :top-method="loadTop" :top-status.sync="topStatus">
         <ul class="page-loadmore-list">
           <li v-for="item in list" class="page-loadmore-listitem">{{ item }}</li>
-        </ul>
-      </mt-loadmore>
-    </div>
-    <mt-header title="自定义 HTML template"></mt-header>
-    <div class="page-loadmore-wrapper">
-      <mt-loadmore :top-method="loadTop2" :top-status.sync="topStatus">
-        <ul class="page-loadmore-list">
-          <li v-for="item in list2" class="page-loadmore-listitem">{{ item }}</li>
         </ul>
         <div slot="top" class="mint-loadmore-top">
           <span v-show="topStatus !== 'loading'" :class="{ 'is-rotate': topStatus === 'drop' }">↓</span>
@@ -69,8 +61,6 @@
     data() {
       return {
         list: [],
-        list2: [],
-        allLoaded: false,
         topStatus: ''
       };
     },
@@ -84,23 +74,12 @@
           }
           this.$broadcast('onTopLoaded', id);
         }, 1500);
-      },
-
-      loadTop2(id) {
-        setTimeout(() => {
-          let firstValue = this.list2[0];
-          for (let i = 1; i <= 10; i++) {
-            this.list2.unshift(firstValue - i);
-          }
-          this.$broadcast('onTopLoaded', id);
-        }, 1500);
       }
     },
 
     compiled() {
       for (let i = 1; i <= 20; i++) {
         this.list.push(i);
-        this.list2.push(i);
       }
     }
   };

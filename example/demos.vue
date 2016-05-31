@@ -1,5 +1,5 @@
 <template>
-  <section class="page-home">
+  <section class="page-demo">
     <div v-for="group in navs">
       <div class="page-title" v-text="group.title"></div>
       <mt-cell
@@ -16,7 +16,7 @@
 </template>
 
 <style>
-  .page-home {
+  .page-demo {
     padding-bottom: 50px;
 
     .indexicon {

@@ -37,7 +37,7 @@
       openToastWithIcon() {
         Toast({
           message: '操作成功',
-          iconClass: 'icon mintui-success'
+          iconClass: 'mintui mintui-success'
         });
       }
     }

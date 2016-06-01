@@ -30,7 +30,7 @@ import 'cell/style.css';
  * @module components/checklist
  * @desc 复选框列表，依赖 cell 组件
  *
- * @param {string[], object[]} options - 选项数组，可以传入 [{label: 'label', value: 'value', disabled: true}] 或者 ['ab', 'cd', 'ef']
+ * @param {(string[]|object[])} options - 选项数组，可以传入 [{label: 'label', value: 'value', disabled: true}] 或者 ['ab', 'cd', 'ef']
  * @param {string[]} value - 选中值的数组
  * @param {string} title - 标题
  * @param {number} [max] - 最多可选的个数
@@ -87,7 +87,7 @@ export default {
       }
 
       @when limit {
-        & .mint-checkbox-core:not(:checked) {
+        .mint-checkbox-core:not(:checked) {
           background-color: var(--color-grey);
           border-color: var(--color-grey);
         }

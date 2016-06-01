@@ -1,6 +1,6 @@
 <template>
-  <span class="page-back" v-if="!index" v-link="'/'">
-    <i class="icon icon-back"></i>
+  <span class="page-back" v-if="visible" v-link="'/'">
+    <i class="mintui mintui-back"></i>
   </span>
   <router-view></router-view>
 </template>
@@ -16,7 +16,7 @@
 
   .page-back {
     display: inline-block;
-    position: absolute 20px * * 10px;
+    position: absolute 12px * * 10px;
     width: 40px;
     height: 40px;
     text-align: center;
@@ -31,20 +31,10 @@
   import 'src/assets/font/iconfont.css';
 
   export default {
-    data() {
-      return {
-        index: true
-      };
-    },
-
-    watch: {
-      '$route.path': function(val) {
-        this.index = (val === '/' || val === '/header');
+    computed: {
+      visible() {
+        return ['/', '/header', '/search'].indexOf(this.$route.path) < 0;
       }
-    },
-
-    created() {
-      this.index = (this.$route.path === '/' || this.$route.path === '/header');
     }
   };
 </script>

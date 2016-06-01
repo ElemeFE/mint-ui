@@ -3,7 +3,7 @@
     @click="$parent.selected = id"
     :class="{ 'is-selected': $parent.selected === id }">
     <div class="mint-tab-item-icon"><slot name="icon"></slot></div>
-    <div class="mint-tab-item-label"><slot name="label"></slot></div>
+    <div class="mint-tab-item-label"><slot></slot></div>
   </a>
 </template>
 
@@ -14,12 +14,12 @@
  * @desc 搭配 tabbar 或 navbar 使用
  * @param {*} id - 选中后的返回值，任意类型
  * @param {slot} [icon] - icon 图标
- * @param {slot} [label] - 文字
+ * @param {slot} - 文字
  *
  * @example
  * <mt-tab-item>
  *   <img slot="icon" src="http://placehold.it/100x100">
- *   <span slot="label">订单</span>
+ *   订单
  * </mt-tab-item>
  */
 export default {

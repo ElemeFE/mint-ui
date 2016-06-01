@@ -51,7 +51,7 @@ export default {
         z-index: var(--z-index-normal);
       }
 
-      & .mint-tab-item {
+      .mint-tab-item {
         padding: 17px 0;
         font-size: 15px;
 

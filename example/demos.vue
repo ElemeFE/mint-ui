@@ -41,6 +41,7 @@
       margin: 20px auto;
       text-align: center;
       display: block;
+      line-height: 1;
     }
 
     @component part {

@@ -2,7 +2,10 @@
   <x-cell
     class="mint-field"
     :title="label"
-    :class="[{ 'is-nolabel': !label }]">
+    v-clickoutside="active = false"
+    :class="[{ 'is-nolabel': !label }, {
+      'is-textarea': type === 'textarea'
+    }]">
     <textarea
       class="mint-field-core"
       :placeholder="placeholder"
@@ -16,9 +19,16 @@
       :number="type === 'number'"
       v-else
       :type="type"
+      @focus="active = true"
       v-model="value">
+    <div
+      @click="value = ''"
+      class="mint-field-clear"
+      v-show="value && type !== 'textarea' && active">
+      <i class="mintui mintui-field-error"></i>
+    </div>
     <span class="mint-field-state" v-if="state" :class="['is-' + state]">
-      <i class="icon" :class="['icon-field-' + state]"></i>
+      <i class="mintui" :class="['mintui-field-' + state]"></i>
     </span>
   </x-cell>
 </template>
@@ -27,6 +37,7 @@
 import 'src/assets/font/iconfont.css';
 import XCell from 'src/components/cell';
 import 'cell/style.css';
+import Clickoutside from 'vue-clickoutside';
 
 /**
  * mt-field
@@ -47,6 +58,16 @@ import 'cell/style.css';
  */
 export default {
   name: 'mt-field',
+
+  data() {
+    return {
+      active: false
+    };
+  },
+
+  directives: {
+    Clickoutside
+  },
 
   props: {
     type: {
@@ -74,14 +95,20 @@ export default {
 
   @component-namespace mint {
     @component field {
-      align-items: baseline;
+      @when textarea {
+        align-items: inherit;
 
-      & .mint-cell-title {
+        .mint-cell-title {
+          padding-top: 5px;
+        }
+      }
+
+      .mint-cell-title {
         width: 105px;
         flex: none;
       }
 
-      & .mint-cell-value {
+      .mint-cell-value {
         flex: 1;
         color: inherit;
         display: flex;
@@ -93,14 +120,21 @@ export default {
         border: 0;
         flex: 1;
         outline: 0;
+        line-height: 1.6;
+      }
 
-        @when input {
-          height: 30px;
-        }
+      @descendent clear {
+        opacity: .2;
       }
 
       @descendent state {
         color: inherit;
+        margin-left: 20px;
+
+        .icon {
+          font-size: 20px;
+        }
+
         @when error {
           color: var(--error-color);
         }
@@ -115,7 +149,7 @@ export default {
       }
 
       @when nolabel {
-        & .mint-cell-title {
+        .mint-cell-title {
           display: none;
         }
       }

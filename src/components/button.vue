@@ -109,7 +109,7 @@ export default {
       @modifier default {
         color: var(--button-default-color);
         background-color: var(--button-default-background-color);
-        box-shadow: 0 0 1px #000;
+        box-shadow: var(--button-default-box-shadow);
 
         @when plain {
           border: 1px solid var(--button-default-plain-color);

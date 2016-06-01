@@ -62,6 +62,15 @@ export default {
 
   @component-namespace mint {
     @component radiolist {
+
+      .mint-cell {
+        padding: 0;
+      }
+
+      .mint-cell-title {
+        padding: 16px 10px;
+      }
+
       @descendent title {
         font-size: 12px;
         margin: 8px;

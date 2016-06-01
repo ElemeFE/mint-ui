@@ -16,7 +16,7 @@
     <mt-popup :visible.sync="popupVisible2" position="top" class="mint-popup-2" :modal="false">
       <p>更新成功</p>
     </mt-popup>
-    <mt-popup :visible.sync="popupVisible3" position="right" class="mint-popup-3">
+    <mt-popup :visible.sync="popupVisible3" position="right" class="mint-popup-3" :modal="false">
       <mt-button @click="popupVisible3 = false" size="large" type="primary">关闭 popup</mt-button>
     </mt-popup>
     <mt-popup :visible.sync="popupVisible4" position="bottom" class="mint-popup-4">

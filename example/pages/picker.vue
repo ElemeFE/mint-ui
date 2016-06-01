@@ -15,11 +15,6 @@
       <mt-picker :slots="addressSlots" @change="onAddressChange" :visible-item-count="5" :show-toolbar="false"></mt-picker>
     </div>
     <p class="page-picker-desc">地址: {{ addressProvince }} {{ addressCity }}</p>
-
-    <div class="page-picker-wrapper">
-      <mt-picker :slots="numberSlots" :visible-item-count="3" :show-toolbar="false" v-ref:picker></mt-picker>
-    </div>
-    <mt-button size="large" type="primary" @click="roll" plain>手气不错</mt-button>
   </div>
 </template>
 
@@ -99,26 +94,6 @@
         this.addressSlots[2].values = address[values[0]];
         this.addressProvince = values[0];
         this.addressCity = values[1];
-      },
-
-      roll() {
-        let time = new Date();
-        let slotTimer = new Array(3).fill(0);
-        slotTimer.forEach((item, index) => {
-          item = setInterval(() => {
-            let random = Math.random();
-            if ((new Date()) - time < 1500 || random < 0.7) {
-              if (this.$refs.picker.getSlotValue(index) === 1) {
-                this.$refs.picker.setSlotValue(index, 9);
-              } else {
-                this.$refs.picker.setSlotValue(index, 1);
-              }
-            } else {
-              this.$refs.picker.setSlotValue(index, Math.floor(Math.random() * 9) + 1);
-              clearTimeout(item);
-            }
-          }, 200);
-        });
       }
     },
 
@@ -167,19 +142,7 @@
           }
         ],
         addressProvince: '北京',
-        addressCity: '北京',
-        numberSlots: [
-          {
-            flex: 1,
-            values: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-          }, {
-            flex: 1,
-            values: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-          }, {
-            flex: 1,
-            values: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-          }
-        ]
+        addressCity: '北京'
       };
     }
   };

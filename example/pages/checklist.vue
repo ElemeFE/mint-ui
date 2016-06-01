@@ -6,7 +6,6 @@
       class="page-part"
       title="复选框列表"
       :value.sync="value1"
-      :index="index1"
       :options="options1">
     </mt-checklist>
 

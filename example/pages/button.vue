@@ -1,4 +1,4 @@
-<template>
+g<template>
   <div class="page-button">
     <h1 class="page-title">Button</h1>
     <div class="page-button-group">
@@ -29,6 +29,13 @@
       <mt-button plain size="large">default</mt-button>
       <mt-button plain size="large" type="primary">primary</mt-button>
       <mt-button plain size="large" type="danger">danger</mt-button>
+    </div>
+
+    <div class="page-button-group">
+      <mt-button>
+        <img src="../assets/100x100.png" height="20" width="20" slot="icon">
+        带自定义图标
+      </mt-button>
     </div>
   </div>
 </template>

@@ -8,6 +8,8 @@
   "switch": ["src/components/switch.vue"],
   "spinner": ["src/components/spinner.vue"],
   "tab-item": ["src/components/tab-item.vue"],
+  "tab-container-item": ["src/components/tab-container-item.vue"],
+  "tab-container": ["src/components/tab-container.vue"],
   "navbar": ["src/components/navbar.vue"],
   "tabbar": ["src/components/tabbar.vue"],
   "search": ["src/components/search.vue"],

@@ -2,7 +2,7 @@
   <div class="mint-search">
     <div class="mint-searchbar">
       <div class="mint-searchbar-inner">
-        <i class="icon icon-search" v-show="visible"></i>
+        <i class="mintui mintui-search" v-show="visible"></i>
         <input
         v-el:input
         @click="visible = true"
@@ -21,7 +21,7 @@
         @click="visible = true, $els.input.focus()"
         class="mint-searchbar-placeholder"
         v-show="!visible">
-        <i class="icon icon-search"></i>
+        <i class="mintui mintui-search"></i>
         <span class="mint-searchbar-text" v-text="placeholder"></span>
       </label>
     </div>
@@ -95,7 +95,7 @@ export default {
     @component searchbar {
       @mixin border-bottom var(--border-color);
       align-items: center;
-      background-color: var(--color-blue);
+      background-color: var(--color-grey);
       box-sizing: border-box;
       display: flex;
       padding: 8px 10px;
@@ -108,9 +108,9 @@ export default {
         height: 28px;
         padding: 4px 6px;
 
-        & .icon {
+        .icon {
           font-size: 12px;
-          color: var(--color-blue);
+          color: var(--color-grey);
         }
       }
 
@@ -123,14 +123,14 @@ export default {
       }
 
       @descendent placeholder {
-        color: var(--color-blue);
+        color: #9b9b9b;
         font-size: 12px;
         padding: 14px;
         position: absolute 0 0 0 0;
         text-align: center;
         vertical-align: middle;
 
-        & .icon {
+        .icon {
           font-size: 12px;
         }
       }
@@ -140,7 +140,7 @@ export default {
       }
 
       @descendent cancel {
-        color: var(--color-white);
+        color: var(--color-blue);
         margin-left: 10px;
       }
     }

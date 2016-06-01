@@ -6,41 +6,41 @@
         <mt-cell class="page-part" title="当前选中" :value="selected"></mt-cell>
       </div>
 
-      <mt-panel style="page-tabbar-panel" :active.sync="selected">
-        <mt-panel-item id="外卖">
+      <mt-tab-container style="page-tabbar-container" :active.sync="selected">
+        <mt-tab-container-item id="外卖">
           <mt-cell v-for="n in 10" :title="'餐厅 ' + $index"></mt-cell>
-        </mt-panel-item>
-        <mt-panel-item id="订单">
+        </mt-tab-container-item>
+        <mt-tab-container-item id="订单">
           <mt-cell v-for="n in 5" :title="'订单 ' + $index"></mt-cell>
-        </mt-panel-item>
-        <mt-panel-item id="发现">
+        </mt-tab-container-item>
+        <mt-tab-container-item id="发现">
           <mt-cell v-for="n in 7" :title="'发现 ' + $index"></mt-cell>
-        </mt-panel-item>
-        <mt-panel-item id="我的">
+        </mt-tab-container-item>
+        <mt-tab-container-item id="我的">
           <div class="page-part">
             <mt-cell v-for="n in 12" :title="'我的 ' + $index"></mt-cell>
           </div>
           <mt-button v-link="'/'" style="margin: 0 10px;" type="danger" size="large">退出</mt-button>
-        </mt-panel-item>
-      </mt-panel>
+        </mt-tab-container-item>
+      </mt-tab-container>
     </div>
 
     <mt-tabbar :selected.sync="selected">
       <mt-tab-item id="外卖">
         <img slot="icon" src="../assets/100x100.png">
-        <span slot="label">外卖</span>
+        外卖
       </mt-tab-item>
       <mt-tab-item id="订单">
         <img slot="icon" src="../assets/100x100.png">
-        <span slot="label">订单</span>
+        订单
       </mt-tab-item>
       <mt-tab-item id="发现">
         <img slot="icon" src="../assets/100x100.png">
-        <span slot="label">发现</span>
+        发现
       </mt-tab-item>
       <mt-tab-item id="我的">
         <img slot="icon" src="../assets/100x100.png">
-        <span slot="label">我的</span>
+        我的
       </mt-tab-item>
     </mt-tabbar>
   </div>
@@ -63,7 +63,7 @@ export default {
     height: 100vh;
   }
 
-  .page-tabbar-panel {
+  .page-tabbar-container {
     overflow: auto;
   }
 

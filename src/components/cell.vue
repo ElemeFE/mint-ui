@@ -3,7 +3,7 @@
     <span class="mint-cell-mask" v-if="isLink"></span>
     <label class="mint-cell-title">
       <slot name="icon">
-        <i v-if="icon" class="icon" :class="'icon-' + icon"></i>
+        <i v-if="icon" class="mintui" :class="'mintui-' + icon"></i>
       </slot>
       <slot name="title">
         <span class="mint-cell-text" v-text="title"></span>
@@ -26,8 +26,9 @@ import 'src/assets/font/iconfont.css';
  * mt-cell
  * @module components/cell
  * @desc 单元格
- * @param {string} [icon] - 图标，提供 more, back，或者自定义的图标（传入不带前缀的图标类名，最后拼接成 .icon-xxx）
+ * @param {string} [icon] - 图标，提供 more, back，或者自定义的图标（传入不带前缀的图标类名，最后拼接成 .mintui-xxx）
  * @param {string} [title] - 标题
+ * @param {string} [label] - 备注信息
  * @param {boolean} [is-link=false] - 可点击的链接
  * @param {string} [value] - 右侧显示文字
  * @param {slot} - 同 value, 会覆盖 value 属性

@@ -56,7 +56,7 @@ export default {
       text-align: center;
       white-space: nowrap;
 
-      & .mint-button {
+      .mint-button {
         background-color: transparent;
         border: 0;
         box-shadow: none;

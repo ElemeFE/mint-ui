@@ -6,8 +6,12 @@
         'is-plain': plain
       }]"
     @touchstart="handleClick">
-    <i v-if="icon" class="icon" :class="'icon-' + icon"></i>
-    <slot></slot>
+    <span class="mint-button-icon">
+      <slot name="icon">
+        <i v-if="icon" class="mintui" :class="'mintui-' + icon"></i>
+      </slot>
+    </span>
+    <label class="mint-button-text"><slot></slot></label>
   </a>
 </template>
 
@@ -22,7 +26,9 @@ import 'src/assets/font/iconfont.css';
  * @param {boolean} [disabled=false] - 禁用
  * @param {boolean} [plain=false] - 幽灵按钮
  * @param {string} [size=normal] - 尺寸，接受 normal, small, large
- * @param {string} [icon] - 图标，提供 more, back，或者自定义的图标（传入不带前缀的图标类名，最后拼接成 .icon-xxx）
+ * @param {string} [icon] - 图标，提供 more, back，或者自定义的图标（传入不带前缀的图标类名，最后拼接成 .mintui-xxx）
+ * @param {slot} - 显示文本
+ * @param {slot} [icon] 显示图标
  *
  * @example
  * <mt-button size="large" icon="back" type="primary">按钮</mt-button>
@@ -83,6 +89,7 @@ export default {
       overflow: hidden;
       position: relative;
       text-align: center;
+      vertical-align: middle;
 
       &::after {
         background-color: #000;
@@ -93,6 +100,10 @@ export default {
 
       &:not(.is-disabled):active::after {
         opacity: .4;
+      }
+
+      @descendent icon {
+        vertical-align: middle;
       }
 
       @modifier default {

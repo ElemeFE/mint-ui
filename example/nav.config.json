@@ -1,6 +1,6 @@
 [
   {
-    "title": "JS 组件",
+    "title": "JS Components",
     "list": [
       {
         "path": "/toast",
@@ -70,7 +70,7 @@
     ]
   },
   {
-    "title": "UI 组件",
+    "title": "CSS Components",
     "list": [
       {
         "path": "/header",
@@ -103,8 +103,8 @@
         "icon": "spinner"
       },
       {
-        "path": "/panel",
-        "name": "Panel",
+        "path": "/tab-container",
+        "name": "TabContainer",
         "icon": "panel"
       },
       {
@@ -115,7 +115,7 @@
     ]
   },
   {
-    "title": "表单组件",
+    "title": "Form Components",
     "list": [
       {
         "path": "/switch",

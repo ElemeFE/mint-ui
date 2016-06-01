@@ -10,7 +10,7 @@
       <mt-spinner color="#26a2ff" type="double-bounce"></mt-spinner>
     </mt-cell>
 
-    <mt-cell title="three-bounce">
+    <mt-cell title="triple-bounce">
       <mt-spinner color="#26a2ff" type="triple-bounce"></mt-spinner>
     </mt-cell>
 

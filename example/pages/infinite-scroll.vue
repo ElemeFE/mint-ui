@@ -1,27 +1,42 @@
 <template>
   <div class="page-infinite">
     <h1 class="page-title">Infinite Scroll</h1>
-    <ul class="page-infinite-list" v-infinite-scroll="loadMore()" infinite-scroll-disabled="loading" infinite-scroll-distance="50">
-      <li v-for="item in list" class="page-infinite-listitem">{{ item }}</li>
-    </ul>
-    <p v-show="loading" class="page-infinite-loading">
-      <mt-spinner type="fading-circle"></mt-spinner>
-      加载中...
-    </p>
+    <p class="page-infinite-desc">当即将滚动至列表底部时, 自动加载更多数据</p>
+    <div class="page-infinite-wrapper" v-el:wrapper :style="{ height: wrapperHeight + 'px' }">
+      <ul class="page-infinite-list" v-infinite-scroll="loadMore()" infinite-scroll-disabled="loading" infinite-scroll-distance="50">
+        <li v-for="item in list" class="page-infinite-listitem">{{ item }}</li>
+      </ul>
+      <p v-show="loading" class="page-infinite-loading">
+        <mt-spinner type="fading-circle"></mt-spinner>
+        加载中...
+      </p>
+    </div>
   </div>
 </template>
 
 <style>
   @component-namespace page {
     @component infinite {
+      @descendent desc {
+        text-align: center;
+        color: #666;
+        padding-bottom: 5px;
+        border-bottom: solid 1px #eee;
+      }
+
       @descendent listitem {
         height: 50px;
         line-height: 50px;
         border-bottom: solid 1px #eee;
         text-align: center;
-      &:first-child {
-         border-top: solid 1px #eee;
-       }
+        &:first-child {
+          border-top: solid 1px #eee;
+        }
+      }
+
+      @descendent wrapper {
+        margin-top: -1px;
+        overflow: scroll;
       }
 
       @descendent loading {
@@ -45,7 +60,8 @@
       return {
         list: [],
         loading: false,
-        allLoaded: false
+        allLoaded: false,
+        wrapperHeight: 0
       };
     },
 
@@ -66,6 +82,10 @@
       for (let i = 1; i <= 20; i++) {
         this.list.push(i);
       }
+    },
+
+    ready() {
+      this.wrapperHeight = document.documentElement.clientHeight - this.$els.wrapper.getBoundingClientRect().top;
     }
   };
 </script>

@@ -2,10 +2,10 @@
   <div class="page-popup">
     <h1 class="page-title">Popup</h1>
     <div class="page-popup-wrapper">
-      <mt-button @click="popupVisible1 = true" size="large" type="primary" v-el:button>中部弹出 popup</mt-button>
-      <mt-button @click="popupVisible2 = true" size="large" type="primary">上侧弹出 popup</mt-button>
-      <mt-button @click="popupVisible3 = true" size="large" type="primary">右侧弹出 popup</mt-button>
-      <mt-button @click="popupVisible4 = true" size="large" type="primary">下侧弹出 popup</mt-button>
+      <mt-button @click="popupVisible1 = true" size="large" v-el:button>中部弹出 popup</mt-button>
+      <mt-button @click="popupVisible2 = true" size="large">上侧弹出 popup</mt-button>
+      <mt-button @click="popupVisible3 = true" size="large">右侧弹出 popup</mt-button>
+      <mt-button @click="popupVisible4 = true" size="large">下侧弹出 popup</mt-button>
     </div>
     <mt-popup :visible.sync="popupVisible1" popup-transition="popup-fade" class="mint-popup-1" :style="{ top: buttonBottom + 10 + 'px' }">
       <h1>popup</h1>

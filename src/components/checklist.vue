@@ -79,11 +79,20 @@ export default {
 
   @component-namespace mint {
     @component checklist {
+
+      .mint-cell {
+        padding: 0;
+      }
+
+      .mint-cell-title {
+        padding: 16px 10px;
+      }
+
       @descendent title {
+        color: var(--checklist-title-color);
+        display: block;
         font-size: 12px;
         margin: 8px;
-        display: block;
-        color: var(--checklist-title-color);
       }
 
       @when limit {

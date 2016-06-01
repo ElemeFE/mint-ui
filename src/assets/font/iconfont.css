@@ -1,7 +1,6 @@
 
 @font-face {font-family: "mintui";
-  src: url('iconfont.ttf?t=1464766689') format('truetype'),
-  url('iconfont.svg?t=1464766689#mintui') format('svg');
+  src: url('iconfont.svg?t=1464766689#mintui') format('svg');
 }
 
 .mintui {

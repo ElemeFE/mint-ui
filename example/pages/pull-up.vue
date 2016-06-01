@@ -1,8 +1,8 @@
 <template>
   <div class="page-loadmore">
     <h1 class="page-title">Pull up</h1>
-    <mt-header title="上拉列表进行刷新"></mt-header>
-    <div class="page-loadmore-wrapper">
+    <p class="page-loadmore-desc">在列表底部, 按住 - 上拉 - 释放可以获取更多数据</p>
+    <div class="page-loadmore-wrapper" v-el:wrapper :style="{ height: wrapperHeight + 'px' }">
       <mt-loadmore :bottom-method="loadBottom" :bottom-status.sync="bottomStatus" :bottom-all-loaded="allLoaded">
         <ul class="page-loadmore-list">
           <li v-for="item in list" class="page-loadmore-listitem">{{ item }}</li>
@@ -21,6 +21,13 @@
 <style>
   @component-namespace page {
     @component loadmore {
+      @descendent desc {
+        text-align: center;
+        color: #666;
+        padding-bottom: 5px;
+        border-bottom: solid 1px #eee;
+      }
+
       @descendent listitem {
         height: 50px;
         line-height: 50px;
@@ -32,7 +39,6 @@
       }
 
       @descendent wrapper {
-        height: 300px;
         overflow: scroll;
       }
 
@@ -62,7 +68,8 @@
       return {
         list: [],
         allLoaded: false,
-        bottomStatus: ''
+        bottomStatus: '',
+        wrapperHeight: 0
       };
     },
 
@@ -86,6 +93,10 @@
       for (let i = 1; i <= 20; i++) {
         this.list.push(i);
       }
+    },
+
+    ready() {
+      this.wrapperHeight = document.documentElement.clientHeight - this.$els.wrapper.getBoundingClientRect().top;
     }
   };
 </script>

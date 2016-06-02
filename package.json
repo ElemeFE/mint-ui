@@ -40,9 +40,9 @@
     "mint-spinner": "^0.1.9",
     "my-local-ip": "^1.0.0",
     "vue-clickoutside": "0.0.4",
-    "vue-indicator": "^0.0.7",
+    "mint-indicator": "^0.0.2",
     "vue-infinite-scroll": "^0.2.3",
-    "vue-lazyload": "^0.4.2",
+    "vue-lazyload": "^0.4.3",
     "vue-msgbox": "^0.2.5",
     "vue-swipe": "^0.2.3",
     "vue-toast-mobile": "^0.1.1"

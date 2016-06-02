@@ -27,8 +27,8 @@ require('mint-progress/dist/index.css');
 // published services
 import Toast from 'vue-toast-mobile';
 require('vue-toast-mobile/lib/index.css');
-import Indicator from 'vue-indicator';
-require('vue-indicator/lib/index.css');
+import Indicator from 'mint-indicator';
+require('mint-indicator/lib/index.css');
 import MessageBox from 'babel!vue-msgbox/src';
 require('./style/message-box.css');
 

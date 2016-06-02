@@ -55,5 +55,5 @@
 }
 
 .msgbox-confirm {
-  color: var(--color-blue);
+  color: $color-blue;
 }

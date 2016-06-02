@@ -107,37 +107,37 @@ export default {
       }
 
       @modifier default {
-        color: var(--button-default-color);
-        background-color: var(--button-default-background-color);
-        box-shadow: var(--button-default-box-shadow);
+        color: $button-default-color;
+        background-color: $button-default-background-color;
+        box-shadow: $button-default-box-shadow;
 
         @when plain {
-          border: 1px solid var(--button-default-plain-color);
+          border: 1px solid $button-default-plain-color;
           background-color: transparent;
           box-shadow: none;
-          color: var(--button-default-plain-color);
+          color: $button-default-plain-color;
         }
       }
 
       @modifier primary {
-        color: var(--button-primary-color);
-        background-color: var(--button-primary-background-color);
+        color: $button-primary-color;
+        background-color: $button-primary-background-color;
 
         @when plain {
-          border: 1px solid var(--button-primary-background-color);
+          border: 1px solid $button-primary-background-color;
           background-color: transparent;
-          color: var(--button-primary-background-color);
+          color: $button-primary-background-color;
         }
       }
 
       @modifier danger {
-        color: var(--button-danger-color);
-        background-color: var(--button-danger-background-color);
+        color: $button-danger-color;
+        background-color: $button-danger-background-color;
 
         @when plain {
-          border: 1px solid var(--button-danger-background-color);
+          border: 1px solid $button-danger-background-color;
           background-color: transparent;
-          color: var(--button-danger-background-color);
+          color: $button-danger-background-color;
         }
       }
 

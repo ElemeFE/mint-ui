@@ -54,7 +54,7 @@ export default {
 
       @descendent label {
         color: inherit;
-        font-size: var(--tab-item-font-size);
+        font-size: $tab-item-font-size;
         line-height: 1;
       }
     }

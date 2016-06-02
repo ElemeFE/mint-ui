@@ -43,11 +43,11 @@ export default {
         appearance: none;
         position: relative;
         size: 52px 32px;
-        border: 1px solid var(--color-grey);
+        border: 1px solid $color-grey;
         outline: 0;
         border-radius: 16px;
         box-sizing: border-box;
-        background: var(--color-grey);
+        background: $color-grey;
 
         &::after, &::before {
           content: " ";
@@ -58,7 +58,7 @@ export default {
 
         &::after {
           size: 30px;
-          background-color: var(--color-white);
+          background-color: $color-white;
           box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
         }
 
@@ -68,8 +68,8 @@ export default {
         }
 
         &:checked {
-          border-color: var(--color-blue);
-          background-color: var(--color-blue);
+          border-color: $color-blue;
+          background-color: $color-blue;
 
           &::before {
             transform: scale(0);

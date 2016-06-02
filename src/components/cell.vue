@@ -60,10 +60,10 @@ export default {
 
   @component-namespace mint {
     @component cell {
-      @mixin border-top var(--color-grey);
-      @mixin border-bottom var(--color-grey);
+      @mixin border-top $color-grey;
+      @mixin border-bottom $color-grey;
       align-items: center;
-      background-color: var(--color-white);
+      background-color: $color-white;
       box-sizing: border-box;
       color: inherit;
       display: flex;
@@ -119,7 +119,7 @@ export default {
       }
 
       @descendent value {
-        color: var(--cell-value-color);
+        color: $cell-value-color;
         display: flex;
         align-items: center;
       }
@@ -128,7 +128,7 @@ export default {
         padding-left: 30px;
 
         &::after {
-          border: solid 2px var(--border-color);
+          border: solid 2px $border-color;
           border-bottom-width: 0;
           border-left-width: 0;
           content: " ";

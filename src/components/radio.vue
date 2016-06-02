@@ -75,7 +75,7 @@ export default {
         font-size: 12px;
         margin: 8px;
         display: block;
-        color: var(--radio-title-color);
+        color: $radio-title-color;
       }
     }
 
@@ -92,7 +92,7 @@ export default {
       @descendent core {
         appearance: none;
         outline: 0;
-        background-color: var(--color-white);
+        background-color: $color-white;
         border-radius: 100%;
         border: 1px solid #ccc;
         position: relative;
@@ -107,16 +107,16 @@ export default {
         }
 
         &:checked {
-          background-color: var(--color-blue);
-          border-color: var(--color-blue);
+          background-color: $color-blue;
+          border-color: $color-blue;
 
           &::after {
-            background-color: var(--color-white);
+            background-color: $color-white;
           }
         }
 
         &[disabled] {
-          background-color: var(--color-grey);
+          background-color: $color-grey;
           border-color: #ccc;
         }
       }

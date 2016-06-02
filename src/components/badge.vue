@@ -42,24 +42,24 @@ export default {
 
   @component-namespace mint {
     @component badge {
-      color: var(--color-white);
+      color: $color-white;
       text-align: center;
       display: inline-block;
 
       @when success {
-        background-color: var(--success-color);
+        background-color: $success-color;
       }
 
       @when primary {
-        background-color: var(--color-blue);
+        background-color: $color-blue;
       }
 
       @when error {
-        background-color: var(--error-color);
+        background-color: $error-color;
       }
 
       @when warning {
-        background-color: var(--warning-color);
+        background-color: $warning-color;
       }
 
       @when size-normal {

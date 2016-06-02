@@ -44,12 +44,12 @@ export default {
   @component-namespace mint {
     @component header {
       align-items: center;
-      background-color: var(--color-blue);
+      background-color: $color-blue;
       box-sizing: border-box;
-      color: var(--color-white);
+      color: $color-white;
       display: flex;
       font-size: 14px;
-      height: var(--header-height);
+      height: $header-height;
       line-height: 1;
       padding: 0 10px;
       position: relative;
@@ -90,7 +90,7 @@ export default {
 
       @when fixed {
         position: fixed 0 0 * 0;
-        z-index: var(--z-index-normal);
+        z-index: $z-index-normal;
       }
     }
   }

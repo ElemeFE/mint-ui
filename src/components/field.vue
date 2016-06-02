@@ -103,6 +103,10 @@ export default {
         }
       }
 
+      &.mint-cell {
+        padding: 9px 10px;
+      }
+
       .mint-cell-title {
         width: 105px;
         flex: none;
@@ -121,6 +125,7 @@ export default {
         flex: 1;
         outline: 0;
         line-height: 1.6;
+        font-size: inherit;
       }
 
       @descendent clear {

@@ -16,7 +16,8 @@
   "scripts": {
     "dev": "cooking watch -c cooking.demo.js",
     "dist": "cooking build -p && mv lib/index/* lib/ && rm -rf lib/index",
-    "deploy": "cooking build -c cooking.demo.js -p && gh-pages -d example/dist --remote eleme"
+    "deploy": "cooking build -c cooking.demo.js -p && gh-pages -d example/dist --remote eleme",
+    "prepublish": "npm run dist"
   },
   "repository": {
     "type": "git",

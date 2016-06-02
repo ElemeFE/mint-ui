@@ -42,13 +42,13 @@ export default {
 
   @component-namespace mint {
     @component navbar {
-      background-color: var(--color-white);
+      background-color: $color-white;
       display: flex;
       text-align: center;
 
       @when fixed {
         position: fixed 0 0 * 0;
-        z-index: var(--z-index-normal);
+        z-index: $z-index-normal;
       }
 
       .mint-tab-item {
@@ -60,8 +60,8 @@ export default {
         }
 
         &.is-selected {
-          border-bottom: 3px solid var(--color-blue);
-          color: var(--color-blue);
+          border-bottom: 3px solid $color-blue;
+          color: $color-blue;
           margin-bottom: -3px;
         }
       }

@@ -141,15 +141,15 @@ export default {
         }
 
         @when error {
-          color: var(--error-color);
+          color: $error-color;
         }
 
         @when warning {
-          color: var(--warning-color);
+          color: $warning-color;
         }
 
         @when success {
-          color: var(--success-color);
+          color: $success-color;
         }
       }
 

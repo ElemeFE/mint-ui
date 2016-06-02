@@ -93,16 +93,16 @@ export default {
     }
 
     @component searchbar {
-      @mixin border-bottom var(--border-color);
+      @mixin border-bottom $border-color;
       align-items: center;
-      background-color: var(--color-grey);
+      background-color: $color-grey;
       box-sizing: border-box;
       display: flex;
       padding: 8px 10px;
       z-index: 1;
 
       @descendent inner {
-        background-color: var(--color-white);
+        background-color: $color-white;
         border-radius: 2px;
         flex: 1;
         height: 28px;
@@ -110,7 +110,7 @@ export default {
 
         .icon {
           font-size: 12px;
-          color: var(--color-grey);
+          color: $color-grey;
         }
       }
 
@@ -140,7 +140,7 @@ export default {
       }
 
       @descendent cancel {
-        color: var(--color-blue);
+        color: $color-blue;
         margin-left: 10px;
       }
     }

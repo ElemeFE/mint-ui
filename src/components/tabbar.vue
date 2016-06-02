@@ -45,20 +45,20 @@ export default {
 
   @component-namespace mint {
     @component tabbar {
-      @mixin border-top var(--color-grey);
-      background-color: var(--tabbar-background-color);
+      @mixin border-top $color-grey;
+      background-color: $tabbar-background-color;
       display: flex;
       position: absolute * 0 0 0;
       text-align: center;
 
       @when fixed {
         position: fixed * 0 0 0;
-        z-index: var(--z-index-normal);
+        z-index: $z-index-normal;
       }
 
       > .mint-tab-item.is-selected {
-        background-color: var(--tabbar-tab-item-selected-background-color);
-        color: var(--tabbar-tab-item-selected-color);
+        background-color: $tabbar-tab-item-selected-background-color;
+        color: $tabbar-tab-item-selected-color;
       }
     }
   }

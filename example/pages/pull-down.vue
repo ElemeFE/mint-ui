@@ -2,6 +2,7 @@
   <div class="page-loadmore">
     <h1 class="page-title">Pull down</h1>
     <p class="page-loadmore-desc">在列表顶端, 按住 - 下拉 - 释放可以获取更多数据</p>
+    <p class="page-loadmore-desc">此例请使用手机查看</p>
     <div class="page-loadmore-wrapper" v-el:wrapper :style="{ height: wrapperHeight + 'px' }">
       <mt-loadmore :top-method="loadTop" :top-status.sync="topStatus">
         <ul class="page-loadmore-list">
@@ -25,7 +26,9 @@
         text-align: center;
         color: #666;
         padding-bottom: 5px;
-        border-bottom: solid 1px #eee;
+        &:last-of-type {
+          border-bottom: solid 1px #eee;
+        }
       }
 
       @descendent listitem {

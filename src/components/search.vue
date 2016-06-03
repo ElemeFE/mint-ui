@@ -108,7 +108,7 @@ export default {
         height: 28px;
         padding: 4px 6px;
 
-        .icon {
+        .mintui-search {
           font-size: 12px;
           color: $color-grey;
         }
@@ -128,15 +128,10 @@ export default {
         padding: 14px;
         position: absolute 0 0 0 0;
         text-align: center;
-        vertical-align: middle;
 
-        .icon {
+        .mintui-search {
           font-size: 12px;
         }
-      }
-
-      @descendent text {
-        vertical-align: middle;
       }
 
       @descendent cancel {

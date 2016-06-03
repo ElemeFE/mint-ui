@@ -1,6 +1,6 @@
 
 @font-face {font-family: "mintui";
-  src: url('iconfont.ttf?t=1464838584')
+  src: url('iconfont.ttf?t=1464927413')
 }
 
 .mintui {
@@ -11,8 +11,8 @@
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
+.mintui-search:before { content: "\e604"; }
 .mintui-more:before { content: "\e601"; }
-.mintui-search:before { content: "\e603"; }
 .mintui-back:before { content: "\e600"; }
 .mintui-field-error:before { content: "\e605"; }
 .mintui-field-warning:before { content: "\e608"; }

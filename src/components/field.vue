@@ -136,7 +136,7 @@ export default {
         color: inherit;
         margin-left: 20px;
 
-        .icon {
+        .mintui {
           font-size: 20px;
         }
 

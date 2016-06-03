@@ -27,5 +27,6 @@
   "msgbox": ["src/components/msgbox.js"],
   "infinite-scroll": ["vue-infinite-scroll"],
   "lazyload": ["vue-lazyload"],
-  "font": ["./src/assets/font/iconfont.css"]
+  "font": ["./src/assets/font/iconfont.css"],
+  "reset": ["./src/style/reset.css"]
 }

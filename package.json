@@ -21,11 +21,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mint-ui/mint-ui.git"
+    "url": "git+https://github.com/ElemeFE/mint-ui.git"
   },
-  "homepage": "https://github.com/mint-ui/mint-ui#readme",
+  "homepage": "https://github.com/ElemeFE/mint-ui#readme",
   "bugs": {
-    "url": "https://github.com/mint-ui/mint-ui/issues"
+    "url": "https://github.com/ElemeFE/mint-ui/issues"
   },
   "author": "elemefe",
   "license": "MIT",

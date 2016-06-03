@@ -8,6 +8,9 @@ modules.forEach(item => {
   components[item.name.replace(/mt-/, '')] = item;
 });
 
+// reset css
+require('./style/reset.css');
+
 // published components
 import Loadmore from 'mint-loadmore';
 require('mint-loadmore/lib/index.css');

@@ -89,7 +89,7 @@ export default {
       overflow: hidden;
       position: relative;
       text-align: center;
-      vertical-align: middle;
+      height: 41px;
 
       &::after {
         background-color: #000;
@@ -155,6 +155,7 @@ export default {
         font-size: 14px;
         padding: 0 0.75rem;
         line-height: 2rem;
+        height: 33px;
       }
 
       @when disabled {

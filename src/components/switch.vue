@@ -30,6 +30,9 @@ export default {
 
   @component-namespace mint {
     @component switch {
+      display: flex;
+      align-items: center;
+
       @descendent label {
         margin-left: 10px;
         display: inline-block;

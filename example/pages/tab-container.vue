@@ -17,6 +17,12 @@
       </mt-tab-container-item>
     </mt-tab-container>
   </div>
+
+  <mt-swipe :auto="0" :show-indicators="false" :continuous="false">
+      <mt-swipe-item class="slide1">1</mt-swipe-item>
+      <mt-swipe-item class="slide2">2</mt-swipe-item>
+      <mt-swipe-item class="slide3">3</mt-swipe-item>
+    </mt-swipe>
 </template>
 
 <script>
@@ -43,5 +49,19 @@ export default {
     color: inherit;
     padding: 20px;
     display: block;
+  }
+
+  .swipe {
+    height: 200px;
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+
+  .swipe-item {
+    color: #000;
+    line-height: 200px;
   }
 </style>

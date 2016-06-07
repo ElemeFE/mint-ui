@@ -1,3 +1,3 @@
-import { Swipe, SwipeItem } from 'vue-swipe';
+import { Swipe } from 'vue-swipe';
 require('vue-swipe/dist/vue-swipe.css');
-export default { Swipe, SwipeItem };
+export default Swipe;

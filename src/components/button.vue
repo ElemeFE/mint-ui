@@ -80,16 +80,19 @@ export default {
 
   @component-namespace mint {
     @component button {
+      appearance: none;
       border-radius: 4px;
+      border: 0;
       box-sizing: border-box;
       color: inherit;
       display: block;
       font-size: 18px;
+      height: 41px;
       line-height: 2.6rem;
+      outline: 0;
       overflow: hidden;
       position: relative;
       text-align: center;
-      height: 41px;
 
       &::after {
         background-color: #000;

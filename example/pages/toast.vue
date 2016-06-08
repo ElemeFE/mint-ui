@@ -17,7 +17,7 @@
         position: absolute 50% * * *;
         width: 100%;
         transform: translateY(-50%);
-        a:not(:last-child) {
+        button:not(:last-child) {
           margin-bottom: 20px;
         }
       }

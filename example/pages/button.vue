@@ -1,4 +1,4 @@
-g<template>
+<template>
   <div class="page-button">
     <h1 class="page-title">Button</h1>
     <div class="page-button-group">

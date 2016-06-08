@@ -1,5 +1,5 @@
 <template>
-  <a
+  <button
     class="mint-button"
     :class="['mint-button--' + type, 'mint-button--' + size, {
         'is-disabled': disabled,
@@ -12,7 +12,7 @@
       </slot>
     </span>
     <label class="mint-button-text"><slot></slot></label>
-  </a>
+  </button>
 </template>
 
 <script>
@@ -146,6 +146,7 @@ export default {
 
       @modifier large {
         display: block;
+        width: 100%;
       }
 
       @modifier normal {
@@ -163,10 +164,6 @@ export default {
 
       @when disabled {
         opacity: .6;
-      }
-
-      @when plain {
-
       }
     }
   }

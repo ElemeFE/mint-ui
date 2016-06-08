@@ -67,6 +67,7 @@
         height: 50px;
         text-align: center;
         background-color: rgba(0,0,0,.7);
+        backface-visibility: hidden;
       }
 
       .mint-popup-2 p {
@@ -90,6 +91,9 @@
 
       .mint-popup-4 {
         width: 100%;
+        .picker-slot-wrapper, .picker-item {
+          backface-visibility: hidden;
+        }
       }
     }
   }

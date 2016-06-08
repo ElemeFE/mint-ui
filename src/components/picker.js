@@ -1,3 +1,5 @@
 import Picker from 'mint-picker';
 require('mint-picker/lib/index.css');
-export default Picker;
+
+Picker.name = 'mt-picker';
+module.exports = Picker;

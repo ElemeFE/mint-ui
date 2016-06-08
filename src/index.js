@@ -1,3 +1,5 @@
+import uppercamelcase from 'uppercamelcase';
+
 const requireAll = requireContext => {
   return requireContext.keys().map(requireContext);
 };
@@ -5,32 +7,27 @@ const modules = requireAll(require.context('src/components', true, /\.vue$/));
 const components = {};
 
 modules.forEach(item => {
-  components[item.name.replace(/mt-/, '')] = item;
+  const name = uppercamelcase(item.name.replace(/mt-/, ''));
+  components[name] = item;
 });
 
 // published components
-import Loadmore from 'mint-loadmore';
-require('mint-loadmore/lib/index.css');
-import Actionsheet from 'mint-actionsheet';
-require('mint-actionsheet/lib/index.css');
-import Popup from 'mint-popup';
-require('mint-popup/lib/index.css');
-import { Swipe, SwipeItem } from 'vue-swipe';
-require('vue-swipe/dist/vue-swipe.css');
-import { MintRange } from 'mint-range';
-require('mint-range/dist/index.css');
-import Picker from 'mint-picker';
-require('mint-picker/lib/index.css');
-import { MintProgress } from 'mint-progress';
-require('mint-progress/dist/index.css');
+import Loadmore from './components/loadmore.js';
+import Actionsheet from './components/actionsheet.js';
+import Popup from './components/popup.js';
+import Swipe from './components/swipe.js';
+import SwipeItem from './components/swipe-item.js';
+import Range from './components/range.js';
+import Picker from './components/picker.js';
+import Progress from './components/progress.js';
 
 // published services
 import Toast from 'vue-toast-mobile';
-require('vue-toast-mobile/lib/index.css');
+import 'vue-toast-mobile/lib/index.css';
 import Indicator from 'mint-indicator';
-require('mint-indicator/lib/index.css');
+import 'mint-indicator/lib/index.css';
 import MessageBox from 'babel!vue-msgbox/src';
-require('./style/message-box.css');
+import './style/message-box.css';
 
 // published directives
 import infiniteScroll from 'vue-infinite-scroll';
@@ -42,14 +39,14 @@ module.exports = Object.assign({}, {
       const item = modules[key];
       Vue.component(item.name, item);
     });
-    Vue.component('mt-loadmore', Loadmore);
-    Vue.component('mt-actionsheet', Actionsheet);
-    Vue.component('mt-popup', Popup);
-    Vue.component('mt-swipe', Swipe);
-    Vue.component('mt-swipe-item', SwipeItem);
-    Vue.component('mt-range', MintRange);
-    Vue.component('mt-picker', Picker);
-    Vue.component('mt-progress', MintProgress);
+    Vue.component(Loadmore.name, Loadmore);
+    Vue.component(Actionsheet.name, Actionsheet);
+    Vue.component(Popup.name, Popup);
+    Vue.component(Swipe.name, Swipe);
+    Vue.component(SwipeItem.name, SwipeItem);
+    Vue.component(Range.name, Range);
+    Vue.component(Picker.name, Picker);
+    Vue.component(Progress.name, Progress);
     Vue.use(infiniteScroll);
     Vue.use(lazyload, {
       loading: require('./assets/loading-spin.svg'),
@@ -58,5 +55,15 @@ module.exports = Object.assign({}, {
   },
   Toast,
   Indicator,
-  MessageBox
+  MessageBox,
+  Popup,
+  Loadmore,
+  Actionsheet,
+  Swipe,
+  SwipeItem,
+  'InfiniteScroll': infiniteScroll,
+  'Lazyload': lazyload,
+  Range,
+  Picker,
+  Progress
 }, components);

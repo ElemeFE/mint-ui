@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import '../style/empty.css';
+
 /**
  * mt-tab-container-item
  * @desc 搭配 tab-container 使用

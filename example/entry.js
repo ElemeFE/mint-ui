@@ -20,7 +20,21 @@ router.start(Vue.extend({
   }
 }), 'body');
 
+let indexScrollTop = 0;
 router.beforeEach(transition => {
+  if (transition.to.path !== '/') {
+    indexScrollTop = document.body.scrollTop;
+  }
   document.title = transition.to.title || document.title;
   transition.next();
+});
+
+router.afterEach(transition => {
+  if (transition.to.path !== '/') {
+    document.body.scrollTop = 0;
+  } else {
+    Vue.nextTick(() => {
+      document.body.scrollTop = indexScrollTop;
+    });
+  }
 });

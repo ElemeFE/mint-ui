@@ -1,3 +1,5 @@
+import uppercamelcase from 'uppercamelcase';
+
 const requireAll = requireContext => {
   return requireContext.keys().map(requireContext);
 };
@@ -5,7 +7,8 @@ const modules = requireAll(require.context('src/components', true, /\.vue$/));
 const components = {};
 
 modules.forEach(item => {
-  components[item.name.replace(/mt-/, '')] = item;
+  const name = uppercamelcase(item.name.replace(/mt-/, ''));
+  components[name] = item;
 });
 
 // published components
@@ -58,5 +61,15 @@ module.exports = Object.assign({}, {
   },
   Toast,
   Indicator,
-  MessageBox
+  MessageBox,
+  Popup,
+  Loadmore,
+  Actionsheet,
+  Swipe,
+  SwipeItem,
+  'InfiniteScroll': infiniteScroll,
+  'Lazyload': lazyload,
+  'Range': MintRange,
+  Picker,
+  'Progress': MintProgress
 }, components);

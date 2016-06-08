@@ -19,13 +19,14 @@
   "actionsheet": ["src/components/actionsheet.js"],
   "popup": ["src/components/popup.js"],
   "swipe": ["src/components/swipe.js"],
+  "swipe-item": ["src/components/swipe-item.js"],
   "range": ["src/components/range.js"],
   "picker": ["src/components/picker.js"],
   "progress": ["src/components/progress.js"],
   "toast": ["src/components/toast.js"],
   "indicator": ["src/components/indicator.js"],
   "message-box": ["src/components/msgbox.js"],
-  "infinite-scroll": ["vue-infinite-scroll"],
-  "lazyload": ["vue-lazyload"],
+  "infinite-scroll": ["src/components/infinite-scroll.js"],
+  "lazyload": ["src/components/lazyload.js"],
   "font": ["./src/assets/font/iconfont.css"]
 }

@@ -1,5 +1,5 @@
 <template>
-  <a
+  <button
     class="mint-button"
     :class="['mint-button--' + type, 'mint-button--' + size, {
         'is-disabled': disabled,
@@ -12,7 +12,7 @@
       </slot>
     </span>
     <label class="mint-button-text"><slot></slot></label>
-  </a>
+  </button>
 </template>
 
 <script>
@@ -80,16 +80,19 @@ export default {
 
   @component-namespace mint {
     @component button {
+      appearance: none;
       border-radius: 4px;
+      border: 0;
       box-sizing: border-box;
       color: inherit;
       display: block;
       font-size: 18px;
+      height: 41px;
       line-height: 2.6rem;
+      outline: 0;
       overflow: hidden;
       position: relative;
       text-align: center;
-      height: 41px;
 
       &::after {
         background-color: #000;
@@ -143,6 +146,7 @@ export default {
 
       @modifier large {
         display: block;
+        width: 100%;
       }
 
       @modifier normal {
@@ -160,10 +164,6 @@ export default {
 
       @when disabled {
         opacity: .6;
-      }
-
-      @when plain {
-
       }
     }
   }

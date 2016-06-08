@@ -18,7 +18,8 @@
         position: absolute 50% * * *;
         width: 100%;
         transform: translateY(-50%);
-        a:first-child {
+
+        button:first-child {
           margin-bottom: 20px;
         }
       }

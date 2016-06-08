@@ -28,5 +28,5 @@
   "message-box": ["src/components/msgbox.js"],
   "infinite-scroll": ["src/components/infinite-scroll.js"],
   "lazyload": ["src/components/lazyload.js"],
-  "font": ["src/assets/font/iconfont.css"]
+  "font": ["./src/assets/font/iconfont.css"]
 }

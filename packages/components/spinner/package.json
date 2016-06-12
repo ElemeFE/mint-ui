@@ -1,0 +1,30 @@
+{
+  "name": "mint-spinner",
+  "version": "0.1.9",
+  "description": "A spinner component for vue.js",
+  "keywords": [],
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "dev": "cooking watch -c cooking.demo.js",
+    "dist": "cooking build -p && mv lib/index/* lib/ && rm -rf lib/index",
+    "deploy": "cooking build -c cooking.demo.js",
+    "prepublish": "make dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mint-ui/mint-spinner.git"
+  },
+  "homepage": "https://github.com/mint-ui/mint-spinner#readme",
+  "bugs": {
+    "url": "https://github.com/mint-ui/mint-spinner/issues"
+  },
+  "author": "qingwei-li",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "vue": "^1.0.20"
+  }
+}

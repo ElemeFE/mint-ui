@@ -21,7 +21,11 @@ cooking.set({
 });
 
 cooking.add('resolve.alias', {
-  'src': path.join(__dirname, 'src')
+  'src': path.join(__dirname, 'src'),
+  'components': path.join(__dirname, 'packages/components'),
+  'directives': path.join(__dirname, 'packages/directives'),
+  'services': path.join(__dirname, 'packages/services'),
+  'mint-ui': path.join(__dirname, 'packages/components')
 });
 cooking.add('output.filename', '[name]/index.js');
 cooking.add('externals', {
@@ -31,13 +35,13 @@ cooking.add('externals', {
     commonjs2: 'vue',
     amd: 'vue'
   },
-  'src/components/cell': {
+  'mint-ui/cell': {
     root: 'MINT.index.cell',
     commonjs: 'mint-ui/lib/cell',
     commonjs2: 'mint-ui/lib/cell',
     amd: 'mint-ui/lib/cell'
   },
-  'cell/style.css': {
+  'mint-ui/cell/style.css': {
     commonjs: 'mint-ui/lib/cell/style.css',
     commonjs2: 'mint-ui/lib/cell/style.css',
     amd: 'mint-ui/lib/cell/style.css'

@@ -23,12 +23,16 @@ cooking.set({
 });
 
 cooking.add('resolve.alias', {
-  'src': path.join(__dirname, 'src')
+  'src': path.join(__dirname, 'src'),
+  'components': path.join(__dirname, 'packages/components'),
+  'directives': path.join(__dirname, 'packages/directives'),
+  'services': path.join(__dirname, 'packages/services'),
+  'mint-ui': path.join(__dirname, 'packages/components')
 });
 
 // 开发模式不需要将不存在的 style.css 打包进去
 cooking.add('externals', {
-  'cell/style.css': 'null',
+  'mint-ui/cell/style.css': 'null',
   'vue-router': 'VueRouter',
   'vue': 'Vue'
 });

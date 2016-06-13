@@ -1,4 +1,4 @@
-*.log
+*.log*
 .cache
 .DS_Store
 .idea

@@ -32,6 +32,7 @@
   "dependencies": {},
   "devDependencies": {
     "gh-pages": "^0.11.0",
+    "kanpai": "^0.5.3",
     "lerna": "2.0.0-beta.18",
     "my-local-ip": "^1.0.0",
     "uppercamelcase": "^1.1.0",

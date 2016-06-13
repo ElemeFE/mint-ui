@@ -1,0 +1,19 @@
+{
+  "name": "mint-picker",
+  "description": "",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "homepage": "https://github.com/ElemeFE/mint-ui",
+  "license": "MIT",
+  "repository": "https://github.com/ElemeFE/mint-ui/tree/master/components/mint-picker",
+  "keywords": [
+    "picker",
+    "multi slots",
+    "vue"
+  ],
+  "author": "long.zhang@ele.me",
+  "dependencies": {
+    "raf.js": "0.0.4",
+    "wind-dom": "0.0.3"
+  }
+}

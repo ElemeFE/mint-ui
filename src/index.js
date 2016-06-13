@@ -3,7 +3,10 @@ import uppercamelcase from 'uppercamelcase';
 const requireAll = requireContext => {
   return requireContext.keys().map(requireContext);
 };
-const modules = requireAll(require.context('components', true, /^((?!node_modules).)*index\.js$/));
+const modules = requireAll(require.context(
+  'packages',
+  true,
+  /^((?!node_modules|lib|toast|indicator|message-box|infinite-scroll|lazyload).)*[^_]index\.js$/));
 
 const components = {};
 
@@ -13,13 +16,13 @@ modules.forEach(item => {
 });
 
 // published services
-import Toast from 'services/toast';
-import Indicator from 'services/indicator';
-import MessageBox from 'services/message-box';
+import Toast from 'packages/toast/index.js';
+import Indicator from 'packages/indicator/index.js';
+import MessageBox from 'packages/message-box/index.js';
 
 // published directives
-import InfiniteScroll from 'directives/infinite-scroll';
-import Lazyload from 'directives/lazyload';
+import InfiniteScroll from 'packages/infinite-scroll/index.js';
+import Lazyload from 'packages/lazyload/index.js';
 
 module.exports = Object.assign({}, {
   install(Vue) {

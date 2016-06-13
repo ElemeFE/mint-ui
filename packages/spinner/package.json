@@ -1,0 +1,19 @@
+{
+  "name": "mint-spinner",
+  "version": "0.1.9",
+  "description": "A spinner component for vue.js",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mint-ui/mint-spinner.git"
+  },
+  "homepage": "https://github.com/mint-ui/mint-spinner#readme",
+  "bugs": {
+    "url": "https://github.com/mint-ui/mint-spinner/issues"
+  },
+  "author": "qingwei-li<cinwell.li@gmail.com>",
+  "license": "MIT"
+}

@@ -1,5 +1,6 @@
 var path = require('path');
 var cooking = require('cooking');
+var Components = require('./components.json');
 
 cooking.set({
   use: 'vue',
@@ -23,18 +24,23 @@ cooking.set({
 });
 
 cooking.add('resolve.alias', {
+  'main': path.join(__dirname, 'src'),
   'src': path.join(__dirname, 'src'),
-  'components': path.join(__dirname, 'packages/components'),
-  'directives': path.join(__dirname, 'packages/directives'),
-  'services': path.join(__dirname, 'packages/services'),
-  'mint-ui': path.join(__dirname, 'packages/components')
+  'packages': path.join(__dirname, 'packages')
+});
+
+cooking.add('preLoader.js.exclude', /node_modules|lib/);
+cooking.add('preLoader.vue.exclude', /node_modules|lib/);
+
+var externals = {};
+Object.keys(Components).forEach(function (key) {
+  externals[`packages/${key}/style.css`] = 'null';
 });
 
 // 开发模式不需要将不存在的 style.css 打包进去
-cooking.add('externals', {
-  'mint-ui/cell/style.css': 'null',
+cooking.add('externals', Object.assign({
   'vue-router': 'VueRouter',
   'vue': 'Vue'
-});
+}, externals));
 
 module.exports = cooking.resolve();

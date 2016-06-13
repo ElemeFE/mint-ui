@@ -1,6 +1,6 @@
 {
   "name": "mint-ui",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Mobile UI elements for vue.js",
   "keywords": [
     "component",
@@ -34,7 +34,7 @@
     "gh-pages": "^0.11.0",
     "mint-actionsheet": "^0.0.6",
     "mint-indicator": "^0.0.2",
-    "mint-loadmore": "^0.0.4",
+    "mint-loadmore": "^0.0.5",
     "mint-picker": "^0.0.6",
     "mint-popup": "^0.0.4",
     "mint-progress": "^0.0.3",

@@ -2,14 +2,9 @@ var path = require('path');
 var cooking = require('cooking');
 var Components = require('./components.json');
 
-var entrys = {};
-Object.keys(Components).forEach(function (key) {
-  entrys[key] = Components[key];
-});
-
 cooking.set({
   use: 'vue',
-  entry: entrys,
+  entry: Components,
   dist: './lib/',
   template: false,
 

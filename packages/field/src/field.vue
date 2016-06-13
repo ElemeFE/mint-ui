@@ -36,7 +36,6 @@
 <script>
 import 'main/assets/font/iconfont.css';
 import XCell from 'packages/cell/index.js';
-import 'packages/cell/style.css';
 import Clickoutside from 'vue-clickoutside';
 
 /**

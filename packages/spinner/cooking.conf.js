@@ -4,7 +4,7 @@ var path = require('path');
 
 var entrys = {};
 Object.keys(Components).forEach(function (key) {
-  entrys[key] = path.join(__dirname, Components[key]);
+  entrys[key] = [path.join(__dirname, Components[key])];
 });
 
 cooking.set({

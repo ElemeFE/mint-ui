@@ -37,7 +37,6 @@
 
 <script>
 import XCell from 'packages/cell/index.js';
-import 'packages/cell/style.css';
 
 /**
  * mt-search

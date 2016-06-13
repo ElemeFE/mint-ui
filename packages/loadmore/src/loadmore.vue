@@ -57,14 +57,13 @@
 </style>
 
 <script type="text/babel">
-  import spinner from 'packages/spinner/src/spinner/fading-circle.vue';
-
   export default {
     name: 'mt-loadmore',
-    components: {
-      spinner
-    },
     props: {
+      autoFill: {
+        type: Boolean,
+        default: true
+      },
       topPullText: {
         type: String,
         default: '下拉刷新'
@@ -236,17 +235,19 @@
       },
 
       fillContainer() {
-        this.$nextTick(() => {
-          if (this.scrollEventTarget === window) {
-            this.containerFilled = this.$el.getBoundingClientRect().bottom >= document.documentElement.getBoundingClientRect().bottom;
-          } else {
-            this.containerFilled = this.$el.getBoundingClientRect().bottom >= this.scrollEventTarget.getBoundingClientRect().bottom;
-          }
-          if (!this.containerFilled) {
-            this.bottomStatus = 'loading';
-            this.bottomMethod(this.uuid);
-          }
-        });
+        if (this.autoFill) {
+          this.$nextTick(() => {
+            if (this.scrollEventTarget === window) {
+              this.containerFilled = this.$el.getBoundingClientRect().bottom >= document.documentElement.getBoundingClientRect().bottom;
+            } else {
+              this.containerFilled = this.$el.getBoundingClientRect().bottom >= this.scrollEventTarget.getBoundingClientRect().bottom;
+            }
+            if (!this.containerFilled) {
+              this.bottomStatus = 'loading';
+              this.bottomMethod(this.uuid);
+            }
+          });
+        }
       },
 
       checkBottomReached() {

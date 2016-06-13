@@ -1,4 +1,4 @@
-@import "./var.css";
+@import "../../../src/style/var.css";
 
 .msgbox-header {
   padding: 15px 0 0;

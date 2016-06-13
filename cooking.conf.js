@@ -21,32 +21,37 @@ cooking.set({
 });
 
 cooking.add('resolve.alias', {
-  'src': path.join(__dirname, 'src')
+  'main': path.join(__dirname, 'src'),
+  'packages': path.join(__dirname, 'packages')
 });
 cooking.add('output.filename', '[name]/index.js');
-cooking.add('externals', {
+
+var externals = {};
+Object.keys(Components).forEach(function (key) {
+  externals[`packages/${key}/index.js`] = {
+    root: `MINT.index.${key}`,
+    commonjs: `mint-ui/lib/${key}`,
+    commonjs2: `mint-ui/lib/${key}`,
+    amd: `mint-ui/lib/${key}`
+  };
+  externals[`packages/${key}/style.css`] = {
+    root: `MINT.index.${key}/style.css`,
+    commonjs: `mint-ui/lib/${key}/style.css`,
+    commonjs2: `mint-ui/lib/${key}/style.css`,
+    amd: `mint-ui/lib/${key}/style.css`
+  };
+});
+
+cooking.add('externals', Object.assign({
   vue: {
     root: 'Vue',
     commonjs: 'vue',
     commonjs2: 'vue',
     amd: 'vue'
-  },
-  'src/components/cell': {
-    root: 'MINT.index.cell',
-    commonjs: 'mint-ui/lib/cell',
-    commonjs2: 'mint-ui/lib/cell',
-    amd: 'mint-ui/lib/cell'
-  },
-  'cell/style.css': {
-    commonjs: 'mint-ui/lib/cell/style.css',
-    commonjs2: 'mint-ui/lib/cell/style.css',
-    amd: 'mint-ui/lib/cell/style.css'
-  },
-  'src/assets/font/iconfont.css': {
-    commonjs: 'mint-ui/lib/font/style.css',
-    commonjs2: 'mint-ui/lib/font/style.css',
-    amd: 'mint-ui/lib/font/style.css'
   }
-});
+}, externals));
+
+cooking.add('preLoader.js.exclude', /node_modules|lib/);
+cooking.add('preLoader.vue.exclude', /node_modules|lib/);
 
 module.exports = cooking.resolve();

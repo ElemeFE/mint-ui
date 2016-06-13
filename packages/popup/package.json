@@ -1,0 +1,13 @@
+{
+  "name": "mint-popup",
+  "description": "",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "author": "elemefe",
+  "homepage": "https://github.com/ElemeFE/mint-ui",
+  "license": "MIT",
+  "repository": "https://github.com/ElemeFE/mint-ui/tree/master/components/mint-popup",
+  "devDependencies": {
+    "vue-popup": "^0.1.7"
+  }
+}

@@ -76,9 +76,12 @@ And of course, if a top HTMl template is given, `topPullText`, `topDropText` and
 
 Don't need to load data from upward direction? Simply omit the `topMethod` attribute. Same goes to downward.
 
+Upon loaded, `loadmore` will automatically check if it is tall enough to fill its container. If not, `bottom-method` will run until its container is filled. Turn off `auto-fill` if you'd rather handle this manually.
+
 # API
 | Option            | Description                                                      | Value    | Default     |
 |-------------------|------------------------------------------------------------------|----------|-------------|
+| autoFill          | if `true`, `loadmore` will check and fill its container          | Boolean  | true        |
 | topPullText       | top text when the component is being pulled down                 | String   | '下拉刷新'  |
 | topDropText       | top text when the component is ready to drop                     | String   | '释放更新'  |
 | topLoadingText    | top text while `topMethod` is running                            | String   | '加载中...' |

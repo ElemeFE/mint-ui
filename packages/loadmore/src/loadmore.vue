@@ -57,8 +57,13 @@
 </style>
 
 <script type="text/babel">
+  import spinner from 'packages/spinner/src/spinner/fading-circle.vue';
   export default {
     name: 'mt-loadmore',
+    components: {
+      'spinner': spinner
+    },
+
     props: {
       autoFill: {
         type: Boolean,

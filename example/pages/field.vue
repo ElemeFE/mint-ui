@@ -22,6 +22,12 @@
       <mt-field label="邮箱" placeholder="失败状态" state="error"></mt-field>
       <mt-field label="邮箱" placeholder="警告状态" state="warning"></mt-field>
     </div>
+
+    <div class="page-part">
+      <mt-field label="验证码" placeholder="请输入验证码">
+        <img src="../assets/100x100.png" height="45px" width="100px">
+      </mt-field>
+    </div>
   </div>
 </template>
 

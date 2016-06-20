@@ -1,36 +1,39 @@
 <template>
-  <x-cell
-    class="mint-field"
-    :title="label"
-    v-clickoutside="active = false"
-    :class="[{ 'is-nolabel': !label }, {
-      'is-textarea': type === 'textarea'
-    }]">
-    <textarea
-      class="mint-field-core"
-      :placeholder="placeholder"
-      v-if="type === 'textarea'"
-      :rows="rows"
-      v-model="value">
-    </textarea>
-    <input
-      class="mint-field-core"
-      :placeholder="placeholder"
-      :number="type === 'number'"
-      v-else
-      :type="type"
-      @focus="active = true"
-      v-model="value">
-    <div
-      @click="value = ''"
-      class="mint-field-clear"
-      v-show="value && type !== 'textarea' && active">
-      <i class="mintui mintui-field-error"></i>
-    </div>
-    <span class="mint-field-state" v-if="state" :class="['is-' + state]">
-      <i class="mintui" :class="['mintui-field-' + state]"></i>
-    </span>
-  </x-cell>
+  <div class="mint-field">
+    <x-cell
+      class="mint-field-cell"
+      :title="label"
+      v-clickoutside="active = false"
+      :class="[{ 'is-nolabel': !label }, {
+        'is-textarea': type === 'textarea'
+      }]">
+      <textarea
+        class="mint-field-core"
+        :placeholder="placeholder"
+        v-if="type === 'textarea'"
+        :rows="rows"
+        v-model="value">
+      </textarea>
+      <input
+        class="mint-field-core"
+        :placeholder="placeholder"
+        :number="type === 'number'"
+        v-else
+        :type="type"
+        @focus="active = true"
+        v-model="value">
+      <div
+        @click="value = ''"
+        class="mint-field-clear"
+        v-show="value && type !== 'textarea' && active">
+        <i class="mintui mintui-field-error"></i>
+      </div>
+      <span class="mint-field-state" v-if="state" :class="['is-' + state]">
+        <i class="mintui" :class="['mintui-field-' + state]"></i>
+      </span>
+    </x-cell>
+    <slot></slot>
+  </div>
 </template>
 
 <script>
@@ -94,6 +97,8 @@ export default {
 
   @component-namespace mint {
     @component field {
+      display: flex;
+
       @when textarea {
         align-items: inherit;
 
@@ -102,8 +107,9 @@ export default {
         }
       }
 
-      &.mint-cell {
+      .mint-cell {
         padding: 9px 10px;
+        flex: 1;
       }
 
       .mint-cell-title {
@@ -125,6 +131,7 @@ export default {
         outline: 0;
         line-height: 1.6;
         font-size: inherit;
+        width: 100%;
       }
 
       @descendent clear {

@@ -15,5 +15,8 @@
     "url": "https://github.com/mint-ui/mint-spinner/issues"
   },
   "author": "qingwei-li<cinwell.li@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "webpack-shell-plugin": "^0.4.2"
+  }
 }

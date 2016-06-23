@@ -43,7 +43,8 @@
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
     -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out
+    transition-timing-function: ease-out;
+    backface-visibility: hidden;
   }
 
   .picker-slot-wrapper.dragging,
@@ -66,7 +67,8 @@
     width: 100%;
     box-sizing: border-box;
     -webkit-transition-duration: .3s;
-    transition-duration: .3s
+    transition-duration: .3s;
+    backface-visibility: hidden;
   }
 
   .picker-slot-absolute .picker-item {

@@ -4,7 +4,7 @@
       <spinner class="mint-indicator-spin" :type="convertedSpinnerType" :size="32"></spinner>
       <span class="mint-indicator-text" v-show="text">{{ text }}</span>
     </div>
-    <div class="mint-indicator-mask"></div>
+    <div class="mint-indicator-mask" @touchmove.stop.prevent></div>
   </div>
 </template>
 

@@ -101,7 +101,7 @@
       slots.forEach(function(slot) {
         if (!slot.divider) {
           slot.valueIndex = valueIndexCount++;
-          values[slot.valueIndex] = (slot.values || [])[0];
+          values[slot.valueIndex] = (slot.values || [])[slot.defaultIndex || 0];
         }
       });
     },

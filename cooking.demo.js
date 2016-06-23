@@ -4,9 +4,12 @@ var Components = require('./components.json');
 
 cooking.set({
   use: 'vue',
-  entry: './example/entry.js',
+  entry: {
+    app: './example/entry.js',
+    vendor: ['vue', 'vue-router', 'fastclick']
+  },
   dist: './example/dist',
-  template: './example/index.html',
+  template: './example/index.tpl',
   devServer: {
     port: 8789,
     hostname: require('my-local-ip')(),
@@ -38,9 +41,13 @@ Object.keys(Components).forEach(function (key) {
 });
 
 // 开发模式不需要将不存在的 style.css 打包进去
-cooking.add('externals', Object.assign({
-  'vue-router': 'VueRouter',
-  'vue': 'Vue'
-}, externals));
+cooking.add('externals', externals);
+
+if (process.env.NODE_ENV === 'production') {
+  cooking.remove('entry.vendor');
+  cooking.add('externals.vue', 'Vue');
+  cooking.add('externals.vue-router', 'VueRouter');
+  cooking.add('fastclick', 'FastClick');
+}
 
 module.exports = cooking.resolve();

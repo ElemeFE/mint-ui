@@ -70,6 +70,7 @@ Usage
 ## Development
 
 ```shell
+npm i cooking -g
 make dev
 ```
 

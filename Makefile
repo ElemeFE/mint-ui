@@ -2,11 +2,10 @@
 default: help
 
 install:
-	@if [ ! -L node_modules ]; then rm -rf node_modules; fi
 	npm i --registry=https://registry.npm.taobao.org
 	./node_modules/.bin/lerna bootstrap
 
-dev:
+dev: install
 	npm run dev
 
 dist:
@@ -18,7 +17,7 @@ dist-all:
 deploy:
 	npm run deploy
 
-pub:
+pub: dist
 	./node_modules/.bin/kp $(filter-out $@,$(MAKECMDGOALS))
 
 pub-all: dist-all

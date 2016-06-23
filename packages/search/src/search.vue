@@ -101,8 +101,10 @@ export default {
       z-index: 1;
 
       @descendent inner {
+        align-items: center;
         background-color: $color-white;
         border-radius: 2px;
+        display: flex;
         flex: 1;
         height: 28px;
         padding: 4px 6px;

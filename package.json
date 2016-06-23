@@ -16,8 +16,7 @@
   "scripts": {
     "dev": "cooking watch -c cooking.demo.js",
     "dist": "cooking build -p && mv lib/index/* lib/ && rm -rf lib/index",
-    "deploy": "cooking build -c cooking.demo.js -p && gh-pages -d example/dist --remote eleme",
-    "prepublish": "npm run dist"
+    "deploy": "cooking build -c cooking.demo.js -p && gh-pages -d example/dist --remote eleme"
   },
   "repository": {
     "type": "git",
@@ -31,6 +30,7 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
+    "fastclick": "^1.0.6",
     "gh-pages": "^0.11.0",
     "kanpai": "^0.5.3",
     "lerna": "2.0.0-beta.18",

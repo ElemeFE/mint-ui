@@ -17,8 +17,10 @@ modules.forEach(item => {
 
 // published services
 import Toast from 'packages/toast/index.js';
+import 'vue-toast-mobile/lib/index.css';
 import Indicator from 'packages/indicator/index.js';
 import MessageBox from 'packages/message-box/index.js';
+import 'packages/message-box/src/message-box.css';
 
 // published directives
 import InfiniteScroll from 'packages/infinite-scroll/index.js';

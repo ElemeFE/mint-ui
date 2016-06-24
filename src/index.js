@@ -19,6 +19,7 @@ modules.forEach(item => {
 import Toast from 'packages/toast/index.js';
 import 'vue-toast-mobile/lib/index.css';
 import Indicator from 'packages/indicator/index.js';
+import 'packages/indicator/lib/style.css';
 import MessageBox from 'packages/message-box/index.js';
 import 'vue-msgbox/lib/vue-msgbox.css';
 import 'packages/message-box/src/message-box.css';

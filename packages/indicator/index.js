@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import './src/style.css';
 
 const Indicator = Vue.extend(require('./src/indicator.vue'));
 let instance;

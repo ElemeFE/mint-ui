@@ -17,7 +17,7 @@ dist-all:
 deploy:
 	npm run deploy
 
-pub: dist
+pub:
 	./node_modules/.bin/kp $(filter-out $@,$(MAKECMDGOALS))
 
 pub-all: dist-all

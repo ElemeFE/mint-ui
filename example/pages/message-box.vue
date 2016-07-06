@@ -39,7 +39,7 @@
       },
 
       openPrompt() {
-        MessageBox.prompt(' ', '请输入姓名').then(value => {
+        MessageBox.prompt(' ', '请输入姓名').then(({ value }) => {
           if (value) {
             MessageBox.alert(`你的名字是 ${ value }`, '输入成功');
           }

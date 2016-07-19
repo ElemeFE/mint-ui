@@ -15,6 +15,8 @@ cooking.set({
   extends: ['vue', 'lint', 'saladcss']
 });
 
+cooking.remove('output.publicPath');
+
 cooking.add('resolve.alias', {
   'main': path.join(__dirname, 'src'),
   'packages': path.join(__dirname, 'packages')

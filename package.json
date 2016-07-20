@@ -36,6 +36,7 @@
     "kanpai": "^0.5.3",
     "lerna": "2.0.0-beta.18",
     "my-local-ip": "^1.0.0",
+    "object-assign": "^4.1.0",
     "uppercamelcase": "^1.1.0",
     "vue-clickoutside": "0.0.4",
     "vue-infinite-scroll": "^0.2.3",

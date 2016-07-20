@@ -1,4 +1,5 @@
 import uppercamelcase from 'uppercamelcase';
+import objectAssign from 'object-assign';
 
 const requireAll = requireContext => {
   return requireContext.keys().map(requireContext);
@@ -28,18 +29,24 @@ import 'packages/message-box/src/message-box.css';
 import InfiniteScroll from 'packages/infinite-scroll/index.js';
 import Lazyload from 'packages/lazyload/index.js';
 
-module.exports = Object.assign({}, {
-  install(Vue) {
-    Object.keys(modules).forEach(key => {
-      const item = modules[key];
-      Vue.component(item.name, item);
-    });
-    Vue.use(InfiniteScroll);
-    Vue.use(Lazyload, {
-      loading: require('./assets/loading-spin.svg'),
-      try: 3
-    });
-  },
+const install = function(Vue) {
+  Object.keys(modules).forEach(key => {
+    const item = modules[key];
+    Vue.component(item.name, item);
+  });
+  Vue.use(InfiniteScroll);
+  Vue.use(Lazyload, {
+    loading: require('./assets/loading-spin.svg'),
+    try: 3
+  });
+};
+
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue);
+};
+
+module.exports = objectAssign({}, {
+  install,
   Toast,
   Indicator,
   MessageBox,

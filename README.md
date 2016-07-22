@@ -1,4 +1,9 @@
 # mint-ui
+
+[![npm](https://img.shields.io/npm/v/mint-ui.svg?maxAge=3600](https://www.npmjs.com/package/mint-ui)
+![JS gzip size](https://badge-size.herokuapp.com/elemefe/mint-ui/master/lib/index.js.svg?compression=gzip&label=gzip%20size:%20JS)
+![CSS gzip size](https://badge-size.herokuapp.com/elemefe/mint-ui/master/lib/style.css.svg?compression=gzip&label=gzip%20size:%20CSS)
+
 > Mobile UI elements for vue.js
 
 - [Homepage](http://mint-ui.github.io)
@@ -11,7 +16,7 @@ npm i mint-ui -S
 
 ## Usage
 
-import all components.
+Import all components.
 
 ```javascript
 import Vue from 'vue'
@@ -30,7 +35,7 @@ Vue.component(Checklist.name, Checklist);
 ```
 
 
-Equal to
+Equals to
 
 ```javascript
 import Vue from 'vue';
@@ -67,21 +72,22 @@ Usage
 }
 ```
 
+## CDN
+RawGit
+
+- https://cdn.rawgit.com/ElemeFE/mint-ui/master/lib/index.js
+- https://cdn.rawgit.com/ElemeFE/mint-ui/master/lib/style.css
+
+NPMCDN
+
+- https://npmcdn.com/mint-ui/lib/index.js
+- https://npmcdn.com/mint-ui/lib/style.css
+
 ## Development
 
 ```shell
 npm i cooking -g
 make dev
-```
-
-## Production
-```shell
-make dist
-```
-
-## Deploy Example
-```shell
-make deploy
 ```
 
 ## License

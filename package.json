@@ -31,6 +31,7 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
+    "babel-preset-es2015-loose": "^7.0.0",
     "fastclick": "^1.0.6",
     "gh-pages": "^0.11.0",
     "kanpai": "^0.5.3",

@@ -2,7 +2,6 @@
 
 .msgbox-header {
   padding: 15px 0 0;
-  text-align: center;
   border-bottom: none;
 }
 
@@ -12,6 +11,7 @@
 }
 
 .msgbox-title {
+  text-align: center;
   padding-left: 0;
   margin-bottom: 0;
 }

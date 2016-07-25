@@ -66,6 +66,11 @@
         "path": "/picker",
         "name": "Picker",
         "icon": "picker"
+      },
+      {
+        "path": "/timepicker",
+        "name": "Time Picker",
+        "icon": "time"
       }
     ]
   },

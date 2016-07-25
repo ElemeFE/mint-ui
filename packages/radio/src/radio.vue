@@ -23,7 +23,9 @@
 
 <script>
 import XCell from 'packages/cell/index.js';
-
+if (process.env.IMPORTCSS) {
+  require('packages/cell/style.css');
+}
 /**
  * mt-radio
  * @module components/radio

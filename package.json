@@ -1,6 +1,6 @@
 {
   "name": "mint-ui",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "description": "Mobile UI elements for vue.js",
   "keywords": [
     "component",
@@ -14,10 +14,11 @@
     "src"
   ],
   "scripts": {
-    "dev": "cooking watch -c cooking.demo.js",
-    "dist": "cooking build -p && mv lib/index/* lib/ && rm -rf lib/index",
-    "deploy": "cooking build -c cooking.demo.js -p && gh-pages -d example/dist --remote eleme",
-    "prepublish": "npm run dist"
+    "dev": "npm run build-entry && cooking watch -c cooking.demo.js",
+    "dist": "rm -rf lib && npm run build-entry && cooking build -p && cooking build -c cooking.component.js -p",
+    "deploy": "npm run build-entry && cooking build -c cooking.demo.js -p && gh-pages -d example/dist --remote eleme",
+    "prepublish": "npm run dist",
+    "build-entry": "node bin/build-entry"
   },
   "repository": {
     "type": "git",
@@ -34,16 +35,18 @@
     "babel-preset-es2015-loose": "^7.0.0",
     "fastclick": "^1.0.6",
     "gh-pages": "^0.11.0",
+    "json-templater": "^1.0.4",
     "kanpai": "^0.5.3",
     "lerna": "2.0.0-beta.18",
     "my-local-ip": "^1.0.0",
-    "object-assign": "^4.1.0",
     "uppercamelcase": "^1.1.0",
+    "vue": "^1.0.26",
     "vue-clickoutside": "0.0.4",
     "vue-infinite-scroll": "^0.2.3",
     "vue-lazyload": "^0.4.3",
     "vue-msgbox": "^0.2.11",
     "vue-popup": "^0.1.8",
+    "vue-router": "^0.7.13",
     "vue-swipe": "^0.2.6",
     "vue-toast-mobile": "^0.1.3"
   }

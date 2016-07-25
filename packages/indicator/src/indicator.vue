@@ -10,6 +10,9 @@
 
 <script type="text/babel">
   import Spinner from 'packages/spinner/index.js';
+  if (process.env.IMPORTCSS) {
+    require('packages/spinner/style.css');
+  }
 
   export default {
     data() {

@@ -1,53 +1,34 @@
 var path = require('path');
 var cooking = require('cooking');
-var Components = require('./components.json');
+var webpack = require('webpack');
 
 cooking.set({
-  use: 'vue',
-  entry: Components,
+  entry: './src/index.js',
   dist: './lib/',
+  clean: false,
   template: false,
-
-  clean: true,
   format: 'umd',
-  moduleName: ['MINT', '[name]'],
-  extractCSS: '[name]/style.css',
+  moduleName: 'MINT',
+  extractCSS: 'style.css',
   extends: ['vue', 'lint', 'saladcss']
 });
 
 cooking.remove('output.publicPath');
 
+cooking.add('plugin.defiendImportCSS', new webpack.DefinePlugin({
+  'process.env.IMPORTCSS': JSON.stringify(false)
+}));
 cooking.add('resolve.alias', {
   'main': path.join(__dirname, 'src'),
   'packages': path.join(__dirname, 'packages')
 });
-cooking.add('output.filename', '[name]/index.js');
-
-var externals = {};
-Object.keys(Components).forEach(function (key) {
-  externals[`packages/${key}/index.js`] = {
-    root: `MINT.index.${key}`,
-    commonjs: `mint-ui/lib/${key}`,
-    commonjs2: `mint-ui/lib/${key}`,
-    amd: `mint-ui/lib/${key}`
-  };
-  externals[`packages/${key}/style.css`] = {
-    root: `MINT.index.${key}/style.css`,
-    commonjs: `mint-ui/lib/${key}/style.css`,
-    commonjs2: `mint-ui/lib/${key}/style.css`,
-    amd: `mint-ui/lib/${key}/style.css`
-  };
+cooking.add('output.filename', 'index.js');
+cooking.add('externals.vue', {
+  root: 'Vue',
+  commonjs: 'vue',
+  commonjs2: 'vue',
+  amd: 'vue'
 });
-
-cooking.add('externals', Object.assign({
-  vue: {
-    root: 'Vue',
-    commonjs: 'vue',
-    commonjs2: 'vue',
-    amd: 'vue'
-  }
-}, externals));
-
 cooking.add('preLoader.js.exclude', /node_modules|lib/);
 cooking.add('preLoader.vue.exclude', /node_modules|lib/);
 

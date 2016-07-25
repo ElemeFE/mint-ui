@@ -37,9 +37,12 @@
 </template>
 
 <script>
-import 'main/assets/font/iconfont.css';
 import XCell from 'packages/cell/index.js';
 import Clickoutside from 'vue-clickoutside';
+if (process.env.IMPORTCSS) {
+  require('packages/cell/style.css');
+  require('packages/font/style.css');
+}
 
 /**
  * mt-field

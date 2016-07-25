@@ -1,6 +1,7 @@
 var path = require('path');
 var cooking = require('cooking');
 var Components = require('./components.json');
+var webpack = require('webpack');
 
 cooking.set({
   use: 'vue',
@@ -35,14 +36,9 @@ cooking.add('resolve.alias', {
 cooking.add('preLoader.js.exclude', /node_modules|lib/);
 cooking.add('preLoader.vue.exclude', /node_modules|lib/);
 
-var externals = {};
-Object.keys(Components).forEach(function (key) {
-  externals[`packages/${key}/style.css`] = 'null';
-});
-
-// 开发模式不需要将不存在的 style.css 打包进去
-cooking.add('externals', externals);
-
+cooking.add('plugin.defiendImportCSS', new webpack.DefinePlugin({
+  'process.env.IMPORTCSS': JSON.stringify(false)
+}));
 if (process.env.NODE_ENV === 'production') {
   cooking.remove('entry.vendor');
   cooking.add('externals.vue', 'Vue');

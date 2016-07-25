@@ -29,27 +29,18 @@
 
   .picker-slot.picker-slot-divider {
     color: #000;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
     align-items: center
   }
 
   .picker-slot-wrapper {
-    -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
-    -webkit-transition-timing-function: ease-out;
     transition-timing-function: ease-out;
     backface-visibility: hidden;
   }
 
   .picker-slot-wrapper.dragging,
   .picker-slot-wrapper.dragging .picker-item {
-    -webkit-transition-duration: 0s;
     transition-duration: 0s;
   }
 
@@ -66,7 +57,6 @@
     top: 0;
     width: 100%;
     box-sizing: border-box;
-    -webkit-transition-duration: .3s;
     transition-duration: .3s;
     backface-visibility: hidden;
   }
@@ -81,20 +71,17 @@
 
   .picker-item.picker-selected {
     color: #000;
-    -webkit-transform: translate3d(0, 0, 0) rotateX(0);
     transform: translate3d(0, 0, 0) rotateX(0);
   }
 
   .picker-3d .picker-items {
     overflow: hidden;
-    -webkit-perspective: 700px;
     perspective: 700px;
   }
 
   .picker-3d .picker-item,
   .picker-3d .picker-slot,
   .picker-3d .picker-slot-wrapper {
-    -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d
   }
 
@@ -103,16 +90,13 @@
   }
 
   .picker-3d .picker-item {
-    -webkit-transform-origin: center center;
     transform-origin: center center;
-    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    -webkit-transition-timing-function: ease-out;
     transition-timing-function: ease-out
   }
 </style>
 
-<script type="text/ecmascript-6" lang="babel">
+<script type="text/babel">
   import Vue from 'vue';
   import draggable from './draggable';
   import translateUtil from './translate';

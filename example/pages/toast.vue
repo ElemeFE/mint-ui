@@ -26,7 +26,6 @@
 </style>
 
 <script type="text/babel">
-  import 'main/assets/font/iconfont.css';
   import { Toast } from 'src/index';
 
   export default {

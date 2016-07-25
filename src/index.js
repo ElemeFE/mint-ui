@@ -26,6 +26,7 @@ import Indicator from '../packages/indicator/index.js';
 import MessageBox from '../packages/message-box/index.js';
 import InfiniteScroll from '../packages/infinite-scroll/index.js';
 import Lazyload from '../packages/lazyload/index.js';
+import '../src/assets/font/iconfont.css';
 
 const install = function(Vue) {
   Vue.component(Header.name, Header);

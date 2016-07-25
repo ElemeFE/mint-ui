@@ -18,13 +18,7 @@
   }
 
   .picker-items {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
     justify-content: center;
     padding: 0;
     text-align: right;
@@ -52,7 +46,6 @@
     background-color: #eaeaea;
     display: block;
     z-index: 15;
-    -webkit-transform: scaleY(.5);
     transform: scaleY(0.5);
   }
 
@@ -71,7 +64,7 @@
   }
 </style>
 
-<script type="text/ecmascript-6" lang="babel">
+<script type="text/babel">
   export default {
     name: 'mt-picker',
 

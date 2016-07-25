@@ -20,7 +20,9 @@
 </template>
 
 <script>
-import 'main/assets/font/iconfont.css';
+if (process.env.IMPORTCSS) {
+  require('packages/font/style.css');
+}
 
 /**
  * mt-cell

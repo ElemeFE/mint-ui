@@ -7,7 +7,6 @@ const path = require('path');
 
 let componentPaths = [];
 
-delete components.index;
 delete components.font;
 
 Object.keys(components).forEach(key => {

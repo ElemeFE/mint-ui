@@ -8,6 +8,7 @@ var OUTPUT_PATH = path.join(__dirname, '../src/index.js')
 var IMPORT_TEMPLATE = `import {{name}} from '../packages/{{package}}/index.js';`
 var ISNTALL_COMPONENT_TEMPLATE = `  Vue.component({{name}}.name, {{name}});`
 var MAIN_TEMPLATE = `{{include}}
+import '../src/assets/font/iconfont.css';
 
 const install = function(Vue) {
 {{install}}
@@ -29,7 +30,6 @@ module.exports = {
 };
 `
 
-delete Components.index
 delete Components.font
 
 var ComponentNames = Object.keys(Components)

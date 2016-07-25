@@ -11,7 +11,7 @@
     <mt-timepicker :visible.sync="visible" @confirm="handleChange"></mt-timepicker>
     <mt-timepicker :visible.sync="visible2" type="date" @confirm="handleChange"></mt-timepicker>
     <mt-timepicker :visible.sync="visible3" type="time" @confirm="handleChange"></mt-timepicker>
-    <mt-timepicker :visible.sync="visible4" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日" @confirm="handleChange"></mt-timepicker>
+    <mt-timepicker :visible.sync="visible4" type="date" year-format="{value} 年" month-format="{value} 月" date-format="{value} 日" @confirm="handleChange"></mt-timepicker>
     <mt-timepicker :visible.sync="visible5" type="time" @confirm="handleChange" :value.sync="value"></mt-timepicker>
   </div>
 </template>

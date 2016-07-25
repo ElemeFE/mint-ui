@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "dev": "npm run build-entry && cooking watch -c cooking.demo.js",
-    "dist": "rm -rf lib && npm run build-entry && cooking build -p && cooking build -c cooking.common.js -p",
+    "dist": "rm -rf lib && npm run build-entry && cooking build -p && cooking build -c cooking.component.js -p",
     "deploy": "npm run build-entry && cooking build -c cooking.demo.js -p && gh-pages -d example/dist --remote eleme",
     "prepublish": "npm run dist",
     "build-entry": "node bin/build-entry"

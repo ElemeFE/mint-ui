@@ -9,7 +9,7 @@ cooking.set({
   dist: path.join(__dirname, 'lib'),
   template: false,
   format: 'umd',
-  moduleName: 'MintIndicator',
+  moduleName: 'MintDatetimePicker',
   extractCSS: 'style.css',
 
   extends: ['vue', 'saladcss']

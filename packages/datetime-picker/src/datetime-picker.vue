@@ -1,14 +1,14 @@
 <template>
-  <mt-popup :visible.sync="visible" position="bottom" class="mint-timepicker">
+  <mt-popup :visible.sync="visible" position="bottom" class="mint-datetime">
     <mt-picker
       :slots="dateSlots"
       @change="onChange"
       :visible-item-count="7"
-      class="mint-timepicker-picker"
+      class="mint-datetime-picker"
       v-ref:picker
       show-toolbar>
-      <span class="mint-timepicker-action mint-timepicker-cancel" @click="visible = false">{{ cancelText }}</span>
-      <span class="mint-timepicker-action mint-timepicker-confirm" @click="confirm">{{ confirmText }}</span>
+      <span class="mint-datetime-action mint-datetime-cancel" @click="visible = false">{{ cancelText }}</span>
+      <span class="mint-datetime-action mint-datetime-confirm" @click="confirm">{{ confirmText }}</span>
     </mt-picker>
   </mt-popup>
 </template>
@@ -17,7 +17,7 @@
   @import "../../../src/style/var.css";
 
   @component-namespace mint {
-    @component timepicker {
+    @component datetime {
       width: 100%;
       
       .picker-slot-wrapper, .picker-item {
@@ -49,8 +49,12 @@
 </style>
 
 <script type="text/babel">
-  import picker from 'packages/picker/index';
-  import popup from 'packages/popup/index';
+  import picker from 'packages/picker/index.js';
+  import popup from 'packages/popup/index.js';
+  if (process.env.IMPORTCSS) {
+    require('packages/picker/style.css');
+    require('packages/popup/style.css');
+  }
 
   const FORMAT_MAP = {
     Y: 'year',
@@ -61,7 +65,7 @@
   };
 
   export default {
-    name: 'mt-timepicker',
+    name: 'mt-datetime-picker',
 
     props: {
       visible: {
@@ -168,7 +172,6 @@
 
       onChange(picker, values) {
         this.isSlotChange = true;
-        this.value = this.getValue(values);
         if (this.type.indexOf('date') > -1) {
           if (this.isShortMonth(this.getTrueValue(values[1]))) {
             if (this.shortMonthDates.indexOf(values[2]) === -1) {
@@ -194,6 +197,7 @@
             this.dateSlots[2].values = this.longMonthDates;
           }
         }
+        this.value = this.getValue(values);
         this.$emit('change', this.value);
       },
 

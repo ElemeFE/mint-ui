@@ -26,7 +26,7 @@ import Indicator from '../packages/indicator/index.js';
 import MessageBox from '../packages/message-box/index.js';
 import InfiniteScroll from '../packages/infinite-scroll/index.js';
 import Lazyload from '../packages/lazyload/index.js';
-import Timepicker from '../packages/timepicker/index.js';
+import DatetimePicker from '../packages/datetime-picker/index.js';
 import '../src/assets/font/iconfont.css';
 
 const install = function(Vue) {
@@ -56,7 +56,7 @@ const install = function(Vue) {
   Vue.component(Toast.name, Toast);
   Vue.component(Indicator.name, Indicator);
   Vue.component(MessageBox.name, MessageBox);
-  Vue.component(Timepicker.name, Timepicker);
+  Vue.component(DatetimePicker.name, DatetimePicker);
   Vue.use(InfiniteScroll);
   Vue.use(Lazyload, {
     loading: require('./assets/loading-spin.svg'),
@@ -99,5 +99,5 @@ module.exports = {
   MessageBox,
   InfiniteScroll,
   Lazyload,
-  Timepicker
+  DatetimePicker
 };

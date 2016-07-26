@@ -28,5 +28,5 @@
   "message-box": ["./packages/message-box/index.js"],
   "infinite-scroll": ["./packages/infinite-scroll/index.js"],
   "lazyload": ["./packages/lazyload/index.js"],
-  "timepicker": ["./packages/timepicker/index.js"]
+  "datetime-picker": ["./packages/datetime-picker/index.js"]
 }

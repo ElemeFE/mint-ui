@@ -68,8 +68,8 @@
         "icon": "picker"
       },
       {
-        "path": "/timepicker",
-        "name": "Time Picker",
+        "path": "/datetime-picker",
+        "name": "Datetime Picker",
         "icon": "time"
       }
     ]

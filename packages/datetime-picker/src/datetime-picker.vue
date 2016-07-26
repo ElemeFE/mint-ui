@@ -231,7 +231,7 @@
         let typesArr = this.typeStr.split('');
         typesArr.forEach(type => {
           if (INTERVAL_MAP[type]) {
-            this.pushSlots(type, ...INTERVAL_MAP[type]);
+            this.pushSlots.apply(null, [type].concat(INTERVAL_MAP[type]));
           }
         });
         if (this.typeStr === 'Hm') {
@@ -245,9 +245,9 @@
       setSlots() {
         const setSlotValue = this.$refs.picker.setSlotValue;
         if (this.type === 'time' && typeof this.value === 'string') {
-          let [hour, minute] = this.value.split(':');
-          setSlotValue(0, this.hourFormat.replace('{value}', hour));
-          setSlotValue(1, this.minuteFormat.replace('{value}', minute));
+          let valueArr = this.value.split(':');
+          setSlotValue(0, this.hourFormat.replace('{value}', valueArr[0]));
+          setSlotValue(1, this.minuteFormat.replace('{value}', valueArr[1]));
         }
         if (this.type !== 'time' && ({}).toString.call(this.value) === '[object Date]') {
           let year = this.value.getFullYear();

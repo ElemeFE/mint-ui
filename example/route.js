@@ -21,8 +21,8 @@ const registerRoute = (config) => {
 const route = registerRoute(NavConfig);
 
 export const navs = route.navs;
-export default Object.assign({
-  '/': {
-    component: require('./demos.vue')
-  }
-}, route.route);
+route.route['/'] = {
+  component: require('./demos.vue')
+};
+
+export default route.route;

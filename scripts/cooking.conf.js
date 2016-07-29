@@ -3,7 +3,7 @@ var cooking = require('cooking');
 var webpack = require('webpack');
 
 cooking.set({
-  entry: './src/index.js',
+  entry: path.join(__dirname, '../src/index.js'),
   dist: './lib/',
   clean: false,
   template: false,
@@ -19,8 +19,8 @@ cooking.add('plugin.defiendImportCSS', new webpack.DefinePlugin({
   'process.env.IMPORTCSS': JSON.stringify(false)
 }));
 cooking.add('resolve.alias', {
-  'main': path.join(__dirname, 'src'),
-  'packages': path.join(__dirname, 'packages')
+  'main': path.join(__dirname, '../src'),
+  'packages': path.join(__dirname, '../packages')
 });
 cooking.add('output.filename', 'index.js');
 cooking.add('externals.vue', {

@@ -1,7 +1,12 @@
 var path = require('path');
 var cooking = require('cooking');
-var Components = require('./components.json');
+var Components = require('../components.json');
 var webpack = require('webpack');
+var entries = {};
+
+Object.keys(Components).forEach(compo => {
+  entries[compo] = path.join(__dirname, '../', Components[compo]);
+});
 
 cooking.set({
   use: 'vue',
@@ -18,8 +23,8 @@ cooking.set({
 cooking.remove('output.publicPath');
 
 cooking.add('resolve.alias', {
-  'main': path.join(__dirname, 'src'),
-  'packages': path.join(__dirname, 'packages')
+  'main': path.join(__dirname, '../src'),
+  'packages': path.join(__dirname, '../packages')
 });
 cooking.add('output.filename', '[name]/index.js');
 

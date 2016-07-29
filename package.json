@@ -14,9 +14,9 @@
     "src"
   ],
   "scripts": {
-    "dev": "npm run build-entry && cooking watch -c cooking.demo.js",
-    "dist": "rm -rf lib && npm run build-entry && cooking build -p && cooking build -c cooking.component.js -p",
-    "deploy": "npm run build-entry && cooking build -c cooking.demo.js -p && gh-pages -d example/dist --remote eleme",
+    "dev": "npm run build-entry && cooking watch -c scripts/cooking.demo.js",
+    "dist": "rm -rf lib && npm run build-entry && cooking build -c scripts/cooking.conf.js -p && cooking build -c scripts/cooking.component.js -p",
+    "deploy": "npm run build-entry && cooking build -c scripts/cooking.demo.js -p && gh-pages -d example/dist --remote eleme",
     "prepublish": "npm run dist",
     "build-entry": "node bin/build-entry"
   },
@@ -30,7 +30,6 @@
   },
   "author": "elemefe",
   "license": "MIT",
-  "dependencies": {},
   "devDependencies": {
     "babel-preset-es2015-loose": "^7.0.0",
     "fastclick": "^1.0.6",

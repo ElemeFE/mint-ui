@@ -40,7 +40,7 @@
     },
 
     created() {
-      'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(initial => {
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(initial => {
         let cells = NAMES.filter(name => name[0] === initial);
         this.alphabet.push({
           initial,

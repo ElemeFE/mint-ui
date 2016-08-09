@@ -19,6 +19,7 @@ deploy:
 
 pub:
 	./node_modules/.bin/kp $(filter-out $@,$(MAKECMDGOALS))
+	git push eleme master --tags
 
 pub-all: dist-all
 	./node_modules/.bin/lerna publish

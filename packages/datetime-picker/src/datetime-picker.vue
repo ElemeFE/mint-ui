@@ -84,14 +84,8 @@
         type: String,
         default: 'datetime'
       },
-      startYear: {
-        type: Number,
-        default: 2000
-      },
-      endYear: {
-        type: Number,
-        default: (new Date()).getFullYear()
-      },
+      startDate: Date,
+      endDate: Date,
       startHour: {
         type: Number,
         default: 0
@@ -125,6 +119,13 @@
 
     data() {
       return {
+        startYear: null,
+        endYear: null,
+        startMonth: 1,
+        endMonth: 12,
+        startDay: 1,
+        endDay: 31,
+        selfTriggered: false,
         isSlotChange: false,
         dateSlots: [],
         shortMonthDates: [],
@@ -171,34 +172,90 @@
       },
 
       onChange(picker, values) {
+        if (this.selfTriggered) {
+          this.selfTriggered = false;
+          return;
+        }
         this.isSlotChange = true;
+        let currentValue = this.getValue(values);
         if (this.type.indexOf('date') > -1) {
+          if (currentValue.getTime() < this.startDate.getTime()) {
+            this.value = this.startDate;
+            currentValue = this.startDate;
+            this.selfTriggered = true;
+            this.setSlots();
+          }
+          if (currentValue.getTime() > this.endDate.getTime()) {
+            this.value = this.endDate;
+            currentValue = this.endDate;
+            this.selfTriggered = true;
+            this.setSlots();
+          }
           if (this.isShortMonth(this.getTrueValue(values[1]))) {
             if (this.shortMonthDates.indexOf(values[2]) === -1) {
               picker.setSlotValue(2, this.dateSlots[2].values[0]);
               return;
             }
-            this.dateSlots[2].values = this.shortMonthDates;
+            this.dateSlots[2].values = this.shortMonthDates.map(item => item);
           } else if (this.getTrueValue(values[1]) === 2) {
             if (this.isLeapYear(this.getTrueValue(values[0]))) {
               if (this.leapFebDates.indexOf(values[2]) === -1) {
                 picker.setSlotValue(2, this.dateSlots[2].values[0]);
                 return;
               }
-              this.dateSlots[2].values = this.leapFebDates;
+              this.dateSlots[2].values = this.leapFebDates.map(item => item);
             } else {
               if (this.febDates.indexOf(values[2]) === -1) {
                 picker.setSlotValue(2, this.dateSlots[2].values[0]);
                 return;
               }
-              this.dateSlots[2].values = this.febDates;
+              this.dateSlots[2].values = this.febDates.map(item => item);
             }
           } else {
-            this.dateSlots[2].values = this.longMonthDates;
+            this.dateSlots[2].values = this.longMonthDates.map(item => item);
           }
         }
-        this.value = this.getValue(values);
+        this.value = currentValue;
+        if (this.type.indexOf('date') > -1) {
+          this.rimDetect(this.dateSlots[2].values);
+        }
         this.$emit('change', this.value);
+      },
+
+      rimDetect(monthDates) {
+        this.dateSlots[1].values = this.fillValues('M', 1, 12);
+        if (this.value.getFullYear() === this.startDate.getFullYear()) {
+          this.trimSlots('start', this.startDate, 1);
+          if (this.value.getMonth() === this.startDate.getMonth()) {
+            this.trimSlots('start', this.startDate, 2);
+          } else {
+            this.dateSlots[2].values = monthDates.map(item => item);
+          }
+        }
+        if (this.value.getFullYear() === this.endDate.getFullYear()) {
+          this.trimSlots('end', this.endDate, 1);
+          if (this.value.getMonth() === this.endDate.getMonth()) {
+            this.trimSlots('end', this.endDate, 2);
+          } else {
+            this.dateSlots[2].values = monthDates.map(item => item);
+          }
+        }
+      },
+
+      trimSlots(rim, value, index) {
+        let arr = [value.getFullYear(), value.getMonth() + 1, value.getDate(), value.getHours(), value.getMinutes()];
+        if (rim === 'start') {
+          while (this.getTrueValue(this.dateSlots[index].values[0]) < arr[index]) {
+            this.dateSlots[index].values.shift();
+          }
+        }
+        if (rim === 'end') {
+          let lastIndex = this.dateSlots[index].values.length - 1;
+          while (this.getTrueValue(this.dateSlots[index].values[lastIndex]) > arr[index]) {
+            this.dateSlots[index].values.pop();
+            lastIndex--;
+          }
+        }
       },
 
       fillValues(type, start, end) {
@@ -223,8 +280,8 @@
       generateSlots() {
         const INTERVAL_MAP = {
           Y: [this.startYear, this.endYear],
-          M: [1, 12],
-          D: [1, 31],
+          M: [this.startMonth, this.endMonth],
+          D: [this.startDay, this.endDay],
           H: [this.startHour, this.endHour],
           m: [0, 59]
         };
@@ -285,6 +342,11 @@
 
     watch: {
       value() {
+        this.$nextTick(() => {
+          this.$refs.picker.$children.forEach(child => {
+            child.doOnValueChange();
+          });
+        });
         if (!this.isSlotChange) {
           this.setSlots();
         } else {
@@ -294,6 +356,19 @@
     },
 
     created() {
+      let now = new Date();
+      this.startDate = this.startDate || new Date(now.getFullYear() - 10, 0, 1);
+      this.endDate = this.endDate || new Date(now.getFullYear() + 10, 11, 31);
+      this.startYear = this.startDate.getFullYear();
+      this.endYear = this.endDate.getFullYear();
+      if (this.startYear === this.endYear) {
+        this.startMonth = this.startDate.getMonth() + 1;
+        this.endMonth = this.endDate.getMonth() + 1;
+        if (this.startMonth === this.endMonth) {
+          this.startDay = this.startDate.getDate();
+          this.endDay = this.endDate.getDate();
+        }
+      }
       for (let i = 1; i <= 28; i++) {
         this.febDates.push(this.dateFormat.replace('{value}', ('0' + i).slice(-2)));
       }
@@ -305,6 +380,11 @@
 
     ready() {
       this.setSlots();
+      if (this.type.indexOf('date') > -1 && !this.value) {
+        this.value = this.startDate;
+        this.trimSlots('start', this.value, 1);
+        this.trimSlots('start', this.value, 2);
+      }
     }
   };
 </script>

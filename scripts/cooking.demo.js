@@ -8,7 +8,7 @@ cooking.set({
     app: path.join(__dirname, '../example/entry.js'),
     vendor: ['vue', 'vue-router', 'fastclick']
   },
-  dist: '../example/dist',
+  dist: './example/dist',
   template: path.join(__dirname, '../example/index.tpl'),
   devServer: {
     port: 8789,

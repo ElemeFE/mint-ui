@@ -42,7 +42,7 @@
     "vue": "^1.0.26",
     "vue-clickoutside": "0.0.4",
     "vue-infinite-scroll": "^0.2.3",
-    "vue-lazyload": "^0.4.3",
+    "vue-lazyload": "^0.4.5",
     "vue-msgbox": "^0.2.11",
     "vue-popup": "^0.1.8",
     "vue-router": "^0.7.13",

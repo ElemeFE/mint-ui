@@ -8,6 +8,7 @@
         'is-textarea': type === 'textarea'
       }]">
       <textarea
+        v-el:textarea
         class="mint-field-core"
         :placeholder="placeholder"
         v-if="type === 'textarea'"
@@ -17,6 +18,7 @@
         v-model="value">
       </textarea>
       <input
+        v-el:input
         class="mint-field-core"
         :placeholder="placeholder"
         :number="type === 'number'"
@@ -43,6 +45,7 @@
 <script>
 import XCell from 'packages/cell/index.js';
 import Clickoutside from 'vue-clickoutside';
+
 if (process.env.IMPORTCSS) {
   require('packages/cell/style.css');
   require('packages/font/style.css');
@@ -94,11 +97,27 @@ export default {
       type: String,
       default: 'default'
     },
-    value: ''
+    value: {},
+    attr: Object
   },
 
   components: {
     XCell
+  },
+
+  watch: {
+    attr: {
+      immediate: true,
+      handler(attrs) {
+        this.$nextTick(() => {
+          const target = [this.$els.input, this.$els.textarea];
+          target.forEach(el => {
+            if (!el || !attrs) return;
+            Object.keys(attrs).map(name => el.setAttribute(name, attrs[name]));
+          });
+        });
+      }
+    }
   }
 };
 </script>

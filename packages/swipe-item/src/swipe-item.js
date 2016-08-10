@@ -1,5 +1,5 @@
 import { SwipeItem } from 'vue-swipe';
-import 'vue-swipe/dist/vue-swipe.css';
+import 'main/style/empty.css';
 
 SwipeItem.name = 'mt-swipe-item';
 module.exports = SwipeItem;

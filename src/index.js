@@ -32,6 +32,8 @@ import IndexSection from '../packages/index-section/index.js';
 import '../src/assets/font/iconfont.css';
 
 const install = function(Vue) {
+  if (install.installed) return;
+
   Vue.component(Header.name, Header);
   Vue.component(Button.name, Button);
   Vue.component(Cell.name, Cell);
@@ -55,9 +57,6 @@ const install = function(Vue) {
   Vue.component(Range.name, Range);
   Vue.component(Picker.name, Picker);
   Vue.component(Progress.name, Progress);
-  Vue.component(Toast.name, Toast);
-  Vue.component(Indicator.name, Indicator);
-  Vue.component(MessageBox.name, MessageBox);
   Vue.component(DatetimePicker.name, DatetimePicker);
   Vue.component(IndexList.name, IndexList);
   Vue.component(IndexSection.name, IndexSection);
@@ -66,6 +65,10 @@ const install = function(Vue) {
     loading: require('./assets/loading-spin.svg'),
     try: 3
   });
+
+  Vue.$messagebox = Vue.prototype.$messagebox = MessageBox;
+  Vue.$toast = Vue.prototype.$toast = Toast;
+  Vue.$indicator = Vue.prototype.$indicator = Indicator;
 };
 
 // auto install

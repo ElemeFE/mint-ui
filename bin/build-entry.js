@@ -11,12 +11,18 @@ var MAIN_TEMPLATE = `{{include}}
 import '../src/assets/font/iconfont.css';
 
 const install = function(Vue) {
+  if (install.installed) return;
+
 {{install}}
   Vue.use(InfiniteScroll);
   Vue.use(Lazyload, {
     loading: require('./assets/loading-spin.svg'),
     try: 3
   });
+
+  Vue.$messagebox = Vue.prototype.$messagebox = MessageBox;
+  Vue.$toast = Vue.prototype.$toast = Toast;
+  Vue.$indicator = Vue.prototype.$indicator = Indicator;
 };
 
 // auto install
@@ -47,7 +53,16 @@ ComponentNames.forEach(name => {
   }))
 
 
-  if (['InfiniteScroll', 'Lazyload'].indexOf(componentName) === -1) {
+  if ([
+      // directives
+      'InfiniteScroll',
+      'Lazyload',
+
+      // services
+      'MessageBox',
+      'Toast',
+      'Indicator'
+    ].indexOf(componentName) === -1) {
     installTemplate.push(render(ISNTALL_COMPONENT_TEMPLATE, {
       name: componentName,
       component: name

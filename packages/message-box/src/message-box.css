@@ -1,0 +1,59 @@
+@import "../../../src/style/var.css";
+
+.msgbox-header {
+  padding: 15px 0 0;
+  border-bottom: none;
+}
+
+.msgbox-content {
+  padding: 10px 20px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.msgbox-title {
+  text-align: center;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.msgbox-status {
+  display: none;
+}
+
+.msgbox-message {
+  color: #999;
+  margin: 0;
+}
+
+.msgbox-btns {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 40px;
+  line-height: 40px;
+}
+
+.msgbox-btn {
+  line-height: 35px;
+}
+
+.msgbox-btn:focus {
+  outline: none;
+}
+
+.msgbox-btn:active {
+  background-color: #fff;
+}
+
+.msgbox-cancel:active {
+  color: #000;
+}
+
+.msgbox-confirm:active {
+  color: #26a2ff;
+}
+
+.msgbox-confirm {
+  color: $color-blue;
+}

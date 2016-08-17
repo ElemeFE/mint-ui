@@ -1,0 +1,53 @@
+{
+  "name": "mint-ui",
+  "version": "0.2.6",
+  "description": "Mobile UI elements for vue.js",
+  "keywords": [
+    "component",
+    "vue",
+    "mobile",
+    "eleme"
+  ],
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "dev": "npm run build-entry && cooking watch -c scripts/cooking.demo.js",
+    "dist": "rm -rf lib && npm run build-entry && cooking build -c scripts/cooking.conf.js -p && cooking build -c scripts/cooking.component.js -p",
+    "deploy": "npm run build-entry && cooking build -c scripts/cooking.demo.js -p && gh-pages -d example/dist --remote eleme",
+    "prepublish": "npm run dist && git commit -am 'build'",
+    "build-entry": "node bin/build-entry"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElemeFE/mint-ui.git"
+  },
+  "homepage": "https://github.com/ElemeFE/mint-ui#readme",
+  "bugs": {
+    "url": "https://github.com/ElemeFE/mint-ui/issues"
+  },
+  "author": "elemefe",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-preset-es2015-loose": "^7.0.0",
+    "fastclick": "^1.0.6",
+    "gh-pages": "^0.11.0",
+    "json-templater": "^1.0.4",
+    "kanpai": "^0.6.0",
+    "lerna": "2.0.0-beta.18",
+    "my-local-ip": "^1.0.0",
+    "uppercamelcase": "^1.1.0",
+    "vue": "^2.0.0-rc.2",
+    "vue-clickoutside": "0.0.4",
+    "vue-infinite-scroll": "^0.2.3",
+    "vue-lazyload": "^0.4.5",
+    "vue-loader": "^9.3.2",
+    "vue-msgbox": "^0.2.11",
+    "vue-popup": "0.1.10",
+    "vue-router": "^2.0.0-rc.3",
+    "vue-swipe": "^0.2.6",
+    "vue-toast-mobile": "^0.1.3"
+  }
+}

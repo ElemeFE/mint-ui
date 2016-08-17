@@ -1,0 +1,42 @@
+@component-namespace mint {
+    @component indicator {
+      @descendent wrapper {
+        position: fixed 50% * * 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 5px;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        box-sizing: border-box;
+        text-align: center;
+      }
+
+      @descendent text {
+        display: block;
+        color: #fff;
+        text-align: center;
+        margin-top: 10px;
+        font-size: 16px;
+      }
+
+      @descendent spin {
+        display: inline-block;
+        text-align: center;
+      }
+
+      @descendent mask {
+        position: fixed 0 * * 0;
+        size: 100%;
+        opacity: 0;
+        background: transparent;
+      }
+    }
+  }
+
+  .mint-indicator-transition {
+    transition: opacity .2s linear;
+  }
+
+  .mint-indicator-enter,
+  .mint-indicator-leave {
+    opacity: 0;
+  }

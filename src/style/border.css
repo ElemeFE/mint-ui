@@ -1,0 +1,30 @@
+@define-mixin border $color {
+  color: $(color);
+  content: " ";
+  size: 100% 1;
+  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    transform: scaleY(.5);
+  }
+}
+
+@define-mixin border-top  $color {
+  position: relative;
+
+  &::after {
+    @mixin border $(color);
+    border-top: 1px solid;
+    position: absolute 0 * * 0;
+    transform-origin: 0 0;
+  }
+}
+
+@define-mixin border-bottom $color {
+  position: relative;
+
+  &::before {
+    @mixin border $(color);
+    border-bottom: 1px solid;
+    position: absolute * * 0 0;
+    transform-origin: 0 100%;
+  }
+}

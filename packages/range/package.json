@@ -1,0 +1,12 @@
+{
+  "name": "mint-range",
+  "description": "",
+  "version": "0.1.0",
+  "main": "lib/index.js",
+  "author": "long.zhang@ele.me",
+  "homepage": "https://github.com/ElemeFE/mint-ui",
+  "license": "MIT",
+  "repository": "https://github.com/ElemeFE/mint-ui/tree/master/components/mint-range",
+  "dependencies": {
+  }
+}

@@ -100,7 +100,8 @@
   import Vue from 'vue';
   import draggable from './draggable';
   import translateUtil from './translate';
-  import { addClass, removeClass, once } from 'wind-dom';
+  import { once } from 'wind-dom/src/event';
+  import { addClass, removeClass } from 'wind-dom/src/class';
   require('raf.js');
 
   var rotateElement = function(element, angle) {

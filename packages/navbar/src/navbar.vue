@@ -32,7 +32,7 @@ export default {
 
   props: {
     fixed: Boolean,
-    selected: ''
+    selected: {}
   }
 };
 </script>

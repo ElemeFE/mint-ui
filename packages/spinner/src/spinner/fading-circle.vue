@@ -1,22 +1,9 @@
 <template>
-  <div class="kebab-spinner-fading-circle circle-color-{{_uid}}" :style="{
+  <div :class="['mint-spinner-fading-circle circle-color-' + _uid]" :style="{
       width: spinnerSize,
       height: spinnerSize
     }">
-    <style>.circle-color-{{_uid}} > div::before { background-color: {{ spinnerColor }}; }</style>
-    <div class="is-circle1 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle2 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle3 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle4 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle5 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle6 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle7 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle8 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle9 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle10 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle11 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle12 kebab-spinner-fading-circle-circle"></div>
-  </div>
+    <div v-for="n in 12" :class="['is-circle' + (n + 1)]" class="mint-spinner-fading-circle-circle"></div>
 </template>
 
 <script>
@@ -25,12 +12,29 @@
   export default {
     name: 'fading-circle',
 
-    mixins: [common]
+    mixins: [common],
+
+    created() {
+      this.styleNode = document.createElement('style');
+      const css = `.circle-color-${this._uid} > div::before { background-color: ${this.spinnerColor}; }`;
+
+      this.styleNode.type = 'text/css';
+      this.styleNode.rel = 'stylesheet';
+      this.styleNode.title = 'fading circle style';
+      document.getElementsByTagName('head')[0].appendChild(this.styleNode);
+      this.styleNode.appendChild(document.createTextNode(css));
+    },
+
+    destroyed() {
+      if (this.styleNode) {
+        this.styleNode.parentNode.removeChild(this.styleNode);
+      }
+    }
   };
 </script>
 
 <style lang="css">
-  @component-namespace kebab-spinner {
+  @component-namespace mint-spinner {
     @component fading-circle {
       position: relative;
 
@@ -44,7 +48,7 @@
           margin: 0 auto;
           size: 15%;
           border-radius: 100%;
-          animation: kebab-fading-circle 1.2s infinite ease-in-out both;
+          animation: mint-fading-circle 1.2s infinite ease-in-out both;
         }
 
          @for $i from 2 to 12 {
@@ -59,7 +63,7 @@
       }
     }
 
-    @keyframes kebab-fading-circle {
+    @keyframes mint-fading-circle {
       0%, 39%, 100% { opacity: 0 }
       40% { opacity: 1 }
     }

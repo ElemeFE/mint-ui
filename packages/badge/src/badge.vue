@@ -1,7 +1,7 @@
 <template>
   <span
     class="mint-badge"
-    :style="{ 'background-color': color }"
+    :style="{ backgroundColor: color }"
     :class="['is-' + type, 'is-size-' + size]">
     <slot></slot>
   </span>

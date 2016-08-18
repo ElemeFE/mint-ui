@@ -1,10 +1,10 @@
 <template>
   <div class="mt-range" :class="{ 'mt-range--disabled': disabled }">
     <slot name="start"></slot>
-    <div class="mt-range-content" v-el:content>
+    <div class="mt-range-content" ref="content">
       <div class="mt-range-runway" :style="{ 'border-top-width': barHeight + 'px' }"></div>
       <div class="mt-range-progress" :style="{ width: progress + '%', height: barHeight + 'px' }"></div>
-      <div class="mt-range-thumb" v-el:thumb :style="{ left: progress + '%' }"></div>
+      <div class="mt-range-thumb" ref="thumb" :style="{ left: progress + '%' }"></div>
     </div>
     <slot name="end"></slot>
   </div>
@@ -80,6 +80,7 @@
 
   export default {
     name: 'mt-range',
+
     props: {
       min: {
         type: Number,
@@ -105,6 +106,7 @@
         default: 1
       }
     },
+
     computed: {
       progress() {
         const value = this.value;
@@ -112,8 +114,10 @@
         return Math.floor((value - this.min) / (this.max - this.min) * 100);
       }
     },
-    ready() {
-      const { thumb, content } = this.$els;
+
+    mounted() {
+      const thumb = this.$refs.thumb;
+      const content = this.$refs.content;
 
       const getThumbPosition = () => {
         const contentBox = content.getBoundingClientRect();
@@ -150,7 +154,7 @@
             newProgress = 1;
           }
 
-          this.value = Math.round(this.min + newProgress * (this.max - this.min));
+          this.$emit('input', Math.round(this.min + newProgress * (this.max - this.min)));
         },
         end: () => {
           if (this.disabled) return;

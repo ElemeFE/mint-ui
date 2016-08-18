@@ -1,7 +1,7 @@
 <template>
   <div class="mt-progress">
     <slot name="start"></slot>
-    <div class="mt-progress-content" v-el:content>
+    <div class="mt-progress-content">
       <div class="mt-progress-runway" :style="{ height: barHeight + 'px' }"></div>
       <div class="mt-progress-progress" :style="{ width: value + '%', height: barHeight + 'px' }"></div>
     </div>
@@ -62,9 +62,7 @@
     name: 'mt-progress',
 
     props: {
-      value: {
-        type: Number
-      },
+      value: Number,
       barHeight: {
         type: Number,
         default: 3

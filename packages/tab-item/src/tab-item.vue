@@ -1,7 +1,7 @@
 <template>
   <a class="mint-tab-item"
-    @click="$parent.selected = id"
-    :class="{ 'is-selected': $parent.selected === id }">
+    @click="$parent.$emit('input', id)"
+    :class="{ 'is-selected': $parent.value === id }">
     <div class="mint-tab-item-icon"><slot name="icon"></slot></div>
     <div class="mint-tab-item-label"><slot></slot></div>
   </a>
@@ -25,9 +25,7 @@
 export default {
   name: 'mt-tab-item',
 
-  props: {
-    id: ''
-  }
+  props: ['id']
 };
 </script>
 

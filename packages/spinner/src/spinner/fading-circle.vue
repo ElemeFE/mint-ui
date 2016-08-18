@@ -1,9 +1,9 @@
 <template>
-  <div :class="['kebab-spinner-fading-circle circle-color-' + _uid]" :style="{
+  <div :class="['mint-spinner-fading-circle circle-color-' + _uid]" :style="{
       width: spinnerSize,
       height: spinnerSize
     }">
-    <div v-for="n in 12" :class="['is-circle' + (n + 1)]" class="kebab-spinner-fading-circle-circle"></div>
+    <div v-for="n in 12" :class="['is-circle' + (n + 1)]" class="mint-spinner-fading-circle-circle"></div>
 </template>
 
 <script>
@@ -34,7 +34,7 @@
 </script>
 
 <style lang="css">
-  @component-namespace kebab-spinner {
+  @component-namespace mint-spinner {
     @component fading-circle {
       position: relative;
 
@@ -48,7 +48,7 @@
           margin: 0 auto;
           size: 15%;
           border-radius: 100%;
-          animation: kebab-fading-circle 1.2s infinite ease-in-out both;
+          animation: mint-fading-circle 1.2s infinite ease-in-out both;
         }
 
          @for $i from 2 to 12 {
@@ -63,7 +63,7 @@
       }
     }
 
-    @keyframes kebab-fading-circle {
+    @keyframes mint-fading-circle {
       0%, 39%, 100% { opacity: 0 }
       40% { opacity: 1 }
     }

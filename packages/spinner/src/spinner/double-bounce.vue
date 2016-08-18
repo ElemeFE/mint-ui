@@ -1,10 +1,10 @@
 <template>
-  <div class="kebab-spinner-double-bounce" :style="{
+  <div class="mint-spinner-double-bounce" :style="{
       width: spinnerSize,
       height: spinnerSize
     }">
-    <div class="kebab-spinner-double-bounce-bounce1" :style="{ backgroundColor: spinnerColor }"></div>
-    <div class="kebab-spinner-double-bounce-bounce2" :style="{ backgroundColor: spinnerColor }"></div>
+    <div class="mint-spinner-double-bounce-bounce1" :style="{ backgroundColor: spinnerColor }"></div>
+    <div class="mint-spinner-double-bounce-bounce2" :style="{ backgroundColor: spinnerColor }"></div>
   </div>
 </template>
 
@@ -19,7 +19,7 @@
 </script>
 
 <style lang="css">
-  @component-namespace kebab-spinner {
+  @component-namespace mint-spinner {
     @component double-bounce {
       position: relative;
 
@@ -32,7 +32,7 @@
         top: 0;
         left: 0;
 
-        animation: kebab-spinner-double-bounce 2.0s infinite ease-in-out;
+        animation: mint-spinner-double-bounce 2.0s infinite ease-in-out;
       }
 
       @descendent bounce2 {
@@ -41,7 +41,7 @@
     }
   }
 
-  @keyframes kebab-spinner-double-bounce {
+  @keyframes mint-spinner-double-bounce {
     0%, 100% {
       transform: scale(0.0);
     }

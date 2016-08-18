@@ -27,14 +27,20 @@
     mixins: [common],
 
     created() {
-      const styleNode = document.createElement('style');
+      this.styleNode = document.createElement('style');
       const css = `.circle-color-${this._uid} > div::before { background-color: ${this.spinnerColor}; }`;
 
-      styleNode.type = 'text/css';
-      styleNode.rel = 'stylesheet';
-      styleNode.title = 'fading circle style';
-      document.getElementsByTagName('head')[0].appendChild(styleNode);
-      styleNode.appendChild(document.createTextNode(css));
+      this.styleNode.type = 'text/css';
+      this.styleNode.rel = 'stylesheet';
+      this.styleNode.title = 'fading circle style';
+      document.getElementsByTagName('head')[0].appendChild(this.styleNode);
+      this.styleNode.appendChild(document.createTextNode(css));
+    },
+
+    destroyed() {
+      if (this.styleNode) {
+        this.styleNode.parentNode.removeChild(this.styleNode);
+      }
     }
   };
 </script>

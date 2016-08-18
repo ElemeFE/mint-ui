@@ -1,6 +1,6 @@
 <template>
   <div class="mint-switch">
-    <input class="mint-switch-core" type="checkbox" :value="value" @change="handleChange">
+    <input class="mint-switch-core" type="checkbox" v-model="currentValue">
     <div class="mint-switch-label"><slot></slot></div>
   </div>
 </template>
@@ -23,9 +23,15 @@ export default {
     value: Boolean
   },
 
-  methods: {
-    handleChange(val) {
-      this.$emit('input', val.target.checked);
+  data() {
+    return {
+      currentValue: this.value
+    };
+  },
+
+  watch: {
+    currentValue(val) {
+      this.$emit('input', val);
     }
   }
 };

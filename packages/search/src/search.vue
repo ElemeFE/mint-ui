@@ -4,28 +4,28 @@
       <div class="mint-searchbar-inner">
         <i class="mintui mintui-search" v-show="visible"></i>
         <input
-        v-el:input
+        ref="input"
         @click="visible = true"
         type="search"
-        v-model="value"
+        v-model="currentValue"
         :placeholder="visible ? placeholder : ''"
         class="mint-searchbar-core">
       </div>
       <a
         class="mint-searchbar-cancel"
-        @click="visible = false, value = ''"
+        @click="visible = false, currentValue = ''"
         v-show="visible"
         v-text="cancelText">
       </a>
       <label
-        @click="visible = true, $els.input.focus()"
+        @click="visible = true, $refs.input.focus()"
         class="mint-searchbar-placeholder"
         v-show="!visible">
         <i class="mintui mintui-search"></i>
         <span class="mint-searchbar-text" v-text="placeholder"></span>
       </label>
     </div>
-    <div class="mint-search-list" v-show="value">
+    <div class="mint-search-list" v-show="currentValue">
       <div class="mint-search-list-warp">
         <slot>
           <x-cell v-for="item in result" track-by="$index" :title="item"></x-cell>
@@ -62,12 +62,19 @@ export default {
 
   data() {
     return {
-      visible: false
+      visible: false,
+      currentValue: this.value
     };
   },
 
   components: {
     XCell
+  },
+
+  watch: {
+    currentValue(val) {
+      this.$emit('input', val);
+    }
   },
 
   props: {

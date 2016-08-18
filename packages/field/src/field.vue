@@ -3,22 +3,22 @@
     <x-cell
       class="mint-field-cell"
       :title="label"
-      v-clickoutside="active = false"
+      v-clickoutside="doCloseActive"
       :class="[{ 'is-nolabel': !label }, {
         'is-textarea': type === 'textarea'
       }]">
       <textarea
-        v-el:textarea
+        ref="textarea"
         class="mint-field-core"
         :placeholder="placeholder"
         v-if="type === 'textarea'"
         :rows="rows"
         :disabled="disabled"
         :readonly="readonly"
-        v-model="value">
+        v-model="currentValue">
       </textarea>
       <input
-        v-el:input
+        ref="input"
         class="mint-field-core"
         :placeholder="placeholder"
         :number="type === 'number'"
@@ -27,11 +27,11 @@
         @focus="active = true"
         :disabled="disabled"
         :readonly="readonly"
-        v-model="value">
+        v-model="currentValue">
       <div
-        @click="value = ''"
+        @click="currentValue = ''"
         class="mint-field-clear"
-        v-show="value && type !== 'textarea' && active">
+        v-show="currentValue && type !== 'textarea' && active">
         <i class="mintui mintui-field-error"></i>
       </div>
       <span class="mint-field-state" v-if="state" :class="['is-' + state]">
@@ -44,7 +44,7 @@
 
 <script>
 import XCell from 'packages/cell/index.js';
-import Clickoutside from 'vue-clickoutside';
+import Clickoutside from 'main/utils/clickoutside';
 
 if (process.env.IMPORTCSS) {
   require('packages/cell/style.css');
@@ -75,7 +75,8 @@ export default {
 
   data() {
     return {
-      active: false
+      active: false,
+      currentValue: this.value
     };
   },
 
@@ -105,12 +106,22 @@ export default {
     XCell
   },
 
+  methods: {
+    doCloseActive() {
+      this.active = false;
+    }
+  },
+
   watch: {
+    currentValue(val) {
+      this.$emit('input', val);
+    },
+
     attr: {
       immediate: true,
       handler(attrs) {
         this.$nextTick(() => {
-          const target = [this.$els.input, this.$els.textarea];
+          const target = [this.$refs.input, this.$refs.textarea];
           target.forEach(el => {
             if (!el || !attrs) return;
             Object.keys(attrs).map(name => el.setAttribute(name, attrs[name]));

@@ -3,29 +3,31 @@
     <div class="page-wrap">
       <div class="page-title">Tabbar</div>
       <div>
-        <mt-cell class="page-part" title="当前选中" :value="selected"></mt-cell>
+        <mt-cell class="page-part" title="当前选中" :value="selected" />
       </div>
 
-      <mt-tab-container style="page-tabbar-container" :active.sync="selected">
+      <mt-tab-container class="page-tabbar-container" :active="selected">
         <mt-tab-container-item id="外卖">
-          <mt-cell v-for="n in 10" :title="'餐厅 ' + $index"></mt-cell>
+          <mt-cell v-for="n in 10" :title="'餐厅 ' + n" />
         </mt-tab-container-item>
         <mt-tab-container-item id="订单">
-          <mt-cell v-for="n in 5" :title="'订单 ' + $index"></mt-cell>
+          <mt-cell v-for="n in 5" :title="'订单 ' + n" />
         </mt-tab-container-item>
         <mt-tab-container-item id="发现">
-          <mt-cell v-for="n in 7" :title="'发现 ' + $index"></mt-cell>
+          <mt-cell v-for="n in 7" :title="'发现 ' + n" />
         </mt-tab-container-item>
         <mt-tab-container-item id="我的">
           <div class="page-part">
-            <mt-cell v-for="n in 12" :title="'我的 ' + $index"></mt-cell>
+            <mt-cell v-for="n in 12" :title="'我的 ' + n" />
           </div>
-          <mt-button v-link="'/'" style="margin: 0 10px;" type="danger" size="large">退出</mt-button>
+          <router-link to="/">
+            <mt-button style="margin: 0 10px;" type="danger" size="large">退出</mt-button>
+          </router-link>
         </mt-tab-container-item>
       </mt-tab-container>
     </div>
 
-    <mt-tabbar :selected.sync="selected">
+    <mt-tabbar v-model="selected">
       <mt-tab-item id="外卖">
         <img slot="icon" src="../assets/100x100.png">
         外卖

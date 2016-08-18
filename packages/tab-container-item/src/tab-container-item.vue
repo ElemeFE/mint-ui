@@ -22,8 +22,6 @@ import 'main/style/empty.css';
 export default {
   name: 'mt-tab-container-item',
 
-  props: {
-    id: ''
-  }
+  props: ['id']
 };
 </script>

@@ -13,7 +13,7 @@ import 'main/style/empty.css';
  * @param {number|string} [active] - 当前激活的 tabId
  *
  * @example
- * <mt-tab-container :active.sync="selected">
+ * <mt-tab-container :active="selected">
  *   <mt-tab-container-item id="1"> 内容A </mt-tab-container-item>
  *   <mt-tab-container-item id="2"> 内容B </mt-tab-container-item>
  *   <mt-tab-container-item id="3"> 内容C </mt-tab-container-item>
@@ -22,8 +22,6 @@ import 'main/style/empty.css';
 export default {
   name: 'mt-tab-container',
 
-  props: {
-    active: ''
-  }
+  props: ['active']
 };
 </script>

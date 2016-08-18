@@ -1,5 +1,5 @@
 <template>
-  <div class="mint-checklist" :class="{ 'is-limit': max <= value.length }">
+  <div class="mint-checklist" :class="{ 'is-limit': max <= currentValue.length }">
     <label class="mint-checklist-title" v-text="title"></label>
     <x-cell v-for="option in options">
       <div slot="title">
@@ -10,7 +10,7 @@
             <input
               class="mint-checkbox-core"
               type="checkbox"
-              v-model="value"
+              v-model="currentValue"
               :disabled="option.disabled"
               :value="option.value || option">
           </span>
@@ -56,21 +56,24 @@ export default {
     value: Array
   },
 
-  components: {
-    XCell
+  components: { XCell },
+
+  data() {
+    return {
+      currentValue: this.value
+    };
   },
 
   computed: {
     limit() {
-      return this.max < this.value.length;
+      return this.max < this.currentValue.length;
     }
   },
 
   watch: {
-    value() {
-      if (this.limit) {
-        this.value.pop();
-      }
+    currentValue(val) {
+      if (this.limit) val.pop();
+      this.$emit('input', val);
     }
   }
 };

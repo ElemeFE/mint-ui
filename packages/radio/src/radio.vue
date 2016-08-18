@@ -10,7 +10,7 @@
             <input
               class="mint-radio-core"
               type="radio"
-              v-model="value"
+              v-model="currentValue"
               :disabled="option.disabled"
               :value="option.value || option">
           </span>
@@ -50,6 +50,18 @@ export default {
       required: true
     },
     value: String
+  },
+
+  data() {
+    return {
+      currentValue: this.value
+    };
+  },
+
+  watch: {
+    currentValue(val) {
+      this.$emit('input', val);
+    }
   },
 
   components: {

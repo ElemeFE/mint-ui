@@ -1,12 +1,10 @@
 <template>
   <div class="page-search">
-    <mt-search :value.sync="value" :result="filterResult"></mt-search>
+    <mt-search v-model="value" :result="filterResult"></mt-search>
   </div>
 </template>
 
 <script>
-import { filterBy } from 'main/utils/filter';
-
 export default {
   name: 'page-search',
 
@@ -34,9 +32,9 @@ export default {
     };
   },
 
-  methods: {
+  computed: {
     filterResult() {
-      return filterBy(this.defaultResult, this.value);
+      return this.defaultResult.filter(value => new RegExp(this.value, 'i').test(value));
     }
   }
 };

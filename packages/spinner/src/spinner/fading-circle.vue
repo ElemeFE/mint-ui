@@ -1,31 +1,33 @@
 <template>
-  <div class="kebab-spinner-fading-circle circle-color-{{_uid}}" :style="{
+  <div :class="['kebab-spinner-fading-circle circle-color-' + _uid]" :style="{
       width: spinnerSize,
       height: spinnerSize
     }">
-    <style>.circle-color-{{_uid}} > div::before { background-color: {{ spinnerColor }}; }</style>
-    <div class="is-circle1 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle2 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle3 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle4 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle5 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle6 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle7 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle8 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle9 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle10 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle11 kebab-spinner-fading-circle-circle"></div>
-    <div class="is-circle12 kebab-spinner-fading-circle-circle"></div>
-  </div>
+    <div v-for="n in 12" :class="['is-circle' + (n + 1)]" class="kebab-spinner-fading-circle-circle"></div>
 </template>
 
 <script>
   import common from './common.vue';
-
   export default {
     name: 'fading-circle',
 
-    mixins: [common]
+    mixins: [common],
+
+    created() {
+      this.styleNode = document.createElement('style');
+      const css = `.circle-color-${this._uid} > div::before { background-color: ${this.spinnerColor}; }`;
+      this.styleNode.type = 'text/css';
+      this.styleNode.rel = 'stylesheet';
+      this.styleNode.title = 'fading circle style';
+      document.getElementsByTagName('head')[0].appendChild(this.styleNode);
+      this.styleNode.appendChild(document.createTextNode(css));
+    },
+
+    destroyed() {
+      if (this.styleNode) {
+        this.styleNode.parentNode.removeChild(this.styleNode);
+      }
+    }
   };
 </script>
 

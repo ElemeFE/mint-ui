@@ -72,7 +72,7 @@ export default {
     active(val, oldValue) {
       if (!this.swipeable) return;
       const lastIndex = this.$children.findIndex(item => item.id === oldValue);
-      this.swipeLeaveTranstion(lastIndex);
+      this.swipeLeaveTransition(lastIndex);
     }
   },
 
@@ -90,7 +90,7 @@ export default {
   },
 
   methods: {
-    swipeLeaveTranstion(lastIndex = 0) {
+    swipeLeaveTransition(lastIndex = 0) {
       if (typeof this.index !== 'number') {
         this.index = this.$children.findIndex(item => item.id === this.active);
         this.swipeMove(-lastIndex * this.pageWidth);
@@ -131,7 +131,6 @@ export default {
       const x = Math.abs(offsetLeft);
 
       swiping = !(x < 5 || (x >= 5 && y >= x * 1.73));
-
       if (!swiping) return;
       evt.preventDefault();
 
@@ -167,7 +166,7 @@ export default {
         }
       }
 
-      this.swipeLeaveTranstion();
+      this.swipeLeaveTransition();
     }
   }
 };

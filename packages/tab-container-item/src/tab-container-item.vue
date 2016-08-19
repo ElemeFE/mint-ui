@@ -1,10 +1,12 @@
 <template>
-  <div v-show="id === $parent.active" class="mint-tab-container-item"><slot></slot></div>
+  <div
+    v-show="$parent.swiping || id === $parent.active"
+    class="mint-tab-container-item">
+    <slot></slot>
+  </div>
 </template>
 
 <script>
-import 'main/style/empty.css';
-
 /**
  * mt-tab-container-item
  * @desc 搭配 tab-container 使用
@@ -22,8 +24,15 @@ import 'main/style/empty.css';
 export default {
   name: 'mt-tab-container-item',
 
-  props: {
-    id: ''
-  }
+  props: ['id']
 };
 </script>
+
+<style>
+  @component-namespace mint {
+    @component tab-container-item {
+      flex-shrink: 0;
+      width: 100%;
+    }
+  }
+</style>

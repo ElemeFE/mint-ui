@@ -6,7 +6,7 @@
         <mt-cell class="page-part" title="当前选中" :value="selected"></mt-cell>
       </div>
 
-      <mt-tab-container style="page-tabbar-container" :active.sync="selected">
+      <mt-tab-container style="page-tabbar-container" :active.sync="selected" swipeable>
         <mt-tab-container-item id="外卖">
           <mt-cell v-for="n in 10" :title="'餐厅 ' + $index"></mt-cell>
         </mt-tab-container-item>

@@ -14,8 +14,7 @@ cooking.set({
   dist: './lib/',
   clean: false,
   template: false,
-  format: 'umd',
-  moduleName: ['MINT', '[name]'],
+  format: 'cjs',
   extractCSS: '[name]/style.css',
   extends: ['vue', 'lint', 'saladcss']
 });

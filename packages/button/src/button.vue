@@ -16,10 +16,9 @@
 </template>
 
 <script>
-if (process.env.IMPORTCSS) {
-  require('packages/font/style.css');
+if (process.env.NODE_ENV === 'component') {
+  require('mint-ui/packages/font/style.css');
 }
-
 /**
  * mt-header
  * @module components/button

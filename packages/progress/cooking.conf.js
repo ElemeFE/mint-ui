@@ -19,7 +19,7 @@ cooking.add('resolve.alias', {
 
 cooking.add('resolve.alias', {
   'main': path.join(__dirname, '../../src'),
-  'packages': path.join(__dirname, '../../packages')
+  'mint-ui': path.join(__dirname, '..')
 });
 
 cooking.add('externals', {

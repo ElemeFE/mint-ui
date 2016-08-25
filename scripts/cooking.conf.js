@@ -1,6 +1,5 @@
 var path = require('path');
 var cooking = require('cooking');
-var webpack = require('webpack');
 
 cooking.set({
   entry: path.join(__dirname, '../src/index.js'),
@@ -15,14 +14,11 @@ cooking.set({
 
 cooking.remove('output.publicPath');
 
-cooking.add('plugin.defiendImportCSS', new webpack.DefinePlugin({
-  'process.env.IMPORTCSS': JSON.stringify(false)
-}));
 cooking.add('resolve.alias', {
-  'main': path.join(__dirname, '../src'),
-  'packages': path.join(__dirname, '../packages')
+  'mint-ui': path.join(__dirname, '..')
 });
 cooking.add('output.filename', 'index.js');
+
 cooking.add('externals.vue', {
   root: 'Vue',
   commonjs: 'vue',

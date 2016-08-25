@@ -43,12 +43,11 @@
 </template>
 
 <script>
-import XCell from 'packages/cell/index.js';
+import XCell from 'mint-ui/packages/cell/index.js';
 import Clickoutside from 'vue-clickoutside';
-
-if (process.env.IMPORTCSS) {
-  require('packages/cell/style.css');
-  require('packages/font/style.css');
+if (process.env.NODE_ENV === 'component') {
+  require('mint-ui/packages/font/style.css');
+  require('mint-ui/packages/cell/style.css');
 }
 
 /**

@@ -18,7 +18,6 @@
     "dev": "npm run build-entry && cooking watch -c scripts/cooking.demo.js",
     "dist": "rm -rf lib && npm run build-entry && cooking build -c scripts/cooking.conf.js -p && cooking build -c scripts/cooking.component.js -p",
     "deploy": "npm run build-entry && cooking build -c scripts/cooking.demo.js -p && gh-pages -d example/dist --remote eleme",
-    "preversion": "npm run dist && git commit -am 'build'",
     "build-entry": "node bin/build-entry"
   },
   "repository": {

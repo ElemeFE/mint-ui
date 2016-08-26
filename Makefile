@@ -17,7 +17,8 @@ dist-all:
 deploy:
 	npm run deploy
 
-pub:
+pub: dist
+	git commit -am 'build'
 	./node_modules/.bin/kp $(filter-out $@,$(MAKECMDGOALS))
 	git push eleme master --tags
 

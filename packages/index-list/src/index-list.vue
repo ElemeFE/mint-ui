@@ -96,7 +96,22 @@
       };
     },
 
+    watch: {
+      sections() {
+        this.getFirstSection();
+        this.$nextTick(() => {
+          this.navWidth = this.$els.nav.clientWidth;
+        });
+      }
+    },
+
     methods: {
+      getFirstSection() {
+        if (this.sections.length > 0) {
+          this.firstSection = this.sections[0].$el;
+        }
+      },
+
       handleTouchStart(e) {
         if (e.target.tagName !== 'LI') {
           return;
@@ -146,7 +161,7 @@
       this.$nextTick(() => {
         this.navWidth = this.$els.nav.clientWidth;
       });
-      this.firstSection = this.$els.content.getElementsByTagName('li')[0];
+      this.getFirstSection();
     }
   };
 </script>

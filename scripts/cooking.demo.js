@@ -1,5 +1,6 @@
 var path = require('path');
 var cooking = require('cooking');
+var webpack = require('webpack');
 
 cooking.set({
   entry: {
@@ -38,5 +39,9 @@ if (process.env.NODE_ENV === 'production') {
   cooking.add('externals.vue-router', 'VueRouter');
   cooking.add('fastclick', 'FastClick');
 }
+
+cooking.add('plugins.Define', new webpack.DefinePlugin({
+  'process.env.NODE_ENV': JSON.stringify('development')
+}));
 
 module.exports = cooking.resolve();

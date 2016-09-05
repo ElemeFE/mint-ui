@@ -1,19 +1,21 @@
 # Overview
-vue-indicator is a mobile loading indicator plugin for vue.js.
+mint-indicator is a mobile loading indicator plugin for vue.js.
 
 # Installation
-First, install `vue-indicator` from npm:
+First, install `mint-indicator` from npm:
 ```bash
-$ npm install vue-indicator
+$ npm install mint-indicator
 ```
 
 Then use it:
 ```Javascript
+require ('mint-indicator/lib/style.css');
+
 // ES6 mudule
-import Indicator from 'vue-indicator';
+import Indicator from 'mint-indicator';
 
 // CommonJS
-const Indicator = require('vue-indicator').default;
+const Indicator = require('mint-indicator').default;
 ```
 
 # Usage

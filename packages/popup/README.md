@@ -9,7 +9,7 @@ $ npm install mint-popup
 
 Import it:
 ```Javascript
-require ('mint-popup/lib/index.css');
+require ('mint-popup/lib/style.css');
 
 // ES6 mudule
 import Popup from 'mint-popup';

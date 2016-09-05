@@ -9,7 +9,7 @@ $ npm install mint-actionsheet
 
 Import it:
 ```Javascript
-require ('mint-actionsheet/lib/index.css');
+require ('mint-actionsheet/lib/style.css');
 
 // ES6 mudule
 import Actionsheet from 'mint-actionsheet';

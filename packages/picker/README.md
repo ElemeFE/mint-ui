@@ -4,11 +4,12 @@ vue-picker is a multi-slot picker based on vue.js.
 # Install
 
 ```Bash
+npm install mint-picker --save
 npm install vue-picker --save
 ```
 
 ```JavaScript
-require ('mint-picker/lib/index.css');
+require ('mint-picker/lib/style.css');
 
 // ES6 mudule
 import Picker from 'mint-picker';

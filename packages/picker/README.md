@@ -1,14 +1,14 @@
 # Overview
-vue-picker is a multi-slot picker based on vue.js.
+mint-picker is a multi-slot picker based on vue.js.
 
 # Install
 
 ```Bash
-npm install vue-picker --save
+npm install mint-picker
 ```
 
 ```JavaScript
-require ('mint-picker/lib/index.css');
+require ('mint-picker/lib/style.css');
 
 // ES6 mudule
 import Picker from 'mint-picker';

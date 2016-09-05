@@ -9,7 +9,7 @@ $ npm install mint-loadmore
 # Usage
 Import `mint-loadmore` to your project:
 ```Javascript
-require('mint-loadmore/lib/index.css');
+require('mint-loadmore/lib/style.css');
 
 // ES6 mudule
 import Loadmore from 'mint-loadmore';

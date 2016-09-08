@@ -299,6 +299,38 @@
         }
       },
 
+      isDateString(str) {
+        return /\d{4}(\-|\/|.)\d{1,2}\1\d{1,2}/.test(str);
+      },
+
+      getYear(value) {
+        return this.isDateString(value) ? value.split(' ')[0].split('-')[0] : value.getFullYear();
+      },
+
+      getMonth(value) {
+        return this.isDateString(value) ? value.split(' ')[0].split('-')[1] : value.getMonth() + 1;
+      },
+
+      getDate(value) {
+        return this.isDateString(value) ? value.split(' ')[0].split('-')[2] : value.getDate();
+      },
+
+      getHour(value) {
+        if (this.isDateString(value)) {
+          const str = value.split(' ')[1] || '00:00:00';
+          return str.split(':')[0];
+        }
+        return value.getHours();
+      },
+
+      getMinute(value) {
+        if (this.isDateString(value)) {
+          const str = value.split(' ')[1] || '00:00:00';
+          return str.split(':')[1];
+        }
+        return value.getMinutes();
+      },
+
       setSlots() {
         const setSlotValue = this.$refs.picker.setSlotValue;
         if (this.type === 'time' && typeof this.value === 'string') {
@@ -306,16 +338,16 @@
           setSlotValue(0, this.hourFormat.replace('{value}', valueArr[0]));
           setSlotValue(1, this.minuteFormat.replace('{value}', valueArr[1]));
         }
-        if (this.type !== 'time' && ({}).toString.call(this.value) === '[object Date]') {
-          let year = this.value.getFullYear();
-          let month = this.value.getMonth() + 1;
-          let date = this.value.getDate();
+        if (this.type !== 'time' && (({}).toString.call(this.value) === '[object Date]' || this.isDateString(this.value))) {
+          let year = this.getYear(this.value);
+          let month = this.getMonth(this.value);
+          let date = this.getDate(this.value);
           setSlotValue(0, this.yearFormat.replace('{value}', year));
           setSlotValue(1, this.monthFormat.replace('{value}', ('0' + month).slice(-2)));
           setSlotValue(2, this.dateFormat.replace('{value}', ('0' + date).slice(-2)));
           if (this.type === 'datetime') {
-            let hour = this.value.getHours();
-            let minute = this.value.getMinutes();
+            let hour = this.getHour(this.value);
+            let minute = this.getMinute(this.value);
             setSlotValue(3, this.hourFormat.replace('{value}', ('0' + hour).slice(-2)));
             setSlotValue(4, this.minuteFormat.replace('{value}', ('0' + minute).slice(-2)));
           }

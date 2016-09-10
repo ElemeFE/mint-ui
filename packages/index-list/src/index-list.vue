@@ -25,6 +25,8 @@
       
       @descendent content {
         overflow: auto;
+        margin: 0;
+        padding: 0;
       }
       
       @descendent nav {
@@ -43,6 +45,8 @@
       }
       
       @descendent navlist {
+        margin: 0;
+        padding: 0;
         list-style: none;
         max-height: 100%;
         display: flex;

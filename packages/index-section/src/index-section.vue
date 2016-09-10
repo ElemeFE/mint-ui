@@ -14,8 +14,13 @@
       margin: 0;
       
       @descendent index {
+        margin: 0;
         padding: 10px;
         background-color: #fafafa;
+        
+        & + ul {
+          padding: 0;
+        }
       }
     }
   }

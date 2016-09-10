@@ -80,8 +80,8 @@ RawGit
 
 NPMCDN
 
-- https://npmcdn.com/mint-ui/lib/index.js
-- https://npmcdn.com/mint-ui/lib/style.css
+- https://unpkg.com/mint-ui/lib/index.js
+- https://unpkg.com/mint-ui/lib/style.css
 
 ## Development
 

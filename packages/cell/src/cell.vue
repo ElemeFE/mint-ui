@@ -1,7 +1,7 @@
 <template>
   <a class="mint-cell">
     <span class="mint-cell-mask" v-if="isLink"></span>
-    <label class="mint-cell-title">
+    <div class="mint-cell-title">
       <slot name="icon">
         <i v-if="icon" class="mintui" :class="'mintui-' + icon"></i>
       </slot>
@@ -9,7 +9,7 @@
         <span class="mint-cell-text" v-text="title"></span>
         <span v-if="label" class="mint-cell-label" v-text="label"></span>
       </slot>
-    </label>
+    </div>
     <div class="mint-cell-value">
       <slot>
         <span v-text="value"></span>

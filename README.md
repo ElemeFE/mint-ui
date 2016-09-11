@@ -86,8 +86,7 @@ NPMCDN
 ## Development
 
 ```shell
-npm i cooking -g
-make dev
+npm run dev
 ```
 
 ## License

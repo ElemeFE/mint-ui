@@ -65,6 +65,10 @@
     },
 
     props: {
+      maxDistance: {
+        type: Number,
+        default: 150
+      },
       autoFill: {
         type: Boolean,
         default: true
@@ -287,7 +291,7 @@
         if (typeof this.topMethod === 'function' && this.direction === 'down' && this.getScrollTop(this.scrollEventTarget) === 0 && this.topStatus !== 'loading') {
           event.preventDefault();
           event.stopPropagation();
-          this.translate = distance - this.startScrollTop;
+          this.translate = distance <= this.maxDistance ? distance - this.startScrollTop : this.translate;
           if (this.translate < 0) {
             this.translate = 0;
           }
@@ -300,7 +304,7 @@
         if (typeof this.bottomMethod === 'function' && this.direction === 'up' && this.bottomReached && this.bottomStatus !== 'loading' && !this.bottomAllLoaded) {
           event.preventDefault();
           event.stopPropagation();
-          this.translate = this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance;
+          this.translate = Math.abs(distance) <= this.maxDistance ? this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance : this.translate;
           if (this.translate > 0) {
             this.translate = 0;
           }

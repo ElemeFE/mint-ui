@@ -21,8 +21,8 @@ import Radio from '../packages/radio/index.js';
 // import Range from '../packages/range/index.js';
 // import Picker from '../packages/picker/index.js';
 // import Progress from '../packages/progress/index.js';
-// import Toast from '../packages/toast/index.js';
-// import Indicator from '../packages/indicator/index.js';
+import Toast from '../packages/toast/index.js';
+import Indicator from '../packages/indicator/index.js';
 // import MessageBox from '../packages/message-box/index.js';
 // import InfiniteScroll from '../packages/infinite-scroll/index.js';
 // import Lazyload from '../packages/lazyload/index.js';
@@ -67,8 +67,8 @@ const install = function(Vue) {
   // });
 
   // Vue.$messagebox = Vue.prototype.$messagebox = MessageBox;
-  // Vue.$toast = Vue.prototype.$toast = Toast;
-  // Vue.$indicator = Vue.prototype.$indicator = Indicator;
+  Vue.$toast = Vue.prototype.$toast = Toast;
+  Vue.$indicator = Vue.prototype.$indicator = Indicator;
 };
 
 // auto install
@@ -80,7 +80,7 @@ module.exports = {
   install,
   // Header,
   // Button,
-  Cell
+  Cell,
   // Field,
   // Badge,
   // Switch,
@@ -101,8 +101,8 @@ module.exports = {
   // Range,
   // Picker,
   // Progress,
-  // Toast,
-  // Indicator,
+  Toast,
+  Indicator
   // MessageBox,
   // InfiniteScroll,
   // Lazyload,

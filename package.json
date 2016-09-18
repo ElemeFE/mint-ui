@@ -39,14 +39,14 @@
     "lerna": "2.0.0-beta.18",
     "my-local-ip": "^1.0.0",
     "uppercamelcase": "^1.1.0",
-    "vue": "^2.0.0-rc.2",
+    "vue": "^2.0.0-rc.6",
     "vue-clickoutside": "0.0.4",
     "vue-infinite-scroll": "^0.2.3",
     "vue-lazyload": "^0.4.5",
-    "vue-loader": "^9.3.2",
+    "vue-loader": "^9.4.2",
     "vue-msgbox": "^0.2.11",
     "vue-popup": "0.1.10",
-    "vue-router": "^2.0.0-rc.3",
+    "vue-router": "^2.0.0-rc.5",
     "vue-swipe": "^0.2.6",
     "vue-toast-mobile": "^0.1.3"
   }

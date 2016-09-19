@@ -37,7 +37,7 @@
         color: #666;
         margin-bottom: 5px;
       }
-      .swipe {
+      .mint-swipe {
         height: 200px;
         color: #fff;
         font-size: 30px;
@@ -45,7 +45,7 @@
         margin-bottom: 20px;
       }
 
-      .swipe-item {
+      .mint-swipe-item {
         line-height: 200px;
       }
 
@@ -66,7 +66,3 @@
     }
   }
 </style>
-
-<script>
-
-</script>

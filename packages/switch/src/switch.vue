@@ -14,7 +14,7 @@
  * @param {slot} - 显示内容
  *
  * @example
- * <mt-switch :value.sync="value"></mt-switch>
+ * <mt-switch v-model="value"></mt-switch>
  */
 export default {
   name: 'mt-switch',
@@ -30,6 +30,10 @@ export default {
   },
 
   watch: {
+    value(val) {
+      this.currentValue = val;
+    },
+
     currentValue(val) {
       this.$emit('input', val);
     }

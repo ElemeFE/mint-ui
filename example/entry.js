@@ -17,9 +17,10 @@ const router = new VueRouter({
 });
 
 new Vue({ // eslint-disable-line
+  el: '#app',
   render: h => h(App),
   router
-}).$mount('#app');
+});
 
 let indexScrollTop = 0;
 router.beforeEach((route, redirect, next) => {

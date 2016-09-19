@@ -135,8 +135,8 @@ export default {
           content: " ";
           position: absolute 3px * * 6px;
           size: 4px 8px;
-          transform: rotate(45deg);
-
+          transform: rotate(45deg) scale(0);
+          transition: transform .2s;
         }
 
         &:checked {
@@ -145,6 +145,7 @@ export default {
 
           &::after {
             border-color: $color-white;
+            transform: rotate(45deg) scale(1);
           }
         }
 

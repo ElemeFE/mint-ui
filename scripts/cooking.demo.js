@@ -22,12 +22,11 @@ cooking.set({
   assetsPath: 'static',
   urlLoaderLimit: 10000,
   extractCSS: true,
-  extends: ['vue', 'lint', 'saladcss']
-});
-
-cooking.add('resolve.alias', {
-  'src': path.join(__dirname, '../src'),
-  'mint-ui': path.join(__dirname, '..')
+  extends: ['vue', 'lint', 'saladcss'],
+  alias: {
+    'src': path.join(__dirname, '../src'),
+    'mint-ui': path.join(__dirname, '..')
+  }
 });
 
 cooking.add('preLoader.js.exclude', /node_modules|lib/);
@@ -38,10 +37,10 @@ if (process.env.NODE_ENV === 'production') {
   cooking.add('externals.vue', 'Vue');
   cooking.add('externals.vue-router', 'VueRouter');
   cooking.add('fastclick', 'FastClick');
+} else {
+  cooking.add('plugins.Define', new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify('development')
+  }));
 }
-
-cooking.add('plugins.Define', new webpack.DefinePlugin({
-  'process.env.NODE_ENV': JSON.stringify('development')
-}));
 
 module.exports = cooking.resolve();

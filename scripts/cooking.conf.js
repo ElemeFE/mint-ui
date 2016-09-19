@@ -9,22 +9,22 @@ cooking.set({
   format: 'umd',
   moduleName: 'MINT',
   extractCSS: 'style.css',
-  extends: ['vue', 'lint', 'saladcss']
+  extends: ['vue', 'lint', 'saladcss'],
+  alias: {
+    'mint-ui': path.join(__dirname, '..')
+  },
+  externals: {
+    vue: {
+      root: 'Vue',
+      commonjs: 'vue',
+      commonjs2: 'vue',
+      amd: 'vue'
+    }
+  }
 });
 
 cooking.remove('output.publicPath');
-
-cooking.add('resolve.alias', {
-  'mint-ui': path.join(__dirname, '..')
-});
 cooking.add('output.filename', 'index.js');
-
-cooking.add('externals.vue', {
-  root: 'Vue',
-  commonjs: 'vue',
-  commonjs2: 'vue',
-  amd: 'vue'
-});
 cooking.add('preLoader.js.exclude', /node_modules|lib/);
 cooking.add('preLoader.vue.exclude', /node_modules|lib/);
 

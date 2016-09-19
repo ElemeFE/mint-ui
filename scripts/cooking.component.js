@@ -10,14 +10,13 @@ cooking.set({
   template: false,
   format: 'cjs',
   extractCSS: '[name]/style.css',
-  extends: ['vue', 'lint', 'saladcss']
+  extends: ['vue', 'lint', 'saladcss'],
+  alias: {
+    'mint-ui': path.join(__dirname, '..')
+  }
 });
 
 cooking.remove('output.publicPath');
-
-cooking.add('resolve.alias', {
-  'mint-ui': path.join(__dirname, '..')
-});
 cooking.add('output.filename', '[name]/index.js');
 
 var externals = {};

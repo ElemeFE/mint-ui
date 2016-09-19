@@ -6,14 +6,11 @@
     <title>Mint UI</title>
     <!-- page -->
     <link rel="stylesheet" href="//at.alicdn.com/t/font_1469597443_9221172.css">
-    <% if (process.env.NODE_ENV === 'production') { %>
-    <script src="//unpkg.com/vue@1.0.24/dist/vue.js"></script>
-    <script src="//unpkg.com/vue-router@0.7.13/dist/vue-router.js"></script>
-    <script src="//unpkg.com/fastclick@1.0.6/lib/fastclick.js"></script>
-    <% } %>
   </head>
   <body>
-    <app></app>
-    <!-- built files will be auto injected -->
+    <app></app><% if (process.env.NODE_ENV === 'production') { %>
+    <script src="https://unpkg.com/vue@1.0.26/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@0.7.13/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/fastclick@1.0.6/lib/fastclick.js"></script><% } %>
   </body>
 </html>

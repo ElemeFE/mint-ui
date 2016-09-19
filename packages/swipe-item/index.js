@@ -1,1 +1,2 @@
-module.exports = require('./src/swipe-item.js');
+import SwipeItem from '../swipe/src/swipe-item.vue';
+export default SwipeItem;

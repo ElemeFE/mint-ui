@@ -3,8 +3,8 @@
     <h1 class="page-title">Pull up</h1>
     <p class="page-loadmore-desc">在列表底部, 按住 - 上拉 - 释放可以获取更多数据</p>
     <p class="page-loadmore-desc">此例请使用手机查看</p>
-    <div class="page-loadmore-wrapper" v-el:wrapper :style="{ height: wrapperHeight + 'px' }">
-      <mt-loadmore :bottom-method="loadBottom" :bottom-status.sync="bottomStatus" :bottom-all-loaded="allLoaded">
+    <div class="page-loadmore-wrapper" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
+      <mt-loadmore :bottom-method="loadBottom" @bottom-status-change="handleBottomChange" :bottom-all-loaded="allLoaded" ref="loadmore">
         <ul class="page-loadmore-list">
           <li v-for="item in list" class="page-loadmore-listitem">{{ item }}</li>
         </ul>
@@ -77,6 +77,10 @@
     },
 
     methods: {
+      handleBottomChange(status) {
+        this.bottomStatus = status;
+      },
+
       loadBottom(id) {
         setTimeout(() => {
           let lastValue = this.list[this.list.length - 1];
@@ -87,19 +91,19 @@
           } else {
             this.allLoaded = true;
           }
-          this.$broadcast('onBottomLoaded', id);
+          this.$refs.loadmore.onBottomLoaded(id);
         }, 1500);
       }
     },
 
-    compiled() {
+    created() {
       for (let i = 1; i <= 20; i++) {
         this.list.push(i);
       }
     },
 
-    ready() {
-      this.wrapperHeight = document.documentElement.clientHeight - this.$els.wrapper.getBoundingClientRect().top;
+    mounted() {
+      this.wrapperHeight = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top;
     }
   };
 </script>

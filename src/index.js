@@ -13,7 +13,7 @@ import Tabbar from '../packages/tabbar/index.js';
 import Search from '../packages/search/index.js';
 import Checklist from '../packages/checklist/index.js';
 import Radio from '../packages/radio/index.js';
-// import Loadmore from '../packages/loadmore/index.js';
+import Loadmore from '../packages/loadmore/index.js';
 // import Actionsheet from '../packages/actionsheet/index.js';
 // import Popup from '../packages/popup/index.js';
 // import Swipe from '../packages/swipe/index.js';
@@ -49,7 +49,7 @@ const install = function(Vue) {
   Vue.component(Search.name, Search);
   Vue.component(Checklist.name, Checklist);
   Vue.component(Radio.name, Radio);
-  // Vue.component(Loadmore.name, Loadmore);
+  Vue.component(Loadmore.name, Loadmore);
   // Vue.component(Actionsheet.name, Actionsheet);
   // Vue.component(Popup.name, Popup);
   // Vue.component(Swipe.name, Swipe);
@@ -93,7 +93,7 @@ module.exports = {
   // Search,
   // Checklist,
   // Radio,
-  // Loadmore,
+  Loadmore,
   // Actionsheet,
   // Popup,
   // Swipe,

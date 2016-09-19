@@ -43,7 +43,7 @@
       animation-delay: -0.32s;
     }
 
-    @descendent bounce1 {
+    @descendent bounce2 {
       animation-delay: -0.16s;
     }
   }

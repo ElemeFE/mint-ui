@@ -412,10 +412,14 @@
 
     ready() {
       this.setSlots();
-      if (this.type.indexOf('date') > -1 && !this.value) {
-        this.value = this.startDate;
-        this.trimSlots('start', this.value, 1);
-        this.trimSlots('start', this.value, 2);
+      if (!this.value) {
+        if (this.type.indexOf('date') > -1) {
+          this.value = this.startDate;
+          this.trimSlots('start', this.value, 1);
+          this.trimSlots('start', this.value, 2);
+        } else {
+          this.value = '00:00';
+        }
       }
     }
   };

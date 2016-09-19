@@ -1,6 +1,6 @@
 <template>
   <div class="mint-loadmore">
-    <div class="mint-loadmore-content" :class="{ 'is-dropped': topDropped || bottomDropped}" :style="{ 'transform': 'translate3d(0, ' + translate + 'px, 0)' }" v-el:loadmore-content>
+    <div class="mint-loadmore-content" :class="{ 'is-dropped': topDropped || bottomDropped}" :style="{ 'transform': 'translate3d(0, ' + translate + 'px, 0)' }">
       <slot name="top">
         <div class="mint-loadmore-top" v-if="topMethod">
           <spinner v-if="topStatus === 'loading'" class="mint-loadmore-spinner" :size="20" type="fading-circle"></spinner>
@@ -88,10 +88,6 @@
       topMethod: {
         type: Function
       },
-      topStatus: {
-        type: String,
-        default: ''
-      },
       bottomPullText: {
         type: String,
         default: '上拉刷新'
@@ -110,10 +106,6 @@
       },
       bottomMethod: {
         type: Function
-      },
-      bottomStatus: {
-        type: String,
-        default: ''
       },
       bottomAllLoaded: {
         type: Boolean,
@@ -135,12 +127,15 @@
         direction: '',
         startY: 0,
         startScrollTop: 0,
-        currentY: 0
+        currentY: 0,
+        topStatus: '',
+        bottomStatus: ''
       };
     },
 
     watch: {
       topStatus(val) {
+        this.$emit('top-status-change', val);
         switch (val) {
           case 'pull':
             this.topText = this.topPullText;
@@ -155,6 +150,7 @@
       },
 
       bottomStatus(val) {
+        this.$emit('bottom-status-change', val);
         switch (val) {
           case 'pull':
             this.bottomText = this.bottomPullText;
@@ -169,7 +165,7 @@
       }
     },
 
-    events: {
+    methods: {
       onTopLoaded(id) {
         if (id === this.uuid) {
           this.translate = 0;
@@ -195,10 +191,8 @@
         if (!this.bottomAllLoaded && !this.containerFilled) {
           this.fillContainer();
         }
-      }
-    },
+      },
 
-    methods: {
       getScrollEventTarget(element) {
         let currentNode = element;
         while (currentNode && currentNode.tagName !== 'HTML' && currentNode.tagName !== 'BODY' && currentNode.nodeType === 1) {
@@ -336,7 +330,7 @@
       }
     },
 
-    ready() {
+    mounted() {
       this.uuid = Math.random().toString(36).substring(3, 8);
       this.init();
     }

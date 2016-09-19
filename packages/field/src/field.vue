@@ -65,10 +65,10 @@ if (process.env.IMPORTCSS) {
  * @param {string} [state] - 表单校验状态样式，接受 error, warning, success
  *
  * @example
- * <mt-field label="用户名"></mt-field>
- * <mt-field label="密码" placeholder="请输入密码"></mt-field>
- * <mt-field label="自我介绍" placeholder="自我介绍" type="textarea" rows="4"></mt-field>
- * <mt-field label="邮箱" placeholder="成功状态" state="success"></mt-field>
+ * <mt-field v-model="value" label="用户名"></mt-field>
+ * <mt-field v-model="value" label="密码" placeholder="请输入密码"></mt-field>
+ * <mt-field v-model="value" label="自我介绍" placeholder="自我介绍" type="textarea" rows="4"></mt-field>
+ * <mt-field v-model="value" label="邮箱" placeholder="成功状态" state="success"></mt-field>
  */
 export default {
   name: 'mt-field',
@@ -113,6 +113,10 @@ export default {
   },
 
   watch: {
+    value(val) {
+      this.currentValue = val;
+    },
+
     currentValue(val) {
       this.$emit('input', val);
     },

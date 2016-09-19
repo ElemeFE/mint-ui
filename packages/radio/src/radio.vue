@@ -37,7 +37,7 @@ if (process.env.IMPORTCSS) {
  * @param {string} [align=left] - checkbox 对齐位置，`left`, `right`
  *
  * @example
- * <mt-radio :value.sync="value" :options="['a', 'b', 'c']"></mt-radio>
+ * <mt-radio v-model="value" :options="['a', 'b', 'c']"></mt-radio>
  */
 export default {
   name: 'mt-radio',
@@ -59,6 +59,10 @@ export default {
   },
 
   watch: {
+    value(val) {
+      this.currentValue = val;
+    },
+
     currentValue(val) {
       this.$emit('input', val);
     }

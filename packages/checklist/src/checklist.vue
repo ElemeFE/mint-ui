@@ -40,7 +40,7 @@ if (process.env.IMPORTCSS) {
  *
  *
  * @example
- * <mt-checklist :value.sync="value" :options="['a', 'b', 'c']"></mt-checklist>
+ * <mt-checklist :v-model="value" :options="['a', 'b', 'c']"></mt-checklist>
  */
 export default {
   name: 'mt-checklist',
@@ -71,6 +71,10 @@ export default {
   },
 
   watch: {
+    value(val) {
+      this.currentValue = val;
+    },
+
     currentValue(val) {
       if (this.limit) val.pop();
       this.$emit('input', val);

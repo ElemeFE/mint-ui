@@ -19,15 +19,15 @@
   @component-namespace mint {
     @component datetime {
       width: 100%;
-      
+
       .picker-slot-wrapper, .picker-item {
         backface-visibility: hidden;
       }
-      
+
       .picker-toolbar {
         border-bottom: solid 1px #eaeaea;
       }
-      
+
       @descendent action {
         display: inline-block;
         width: 50%;
@@ -36,11 +36,11 @@
         font-size: 16px;
         color: $color-blue;
       }
-      
+
       @descendent cancel {
         float: left;
       }
-  
+
       @descendent confirm {
         float: right;
       }
@@ -49,11 +49,11 @@
 </style>
 
 <script type="text/babel">
-  import picker from 'packages/picker/index.js';
-  import popup from 'packages/popup/index.js';
-  if (process.env.IMPORTCSS) {
-    require('packages/picker/style.css');
-    require('packages/popup/style.css');
+  import picker from 'mint-ui/packages/picker/index.js';
+  import popup from 'mint-ui/packages/popup/index.js';
+  if (process.env.NODE_ENV === 'component') {
+    require('mint-ui/packages/picker/style.css');
+    require('mint-ui/packages/popup/style.css');
   }
 
   const FORMAT_MAP = {

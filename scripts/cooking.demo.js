@@ -27,22 +27,22 @@ cooking.set({
 });
 
 cooking.add('resolve.alias', {
-  'main': path.join(__dirname, '../src'),
-  'src': path.join(__dirname, '../src'),
-  'packages': path.join(__dirname, '../packages')
+  'mint-ui': path.join(__dirname, '..'),
+  'src': path.join(__dirname, '../src')
 });
 
 cooking.add('preLoader.js.exclude', /node_modules|lib/);
 cooking.add('preLoader.vue.exclude', /node_modules|lib/);
 
-cooking.add('plugin.defiendImportCSS', new webpack.DefinePlugin({
-  'process.env.IMPORTCSS': JSON.stringify(false)
-}));
 if (process.env.NODE_ENV === 'production') {
   cooking.remove('entry.vendor');
   cooking.add('externals.vue', 'Vue');
   cooking.add('externals.vue-router', 'VueRouter');
   cooking.add('fastclick', 'FastClick');
+} else {
+  cooking.add('plugins.Define', new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify('development')
+  }));
 }
 
 module.exports = cooking.resolve();

@@ -22,6 +22,7 @@ cooking.set({
   assetsPath: 'static',
   urlLoaderLimit: 10000,
   extractCSS: true,
+  sourceMap: true,
   extends: ['vue', 'lint', 'saladcss'],
   alias: {
     'src': path.join(__dirname, '../src'),

@@ -43,9 +43,7 @@
     "vue-infinite-scroll": "^0.2.3",
     "vue-lazyload": "^0.4.5",
     "vue-loader": "^9.4.2",
-    "vue-msgbox": "^0.2.11",
-    "vue-popup": "0.1.10",
-    "vue-router": "^2.0.0-rc.5",
-    "vue-toast-mobile": "^0.1.3"
+    "vue-popup": "^0.2.4",
+    "vue-router": "^2.0.0-rc.5"
   }
 }

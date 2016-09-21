@@ -1,10 +1,10 @@
 <template>
   <div class="mint-indexlist">
-    <ul class="mint-indexlist-content" v-el:content :style="{ 'height': height + 'px', 'margin-right': navWidth + 'px'}">
+    <ul class="mint-indexlist-content" ref="content" :style="{ 'height': currentHeight + 'px', 'margin-right': navWidth + 'px'}">
       <slot></slot>
     </ul>
     
-    <div class="mint-indexlist-nav" @touchstart="handleTouchStart" v-el:nav>
+    <div class="mint-indexlist-nav" @touchstart="handleTouchStart" ref="nav">
       <ul class="mint-indexlist-navlist">
         <li class="mint-indexlist-navitem" v-for="section in sections">{{ section.index }}</li>
       </ul>
@@ -92,7 +92,8 @@
         indicatorTime: null,
         moving: false,
         firstSection: null,
-        currentIndicator: ''
+        currentIndicator: '',
+        currentHeight: this.height
       };
     },
 
@@ -134,19 +135,19 @@
         let targetDOM;
         if (targets.length > 0) {
           targetDOM = targets[0].$el;
-          this.$els.content.scrollTop = targetDOM.getBoundingClientRect().top - this.firstSection.getBoundingClientRect().top;
+          this.$refs.content.scrollTop = targetDOM.getBoundingClientRect().top - this.firstSection.getBoundingClientRect().top;
         }
       }
     },
 
-    ready() {
-      if (!this.height) {
-        this.height = document.documentElement.clientHeight - this.$els.content.getBoundingClientRect().top;
+    mounted() {
+      if (!this.currentHeight) {
+        this.currentHeight = document.documentElement.clientHeight - this.$refs.content.getBoundingClientRect().top;
       }
       this.$nextTick(() => {
-        this.navWidth = this.$els.nav.clientWidth;
+        this.navWidth = this.$refs.nav.clientWidth;
       });
-      this.firstSection = this.$els.content.getElementsByTagName('li')[0];
+      this.firstSection = this.$refs.content.getElementsByTagName('li')[0];
     }
   };
 </script>

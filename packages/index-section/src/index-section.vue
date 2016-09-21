@@ -32,7 +32,7 @@
       }
     },
 
-    ready() {
+    mounted() {
       this.$parent.sections.push(this);
     },
 

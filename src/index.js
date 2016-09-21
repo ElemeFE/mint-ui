@@ -16,19 +16,19 @@ import Radio from '../packages/radio/index.js';
 import Loadmore from '../packages/loadmore/index.js';
 // import Actionsheet from '../packages/actionsheet/index.js';
 // import Popup from '../packages/popup/index.js';
-// import Swipe from '../packages/swipe/index.js';
-// import SwipeItem from '../packages/swipe-item/index.js';
+import Swipe from '../packages/swipe/index.js';
+import SwipeItem from '../packages/swipe-item/index.js';
 // import Range from '../packages/range/index.js';
 // import Picker from '../packages/picker/index.js';
 // import Progress from '../packages/progress/index.js';
 import Toast from '../packages/toast/index.js';
 import Indicator from '../packages/indicator/index.js';
-// import MessageBox from '../packages/message-box/index.js';
+import MessageBox from '../packages/message-box/index.js';
 // import InfiniteScroll from '../packages/infinite-scroll/index.js';
 // import Lazyload from '../packages/lazyload/index.js';
 // import DatetimePicker from '../packages/datetime-picker/index.js';
-// import IndexList from '../packages/index-list/index.js';
-// import IndexSection from '../packages/index-section/index.js';
+import IndexList from '../packages/index-list/index.js';
+import IndexSection from '../packages/index-section/index.js';
 import '../src/assets/font/iconfont.css';
 
 const install = function(Vue) {
@@ -52,21 +52,21 @@ const install = function(Vue) {
   Vue.component(Loadmore.name, Loadmore);
   // Vue.component(Actionsheet.name, Actionsheet);
   // Vue.component(Popup.name, Popup);
-  // Vue.component(Swipe.name, Swipe);
-  // Vue.component(SwipeItem.name, SwipeItem);
+  Vue.component(Swipe.name, Swipe);
+  Vue.component(SwipeItem.name, SwipeItem);
   // Vue.component(Range.name, Range);
   // Vue.component(Picker.name, Picker);
   // Vue.component(Progress.name, Progress);
   // Vue.component(DatetimePicker.name, DatetimePicker);
-  // Vue.component(IndexList.name, IndexList);
-  // Vue.component(IndexSection.name, IndexSection);
+  Vue.component(IndexList.name, IndexList);
+  Vue.component(IndexSection.name, IndexSection);
   // Vue.use(InfiniteScroll);
   // Vue.use(Lazyload, {
   //   loading: require('./assets/loading-spin.svg'),
   //   try: 3
   // });
 
-  // Vue.$messagebox = Vue.prototype.$messagebox = MessageBox;
+  Vue.$messagebox = Vue.prototype.$messagebox = MessageBox;
   Vue.$toast = Vue.prototype.$toast = Toast;
   Vue.$indicator = Vue.prototype.$indicator = Indicator;
 };
@@ -96,17 +96,17 @@ module.exports = {
   Loadmore,
   // Actionsheet,
   // Popup,
-  // Swipe,
-  // SwipeItem,
+  Swipe,
+  SwipeItem,
   // Range,
   // Picker,
   // Progress,
   Toast,
-  Indicator
-  // MessageBox,
+  Indicator,
+  MessageBox,
   // InfiniteScroll,
   // Lazyload,
   // DatetimePicker,
-  // IndexList,
-  // IndexSection
+  IndexList,
+  IndexSection
 };

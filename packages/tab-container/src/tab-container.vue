@@ -35,7 +35,7 @@
 
 <script>
 import { once } from 'wind-dom/src/event';
-import 'src/polyfill/Array.prototype.find';
+import 'mint-ui/src/polyfill/Array.prototype.find';
 
 /**
  * mt-tab-container

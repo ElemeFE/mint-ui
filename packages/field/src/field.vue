@@ -1,10 +1,10 @@
 <template>
-  <div class="mint-field">
+  <div class="mint-field" :class="{ 'is-nolabel': !label }">
     <x-cell
       class="mint-field-cell"
       :title="label"
       v-clickoutside="active = false"
-      :class="[{ 'is-nolabel': !label }, {
+      :class="[{
         'is-textarea': type === 'textarea'
       }]">
       <textarea
@@ -185,6 +185,10 @@ export default {
 
         @when success {
           color: $success-color;
+        }
+
+        @when default {
+          margin-left: 0;
         }
       }
 

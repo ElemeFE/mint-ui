@@ -29,8 +29,4 @@ cooking.add('externals', {
   }
 });
 
-cooking.add('plugin.defiendImportCSS', new webpack.DefinePlugin({
-  'process.env.IMPORTCSS': JSON.stringify(false)
-}));
-
 module.exports = cooking.resolve();

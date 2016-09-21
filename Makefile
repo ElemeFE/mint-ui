@@ -1,11 +1,7 @@
 .PHONY: dist
 default: help
 
-install:
-	npm i --registry=https://registry.npm.taobao.org --ignore-scripts
-	./node_modules/.bin/lerna bootstrap
-
-dev: install
+dev:
 	npm run dev
 
 dist:
@@ -17,7 +13,8 @@ dist-all:
 deploy:
 	npm run deploy
 
-pub:
+pub: dist
+	git commit -am '[build]'
 	./node_modules/.bin/kp $(filter-out $@,$(MAKECMDGOALS))
 	git push eleme master --tags
 

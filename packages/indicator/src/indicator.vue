@@ -14,7 +14,7 @@
 @component-namespace mint {
   @component indicator {
     transition: opacity .2s linear;
-  
+
     @descendent wrapper {
       position: fixed 50% * * 50%;
       transform: translate(-50%, -50%);
@@ -24,7 +24,7 @@
       box-sizing: border-box;
       text-align: center;
     }
-    
+
     @descendent text {
       display: block;
       color: #fff;
@@ -32,12 +32,12 @@
       margin-top: 10px;
       font-size: 16px;
     }
-    
+
     @descendent spin {
       display: inline-block;
       text-align: center;
     }
-    
+
     @descendent mask {
       position: fixed 0 * * 0;
       size: 100%;
@@ -54,9 +54,9 @@
 </style>
 
 <script type="text/babel">
-  import Spinner from 'packages/spinner/index.js';
-  if (process.env.IMPORTCSS) {
-    require('packages/spinner/style.css');
+  import Spinner from 'mint-ui/packages/spinner/index.js';
+  if (process.env.NODE_ENV === 'component') {
+    require('mint-ui/packages/spinner/style.css');
   }
 
   export default {

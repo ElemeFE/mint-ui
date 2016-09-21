@@ -23,8 +23,8 @@
 
 <script>
 import XCell from 'packages/cell/index.js';
-if (process.env.IMPORTCSS) {
-  require('packages/cell/style.css');
+if (process.env.NODE_ENV === 'component') {
+  require('mint-ui/packages/cell/style.css');
 }
 
 /**

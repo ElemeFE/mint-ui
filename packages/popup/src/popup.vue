@@ -1,7 +1,9 @@
 <template>
-  <div v-show="visible" class="mint-popup" :class="[position ? 'mint-popup-' + position : '']" :transition="popupTransition">
-    <slot></slot>
-  </div>
+  <transition :name="currentTransition">
+    <div v-show="currentValue" class="mint-popup" :class="[position ? 'mint-popup-' + position : '']">
+      <slot></slot>
+    </div>
+  </transition>
 </template>
 
 <style>
@@ -13,7 +15,8 @@
       left: 50%;
       transform: translate3d(-50%, -50%, 0);
       backface-visibility: hidden;
-
+      transition: .2s ease-out;
+  
       @descendent top {
         top: 0;
         right: auto;
@@ -48,39 +51,28 @@
     }
   }
 
-  .popup-slide-top-transition,
-  .popup-slide-right-transition,
-  .popup-slide-bottom-transition,
-  .popup-slide-left-transition {
-    transition: transform .3s ease-out 100ms;
-  }
-
   .popup-slide-top-enter,
-  .popup-slide-top-leave {
+  .popup-slide-top-leave-active {
     transform: translate3d(-50%, -100%, 0);
   }
 
   .popup-slide-right-enter,
-  .popup-slide-right-leave {
+  .popup-slide-right-leave-active {
     transform: translate3d(100%, -50%, 0);
   }
 
   .popup-slide-bottom-enter,
-  .popup-slide-bottom-leave {
+  .popup-slide-bottom-leave-active {
     transform: translate3d(-50%, 100%, 0);
   }
 
   .popup-slide-left-enter,
-  .popup-slide-left-leave {
+  .popup-slide-left-leave-active {
     transform: translate3d(-100%, -50%, 0);
   }
 
-  .popup-fade-transition {
-    transition: opacity .3s;
-  }
-
   .popup-fade-enter,
-  .popup-fade-leave {
+  .popup-fade-leave-active {
     opacity: 0;
   }
 </style>
@@ -114,9 +106,26 @@
       }
     },
 
-    compiled() {
+    data() {
+      return {
+        currentValue: false,
+        currentTransition: this.popupTransition
+      };
+    },
+
+    watch: {
+      currentValue(val) {
+        this.$emit('input', val);
+      },
+
+      value(val) {
+        this.currentValue = val;
+      }
+    },
+
+    beforeMount() {
       if (this.popupTransition !== 'popup-fade') {
-        this.popupTransition = `popup-slide-${ this.position }`;
+        this.currentTransition = `popup-slide-${ this.position }`;
       }
     }
   };

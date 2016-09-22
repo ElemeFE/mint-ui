@@ -1,10 +1,12 @@
 <template>
-  <div v-show="visible" class="mint-actionsheet" transition="actionsheet-float">
-    <ul class="mint-actionsheet-list" :style="{ 'margin-bottom': cancelText ? '5px' : '0' }">
-      <li v-for="item in actions" class="mint-actionsheet-listitem" @click="itemClick(item)">{{ item.name }}</li>
-    </ul>
-    <a class="mint-actionsheet-button" @click="visible = false" v-if="cancelText">{{ cancelText }}</a>
-  </div>
+  <transition name="actionsheet-float">
+    <div v-show="currentValue" class="mint-actionsheet">
+      <ul class="mint-actionsheet-list" :style="{ 'margin-bottom': cancelText ? '5px' : '0' }">
+        <li v-for="item in actions" class="mint-actionsheet-listitem" @click="itemClick(item)">{{ item.name }}</li>
+      </ul>
+      <a class="mint-actionsheet-button" @click="currentValue = false" v-if="cancelText">{{ cancelText }}</a>
+    </div>
+  </transition>
 </template>
 
 <style>
@@ -18,7 +20,8 @@
       left: 50%;
       transform: translate3d(-50%, 0, 0);
       backface-visibility: hidden;
-
+      transition: transform .3s ease-out .1s;
+  
       @descendent list {
         list-style: none;
         padding: 0;
@@ -44,12 +47,8 @@
     }
   }
 
-  .actionsheet-float-transition {
-    transition: transform .3s ease-out .1s;
-  }
-
   .actionsheet-float-enter,
-  .actionsheet-float-leave {
+  .actionsheet-float-leave-active {
     transform: translate3d(-50%, 100%, 0);
   }
 </style>
@@ -83,12 +82,28 @@
       }
     },
 
+    data() {
+      return {
+        currentValue: false
+      };
+    },
+
+    watch: {
+      currentValue(val) {
+        this.$emit('input', val);
+      },
+
+      value(val) {
+        this.currentValue = val;
+      }
+    },
+
     methods: {
       itemClick(item) {
         if (item.method && typeof item.method === 'function') {
           item.method();
         }
-        this.visible = false;
+        this.currentValue = false;
       }
     }
   };

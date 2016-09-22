@@ -29,8 +29,8 @@ cooking.add('output.filename', '[name]/index.js');
 
 var externals = {};
 Object.keys(Components).forEach(function (key) {
-  externals[`packages/${key}/index.js`] = `mint-ui/lib/${key}`;
-  externals[`packages/${key}/style.css`] = `mint-ui/lib/${key}/style.css`;
+  externals[`mint-ui/packages/${key}/index.js`] = `mint-ui/lib/${key}`;
+  externals[`mint-ui/packages/${key}/style.css`] = `mint-ui/lib/${key}/style.css`;
 });
 
 cooking.add('externals', Object.assign({

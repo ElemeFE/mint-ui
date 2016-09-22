@@ -46,6 +46,7 @@
     "vue-lazyload": "^0.4.5",
     "vue-loader": "^9.4.2",
     "vue-popup": "^0.2.4",
-    "vue-router": "^2.0.0-rc.5"
+    "vue-router": "^2.0.0-rc.5",
+    "wind-dom": "0.0.3"
   }
 }

@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import XCell from 'packages/cell/index.js';
+import XCell from 'mint-ui/packages/cell/index.js';
 if (process.env.NODE_ENV === 'component') {
   require('mint-ui/packages/cell/style.css');
 }

@@ -1,12 +1,12 @@
 {
-  "name": "mint-popup",
+  "name": "mint-message-box",
   "description": "",
   "version": "0.1.0",
   "main": "lib/index.js",
   "author": "elemefe",
   "homepage": "https://github.com/ElemeFE/mint-ui",
   "license": "MIT",
-  "repository": "https://github.com/ElemeFE/mint-ui/tree/master/components/mint-popup",
+  "repository": "https://github.com/ElemeFE/mint-ui/tree/master/components/mint-message-box",
   "dependencies": {
     "vue-popup": "^0.2.5"
   }

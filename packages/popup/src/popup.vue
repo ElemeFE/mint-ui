@@ -91,6 +91,10 @@
         default: true
       },
 
+      modalFade: {
+        default: false
+      },
+
       closeOnClickModal: {
         default: true
       },

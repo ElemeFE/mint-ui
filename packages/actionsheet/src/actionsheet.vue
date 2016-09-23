@@ -20,7 +20,7 @@
       left: 50%;
       transform: translate3d(-50%, 0, 0);
       backface-visibility: hidden;
-      transition: transform .3s ease-out .1s;
+      transition: transform .3s ease-out;
   
       @descendent list {
         list-style: none;
@@ -65,6 +65,10 @@
     props: {
       modal: {
         default: true
+      },
+
+      modalFade: {
+        default: false
       },
 
       closeOnClickModal: {

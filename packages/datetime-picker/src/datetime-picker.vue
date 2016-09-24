@@ -150,6 +150,7 @@
       },
 
       getTrueValue(formattedValue) {
+        if (!formattedValue) return;
         while (isNaN(parseInt(formattedValue, 10))) {
           formattedValue = formattedValue.slice(1);
         }
@@ -171,7 +172,8 @@
         return value;
       },
 
-      onChange(picker, values) {
+      onChange(picker) {
+        let values = picker.$children.filter(child => child.value !== undefined).map(child => child.value);
         if (this.selfTriggered) {
           this.selfTriggered = false;
           return;
@@ -214,6 +216,21 @@
           } else {
             this.dateSlots[2].values = this.longMonthDates.map(item => item);
           }
+        } else {
+          let hour = parseInt(currentValue.split(':')[0], 10);
+          let minute = parseInt(currentValue.split(':')[1], 10);
+          if (hour < this.startHour) {
+            this.value = `${ ('0' + this.startHour).slice(-2) }:${ ('0' + minute).slice(-2) }`;
+            currentValue = this.value;
+            this.selfTriggered = true;
+            this.setSlots();
+          }
+          if (hour > this.endHour) {
+            this.value = `${ ('0' + this.endHour).slice(-2) }:${ ('0' + minute).slice(-2) }`;
+            currentValue = this.value;
+            this.selfTriggered = true;
+            this.setSlots();
+          }
         }
         this.value = currentValue;
         if (this.type.indexOf('date') > -1) {
@@ -223,7 +240,6 @@
       },
 
       rimDetect(monthDates) {
-        this.dateSlots[1].values = this.fillValues('M', 1, 12);
         if (this.value.getFullYear() === this.startDate.getFullYear()) {
           this.trimSlots('start', this.startDate, 1);
           if (this.value.getMonth() === this.startDate.getMonth()) {
@@ -270,14 +286,15 @@
         return values;
       },
 
-      pushSlots(type, start, end) {
-        this.dateSlots.push({
+      pushSlots(slots, type, start, end) {
+        slots.push({
           flex: 1,
           values: this.fillValues(type, start, end)
         });
       },
 
       generateSlots() {
+        let dateSlots = [];
         const INTERVAL_MAP = {
           Y: [this.startYear, this.endYear],
           M: [this.startMonth, this.endMonth],
@@ -288,15 +305,16 @@
         let typesArr = this.typeStr.split('');
         typesArr.forEach(type => {
           if (INTERVAL_MAP[type]) {
-            this.pushSlots.apply(null, [type].concat(INTERVAL_MAP[type]));
+            this.pushSlots.apply(null, [dateSlots, type].concat(INTERVAL_MAP[type]));
           }
         });
         if (this.typeStr === 'Hm') {
-          this.dateSlots.splice(1, 0, {
+          dateSlots.splice(1, 0, {
             divider: true,
             content: ':'
           });
         }
+        this.dateSlots = dateSlots;
       },
 
       isDateString(str) {
@@ -357,6 +375,28 @@
       confirm() {
         this.visible = false;
         this.$emit('confirm', this.value);
+      },
+
+      translateToDate(val) {
+        if (Object.prototype.toString.call(val) === '[object Date]') return val;
+        return new Date(val.split(/[\-\:/\.]/).join('-'));
+      },
+
+      handleRimChange() {
+        let now = new Date();
+        this.startDate = this.startDate || new Date(now.getFullYear() - 10, 0, 1);
+        this.endDate = this.endDate || new Date(now.getFullYear() + 10, 11, 31);
+        this.startYear = this.startDate.getFullYear();
+        this.endYear = this.endDate.getFullYear();
+        if (this.startYear === this.endYear) {
+          this.startMonth = this.startDate.getMonth() + 1;
+          this.endMonth = this.endDate.getMonth() + 1;
+          if (this.startMonth === this.endMonth) {
+            this.startDay = this.startDate.getDate();
+            this.endDay = this.endDate.getDate();
+          }
+        }
+        this.generateSlots();
       }
     },
 
@@ -373,6 +413,42 @@
     },
 
     watch: {
+      startDate(val, oldVal) {
+        if (!oldVal) return;
+        this.handleRimChange();
+        if (this.value < this.translateToDate(val)) {
+          this.value = val;
+        }
+        this.$nextTick(() => {
+          this.setSlots();
+        });
+      },
+
+      endDate(val, oldVal) {
+        if (!oldVal) return;
+        this.handleRimChange();
+        if (this.value > this.translateToDate(val)) {
+          this.value = val;
+        }
+        this.$nextTick(() => {
+          this.setSlots();
+        });
+      },
+
+      startHour() {
+        this.generateSlots();
+        this.$nextTick(() => {
+          this.setSlots();
+        });
+      },
+
+      endHour() {
+        this.generateSlots();
+        this.$nextTick(() => {
+          this.setSlots();
+        });
+      },
+
       value() {
         this.$nextTick(() => {
           this.$refs.picker.$children.forEach(child => {
@@ -388,39 +464,26 @@
     },
 
     created() {
-      let now = new Date();
-      this.startDate = this.startDate || new Date(now.getFullYear() - 10, 0, 1);
-      this.endDate = this.endDate || new Date(now.getFullYear() + 10, 11, 31);
-      this.startYear = this.startDate.getFullYear();
-      this.endYear = this.endDate.getFullYear();
-      if (this.startYear === this.endYear) {
-        this.startMonth = this.startDate.getMonth() + 1;
-        this.endMonth = this.endDate.getMonth() + 1;
-        if (this.startMonth === this.endMonth) {
-          this.startDay = this.startDate.getDate();
-          this.endDay = this.endDate.getDate();
-        }
-      }
       for (let i = 1; i <= 28; i++) {
         this.febDates.push(this.dateFormat.replace('{value}', ('0' + i).slice(-2)));
       }
       this.leapFebDates = this.febDates.concat(this.dateFormat.replace('{value}', '29'));
       this.shortMonthDates = this.leapFebDates.concat(this.dateFormat.replace('{value}', '30'));
       this.longMonthDates = this.shortMonthDates.concat(this.dateFormat.replace('{value}', '31'));
-      this.generateSlots();
+      this.handleRimChange();
     },
 
     ready() {
-      this.setSlots();
       if (!this.value) {
         if (this.type.indexOf('date') > -1) {
           this.value = this.startDate;
           this.trimSlots('start', this.value, 1);
           this.trimSlots('start', this.value, 2);
         } else {
-          this.value = '00:00';
+          this.value = `${ ('0' + this.startHour).slice(-2) }:00`;
         }
       }
+      this.setSlots();
     }
   };
 </script>

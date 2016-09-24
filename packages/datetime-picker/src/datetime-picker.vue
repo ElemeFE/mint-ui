@@ -217,8 +217,9 @@
             this.dateSlots[2].values = this.longMonthDates.map(item => item);
           }
         } else {
-          let hour = parseInt(currentValue.split(':')[0], 10);
-          let minute = parseInt(currentValue.split(':')[1], 10);
+          let valueArr = currentValue.split(':');
+          let hour = parseInt(valueArr[0], 10);
+          let minute = parseInt(valueArr[1], 10);
           if (hour < this.startHour) {
             this.value = `${ ('0' + this.startHour).slice(-2) }:${ ('0' + minute).slice(-2) }`;
             currentValue = this.value;

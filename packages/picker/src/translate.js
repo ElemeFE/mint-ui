@@ -45,7 +45,7 @@ var getTranslate = function(element) {
 var translateElement = function(element, x, y) {
   if (x === null && y === null) return;
 
-  if (element === null || element.style === null) return;
+  if (element === null || element === undefined || element.style === null) return;
 
   if (!element.style[transformProperty] && x === 0 && y === 0) return;
 

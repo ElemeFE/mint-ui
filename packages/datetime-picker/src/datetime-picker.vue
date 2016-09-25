@@ -1,11 +1,11 @@
 <template>
-  <mt-popup :visible.sync="visible" position="bottom" class="mint-datetime">
+  <mt-popup v-model="visible" position="bottom" class="mint-datetime">
     <mt-picker
       :slots="dateSlots"
       @change="onChange"
       :visible-item-count="7"
       class="mint-datetime-picker"
-      v-ref:picker
+      ref="picker"
       show-toolbar>
       <span class="mint-datetime-action mint-datetime-cancel" @click="visible = false">{{ cancelText }}</span>
       <span class="mint-datetime-action mint-datetime-confirm" @click="confirm">{{ confirmText }}</span>
@@ -68,10 +68,6 @@
     name: 'mt-datetime-picker',
 
     props: {
-      visible: {
-        type: Boolean,
-        default: false
-      },
       cancelText: {
         type: String,
         default: '取消'
@@ -84,8 +80,18 @@
         type: String,
         default: 'datetime'
       },
-      startDate: Date,
-      endDate: Date,
+      startDate: {
+        type: Date,
+        default() {
+          return new Date(new Date().getFullYear() - 10, 0, 1);
+        }
+      },
+      endDate: {
+        type: Date,
+        default() {
+          return new Date(new Date().getFullYear() + 10, 11, 31);
+        }
+      },
       startHour: {
         type: Number,
         default: 0
@@ -119,6 +125,7 @@
 
     data() {
       return {
+        visible: false,
         startYear: null,
         endYear: null,
         startMonth: 1,
@@ -141,6 +148,14 @@
     },
 
     methods: {
+      open() {
+        this.visible = true;
+      },
+
+      close() {
+        this.visible = false;
+      },
+
       isLeapYear(year) {
         return (year % 400 === 0) || (year % 100 !== 0 && year % 4 === 0);
       },
@@ -150,6 +165,7 @@
       },
 
       getTrueValue(formattedValue) {
+        if (!formattedValue) return;
         while (isNaN(parseInt(formattedValue, 10))) {
           formattedValue = formattedValue.slice(1);
         }
@@ -171,7 +187,8 @@
         return value;
       },
 
-      onChange(picker, values) {
+      onChange(picker) {
+        let values = picker.$children.filter(child => child.currentValue !== undefined).map(child => child.currentValue);
         if (this.selfTriggered) {
           this.selfTriggered = false;
           return;
@@ -180,13 +197,13 @@
         let currentValue = this.getValue(values);
         if (this.type.indexOf('date') > -1) {
           if (currentValue.getTime() < this.startDate.getTime()) {
-            this.value = this.startDate;
+            this.currentValue = this.startDate;
             currentValue = this.startDate;
             this.selfTriggered = true;
             this.setSlots();
           }
           if (currentValue.getTime() > this.endDate.getTime()) {
-            this.value = this.endDate;
+            this.currentValue = this.endDate;
             currentValue = this.endDate;
             this.selfTriggered = true;
             this.setSlots();
@@ -214,27 +231,42 @@
           } else {
             this.dateSlots[2].values = this.longMonthDates.map(item => item);
           }
+        } else {
+          let valueArr = currentValue.split(':');
+          let hour = parseInt(valueArr[0], 10);
+          let minute = parseInt(valueArr[1], 10);
+          if (hour < this.startHour) {
+            this.currentValue = `${ ('0' + this.startHour).slice(-2) }:${ ('0' + minute).slice(-2) }`;
+            currentValue = this.currentValue;
+            this.selfTriggered = true;
+            this.setSlots();
+          }
+          if (hour > this.endHour) {
+            this.currentValue = `${ ('0' + this.endHour).slice(-2) }:${ ('0' + minute).slice(-2) }`;
+            currentValue = this.currentValue;
+            this.selfTriggered = true;
+            this.setSlots();
+          }
         }
-        this.value = currentValue;
+        this.currentValue = currentValue;
         if (this.type.indexOf('date') > -1) {
           this.rimDetect(this.dateSlots[2].values);
         }
-        this.$emit('change', this.value);
+        this.handleValueChange();
       },
 
       rimDetect(monthDates) {
-        this.dateSlots[1].values = this.fillValues('M', 1, 12);
-        if (this.value.getFullYear() === this.startDate.getFullYear()) {
+        if (this.currentValue.getFullYear() === this.startDate.getFullYear()) {
           this.trimSlots('start', this.startDate, 1);
-          if (this.value.getMonth() === this.startDate.getMonth()) {
+          if (this.currentValue.getMonth() === this.startDate.getMonth()) {
             this.trimSlots('start', this.startDate, 2);
           } else {
             this.dateSlots[2].values = monthDates.map(item => item);
           }
         }
-        if (this.value.getFullYear() === this.endDate.getFullYear()) {
+        if (this.currentValue.getFullYear() === this.endDate.getFullYear()) {
           this.trimSlots('end', this.endDate, 1);
-          if (this.value.getMonth() === this.endDate.getMonth()) {
+          if (this.currentValue.getMonth() === this.endDate.getMonth()) {
             this.trimSlots('end', this.endDate, 2);
           } else {
             this.dateSlots[2].values = monthDates.map(item => item);
@@ -270,14 +302,15 @@
         return values;
       },
 
-      pushSlots(type, start, end) {
-        this.dateSlots.push({
+      pushSlots(slots, type, start, end) {
+        slots.push({
           flex: 1,
           values: this.fillValues(type, start, end)
         });
       },
 
       generateSlots() {
+        let dateSlots = [];
         const INTERVAL_MAP = {
           Y: [this.startYear, this.endYear],
           M: [this.startMonth, this.endMonth],
@@ -288,34 +321,67 @@
         let typesArr = this.typeStr.split('');
         typesArr.forEach(type => {
           if (INTERVAL_MAP[type]) {
-            this.pushSlots.apply(null, [type].concat(INTERVAL_MAP[type]));
+            this.pushSlots.apply(null, [dateSlots, type].concat(INTERVAL_MAP[type]));
           }
         });
         if (this.typeStr === 'Hm') {
-          this.dateSlots.splice(1, 0, {
+          dateSlots.splice(1, 0, {
             divider: true,
             content: ':'
           });
         }
+        this.dateSlots = dateSlots;
+      },
+
+      isDateString(str) {
+        return /\d{4}(\-|\/|.)\d{1,2}\1\d{1,2}/.test(str);
+      },
+
+      getYear(value) {
+        return this.isDateString(value) ? value.split(' ')[0].split('-')[0] : value.getFullYear();
+      },
+
+      getMonth(value) {
+        return this.isDateString(value) ? value.split(' ')[0].split('-')[1] : value.getMonth() + 1;
+      },
+
+      getDate(value) {
+        return this.isDateString(value) ? value.split(' ')[0].split('-')[2] : value.getDate();
+      },
+
+      getHour(value) {
+        if (this.isDateString(value)) {
+          const str = value.split(' ')[1] || '00:00:00';
+          return str.split(':')[0];
+        }
+        return value.getHours();
+      },
+
+      getMinute(value) {
+        if (this.isDateString(value)) {
+          const str = value.split(' ')[1] || '00:00:00';
+          return str.split(':')[1];
+        }
+        return value.getMinutes();
       },
 
       setSlots() {
         const setSlotValue = this.$refs.picker.setSlotValue;
-        if (this.type === 'time' && typeof this.value === 'string') {
-          let valueArr = this.value.split(':');
+        if (this.type === 'time' && typeof this.currentValue === 'string') {
+          let valueArr = this.currentValue.split(':');
           setSlotValue(0, this.hourFormat.replace('{value}', valueArr[0]));
           setSlotValue(1, this.minuteFormat.replace('{value}', valueArr[1]));
         }
-        if (this.type !== 'time' && ({}).toString.call(this.value) === '[object Date]') {
-          let year = this.value.getFullYear();
-          let month = this.value.getMonth() + 1;
-          let date = this.value.getDate();
+        if (this.type !== 'time' && (({}).toString.call(this.currentValue) === '[object Date]' || this.isDateString(this.currentValue))) {
+          let year = this.getYear(this.currentValue);
+          let month = this.getMonth(this.currentValue);
+          let date = this.getDate(this.currentValue);
           setSlotValue(0, this.yearFormat.replace('{value}', year));
           setSlotValue(1, this.monthFormat.replace('{value}', ('0' + month).slice(-2)));
           setSlotValue(2, this.dateFormat.replace('{value}', ('0' + date).slice(-2)));
           if (this.type === 'datetime') {
-            let hour = this.value.getHours();
-            let minute = this.value.getMinutes();
+            let hour = this.getHour(this.currentValue);
+            let minute = this.getMinute(this.currentValue);
             setSlotValue(3, this.hourFormat.replace('{value}', ('0' + hour).slice(-2)));
             setSlotValue(4, this.minuteFormat.replace('{value}', ('0' + minute).slice(-2)));
           }
@@ -324,7 +390,30 @@
 
       confirm() {
         this.visible = false;
-        this.$emit('confirm', this.value);
+        this.$emit('confirm', this.currentValue);
+      },
+
+      translateToDate(val) {
+        if (Object.prototype.toString.call(val) === '[object Date]') return val;
+        return new Date(val.split(/[\-\:/\.]/).join('-'));
+      },
+
+      handleRimChange() {
+        this.startYear = this.startDate.getFullYear();
+        this.endYear = this.endDate.getFullYear();
+        if (this.startYear === this.endYear) {
+          this.startMonth = this.startDate.getMonth() + 1;
+          this.endMonth = this.endDate.getMonth() + 1;
+          if (this.startMonth === this.endMonth) {
+            this.startDay = this.startDate.getDate();
+            this.endDay = this.endDate.getDate();
+          }
+        }
+        this.generateSlots();
+      },
+
+      handleValueChange() {
+        this.$emit('input', this.currentValue);
       }
     },
 
@@ -341,50 +430,69 @@
     },
 
     watch: {
-      value() {
-        this.$nextTick(() => {
-          this.$refs.picker.$children.forEach(child => {
-            child.doOnValueChange();
-          });
-        });
-        if (!this.isSlotChange) {
-          this.setSlots();
-        } else {
-          this.isSlotChange = false;
+      value(val) {
+        this.currentValue = val;
+      },
+
+      startDate(val, oldVal) {
+        if (!oldVal || val === oldVal || val.getTime() === oldVal.getTime()) return;
+        this.handleRimChange();
+        if (this.currentValue < this.translateToDate(val)) {
+          this.currentValue = val;
         }
+        this.$nextTick(() => {
+          this.setSlots();
+        });
+      },
+
+      endDate(val, oldVal) {
+        if (!oldVal || val === oldVal || val.getTime() === oldVal.getTime()) return;
+        this.handleRimChange();
+        if (this.currentValue > this.translateToDate(val)) {
+          this.currentValue = val;
+        }
+        this.$nextTick(() => {
+          this.setSlots();
+        });
+      },
+
+      startHour() {
+        this.generateSlots();
+        this.$nextTick(() => {
+          this.setSlots();
+        });
+      },
+
+      endHour() {
+        this.generateSlots();
+        this.$nextTick(() => {
+          this.setSlots();
+        });
       }
     },
 
     created() {
-      let now = new Date();
-      this.startDate = this.startDate || new Date(now.getFullYear() - 10, 0, 1);
-      this.endDate = this.endDate || new Date(now.getFullYear() + 10, 11, 31);
-      this.startYear = this.startDate.getFullYear();
-      this.endYear = this.endDate.getFullYear();
-      if (this.startYear === this.endYear) {
-        this.startMonth = this.startDate.getMonth() + 1;
-        this.endMonth = this.endDate.getMonth() + 1;
-        if (this.startMonth === this.endMonth) {
-          this.startDay = this.startDate.getDate();
-          this.endDay = this.endDate.getDate();
-        }
-      }
       for (let i = 1; i <= 28; i++) {
         this.febDates.push(this.dateFormat.replace('{value}', ('0' + i).slice(-2)));
       }
       this.leapFebDates = this.febDates.concat(this.dateFormat.replace('{value}', '29'));
       this.shortMonthDates = this.leapFebDates.concat(this.dateFormat.replace('{value}', '30'));
       this.longMonthDates = this.shortMonthDates.concat(this.dateFormat.replace('{value}', '31'));
-      this.generateSlots();
+      this.handleRimChange();
     },
 
-    ready() {
-      this.setSlots();
-      if (this.type.indexOf('date') > -1 && !this.value) {
-        this.value = this.startDate;
-        this.trimSlots('start', this.value, 1);
-        this.trimSlots('start', this.value, 2);
+    mounted() {
+      this.currentValue = this.value;
+      if (!this.value) {
+        if (this.type.indexOf('date') > -1) {
+          this.currentValue = this.startDate;
+          this.trimSlots('start', this.currentValue, 1);
+          this.trimSlots('start', this.currentValue, 2);
+        } else {
+          this.currentValue = `${ ('0' + this.startHour).slice(-2) }:00`;
+        }
       }
+      this.setSlots();
     }
   };
 </script>

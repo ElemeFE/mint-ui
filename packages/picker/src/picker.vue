@@ -2,7 +2,7 @@
   <div class="picker" :class="{ 'picker-3d': rotateEffect }">
     <div class="picker-toolbar" v-if="showToolbar"><slot></slot></div>
     <div class="picker-items">
-      <picker-slot v-for="slot in slots" :values="slot.values || []" :text-align="slot.textAlign || 'center'" :visible-item-count="visibleItemCount" :class-name="slot.className" :flex="slot.flex" :value.sync="values[slot.valueIndex]" :rotate-effect="rotateEffect" :divider="slot.divider" :content="slot.content"></picker-slot>
+      <picker-slot v-for="slot in slots" :values="slot.values || []" :text-align="slot.textAlign || 'center'" :visible-item-count="visibleItemCount" :class-name="slot.className" :flex="slot.flex" v-model="values[slot.valueIndex]" :rotate-effect="rotateEffect" :divider="slot.divider" :content="slot.content"></picker-slot>
       <div class="picker-center-highlight"></div>
     </div>
   </div>
@@ -68,6 +68,8 @@
   export default {
     name: 'mt-picker',
 
+    componentName: 'picker',
+
     props: {
       slots: {
         type: Array
@@ -86,7 +88,8 @@
       }
     },
 
-    beforeCompile() {
+    created() {
+      this.$on('slotValueChange', this.slotValueChange);
       var slots = this.slots || [];
       this.values = [];
       var values = this.values;
@@ -100,6 +103,10 @@
     },
 
     methods: {
+      slotValueChange() {
+        this.$emit('change', this, this.values);
+      },
+
       getSlot(slotIndex) {
         var slots = this.slots || [];
         var count = 0;
@@ -127,20 +134,20 @@
       setSlotValue(index, value) {
         var slot = this.getSlot(index);
         if (slot) {
-          slot.value = value;
+          slot.currentValue = value;
         }
       },
       getSlotValues(index) {
         var slot = this.getSlot(index);
         if (slot) {
-          return slot.values;
+          return slot.mutatingValues;
         }
         return null;
       },
       setSlotValues(index, values) {
         var slot = this.getSlot(index);
         if (slot) {
-          slot.values = values;
+          slot.mutatingValues = values;
         }
       },
       getValues() {
@@ -155,12 +162,6 @@
         values.forEach((value, index) => {
           this.setSlotValue(index, value);
         });
-      }
-    },
-
-    events: {
-      slotValueChange() {
-        this.$emit('change', this, this.values);
       }
     },
 

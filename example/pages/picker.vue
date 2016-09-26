@@ -91,7 +91,7 @@
       },
 
       onAddressChange(picker, values) {
-        this.addressSlots[2].values = address[values[0]];
+        picker.setSlotValues(1, address[values[0]]);
         this.addressProvince = values[0];
         this.addressCity = values[1];
       }

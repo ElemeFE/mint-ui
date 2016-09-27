@@ -4,7 +4,7 @@ var path = require('path');
 const WebpackShellPlugin = require('webpack-shell-plugin');
 
 var entrys = {};
-Object.keys(Components).forEach(function (key) {
+Object.keys(Components).forEach(function(key) {
   entrys[key] = [path.join(__dirname, Components[key])];
 });
 
@@ -23,7 +23,7 @@ cooking.add('resolve.alias', {
   'mint-ui': path.join(__dirname, '..')
 });
 
-cooking.add('output.filename', '[name]/index.js')
+cooking.add('output.filename', '[name]/index.js');
 
 cooking.add('externals', {
   vue: {

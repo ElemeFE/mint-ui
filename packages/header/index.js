@@ -1,1 +1,2 @@
-module.exports = require('./src/header.vue');
+import Header from './src/header.vue';
+export default Header;

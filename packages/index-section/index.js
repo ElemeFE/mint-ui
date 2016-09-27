@@ -1,1 +1,2 @@
-module.exports = require('./src/index-section.vue');
+import IndexSection from './src/index-section.vue';
+export default IndexSection;

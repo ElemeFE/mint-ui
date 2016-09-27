@@ -4,4 +4,4 @@ MintRange.install = function(Vue) {
   Vue.component(MintRange.name, MintRange);
 };
 
-module.exports = MintRange;
+export default MintRange;

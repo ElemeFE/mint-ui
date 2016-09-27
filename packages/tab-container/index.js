@@ -1,1 +1,2 @@
-module.exports = require('./src/tab-container.vue');
+import TabContainer from './src/tab-container.vue';
+export default TabContainer;

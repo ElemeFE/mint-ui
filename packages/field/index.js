@@ -1,1 +1,2 @@
-module.exports = require('./src/field.vue');
+import Field from './src/field.vue';
+export default Field;

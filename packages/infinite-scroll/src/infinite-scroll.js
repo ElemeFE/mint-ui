@@ -1,6 +1,6 @@
 import { install, infiniteScroll } from 'vue-infinite-scroll';
-import 'main/style/empty.css';
+import 'mint-ui/src/style/empty.css';
 
 infiniteScroll.name = 'infinite-scroll';
 infiniteScroll.install = install;
-module.exports = infiniteScroll;
+export default infiniteScroll;

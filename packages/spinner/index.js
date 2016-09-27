@@ -4,4 +4,4 @@ Spinner.install = function(Vue) {
   Vue.component(Spinner.name, Spinner);
 };
 
-module.exports = Spinner;
+export default Spinner;

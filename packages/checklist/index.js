@@ -1,1 +1,2 @@
-module.exports = require('./src/checklist.vue');
+import Checklist from './src/checklist.vue';
+export default Checklist;

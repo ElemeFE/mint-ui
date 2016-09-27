@@ -1,1 +1,2 @@
-module.exports = require('./src/popup.vue');
+import Popup from './src/popup.vue';
+export default Popup;

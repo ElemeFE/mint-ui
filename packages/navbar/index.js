@@ -1,1 +1,2 @@
-module.exports = require('./src/navbar.vue');
+import Navbar from './src/navbar.vue';
+export default Navbar;

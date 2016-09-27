@@ -1,1 +1,2 @@
-module.exports = require('./src/index-list.vue');
+import IndexList from './src/index-list.vue';
+export default IndexList;

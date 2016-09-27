@@ -1,1 +1,2 @@
-module.exports = require('./src/radio.vue');
+import Radio from './src/radio.vue';
+export default Radio;

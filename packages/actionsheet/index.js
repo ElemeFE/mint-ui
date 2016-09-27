@@ -1,1 +1,2 @@
-module.exports = require('./src/actionsheet.vue');
+import Actionsheet from './src/actionsheet.vue';
+export default Actionsheet;

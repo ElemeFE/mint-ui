@@ -1,1 +1,2 @@
-module.exports = require('./src/search.vue');
+import Search from './src/search.vue';
+export default Search;

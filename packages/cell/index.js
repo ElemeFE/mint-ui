@@ -1,1 +1,2 @@
-module.exports = require('./src/cell.vue');
+import Cell from './src/cell.vue';
+export default Cell;

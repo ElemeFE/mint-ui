@@ -1,1 +1,2 @@
-module.exports = require('./src/tab-item.vue');
+import TabItem from './src/tab-item.vue';
+export default TabItem;

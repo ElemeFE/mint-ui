@@ -1,1 +1,2 @@
-module.exports = require('./src/tabbar.vue');
+import Tabbar from './src/tabbar.vue';
+export default Tabbar;

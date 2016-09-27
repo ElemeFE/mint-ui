@@ -1,1 +1,2 @@
-module.exports = require('./src/lazyload.js');
+import LazyLoad from './src/lazyload.js';
+export default LazyLoad;

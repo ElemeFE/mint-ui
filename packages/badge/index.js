@@ -1,1 +1,2 @@
-module.exports = require('./src/badge.vue');
+import Badge from './src/badge.vue';
+export default Badge;

@@ -1,1 +1,2 @@
-module.exports = require('./src/infinite-scroll.js');
+import InfiniteScroll from './src/infinite-scroll.js';
+export default InfiniteScroll;

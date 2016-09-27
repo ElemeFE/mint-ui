@@ -24,7 +24,7 @@ import Progress from '../packages/progress/index.js';
 import Toast from '../packages/toast/index.js';
 import Indicator from '../packages/indicator/index.js';
 import MessageBox from '../packages/message-box/index.js';
-// import InfiniteScroll from '../packages/infinite-scroll/index.js';
+import InfiniteScroll from '../packages/infinite-scroll/index.js';
 import Lazyload from '../packages/lazyload/index.js';
 import DatetimePicker from '../packages/datetime-picker/index.js';
 import IndexList from '../packages/index-list/index.js';
@@ -60,7 +60,7 @@ const install = function(Vue) {
   Vue.component(DatetimePicker.name, DatetimePicker);
   Vue.component(IndexList.name, IndexList);
   Vue.component(IndexSection.name, IndexSection);
-  // Vue.use(InfiniteScroll);
+  Vue.use(InfiniteScroll);
   Vue.use(Lazyload, {
     loading: require('./assets/loading-spin.svg'),
     try: 3
@@ -76,7 +76,8 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 };
 
-module.exports = {
+export default {
+  version: '0.2.6',
   install,
   Header,
   Button,
@@ -104,7 +105,7 @@ module.exports = {
   Toast,
   Indicator,
   MessageBox,
-  // InfiniteScroll,
+  InfiniteScroll,
   Lazyload,
   DatetimePicker,
   IndexList,

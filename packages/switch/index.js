@@ -1,1 +1,2 @@
-module.exports = require('./src/switch.vue');
+import TabContainer from './src/switch.vue';
+export default TabContainer;

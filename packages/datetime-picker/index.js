@@ -1,1 +1,2 @@
-module.exports = require('./src/datetime-picker.vue');
+import DatetimePicker from './src/datetime-picker.vue';
+export default DatetimePicker;

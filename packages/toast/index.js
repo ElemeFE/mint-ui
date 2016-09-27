@@ -1,1 +1,2 @@
-module.exports = require('./src/toast.js');
+import Toast from './src/toast.js';
+export default Toast;

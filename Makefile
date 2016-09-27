@@ -8,18 +8,16 @@ dist:
 	npm run dist
 
 dist-all:
-	node bin/build-all.js
+	node build/bin/build-all.js
 
 deploy:
 	npm run deploy
 
-pub: dist
-	git commit -am 'build'
-	./node_modules/.bin/kp $(filter-out $@,$(MAKECMDGOALS))
-	git push eleme master --tags
+pub:
+	npm run pub
 
-pub-all: dist-all
-	./node_modules/.bin/lerna publish
+pub-all:
+	npm run pub:all
 
 help:
 	@echo "   \033[35mmake\033[0m \033[1m命令使用说明\033[0m"

@@ -9,8 +9,8 @@
   </head>
   <body>
     <app></app><% if (process.env.NODE_ENV === 'production') { %>
-    <script src="https://unpkg.com/vue@1.0.26/dist/vue.js"></script>
-    <script src="https://unpkg.com/vue-router@0.7.13/dist/vue-router.js"></script>
-    <script src="https://unpkg.com/fastclick@1.0.6/lib/fastclick.js"></script><% } %>
+    <script src="//cdn.jsdelivr.net/vue/1.0.26/vue.min.js"></script>
+    <script src="//cdn.jsdelivr.net/vue.router/0.7.13/vue-router.min.js"></script>
+    <script src="//cdn.jsdelivr.net/fastclick/1.0.6/fastclick.min.js"></script><% } %>
   </body>
 </html>

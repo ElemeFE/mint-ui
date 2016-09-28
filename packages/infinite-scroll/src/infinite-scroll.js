@@ -1,6 +1,14 @@
-import { install, infiniteScroll } from 'vue-infinite-scroll';
+import InfiniteScroll from './directive';
 import 'mint-ui/src/style/empty.css';
 
-infiniteScroll.name = 'infinite-scroll';
-infiniteScroll.install = install;
-export default infiniteScroll;
+const install = function(Vue) {
+  Vue.directive('InfiniteScroll', InfiniteScroll);
+};
+
+if (window.Vue) {
+  window.infiniteScroll = InfiniteScroll;
+  Vue.use(install); // eslint-disable-line
+}
+
+InfiniteScroll.install = install;
+export default InfiniteScroll;

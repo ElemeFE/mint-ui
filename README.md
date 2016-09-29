@@ -17,6 +17,8 @@
 npm i mint-ui -S
 ```
 
+**Mint UI currently does not support vue.js 2.0**
+
 ## Usage
 
 Import all components.

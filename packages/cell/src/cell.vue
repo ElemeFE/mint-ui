@@ -57,7 +57,7 @@ export default {
     title: String,
     label: String,
     isLink: Boolean,
-    value: String
+    value: {}
   },
 
   computed: {

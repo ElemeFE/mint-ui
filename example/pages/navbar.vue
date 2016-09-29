@@ -11,7 +11,7 @@
       <mt-cell class="page-part" title="当前选中">{{ selected }}</mt-cell>
     </div>
 
-    <mt-tab-container :active="selected">
+    <mt-tab-container v-model="selected">
       <mt-tab-container-item id="1">
         <mt-cell v-for="n in 10" :title="'内容 ' + n" />
       </mt-tab-container-item>

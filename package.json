@@ -17,13 +17,13 @@
   "scripts": {
     "dev": "npm run bootstrap && npm run build:entry && cooking watch -c build/cooking.demo.js -p",
     "bootstrap": "npm i && lerna bootstrap",
-    "dist": "npm run bootstrap && npm run clean && npm run build:entry && cooking build -c build/cooking.conf.js,build/cooking.common.js,build/cooking.component.js -p",
+    "dist": "npm run bootstrap && npm run clean && npm run build:entry && npm run lint && cooking build -c build/cooking.conf.js,build/cooking.common.js,build/cooking.component.js -p",
     "deploy": "npm run build:entry && cooking build -c build/cooking.demo.js -p && gh-pages -d example/dist --remote eleme",
     "build:entry": "node build/bin/build-entry",
     "pub": "sh build/release.sh",
     "pub:all": "node build/bin/build-all.js && lerna publish",
-    "clean": "del lib && del packages/**/lib",
-    "lint": "eslint src/** packages/** build/** --ext .js,.vue --quiet"
+    "clean": "rimraf lib && rimraf packages/*/lib",
+    "lint": "eslint src/**/*.js packages/**/*.{js,vue} build/**/*.js --quiet"
   },
   "repository": {
     "type": "git",
@@ -36,7 +36,6 @@
   "author": "elemefe",
   "license": "MIT",
   "dependencies": {
-    "vue-infinite-scroll": "^0.2.3",
     "vue-lazyload": "^0.8.0",
     "vue-popup": "^0.2.5",
     "wind-dom": "0.0.3"
@@ -48,7 +47,6 @@
     "cooking-saladcss": "^0.4.0",
     "cooking-vue2": "^0.2.2",
     "css-loader": "^0.25.0",
-    "del-cli": "^0.2.0",
     "extract-text-webpack-plugin": "2.0.0-beta.4",
     "fastclick": "^1.0.6",
     "file-loader": "^0.9.0",
@@ -61,6 +59,7 @@
     "my-local-ip": "^1.0.0",
     "postcss": "^5.2.0",
     "postcss-loader": "^0.13.0",
+    "rimraf": "^2.5.4",
     "style-loader": "^0.13.1",
     "uppercamelcase": "^1.1.0",
     "url-loader": "^0.5.7",

@@ -1,5 +1,4 @@
-import lazyload from 'vue-lazyload';
+import Lazyload from 'vue-lazyload';
 import 'mint-ui/src/style/empty.css';
 
-lazyload.name = 'lazy';
-export default lazyload;
+export default Lazyload;

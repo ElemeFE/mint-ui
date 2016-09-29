@@ -76,9 +76,9 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 };
 
-export default {
-  version: '0.2.6',
-  install,
+export default install;
+export const version = '0.2.6';
+export {
   Header,
   Button,
   Cell,

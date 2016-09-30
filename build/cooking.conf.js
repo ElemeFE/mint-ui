@@ -17,6 +17,5 @@ cooking.set({
 cooking.remove('output.publicPath');
 cooking.add('output.filename', 'index.js');
 cooking.add('loader.js.exclude', config.jsexclude);
-cooking.add('loader.vue.exclude', config.jsexclude);
 
 module.exports = cooking.resolve();

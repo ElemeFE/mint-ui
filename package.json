@@ -1,6 +1,6 @@
 {
   "name": "mint-ui",
-  "version": "0.2.6",
+  "version": "2.0.0-rc.1",
   "description": "Mobile UI elements for vue.js",
   "keywords": [
     "component",

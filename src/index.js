@@ -77,7 +77,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 };
 
 module.exports = {
-  version: '0.2.9',
+  version: '0.2.10',
   install,
   Header,
   Button,

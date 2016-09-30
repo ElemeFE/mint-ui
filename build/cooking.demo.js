@@ -20,17 +20,17 @@ cooking.set({
   extractCSS: true,
   sourceMap: true,
   extends: ['vue', 'lint', 'saladcss'],
-  alias: config.alias
+  alias: config.alias,
+  externals: process.env.NODE_ENV === 'production' ? {
+    vue: 'Vue',
+    'vue-router': 'VueRouter',
+    'fastclick': 'FastClick'
+  } : {}
 });
 
 cooking.add('loader.js.exclude', config.jsexclude);
-cooking.add('loader.vue.exclude', config.jsexclude);
 
-if (process.env.NODE_ENV === 'production') {
-  cooking.add('externals.vue', 'Vue');
-  cooking.add('externals.vue-router', 'VueRouter');
-  cooking.add('fastclick', 'FastClick');
-} else {
+if (process.env.NODE_ENV !== 'production') {
   cooking.add('plugins.Define', new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify('development')
   }));

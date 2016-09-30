@@ -77,7 +77,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 };
 
 export default install;
-export const version = '0.2.6';
+export const version = '2.0.0-rc.1';
 export {
   Header,
   Button,

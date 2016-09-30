@@ -14,12 +14,16 @@
 
 ## Installation
 ```shell
+# for Vue 1.0.x
 npm i mint-ui -S
+
+# for Vue 2.0
+npm i mint-ui@next -S
 ```
 
 ## Usage
 
-Import all components.
+Import all components
 
 ```javascript
 import Vue from 'vue'
@@ -28,7 +32,7 @@ import Mint from 'mint-ui';
 Vue.use(Mint);
 ```
 
-Or import specified component. (Use [babel-plugin-component](https://www.npmjs.com/package/babel-plugin-component))
+Or import specific components (use [babel-plugin-component](https://www.npmjs.com/package/babel-plugin-component))
 
 ```javascript
 import { Cell, Checklist } from 'mint-ui';

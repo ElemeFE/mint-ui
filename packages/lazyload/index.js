@@ -1,2 +1,2 @@
 import LazyLoad from './src/lazyload.js';
-export default LazyLoad;
+module.exports = LazyLoad;

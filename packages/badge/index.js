@@ -1,2 +1,2 @@
 import Badge from './src/badge.vue';
-export default Badge;
+module.exports = Badge;

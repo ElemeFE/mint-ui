@@ -4,7 +4,7 @@ const Indicator = Vue.extend(require('./src/indicator.vue'));
 let instance;
 let timer;
 
-export default {
+module.exports = {
   open(options = {}) {
     if (!instance) {
       instance = new Indicator({

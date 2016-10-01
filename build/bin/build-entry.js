@@ -30,9 +30,9 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 };
 
-export default install;
-export const version = '{{version}}';
-export {
+module.exports = {
+  install,
+  version: '{{version}}',
 {{list}}
 };
 `;

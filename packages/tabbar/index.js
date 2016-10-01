@@ -1,2 +1,2 @@
 import Tabbar from './src/tabbar.vue';
-export default Tabbar;
+module.exports = Tabbar;

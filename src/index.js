@@ -76,9 +76,9 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 };
 
-export default install;
-export const version = '2.0.0-rc.1';
-export {
+module.exports = {
+  install,
+  version: '2.0.0-rc.1',
   Header,
   Button,
   Cell,

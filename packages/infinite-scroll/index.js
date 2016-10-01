@@ -1,2 +1,2 @@
 import InfiniteScroll from './src/infinite-scroll.js';
-export default InfiniteScroll;
+module.exports = InfiniteScroll;

@@ -72,6 +72,10 @@
         default: true
       },
 
+      lockScroll: {
+        default: false
+      },
+
       cancelText: {
         type: String,
         default: '取消'

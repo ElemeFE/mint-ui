@@ -39,7 +39,7 @@
     "vue-clickoutside": "0.0.4",
     "vue-infinite-scroll": "^0.2.3",
     "vue-lazyload": "^0.7.1",
-    "vue-msgbox": "^0.2.11",
+    "vue-msgbox": "^0.2.12",
     "vue-popup": "0.1.10",
     "vue-swipe": "^0.2.6",
     "vue-toast-mobile": "^0.1.3",

@@ -103,6 +103,10 @@
         default: true
       },
 
+      lockScroll: {
+        default: false
+      },
+
       popupTransition: {
         type: String,
         default: 'popup-slide'

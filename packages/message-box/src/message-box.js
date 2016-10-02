@@ -8,6 +8,7 @@ var defaults = {
   showInput: false,
   showClose: true,
   modalFade: false,
+  lockScroll: false,
   closeOnClickModal: true,
   inputValue: null,
   inputPlaceholder: '',

@@ -161,6 +161,10 @@
         type: Boolean,
         default: true
       },
+      lockScroll: {
+        type: Boolean,
+        default: false
+      },
       closeOnClickModal: {
         default: true
       },

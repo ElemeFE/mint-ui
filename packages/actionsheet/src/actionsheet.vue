@@ -71,6 +71,10 @@
         default: false
       },
 
+      lockScroll: {
+        default: false
+      },
+
       closeOnClickModal: {
         default: true
       },

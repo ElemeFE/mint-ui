@@ -37,7 +37,7 @@
   "license": "MIT",
   "dependencies": {
     "vue-lazyload": "^0.8.0",
-    "vue-popup": "^0.2.5",
+    "vue-popup": "^0.2.6",
     "wind-dom": "0.0.3"
   },
   "devDependencies": {

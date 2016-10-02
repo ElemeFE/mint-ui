@@ -69,6 +69,10 @@
         type: Boolean,
         default: true
       },
+      distanceIndex: {
+        type: Number,
+        default: 2
+      },
       topPullText: {
         type: String,
         default: '下拉刷新'
@@ -276,7 +280,7 @@
           return;
         }
         this.currentY = event.touches[0].clientY;
-        let distance = this.currentY - this.startY;
+        let distance = (this.currentY - this.startY) / this.distanceIndex;
         this.direction = distance > 0 ? 'down' : 'up';
         if (typeof this.topMethod === 'function' && this.direction === 'down' && this.getScrollTop(this.scrollEventTarget) === 0 && this.topStatus !== 'loading') {
           event.preventDefault();

@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-const Toast = Vue.extend(require('./toast.vue'));
+const ToastConstructor = Vue.extend(require('./toast.vue'));
 let toastPool = [];
 
 let getAnInstance = () => {
@@ -9,7 +9,7 @@ let getAnInstance = () => {
     toastPool.splice(0, 1);
     return instance;
   }
-  return new Toast({
+  return new ToastConstructor({
     el: document.createElement('div')
   });
 };
@@ -26,10 +26,19 @@ let removeDom = event => {
   }
 };
 
-export default (options = {}) => {
+ToastConstructor.prototype.close = function() {
+  this.visible = false;
+  this.$el.addEventListener('transitionend', removeDom);
+  this.closed = true;
+  returnAnInstance(this);
+};
+
+let Toast = (options = {}) => {
   let duration = options.duration || 3000;
 
   let instance = getAnInstance();
+  instance.closed = false;
+  clearTimeout(instance.timer);
   instance.message = typeof options === 'string' ? options : options.message;
   instance.position = options.position || 'middle';
   instance.className = options.className || '';
@@ -39,10 +48,12 @@ export default (options = {}) => {
   Vue.nextTick(function() {
     instance.visible = true;
     instance.$el.removeEventListener('transitionend', removeDom);
-    setTimeout(function() {
-      instance.visible = false;
-      instance.$el.addEventListener('transitionend', removeDom);
-      returnAnInstance(instance);
+    instance.timer = setTimeout(function() {
+      if (instance.closed) return;
+      instance.close();
     }, duration);
   });
+  return instance;
 };
+
+export default Toast;

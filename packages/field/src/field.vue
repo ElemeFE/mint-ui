@@ -143,13 +143,16 @@ export default {
   @component-namespace mint {
     @component field {
       display: flex;
-      padding: 9px 10px;
 
       @when textarea {
         align-items: inherit;
 
         .mint-cell-title {
-          padding-top: 5px;
+          padding: 10px 0;
+        }
+
+        .mint-cell-value {
+          padding: 5px 0;
         }
       }
 

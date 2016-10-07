@@ -84,7 +84,7 @@ export default {
 
       @descendent label {
         display: block;
-        padding: 16px 10px;
+        padding: 0 10px;
       }
 
       @descendent title {

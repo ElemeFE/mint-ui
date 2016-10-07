@@ -109,8 +109,9 @@ export default {
       font-size: 16px;
       line-height: 1;
       overflow: hidden;
-      padding: 16px 10px;
+      padding: 0 10px;
       position: relative;
+      min-height: 48px;
 
       & + .mint-cell::after {
         content: none;

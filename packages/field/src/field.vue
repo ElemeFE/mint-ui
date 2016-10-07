@@ -1,45 +1,46 @@
 <template>
-  <div class="mint-field" :class="{ 'is-nolabel': !label }">
-    <x-cell
-      class="mint-field-cell"
-      :title="label"
-      v-clickoutside="active = false"
-      :class="[{
-        'is-textarea': type === 'textarea'
-      }]">
-      <textarea
-        v-el:textarea
-        class="mint-field-core"
-        :placeholder="placeholder"
-        v-if="type === 'textarea'"
-        :rows="rows"
-        :disabled="disabled"
-        :readonly="readonly"
-        v-model="value">
-      </textarea>
-      <input
-        v-el:input
-        class="mint-field-core"
-        :placeholder="placeholder"
-        :number="type === 'number'"
-        v-else
-        :type="type"
-        @focus="active = true"
-        :disabled="disabled"
-        :readonly="readonly"
-        v-model="value">
-      <div
-        @click="value = ''"
-        class="mint-field-clear"
-        v-show="value && type !== 'textarea' && active">
-        <i class="mintui mintui-field-error"></i>
-      </div>
-      <span class="mint-field-state" v-if="state" :class="['is-' + state]">
-        <i class="mintui" :class="['mintui-field-' + state]"></i>
-      </span>
-    </x-cell>
-    <slot></slot>
-  </div>
+  <x-cell
+    class="mint-field"
+    :title="label"
+    v-clickoutside="active = false"
+    :class="[{
+      'is-textarea': type === 'textarea',
+      'is-nolabel': !label
+    }]">
+    <textarea
+      v-el:textarea
+      class="mint-field-core"
+      :placeholder="placeholder"
+      v-if="type === 'textarea'"
+      :rows="rows"
+      :disabled="disabled"
+      :readonly="readonly"
+      v-model="value">
+    </textarea>
+    <input
+      v-el:input
+      class="mint-field-core"
+      :placeholder="placeholder"
+      :number="type === 'number'"
+      v-else
+      :type="type"
+      @focus="active = true"
+      :disabled="disabled"
+      :readonly="readonly"
+      v-model="value">
+    <div
+      @click="value = ''"
+      class="mint-field-clear"
+      v-show="value && type !== 'textarea' && active">
+      <i class="mintui mintui-field-error"></i>
+    </div>
+    <span class="mint-field-state" v-if="state" :class="['is-' + state]">
+      <i class="mintui" :class="['mintui-field-' + state]"></i>
+    </span>
+    <div class="mint-field-other">
+      <slot></slot>
+    </div>
+  </x-cell>
 </template>
 
 <script>
@@ -127,6 +128,7 @@ export default {
   @component-namespace mint {
     @component field {
       display: flex;
+      padding: 9px 10px;
 
       @when textarea {
         align-items: inherit;
@@ -134,11 +136,6 @@ export default {
         .mint-cell-title {
           padding-top: 5px;
         }
-      }
-
-      .mint-cell {
-        padding: 9px 10px;
-        flex: 1;
       }
 
       .mint-cell-title {
@@ -190,6 +187,10 @@ export default {
         @when default {
           margin-left: 0;
         }
+      }
+
+      @descendent other {
+        position: absolute 0 0 * *;
       }
 
       @when nolabel {

@@ -2,21 +2,19 @@
   <div class="mint-radiolist">
     <label class="mint-radiolist-title" v-text="title"></label>
     <x-cell v-for="option in options">
-      <div slot="title">
-        <label>
-          <span
-            :class="{'is-right': align === 'right'}"
-            class="mint-radio">
-            <input
-              class="mint-radio-core"
-              type="radio"
-              v-model="currentValue"
-              :disabled="option.disabled"
-              :value="option.value || option">
-          </span>
-          <span class="mint-radio-label" v-text="option.label || option"></span>
-        </label>
-      </div>
+      <label class="mint-radiolist-label" slot="title">
+        <span
+          :class="{'is-right': align === 'right'}"
+          class="mint-radio">
+          <input
+            class="mint-radio-core"
+            type="radio"
+            v-model="currentValue"
+            :disabled="option.disabled"
+            :value="option.value || option">
+        </span>
+        <span class="mint-radio-label" v-text="option.label || option"></span>
+      </label>
     </x-cell>
   </div>
 </template>
@@ -84,7 +82,8 @@ export default {
         padding: 0;
       }
 
-      .mint-cell-title {
+      @descendent label {
+        display: block;
         padding: 16px 10px;
       }
 

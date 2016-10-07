@@ -2,21 +2,19 @@
   <div class="mint-checklist" :class="{ 'is-limit': max <= value.length }">
     <label class="mint-checklist-title" v-text="title"></label>
     <x-cell v-for="option in options">
-      <div slot="title">
-        <label>
-          <span
-            :class="{'is-right': align === 'right'}"
-            class="mint-checkbox">
-            <input
-              class="mint-checkbox-core"
-              type="checkbox"
-              v-model="value"
-              :disabled="option.disabled"
-              :value="option.value || option">
-          </span>
-          <span class="mint-checkbox-label" v-text="option.label || option"></span>
-        </label>
-      </div>
+      <label class="mint-checklist-label" slot="title">
+        <span
+          :class="{'is-right': align === 'right'}"
+          class="mint-checkbox">
+          <input
+            class="mint-checkbox-core"
+            type="checkbox"
+            v-model="value"
+            :disabled="option.disabled"
+            :value="option.value || option">
+        </span>
+        <span class="mint-checkbox-label" v-text="option.label || option"></span>
+      </label>
     </x-cell>
   </div>
 </template>
@@ -86,7 +84,8 @@ export default {
         padding: 0;
       }
 
-      .mint-cell-title {
+      @descendent label {
+        display: block;
         padding: 16px 10px;
       }
 

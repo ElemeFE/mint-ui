@@ -7,6 +7,8 @@ Object.keys(Components).forEach(function(key) {
   externals[`mint-ui/packages/${key}/style.css`] = `mint-ui/lib/${key}/style.css`;
 });
 
+externals['vue-popup'] = 'vue-popup';
+
 exports.externals = Object.assign({
   vue: {
     root: 'Vue',

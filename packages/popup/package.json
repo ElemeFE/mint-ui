@@ -8,6 +8,5 @@
   "license": "MIT",
   "repository": "https://github.com/ElemeFE/mint-ui/tree/master/components/mint-popup",
   "dependencies": {
-    "vue-popup": "^0.2.6"
   }
 }

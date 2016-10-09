@@ -1,6 +1,7 @@
 <template>
   <div class="mint-switch">
-    <input class="mint-switch-core" type="checkbox" v-model="currentValue">
+    <input class="mint-switch-input" type="checkbox" v-model="currentValue">
+    <span class="mint-switch-core"></span>
     <div class="mint-switch-label"><slot></slot></div>
   </div>
 </template>
@@ -48,6 +49,7 @@ export default {
     @component switch {
       display: flex;
       align-items: center;
+      position: relative;
 
       @descendent label {
         margin-left: 10px;
@@ -59,11 +61,9 @@ export default {
       }
 
       @descendent core {
-        appearance: none;
         position: relative;
         size: 52px 32px;
         border: 1px solid $color-grey;
-        outline: 0;
         border-radius: 16px;
         box-sizing: border-box;
         background: $color-grey;
@@ -85,17 +85,27 @@ export default {
           size: 50px 30px;
           background-color: #fdfdfd;
         }
+      }
+
+      @descendent input {
+        appearance: none;
+        outline: 0;
+        size: 52px 32px;
+        position: absolute;
+        z-index: 1;
 
         &:checked {
-          border-color: $color-blue;
-          background-color: $color-blue;
+          + .mint-switch-core {
+            border-color: $color-blue;
+            background-color: $color-blue;
 
-          &::before {
-            transform: scale(0);
-          }
+            &::before {
+              transform: scale(0);
+            }
 
-          &::after {
-            transform: translateX(20px);
+            &::after {
+              transform: translateX(20px);
+            }
           }
         }
       }

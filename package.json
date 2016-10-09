@@ -9,6 +9,7 @@
     "eleme"
   ],
   "main": "lib/mint-ui.common.js",
+  "style": "lib/style.css",
   "files": [
     "lib",
     "src",

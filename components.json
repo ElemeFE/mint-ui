@@ -3,6 +3,7 @@
   "header": "./packages/header/index.js",
   "button": "./packages/button/index.js",
   "cell": "./packages/cell/index.js",
+  "cell-swipe": "./packages/cell-swipe/index.js",
   "field": "./packages/field/index.js",
   "badge": "./packages/badge/index.js",
   "switch": "./packages/switch/index.js",

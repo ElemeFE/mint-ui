@@ -1,6 +1,7 @@
 import Header from '../packages/header/index.js';
 import Button from '../packages/button/index.js';
 import Cell from '../packages/cell/index.js';
+import CellSwipe from '../packages/cell-swipe/index.js';
 import Field from '../packages/field/index.js';
 import Badge from '../packages/badge/index.js';
 import Switch from '../packages/switch/index.js';
@@ -37,6 +38,7 @@ const install = function(Vue) {
   Vue.component(Header.name, Header);
   Vue.component(Button.name, Button);
   Vue.component(Cell.name, Cell);
+  Vue.component(CellSwipe.name, CellSwipe);
   Vue.component(Field.name, Field);
   Vue.component(Badge.name, Badge);
   Vue.component(Switch.name, Switch);
@@ -82,6 +84,7 @@ module.exports = {
   Header,
   Button,
   Cell,
+  CellSwipe,
   Field,
   Badge,
   Switch,

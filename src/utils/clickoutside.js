@@ -17,9 +17,10 @@ export default {
     };
     el[clickoutsideContext] = {
       documentHandler,
-      methodName: binding.expression
+      methodName: binding.expression,
+      arg: binding.arg || 'click'
     };
-    document.addEventListener('click', documentHandler);
+    document.addEventListener(el[clickoutsideContext].arg, documentHandler);
   },
 
   update(el, binding) {
@@ -27,7 +28,9 @@ export default {
   },
 
   unbind(el) {
-    document.removeEventListener('click', el[clickoutsideContext].documentHandler);
+    document.removeEventListener(
+      el[clickoutsideContext].arg,
+      el[clickoutsideContext].documentHandler);
   },
 
   install(Vue) {

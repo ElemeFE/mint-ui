@@ -47,7 +47,6 @@
 import XCell from 'mint-ui/packages/cell/index.js';
 import Clickoutside from 'mint-ui/src/utils/clickoutside';
 if (process.env.NODE_ENV === 'component') {
-  require('mint-ui/packages/font/style.css');
   require('mint-ui/packages/cell/style.css');
 }
 

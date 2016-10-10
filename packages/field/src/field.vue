@@ -47,7 +47,6 @@
 import XCell from 'mint-ui/packages/cell/index.js';
 import Clickoutside from 'vue-clickoutside';
 if (process.env.NODE_ENV === 'component') {
-  require('mint-ui/packages/font/style.css');
   require('mint-ui/packages/cell/style.css');
 }
 
@@ -79,9 +78,9 @@ export default {
     };
   },
 
-  directives: {
-    Clickoutside
-  },
+  directives: { Clickoutside },
+
+  components: { XCell },
 
   props: {
     type: {
@@ -99,10 +98,6 @@ export default {
     },
     value: {},
     attr: Object
-  },
-
-  components: {
-    XCell
   },
 
   watch: {

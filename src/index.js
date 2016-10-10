@@ -29,6 +29,7 @@ import Lazyload from '../packages/lazyload/index.js';
 import DatetimePicker from '../packages/datetime-picker/index.js';
 import IndexList from '../packages/index-list/index.js';
 import IndexSection from '../packages/index-section/index.js';
+import CellSwipe from '../packages/cell-swipe/index.js';
 import '../src/assets/font/iconfont.css';
 
 const install = function(Vue) {
@@ -60,6 +61,7 @@ const install = function(Vue) {
   Vue.component(DatetimePicker.name, DatetimePicker);
   Vue.component(IndexList.name, IndexList);
   Vue.component(IndexSection.name, IndexSection);
+  Vue.component(CellSwipe.name, CellSwipe);
   Vue.use(InfiniteScroll);
   Vue.use(Lazyload, {
     loading: require('./assets/loading-spin.svg'),
@@ -109,5 +111,6 @@ module.exports = {
   Lazyload,
   DatetimePicker,
   IndexList,
-  IndexSection
+  IndexSection,
+  CellSwipe
 };

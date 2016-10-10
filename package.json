@@ -37,7 +37,8 @@
   "author": "elemefe",
   "license": "MIT",
   "dependencies": {
-    "vue-clickoutside": "0.0.4",
+    "array-find-index": "^1.0.2",
+    "vue-clickoutside": "^0.2.0",
     "vue-infinite-scroll": "^0.2.3",
     "vue-lazyload": "^0.7.1",
     "vue-msgbox": "^0.2.12",
@@ -71,7 +72,7 @@
     "style-loader": "^0.13.1",
     "uppercamelcase": "^1.1.0",
     "url-loader": "^0.5.7",
-    "vue": "^1.0.26",
+    "vue": "^1.0.28",
     "vue-router": "^0.7.13",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.1"

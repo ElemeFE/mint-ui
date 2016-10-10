@@ -108,6 +108,11 @@
         "icon": "cell"
       },
       {
+        "path": "/cell-swipe",
+        "name": "Cell Swipe",
+        "icon": "cell"
+      },
+      {
         "path": "/spinner",
         "name": "Spinner",
         "icon": "spinner"

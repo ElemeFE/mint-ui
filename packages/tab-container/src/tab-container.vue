@@ -1,10 +1,7 @@
 <template>
   <div
     @touchstart="startDrag"
-    @mousedown="startDrag"
     @touchmove="onDrag"
-    @mousemove="onDrag"
-    @mouseleave="endDrag"
     @touchend="endDrag"
     class="mint-tab-container">
     <div
@@ -35,7 +32,7 @@
 
 <script>
 import { once } from 'wind-dom/src/event';
-import 'mint-ui/src/polyfill/Array.prototype.findIndex';
+import arrayFindIndex from 'array-find-index';
 
 /**
  * mt-tab-container
@@ -72,7 +69,8 @@ export default {
   watch: {
     active(val, oldValue) {
       if (!this.swipeable) return;
-      const lastIndex = this.$children.findIndex(item => item.id === oldValue);
+      const lastIndex = arrayFindIndex(this.$children,
+        item => item.id === oldValue);
       this.swipeLeaveTransition(lastIndex);
     }
   },

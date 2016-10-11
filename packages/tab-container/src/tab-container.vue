@@ -35,7 +35,7 @@
 
 <script>
 import { once } from 'wind-dom/src/event';
-import 'mint-ui/src/polyfill/Array.prototype.findIndex';
+import arrayFindIndex from 'array-find-index';
 
 /**
  * mt-tab-container
@@ -78,7 +78,8 @@ export default {
     currentActive(val, oldValue) {
       this.$emit('input', val);
       if (!this.swipeable) return;
-      const lastIndex = this.$children.findIndex(item => item.id === oldValue);
+      const lastIndex = arrayFindIndex(this.$children,
+        item => item.id === oldValue);
       this.swipeLeaveTransition(lastIndex);
     }
   },

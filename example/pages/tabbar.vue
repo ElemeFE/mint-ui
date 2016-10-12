@@ -25,7 +25,7 @@
       </mt-tab-container>
     </div>
 
-    <mt-tabbar :selected.sync="selected">
+    <mt-tabbar :selected.sync="selected" fixed>
       <mt-tab-item id="外卖">
         <img slot="icon" src="../assets/100x100.png">
         外卖

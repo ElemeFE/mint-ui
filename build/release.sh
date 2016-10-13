@@ -18,6 +18,6 @@ then
 
   # publish
   git push eleme refs/tags/v$VERSION
-  git push eleme master
+  git push eleme 1.x
   npm publish
 fi

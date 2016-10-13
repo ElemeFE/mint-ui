@@ -1,4 +1,4 @@
-# Mint UI (next)
+# Mint UI
 
 [![Build Status](https://travis-ci.org/ElemeFE/mint-ui.svg?branch=next)](https://travis-ci.org/ElemeFE/mint-ui)
 [![npm](https://img.shields.io/npm/v/mint-ui.svg?maxAge=3600)](https://www.npmjs.com/package/mint-ui)
@@ -7,14 +7,17 @@
 ![CSS gzip size](http://img.badgesize.io/elemefe/mint-ui/next/lib/style.css.svg?compression=gzip&label=gzip%20size:%20CSS)
 [![Join the chat at https://gitter.im/ElemeFE/mint-ui](https://badges.gitter.im/ElemeFE/mint-ui.svg)](https://gitter.im/ElemeFE/mint-ui?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-> Mobile UI elements for vue 2.0
+> Mobile UI elements for **Vue 2.0**
 
 - [Homepage](http://mint-ui.github.io)
 - [Documentation](http://mint-ui.github.io/docs)
 
 ## Installation
 ```shell
-npm i mint-ui@next -S
+npm i mint-ui -S
+
+# for Vue 1.x
+npm i mint-ui@1 -S
 ```
 
 ## Usage

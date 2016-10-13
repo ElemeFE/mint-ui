@@ -164,20 +164,12 @@
 .mint-cell {
     position: relative;
     position: relative;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
     background-color: #fff;
     box-sizing: border-box;
     color: inherit;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    font-size: 16px;
-    line-height: 1;
+    min-height: 48px;
+    display: block;
     overflow: hidden;
-    padding: 16px 10px;
-    position: relative;
 }
 .mint-cell img {
     vertical-align: middle;
@@ -227,6 +219,21 @@
 .mint-cell:last-child::before {
     left: 0;
 }
+.mint-cell-wrapper {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 16px;
+    line-height: 1;
+    overflow: hidden;
+    padding: 0 10px;
+    position: relative;
+    min-height: inherit;
+    width: 100%;
+}
 .mint-cell-mask {}
 .mint-cell-mask::after {
     background-color: #000;
@@ -247,8 +254,8 @@
 .mint-cell-label {
     color: #888;
     display: block;
-    font-size: 14px;
-    margin-top: 14px;
+    font-size: 12px;
+    margin-top: 6px;
 }
 .mint-cell-title {
     -webkit-box-flex: 1;
@@ -264,8 +271,20 @@
         -ms-flex-align: center;
             align-items: center;
 }
-.mint-cell-allow-right {
-    padding-left: 30px;
+.mint-cell-left {
+    position: absolute;
+    height: 100%;
+    left: 0;
+    -webkit-transform: translate3d(-100%, 0, 0);
+            transform: translate3d(-100%, 0, 0);
+}
+.mint-cell-right {
+    position: absolute;
+    height: 100%;
+    right: 0;
+    top: 0;
+    -webkit-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
 }
 .mint-cell-allow-right::after {
     border: solid 2px #c8c8cd;
@@ -289,16 +308,34 @@
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
+.mint-cell-swipe .mint-cell-wrapper, .mint-cell-swipe .mint-cell-left, .mint-cell-swipe .mint-cell-right {
+    -webkit-transition: -webkit-transform 150ms ease-in-out;
+    transition: -webkit-transform 150ms ease-in-out;
+    transition: transform 150ms ease-in-out;
+    transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
+}
+.mint-cell-swipe-buttongroup {
+    height: 100%;
+}
+.mint-cell-swipe-button {
+    height: 100%;
+    display: inline-block;
+    padding: 0 10px;
+    line-height: 48px;
+}
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
 .mint-field {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-}
-.mint-field .mint-cell {
-    padding: 9px 10px;
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
 }
 .mint-field .mint-cell-title {
     width: 105px;
@@ -325,7 +362,10 @@
             align-items: inherit;
 }
 .mint-field.is-textarea .mint-cell-title {
-    padding-top: 5px;
+    padding: 10px 0;
+}
+.mint-field.is-textarea .mint-cell-value {
+    padding: 5px 0;
 }
 .mint-field-core {
     -webkit-appearance: none;
@@ -362,6 +402,11 @@
 }
 .mint-field-state.is-error {
     color: #f44336;
+}
+.mint-field-other {
+    top: 0;
+    right: 0;
+    position: absolute;
 }
 /* Cell Component */
 /* Header Component */
@@ -419,7 +464,8 @@
     display: flex;
     -webkit-box-align: center;
         -ms-flex-align: center;
-            align-items: center
+            align-items: center;
+    position: relative
 }
 .mint-switch-label {
     margin-left: 10px;
@@ -429,14 +475,10 @@
     margin-left: 0
 }
 .mint-switch-core {
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
     position: relative;
     width: 52px;
     height: 32px;
     border: 1px solid #d9d9d9;
-    outline: 0;
     border-radius: 16px;
     box-sizing: border-box;
     background: #d9d9d9
@@ -463,15 +505,25 @@
     height: 30px;
     background-color: #fdfdfd
 }
-.mint-switch-core:checked {
+.mint-switch-input {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    outline: 0;
+    width: 52px;
+    height: 32px;
+    position: absolute;
+    z-index: 1
+}
+.mint-switch-input:checked + .mint-switch-core {
     border-color: #26a2ff;
     background-color: #26a2ff
 }
-.mint-switch-core:checked::before {
+.mint-switch-input:checked + .mint-switch-core::before {
     -webkit-transform: scale(0);
             transform: scale(0)
 }
-.mint-switch-core:checked::after {
+.mint-switch-input:checked + .mint-switch-core::after {
     -webkit-transform: translateX(20px);
             transform: translateX(20px)
 }
@@ -962,12 +1014,13 @@ display: inline-block;
 .mint-checklist .mint-cell {
     padding: 0;
 }
-.mint-checklist .mint-cell-title {
-    padding: 16px 10px;
-}
 .mint-checklist.is-limit .mint-checkbox-core:not(:checked) {
     background-color: #d9d9d9;
     border-color: #d9d9d9;
+}
+.mint-checklist-label {
+    display: block;
+    padding: 0 10px;
 }
 .mint-checklist-title {
     color: #888;
@@ -1038,8 +1091,9 @@ display: inline-block;
 .mint-radiolist .mint-cell {
     padding: 0;
 }
-.mint-radiolist .mint-cell-title {
-    padding: 16px 10px;
+.mint-radiolist-label {
+    display: block;
+    padding: 0 10px;
 }
 .mint-radiolist-title {
     font-size: 12px;
@@ -1230,7 +1284,8 @@ display: inline-block;
 .popup-fade-enter, .popup-fade-leave-active {
   opacity: 0;
 }
-
+.v-modal-enter{-webkit-animation:v-modal-in .2s ease;animation:v-modal-in .2s ease}.v-modal-leave{-webkit-animation:v-modal-out .2s ease forwards;animation:v-modal-out .2s ease forwards}@-webkit-keyframes v-modal-in{0%{opacity:0}}@keyframes v-modal-in{0%{opacity:0}}@-webkit-keyframes v-modal-out{to{opacity:0}}@keyframes v-modal-out{to{opacity:0}}.v-modal{position:fixed;left:0;top:0;width:100%;height:100%;opacity:.5;background:#000}
+/*# sourceMappingURL=popup.css.map*/
 .mint-swipe {
     overflow: hidden;
     position: relative;
@@ -1272,6 +1327,7 @@ display: inline-block;
 .mint-swipe-indicator.is-active {
     background: #fff;
 }
+
 
 .mt-range {
     position: relative;
@@ -1734,8 +1790,7 @@ to{opacity:0
 }
 }
 .v-modal{position:fixed;left:0;top:0;width:100%;height:100%;opacity:.5;background:#000
-}
-/* Cell Component */
+}/* Cell Component */
 /* Header Component */
 /* Button Component */
 /* Tab Item Component */

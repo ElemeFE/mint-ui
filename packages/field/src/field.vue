@@ -101,9 +101,7 @@ export default {
     attr: Object
   },
 
-  components: {
-    XCell
-  },
+  components: { XCell },
 
   methods: {
     doCloseActive() {
@@ -118,6 +116,17 @@ export default {
 
     currentValue(val) {
       this.$emit('input', val);
+    },
+
+    type: {
+      immediate: true,
+      handler(type) {
+        this.$nextTick(() => {
+          const target = this.$refs.input;
+          if (!target || !type) return;
+          target.setAttribute('type', type);
+        });
+      }
     },
 
     attr: {

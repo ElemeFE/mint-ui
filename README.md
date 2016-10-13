@@ -1,10 +1,10 @@
 # Mint UI for Vue 1.x
 
-[![Build Status](https://travis-ci.org/ElemeFE/mint-ui.svg?branch=master)](https://travis-ci.org/ElemeFE/mint-ui)
+[![Build Status](https://travis-ci.org/ElemeFE/mint-ui.svg?branch=1.x)](https://travis-ci.org/ElemeFE/mint-ui)
 [![npm](https://img.shields.io/npm/v/mint-ui.svg?maxAge=3600)](https://www.npmjs.com/package/mint-ui)
 [![NPM downloads](http://img.shields.io/npm/dm/mint-ui.svg)](https://npmjs.org/package/mint-ui)
-![JS gzip size](http://img.badgesize.io/elemefe/mint-ui/master/lib/index.js.svg?compression=gzip&label=gzip%20size:%20JS)
-![CSS gzip size](http://img.badgesize.io/elemefe/mint-ui/master/lib/style.css.svg?compression=gzip&label=gzip%20size:%20CSS)
+![JS gzip size](http://img.badgesize.io/elemefe/mint-ui/1.x/lib/index.js.svg?compression=gzip&label=gzip%20size:%20JS)
+![CSS gzip size](http://img.badgesize.io/elemefe/mint-ui/1.x/lib/style.css.svg?compression=gzip&label=gzip%20size:%20CSS)
 [![Join the chat at https://gitter.im/ElemeFE/mint-ui](https://badges.gitter.im/ElemeFE/mint-ui.svg)](https://gitter.im/ElemeFE/mint-ui?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 > Mobile UI elements for Vue.js
@@ -82,8 +82,8 @@ Usage
 ## CDN
 RawGit
 
-- https://cdn.rawgit.com/ElemeFE/mint-ui/master/lib/index.js
-- https://cdn.rawgit.com/ElemeFE/mint-ui/master/lib/style.css
+- https://cdn.rawgit.com/ElemeFE/mint-ui/1.x/lib/index.js
+- https://cdn.rawgit.com/ElemeFE/mint-ui/1.x/lib/style.css
 
 NPMCDN
 
@@ -97,7 +97,7 @@ npm run dev
 ```
 
 ## Contribution
-Please make sure to read the [Contributing Guide](https://github.com/ElemeFE/mint-ui/blob/master/.github/CONTRIBUTING.md) before making a pull request.
+Please make sure to read the [Contributing Guide](https://github.com/ElemeFE/mint-ui/blob/1.x/.github/CONTRIBUTING.md) before making a pull request.
 
 ## License
 MIT

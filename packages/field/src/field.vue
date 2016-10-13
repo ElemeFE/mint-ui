@@ -23,7 +23,7 @@
       :placeholder="placeholder"
       :number="type === 'number'"
       v-else
-      :type="type"
+      type="text"
       @focus="active = true"
       :disabled="disabled"
       :readonly="readonly"
@@ -55,7 +55,7 @@ if (process.env.NODE_ENV === 'component') {
  * @desc 编辑器，依赖 cell
  * @module components/field
  *
- * @param {string} [type=text] - field 类型，接受 text, number, email, url, tel, date, datetime, password, textarea 等
+ * @param {string} [type=text] - field 类型，接受 text, textarea 等
  * @param {string} [label] - 标签
  * @param {string} [rows] - textarea 的 rows
  * @param {string} [placeholder] - placeholder

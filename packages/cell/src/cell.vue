@@ -93,13 +93,14 @@ export default {
 
       @descendent wrapper {
         align-items: center;
+        box-sizing: border-box;
         display: flex;
         font-size: 16px;
         line-height: 1;
+        min-height: inherit;
         overflow: hidden;
         padding: 0 10px;
         position: relative;
-        min-height: inherit;
         width: 100%;
       }
 

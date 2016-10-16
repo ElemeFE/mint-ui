@@ -73,6 +73,10 @@ export default {
       @descendent button {
         flex: .5;
 
+        > a {
+          color: inherit;
+        }
+
         @when left {
           text-align: left;
         }
@@ -85,6 +89,7 @@ export default {
       @descendent title {
         @utils-ellipsis;
         font-size: inherit;
+        font-weight: normal;
         flex: 1;
       }
 

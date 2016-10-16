@@ -55,6 +55,7 @@ export default {
       position: relative;
       text-align: center;
       white-space: nowrap;
+      font-weight: normal;
 
       .mint-button {
         background-color: transparent;
@@ -72,6 +73,10 @@ export default {
 
       @descendent button {
         flex: .5;
+
+        > a {
+          color: inherit;
+        }
 
         @when left {
           text-align: left;

@@ -97,13 +97,12 @@
 </style>
 
 <script type="text/babel">
-  import Vue from 'vue';
   import draggable from './draggable';
   import translateUtil from './translate';
   import { once } from 'wind-dom/src/event';
   import { addClass, removeClass } from 'wind-dom/src/class';
   import emitter from 'mint-ui/src/mixins/emitter';
-  require('raf.js');
+  import 'raf.js';
 
   var rotateElement = function(element, angle) {
     if (!element) return;
@@ -318,7 +317,7 @@
 
             var dragRange = dragState.range;
 
-            Vue.nextTick(() => {
+            this.$nextTick(() => {
               var translate;
               if (momentumTranslate) {
                 translate = Math.round(momentumTranslate / ITEM_HEIGHT) * ITEM_HEIGHT;
@@ -385,7 +384,7 @@
           this.currentValue = (val || [])[0];
         }
         if (this.rotateEffect) {
-          Vue.nextTick(() => {
+          this.$nextTick(() => {
             this.doOnValuesChange();
           });
         }

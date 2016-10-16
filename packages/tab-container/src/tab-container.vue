@@ -95,7 +95,8 @@ export default {
   methods: {
     swipeLeaveTransition(lastIndex = 0) {
       if (typeof this.index !== 'number') {
-        this.index = this.$children.findIndex(item => item.id === this.currentActive);
+        this.index = arrayFindIndex(this.$children,
+          item => item.id === this.currentActive);
         this.swipeMove(-lastIndex * this.pageWidth);
       }
 
@@ -138,7 +139,8 @@ export default {
       evt.preventDefault();
 
       const len = this.$children.length - 1;
-      const index = this.$children.findIndex(item => item.id === this.currentActive);
+      const index = arrayFindIndex(this.$children,
+        item => item.id === this.currentActive);
       const currentPageOffset = index * this.pageWidth;
       const offset = offsetLeft - currentPageOffset;
       const absOffset = Math.abs(offset);

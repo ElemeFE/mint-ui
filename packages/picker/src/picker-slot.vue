@@ -102,7 +102,7 @@
   import translateUtil from './translate';
   import { once } from 'wind-dom/src/event';
   import { addClass, removeClass } from 'wind-dom/src/class';
-  require('raf.js');
+  import 'raf.js';
 
   var rotateElement = function(element, angle) {
     if (!element) return;

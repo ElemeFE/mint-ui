@@ -17,7 +17,7 @@
   ],
   "scripts": {
     "dev": "npm run bootstrap && npm run build:entry && cooking watch -c build/cooking.demo.js -p",
-    "bootstrap": "npm i && lerna bootstrap",
+    "bootstrap": "npm i",
     "dist": "npm run bootstrap && npm run clean && npm run build:entry && npm run lint && cooking build -c build/cooking.conf.js,build/cooking.common.js,build/cooking.component.js -p",
     "deploy": "npm run build:entry && cooking build -c build/cooking.demo.js -p && gh-pages -d example/dist --remote eleme",
     "build:entry": "node build/bin/build-entry",
@@ -38,6 +38,7 @@
   "license": "MIT",
   "dependencies": {
     "array-find-index": "^1.0.2",
+    "raf.js": "0.0.4",
     "vue-clickoutside": "^0.2.0",
     "vue-infinite-scroll": "^0.2.3",
     "vue-lazyload": "^0.7.1",

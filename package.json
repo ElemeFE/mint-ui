@@ -51,6 +51,7 @@
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-2": "^6.17.0",
     "cooking": "^1.0.1",
     "cooking-lint": "^0.1.2",
     "cooking-saladcss": "^0.4.0",

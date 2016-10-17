@@ -1,9 +1,4 @@
 {
   "presets": ["es2015"],
-  "env": {
-    "production": {
-      "presets": [["es2015", {"loose": true}]],
-    }
-  },
   "comments": false
 }

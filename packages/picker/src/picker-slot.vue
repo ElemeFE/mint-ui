@@ -1,5 +1,5 @@
 <template>
-  <div class="picker-slot" :class="classNames" :style="{ flex: flex }">
+  <div class="picker-slot" :class="classNames" :style="flexStyle">
     <div v-if="!divider" ref="wrapper" class="picker-slot-wrapper" :class="{ dragging: dragging }" :style="{ height: contentHeight + 'px' }">
       <div class="picker-item" v-for="itemValue in mutatingValues" :class="{ 'picker-selected': itemValue === currentValue }">{{ itemValue }}</div>
     </div>
@@ -160,6 +160,14 @@
     mixins: [emitter],
 
     computed: {
+      flexStyle() {
+        return {
+          'flex': this.flex,
+          '-webkit-box-flex': this.flex,
+          '-moz-box-flex': this.flex,
+          '-ms-flex': this.flex
+        };
+      },
       classNames() {
         const PREFIX = 'picker-slot-';
         let resultArray = [];

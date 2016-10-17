@@ -1,10 +1,10 @@
 <template>
   <mt-popup :visible.sync="visible" position="bottom" class="mint-datetime">
-    <mt-picker 
-    :slots="dateSlots" 
-    @change="onChange" 
-    :visible-item-count="visibleItemCount" 
-    class="mint-datetime-picker" 
+    <mt-picker
+    :slots="dateSlots"
+    @change="onChange"
+    :visible-item-count="visibleItemCount"
+    class="mint-datetime-picker"
     v-ref:picker
     show-toolbar>
       <span class="mint-datetime-action mint-datetime-cancel" @click="visible = false">{{ cancelText }}</span>

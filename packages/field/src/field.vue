@@ -23,11 +23,12 @@
       :placeholder="placeholder"
       :number="type === 'number'"
       v-else
-      type="text"
+      :type="type"
       @focus="active = true"
       :disabled="disabled"
       :readonly="readonly"
-      v-model="currentValue">
+      :value="currentValue"
+      @input="evt => {currentValue = evt.target.value}">
     <div
       @click="currentValue = ''"
       class="mint-field-clear"
@@ -116,17 +117,6 @@ export default {
 
     currentValue(val) {
       this.$emit('input', val);
-    },
-
-    type: {
-      immediate: true,
-      handler(type) {
-        this.$nextTick(() => {
-          const target = this.$refs.input;
-          if (!target || !type) return;
-          target.setAttribute('type', type);
-        });
-      }
     },
 
     attr: {

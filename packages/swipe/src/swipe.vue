@@ -3,6 +3,7 @@
     @component swipe {
       overflow: hidden;
       position: relative;
+      height: 100%;
 
       @descendent items-wrap {
         position: relative;

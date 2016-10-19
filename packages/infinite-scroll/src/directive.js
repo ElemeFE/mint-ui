@@ -107,14 +107,14 @@ var doBind = function() {
         doCheck.call(directive);
       }
     });
-    disabled = Boolean(directive.vm.disabledExpr);
+    disabled = Boolean(directive.vm[disabledExpr]);
   }
   directive.disabled = disabled;
 
   var distanceExpr = element.getAttribute('infinite-scroll-distance');
   var distance = 0;
   if (distanceExpr) {
-    distance = Number(directive.vm.distanceExpr);
+    distance = Number(directive.vm[distanceExpr] || distanceExpr);
     if (isNaN(distance)) {
       distance = 0;
     }
@@ -124,7 +124,7 @@ var doBind = function() {
   var immediateCheckExpr = element.getAttribute('infinite-scroll-immediate-check');
   var immediateCheck = true;
   if (immediateCheckExpr) {
-    immediateCheck = Boolean(directive.vm.immediateCheckExpr);
+    immediateCheck = Boolean(directive.vm[immediateCheckExpr]);
   }
   directive.immediateCheck = immediateCheck;
 
@@ -172,26 +172,27 @@ export default {
       expression: binding.value
     };
     const args = arguments;
+    el[ctx].vm.$on('hook:mounted', function() {
+      el[ctx].vm.$nextTick(function() {
+        if (isAttached(el)) {
+          doBind.call(el[ctx], args);
+        }
 
-    el[ctx].vm.$on('hook:ready', function() {
-      if (isAttached(el)) {
-        doBind.call(el[ctx], args);
-      }
+        el[ctx].bindTryCount = 0;
+
+        var tryBind = function() {
+          if (el[ctx].bindTryCount > 10) return; //eslint-disable-line
+          el[ctx].bindTryCount++;
+          if (isAttached(el)) {
+            doBind.call(el[ctx], args);
+          } else {
+            setTimeout(tryBind, 50);
+          }
+        };
+
+        tryBind();
+      });
     });
-
-    el[ctx].bindTryCount = 0;
-
-    var tryBind = function() {
-      if (el[ctx].bindTryCount > 10) return; //eslint-disable-line
-      el[ctx].bindTryCount++;
-      if (isAttached(el)) {
-        doBind.call(el[ctx], args);
-      } else {
-        setTimeout(tryBind, 50);
-      }
-    };
-
-    tryBind();
   },
 
   unbind(el) {

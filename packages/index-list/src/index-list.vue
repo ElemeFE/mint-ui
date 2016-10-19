@@ -97,7 +97,23 @@
       };
     },
 
+    watch: {
+      sections() {
+        this.init();
+      }
+    },
+
     methods: {
+      init() {
+        this.$nextTick(() => {
+          this.navWidth = this.$refs.nav.clientWidth;
+        });
+        let listItems = this.$refs.content.getElementsByTagName('li');
+        if (listItems.length > 0) {
+          this.firstSection = listItems[0];
+        }
+      },
+
       handleTouchStart(e) {
         if (e.target.tagName !== 'LI') {
           return;
@@ -144,10 +160,7 @@
       if (!this.currentHeight) {
         this.currentHeight = document.documentElement.clientHeight - this.$refs.content.getBoundingClientRect().top;
       }
-      this.$nextTick(() => {
-        this.navWidth = this.$refs.nav.clientWidth;
-      });
-      this.firstSection = this.$refs.content.getElementsByTagName('li')[0];
+      this.init();
     }
   };
 </script>

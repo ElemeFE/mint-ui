@@ -93,6 +93,8 @@ export default {
         size: 52px 32px;
         position: absolute;
         z-index: 1;
+        background-color: transparent;
+        border: none;
 
         &:checked {
           + .mint-switch-core {

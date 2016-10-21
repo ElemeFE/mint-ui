@@ -30,8 +30,9 @@
       :value="currentValue"
       @input="handleInput">
     <div
-      @click="currentValue = ''"
+      @click="handleClear"
       class="mint-field-clear"
+      v-if="!disableClear"
       v-show="currentValue && type !== 'textarea' && active">
       <i class="mintui mintui-field-error"></i>
     </div>
@@ -94,6 +95,7 @@ export default {
     placeholder: String,
     readonly: Boolean,
     disabled: Boolean,
+    disableClear: Boolean,
     state: {
       type: String,
       default: 'default'
@@ -111,6 +113,11 @@ export default {
 
     handleInput(evt) {
       this.currentValue = evt.target.value;
+    },
+
+    handleClear() {
+      if (this.disabled || this.readonly) return;
+      this.currentValue = '';
     }
   },
 

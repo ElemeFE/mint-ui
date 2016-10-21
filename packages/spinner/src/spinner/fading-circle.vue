@@ -4,6 +4,7 @@
       height: spinnerSize
     }">
     <div v-for="n in 12" :class="['is-circle' + (n + 1)]" class="mint-spinner-fading-circle-circle"></div>
+  </div>
 </template>
 
 <script>

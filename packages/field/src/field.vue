@@ -28,7 +28,7 @@
       :disabled="disabled"
       :readonly="readonly"
       :value="currentValue"
-      @input="evt => {currentValue = evt.target.value}">
+      @input="handleInput">
     <div
       @click="currentValue = ''"
       class="mint-field-clear"
@@ -107,6 +107,10 @@ export default {
   methods: {
     doCloseActive() {
       this.active = false;
+    },
+
+    handleInput(evt) {
+      this.currentValue = evt.target.value;
     }
   },
 

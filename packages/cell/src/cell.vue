@@ -14,7 +14,7 @@
           <span v-if="label" class="mint-cell-label" v-text="label"></span>
         </slot>
       </div>
-      <div class="mint-cell-value">
+      <div class="mint-cell-value" :class="{ 'is-link' : isLink }">
         <slot>
           <span v-text="value"></span>
         </slot>
@@ -177,6 +177,10 @@ export default {
         color: $cell-value-color;
         display: flex;
         align-items: center;
+
+        @when link {
+          margin-right: 24px;
+        }
       }
 
       @descendent left {

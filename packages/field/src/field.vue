@@ -29,7 +29,8 @@
       :readonly="readonly"
       v-model="value">
     <div
-      @click="value = ''"
+      @click="handleClear"
+      v-if="!disableClear"
       class="mint-field-clear"
       v-show="value && type !== 'textarea' && active">
       <i class="mintui mintui-field-error"></i>
@@ -92,12 +93,20 @@ export default {
     placeholder: String,
     readonly: Boolean,
     disabled: Boolean,
+    disableClear: Boolean,
     state: {
       type: String,
       default: 'default'
     },
     value: {},
     attr: Object
+  },
+
+  methods: {
+    handleClear() {
+      if (this.disabled || this.readonly) return;
+      this.vulue = '';
+    }
   },
 
   watch: {

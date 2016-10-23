@@ -79,8 +79,18 @@
         type: String,
         default: 'datetime'
       },
-      startDate: Date,
-      endDate: Date,
+      startDate: {
+        type: Date,
+        default() {
+          return new Date(new Date().getFullYear() - 10, 0, 1);
+        }
+      },
+      endDate: {
+        type: Date,
+        default() {
+          return new Date(new Date().getFullYear() + 10, 11, 31);
+        }
+      },
       startHour: {
         type: Number,
         default: 0
@@ -148,6 +158,16 @@
         return [4, 6, 9, 11].indexOf(month) > -1;
       },
 
+      getMonthEndDay(year, month) {
+        if (this.isShortMonth(month)) {
+          return 30;
+        } else if (month === 2) {
+          return this.isLeapYear(year) ? 29 : 28;
+        } else {
+          return 31;
+        }
+      },
+
       getTrueValue(formattedValue) {
         if (!formattedValue) return;
         while (isNaN(parseInt(formattedValue, 10))) {
@@ -164,6 +184,11 @@
           let year = this.getTrueValue(values[0]);
           let month = this.getTrueValue(values[1]);
           let date = this.getTrueValue(values[2]);
+          let maxDate = this.getMonthEndDay(year, month);
+          if (date > maxDate) {
+            this.selfTriggered = true;
+            date = 1;
+          }
           let hour = this.typeStr.indexOf('H') > -1 ? this.getTrueValue(values[this.typeStr.indexOf('H')]) : 0;
           let minute = this.typeStr.indexOf('m') > -1 ? this.getTrueValue(values[this.typeStr.indexOf('m')]) : 0;
           value = new Date(year, month - 1, date, hour, minute);
@@ -177,101 +202,7 @@
           this.selfTriggered = false;
           return;
         }
-        this.isSlotChange = true;
-        let currentValue = this.getValue(values);
-        if (this.type.indexOf('date') > -1) {
-          if (currentValue.getTime() < this.startDate.getTime()) {
-            this.value = this.startDate;
-            currentValue = this.startDate;
-            this.selfTriggered = true;
-            this.setSlots();
-          }
-          if (currentValue.getTime() > this.endDate.getTime()) {
-            this.value = this.endDate;
-            currentValue = this.endDate;
-            this.selfTriggered = true;
-            this.setSlots();
-          }
-          if (this.isShortMonth(this.getTrueValue(values[1]))) {
-            if (this.shortMonthDates.indexOf(values[2]) === -1) {
-              picker.setSlotValue(2, this.dateSlots[2].values[0]);
-              return;
-            }
-            this.dateSlots[2].values = this.shortMonthDates.map(item => item);
-          } else if (this.getTrueValue(values[1]) === 2) {
-            if (this.isLeapYear(this.getTrueValue(values[0]))) {
-              if (this.leapFebDates.indexOf(values[2]) === -1) {
-                picker.setSlotValue(2, this.dateSlots[2].values[0]);
-                return;
-              }
-              this.dateSlots[2].values = this.leapFebDates.map(item => item);
-            } else {
-              if (this.febDates.indexOf(values[2]) === -1) {
-                picker.setSlotValue(2, this.dateSlots[2].values[0]);
-                return;
-              }
-              this.dateSlots[2].values = this.febDates.map(item => item);
-            }
-          } else {
-            this.dateSlots[2].values = this.longMonthDates.map(item => item);
-          }
-        } else {
-          let valueArr = currentValue.split(':');
-          let hour = parseInt(valueArr[0], 10);
-          let minute = parseInt(valueArr[1], 10);
-          if (hour < this.startHour) {
-            this.value = `${ ('0' + this.startHour).slice(-2) }:${ ('0' + minute).slice(-2) }`;
-            currentValue = this.value;
-            this.selfTriggered = true;
-            this.setSlots();
-          }
-          if (hour > this.endHour) {
-            this.value = `${ ('0' + this.endHour).slice(-2) }:${ ('0' + minute).slice(-2) }`;
-            currentValue = this.value;
-            this.selfTriggered = true;
-            this.setSlots();
-          }
-        }
-        this.value = currentValue;
-        if (this.type.indexOf('date') > -1) {
-          this.rimDetect(this.dateSlots[2].values);
-        }
-        this.$emit('change', this.value);
-      },
-
-      rimDetect(monthDates) {
-        if (this.value.getFullYear() === this.startDate.getFullYear()) {
-          this.trimSlots('start', this.startDate, 1);
-          if (this.value.getMonth() === this.startDate.getMonth()) {
-            this.trimSlots('start', this.startDate, 2);
-          } else {
-            this.dateSlots[2].values = monthDates.map(item => item);
-          }
-        }
-        if (this.value.getFullYear() === this.endDate.getFullYear()) {
-          this.trimSlots('end', this.endDate, 1);
-          if (this.value.getMonth() === this.endDate.getMonth()) {
-            this.trimSlots('end', this.endDate, 2);
-          } else {
-            this.dateSlots[2].values = monthDates.map(item => item);
-          }
-        }
-      },
-
-      trimSlots(rim, value, index) {
-        let arr = [value.getFullYear(), value.getMonth() + 1, value.getDate(), value.getHours(), value.getMinutes()];
-        if (rim === 'start') {
-          while (this.getTrueValue(this.dateSlots[index].values[0]) < arr[index]) {
-            this.dateSlots[index].values.shift();
-          }
-        }
-        if (rim === 'end') {
-          let lastIndex = this.dateSlots[index].values.length - 1;
-          while (this.getTrueValue(this.dateSlots[index].values[lastIndex]) > arr[index]) {
-            this.dateSlots[index].values.pop();
-            lastIndex--;
-          }
-        }
+        this.value = this.getValue(values);
       },
 
       fillValues(type, start, end) {
@@ -296,11 +227,11 @@
       generateSlots() {
         let dateSlots = [];
         const INTERVAL_MAP = {
-          Y: [this.startYear, this.endYear],
-          M: [this.startMonth, this.endMonth],
-          D: [this.startDay, this.endDay],
-          H: [this.startHour, this.endHour],
-          m: [0, 59]
+          Y: this.rims.year,
+          M: this.rims.month,
+          D: this.rims.date,
+          H: this.rims.hour,
+          m: this.rims.min
         };
         let typesArr = this.typeStr.split('');
         typesArr.forEach(type => {
@@ -315,6 +246,70 @@
           });
         }
         this.dateSlots = dateSlots;
+        this.handleExceededValue();
+      },
+
+      handleExceededValue() {
+        let values = [];
+        if (this.type === 'time') {
+          values = this.value.split(':');
+        } else {
+          values = [
+            this.yearFormat.replace('{value}', this.getYear(this.value)),
+            this.monthFormat.replace('{value}', ('0' + this.getMonth(this.value)).slice(-2)),
+            this.dateFormat.replace('{value}', ('0' + this.getDate(this.value)).slice(-2))
+          ];
+          if (this.type === 'datetime') {
+            values.push(
+                this.hourFormat.replace('{value}', ('0' + this.getHour(this.value)).slice(-2)),
+                this.minuteFormat.replace('{value}', ('0' + this.getMinute(this.value)).slice(-2))
+            );
+          }
+        }
+        this.dateSlots.filter(child => child.values !== undefined)
+          .map(slot => slot.values).forEach((slotValues, index) => {
+            if (slotValues.indexOf(values[index]) === -1) {
+              values[index] = slotValues[0];
+            }
+          });
+        this.$nextTick(() => {
+          this.setSlotsByValues(values);
+        });
+      },
+
+      setSlotsByValues(values) {
+        const setSlotValue = this.$refs.picker.setSlotValue;
+        if (this.type === 'time') {
+          setSlotValue(0, values[0]);
+          setSlotValue(1, values[1]);
+        }
+        if (this.type !== 'time') {
+          setSlotValue(0, values[0]);
+          setSlotValue(1, values[1]);
+          setSlotValue(2, values[2]);
+          if (this.type === 'datetime') {
+            setSlotValue(3, values[3]);
+            setSlotValue(4, values[4]);
+          }
+        }
+        [].forEach.call(this.$refs.picker.$children, child => child.doOnValueChange());
+      },
+
+      rimDetect(result, rim) {
+        let position = rim === 'start' ? 0 : 1;
+        let rimDate = rim === 'start' ? this.startDate : this.endDate;
+        if (this.value.getFullYear() === rimDate.getFullYear()) {
+          result.month[position] = rimDate.getMonth() + 1;
+          if (this.value.getMonth() === rimDate.getMonth()) {
+            result.date[position] = rimDate.getDate();
+            if (this.value.getDate() === rimDate.getDate()) {
+              result.hour[position] = rimDate.getHours();
+              if (this.value.getHours() === rimDate.getHours()) {
+                result.min[position] = rimDate.getMinutes();
+              }
+            }
+          }
+        }
       },
 
       isDateString(str) {
@@ -349,58 +344,35 @@
         return value.getMinutes();
       },
 
-      setSlots() {
-        const setSlotValue = this.$refs.picker.setSlotValue;
-        if (this.type === 'time' && typeof this.value === 'string') {
-          let valueArr = this.value.split(':');
-          setSlotValue(0, this.hourFormat.replace('{value}', valueArr[0]));
-          setSlotValue(1, this.minuteFormat.replace('{value}', valueArr[1]));
-        }
-        if (this.type !== 'time' && (({}).toString.call(this.value) === '[object Date]' || this.isDateString(this.value))) {
-          let year = this.getYear(this.value);
-          let month = this.getMonth(this.value);
-          let date = this.getDate(this.value);
-          setSlotValue(0, this.yearFormat.replace('{value}', year));
-          setSlotValue(1, this.monthFormat.replace('{value}', ('0' + month).slice(-2)));
-          setSlotValue(2, this.dateFormat.replace('{value}', ('0' + date).slice(-2)));
-          if (this.type === 'datetime') {
-            let hour = this.getHour(this.value);
-            let minute = this.getMinute(this.value);
-            setSlotValue(3, this.hourFormat.replace('{value}', ('0' + hour).slice(-2)));
-            setSlotValue(4, this.minuteFormat.replace('{value}', ('0' + minute).slice(-2)));
-          }
-        }
-      },
-
       confirm() {
         this.visible = false;
         this.$emit('confirm', this.value);
-      },
-
-      translateToDate(val) {
-        if (Object.prototype.toString.call(val) === '[object Date]') return val;
-        return new Date(val.split(/[\-\:/\.]/).join('-'));
-      },
-
-      handleRimChange() {
-        let now = new Date();
-        this.startDate = this.startDate || new Date(now.getFullYear() - 10, 0, 1);
-        this.endDate = this.endDate || new Date(now.getFullYear() + 10, 11, 31);
-        this.startYear = this.startDate.getFullYear();
-        this.endYear = this.endDate.getFullYear();
-        if (this.startYear === this.endYear) {
-          this.startMonth = this.startDate.getMonth() + 1;
-          this.endMonth = this.endDate.getMonth() + 1;
-          if (this.startMonth === this.endMonth) {
-            this.startDay = this.startDate.getDate();
-            this.endDay = this.endDate.getDate();
-          }
-        }
-        this.generateSlots();
       }
     },
 
     computed: {
+      rims() {
+        if (!this.value) return { year: [], month: [], date: [], hour: [], min: [] };
+        let result;
+        if (this.type === 'time') {
+          result = {
+            hour: [this.startHour, this.endHour],
+            min: [0, 59]
+          };
+          return result;
+        }
+        result = {
+          year: [this.startDate.getFullYear(), this.endDate.getFullYear()],
+          month: [1, 12],
+          date: [1, this.getMonthEndDay(this.value.getFullYear(), this.value.getMonth() + 1)],
+          hour: [0, 23],
+          min: [0, 59]
+        };
+        this.rimDetect(result, 'start');
+        this.rimDetect(result, 'end');
+        return result;
+      },
+
       typeStr() {
         if (this.type === 'time') {
           return 'Hm';
@@ -413,77 +385,24 @@
     },
 
     watch: {
-      startDate(val, oldVal) {
-        if (!oldVal) return;
-        this.handleRimChange();
-        if (this.value < this.translateToDate(val)) {
-          this.value = val;
-        }
-        this.$nextTick(() => {
-          this.setSlots();
-        });
-      },
-
-      endDate(val, oldVal) {
-        if (!oldVal) return;
-        this.handleRimChange();
-        if (this.value > this.translateToDate(val)) {
-          this.value = val;
-        }
-        this.$nextTick(() => {
-          this.setSlots();
-        });
-      },
-
-      startHour() {
-        this.generateSlots();
-        this.$nextTick(() => {
-          this.setSlots();
-        });
-      },
-
-      endHour() {
-        this.generateSlots();
-        this.$nextTick(() => {
-          this.setSlots();
-        });
-      },
-
-      value() {
-        this.$nextTick(() => {
-          this.$refs.picker.$children.forEach(child => {
-            child.doOnValueChange();
-          });
-        });
-        if (!this.isSlotChange) {
-          this.setSlots();
-        } else {
-          this.isSlotChange = false;
+      rims(val, oldVal) {
+        let same = Object.keys(val).every(key => val[key][0] === oldVal[key][0] &&
+          val[key][1] === oldVal[key][1]);
+        if (!same) {
+          this.generateSlots();
         }
       }
-    },
-
-    created() {
-      for (let i = 1; i <= 28; i++) {
-        this.febDates.push(this.dateFormat.replace('{value}', ('0' + i).slice(-2)));
-      }
-      this.leapFebDates = this.febDates.concat(this.dateFormat.replace('{value}', '29'));
-      this.shortMonthDates = this.leapFebDates.concat(this.dateFormat.replace('{value}', '30'));
-      this.longMonthDates = this.shortMonthDates.concat(this.dateFormat.replace('{value}', '31'));
-      this.handleRimChange();
     },
 
     ready() {
       if (!this.value) {
         if (this.type.indexOf('date') > -1) {
           this.value = this.startDate;
-          this.trimSlots('start', this.value, 1);
-          this.trimSlots('start', this.value, 2);
         } else {
           this.value = `${ ('0' + this.startHour).slice(-2) }:00`;
         }
       }
-      this.setSlots();
+      this.generateSlots();
     }
   };
 </script>

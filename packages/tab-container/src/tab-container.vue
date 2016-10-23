@@ -85,6 +85,7 @@ export default {
 
   created() {
     if (this.swipeable) return;
+    this.$options._linkerCachable = false;
     this.$options.template = '<div class="mint-tab-container"><slot></slot></div>';
   },
 

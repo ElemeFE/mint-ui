@@ -65,6 +65,10 @@
     },
 
     props: {
+      maxDistance: {
+        type: Number,
+        default: 0
+      },
       autoFill: {
         type: Boolean,
         default: true
@@ -199,7 +203,8 @@
 
       getScrollEventTarget(element) {
         let currentNode = element;
-        while (currentNode && currentNode.tagName !== 'HTML' && currentNode.tagName !== 'BODY' && currentNode.nodeType === 1) {
+        while (currentNode && currentNode.tagName !== 'HTML' &&
+          currentNode.tagName !== 'BODY' && currentNode.nodeType === 1) {
           let overflowY = document.defaultView.getComputedStyle(currentNode).overflowY;
           if (overflowY === 'scroll' || overflowY === 'auto') {
             return currentNode;
@@ -241,9 +246,11 @@
         if (this.autoFill) {
           this.$nextTick(() => {
             if (this.scrollEventTarget === window) {
-              this.containerFilled = this.$el.getBoundingClientRect().bottom >= document.documentElement.getBoundingClientRect().bottom;
+              this.containerFilled = this.$el.getBoundingClientRect().bottom >=
+                document.documentElement.getBoundingClientRect().bottom;
             } else {
-              this.containerFilled = this.$el.getBoundingClientRect().bottom >= this.scrollEventTarget.getBoundingClientRect().bottom;
+              this.containerFilled = this.$el.getBoundingClientRect().bottom >=
+                this.scrollEventTarget.getBoundingClientRect().bottom;
             }
             if (!this.containerFilled) {
               this.bottomStatus = 'loading';
@@ -282,10 +289,15 @@
         this.currentY = event.touches[0].clientY;
         let distance = (this.currentY - this.startY) / this.distanceIndex;
         this.direction = distance > 0 ? 'down' : 'up';
-        if (typeof this.topMethod === 'function' && this.direction === 'down' && this.getScrollTop(this.scrollEventTarget) === 0 && this.topStatus !== 'loading') {
+        if (typeof this.topMethod === 'function' && this.direction === 'down' &&
+          this.getScrollTop(this.scrollEventTarget) === 0 && this.topStatus !== 'loading') {
           event.preventDefault();
           event.stopPropagation();
-          this.translate = distance - this.startScrollTop;
+          if (this.maxDistance > 0) {
+            this.translate = distance <= this.maxDistance ? distance - this.startScrollTop : this.translate;
+          } else {
+            this.translate = distance - this.startScrollTop;
+          }
           if (this.translate < 0) {
             this.translate = 0;
           }
@@ -295,10 +307,16 @@
         if (this.direction === 'up') {
           this.bottomReached = this.bottomReached || this.checkBottomReached();
         }
-        if (typeof this.bottomMethod === 'function' && this.direction === 'up' && this.bottomReached && this.bottomStatus !== 'loading' && !this.bottomAllLoaded) {
+        if (typeof this.bottomMethod === 'function' && this.direction === 'up' &&
+          this.bottomReached && this.bottomStatus !== 'loading' && !this.bottomAllLoaded) {
           event.preventDefault();
           event.stopPropagation();
-          this.translate = this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance;
+          if (this.maxDistance > 0) {
+            this.translate = Math.abs(distance) <= this.maxDistance
+              ? this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance : this.translate;
+          } else {
+            this.translate = this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance;
+          }
           if (this.translate > 0) {
             this.translate = 0;
           }

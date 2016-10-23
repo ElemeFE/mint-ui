@@ -8,7 +8,7 @@
         <div class="mint-msgbox-content" v-if="message !== ''">
           <div class="mint-msgbox-message"><p>{{ message }}</p></div>
           <div class="mint-msgbox-input" v-show="showInput">
-            <input type="text" v-model="inputValue" :placeholder="inputPlaceholder" ref="input">
+            <input v-model="inputValue" :placeholder="inputPlaceholder" ref="input">
             <div class="mint-msgbox-errormsg" :style="{ visibility: !!editorErrorMessage ? 'visible' : 'hidden' }">{{ editorErrorMessage }}</div>
           </div>
         </div>
@@ -170,6 +170,10 @@
       },
       closeOnPressEscape: {
         default: true
+      },
+      inputType: {
+        type: String,
+        default: 'text'
       }
     },
 
@@ -246,6 +250,11 @@
         this.editorErrorMessage = '';
         this.$refs.input.classList.remove('invalid');
         return true;
+      },
+
+      handleInputType(val) {
+        if (val === 'range' || !this.$refs.input) return;
+        this.$refs.input.type = val;
       }
     },
 
@@ -257,6 +266,7 @@
       },
 
       value(val) {
+        this.handleInputType(this.inputType);
         if (val && this.$type === 'prompt') {
           setTimeout(() => {
             if (this.$refs.input) {
@@ -264,6 +274,10 @@
             }
           }, 500);
         }
+      },
+
+      inputType(val) {
+        this.handleInputType(val);
       }
     },
 

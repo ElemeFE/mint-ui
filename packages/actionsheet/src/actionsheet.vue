@@ -113,6 +113,14 @@
         }
         this.currentValue = false;
       }
+    },
+
+    mounted() {
+      if (this.value) {
+        this.rendered = true;
+        this.currentValue = true;
+        this.open();
+      }
     }
   };
 </script>

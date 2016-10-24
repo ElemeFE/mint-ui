@@ -298,13 +298,13 @@
       rimDetect(result, rim) {
         let position = rim === 'start' ? 0 : 1;
         let rimDate = rim === 'start' ? this.startDate : this.endDate;
-        if (this.value.getFullYear() === rimDate.getFullYear()) {
+        if (this.getYear(this.value) === rimDate.getFullYear()) {
           result.month[position] = rimDate.getMonth() + 1;
-          if (this.value.getMonth() === rimDate.getMonth()) {
+          if (this.getMonth(this.value) === rimDate.getMonth() + 1) {
             result.date[position] = rimDate.getDate();
-            if (this.value.getDate() === rimDate.getDate()) {
+            if (this.getDate(this.value) === rimDate.getDate()) {
               result.hour[position] = rimDate.getHours();
-              if (this.value.getHours() === rimDate.getHours()) {
+              if (this.getHour(this.value) === rimDate.getHours()) {
                 result.min[position] = rimDate.getMinutes();
               }
             }
@@ -317,15 +317,15 @@
       },
 
       getYear(value) {
-        return this.isDateString(value) ? value.split(' ')[0].split('-')[0] : value.getFullYear();
+        return this.isDateString(value) ? value.split(' ')[0].split(/-|\/|\./)[0] : value.getFullYear();
       },
 
       getMonth(value) {
-        return this.isDateString(value) ? value.split(' ')[0].split('-')[1] : value.getMonth() + 1;
+        return this.isDateString(value) ? value.split(' ')[0].split(/-|\/|\./)[1] : value.getMonth() + 1;
       },
 
       getDate(value) {
-        return this.isDateString(value) ? value.split(' ')[0].split('-')[2] : value.getDate();
+        return this.isDateString(value) ? value.split(' ')[0].split(/-|\/|\./)[2] : value.getDate();
       },
 
       getHour(value) {
@@ -364,7 +364,7 @@
         result = {
           year: [this.startDate.getFullYear(), this.endDate.getFullYear()],
           month: [1, 12],
-          date: [1, this.getMonthEndDay(this.value.getFullYear(), this.value.getMonth() + 1)],
+          date: [1, this.getMonthEndDay(this.getYear(this.value), this.getMonth(this.value))],
           hour: [0, 23],
           min: [0, 59]
         };

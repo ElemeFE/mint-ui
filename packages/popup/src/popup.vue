@@ -122,6 +122,13 @@
       if (this.popupTransition !== 'popup-fade') {
         this.popupTransition = `popup-slide-${ this.position }`;
       }
+    },
+
+    ready() {
+      if (this.visible) {
+        this.rendered = true;
+        this.open();
+      }
     }
   };
 </script>

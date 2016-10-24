@@ -94,6 +94,13 @@
         }
         this.visible = false;
       }
+    },
+
+    ready() {
+      if (this.visible) {
+        this.rendered = true;
+        this.open();
+      }
     }
   };
 </script>

@@ -135,6 +135,14 @@
       if (this.popupTransition !== 'popup-fade') {
         this.currentTransition = `popup-slide-${ this.position }`;
       }
+    },
+
+    mounted() {
+      if (this.value) {
+        this.rendered = true;
+        this.currentValue = true;
+        this.open();
+      }
     }
   };
 </script>

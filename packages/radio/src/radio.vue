@@ -7,11 +7,12 @@
           :class="{'is-right': align === 'right'}"
           class="mint-radio">
           <input
-            class="mint-radio-core"
+            class="mint-radio-input"
             type="radio"
             v-model="value"
             :disabled="option.disabled"
             :value="option.value || option">
+            <span class="mint-radio-core"></span>
         </span>
         <span class="mint-radio-label" v-text="option.label || option"></span>
       </label>
@@ -89,9 +90,29 @@ export default {
         margin-left: 6px;
       }
 
+      @descendent input {
+        display: none;
+
+        &:checked {
+          + .mint-radio-core {
+            background-color: $color-blue;
+            border-color: $color-blue;
+
+            &::after {
+              background-color: $color-white;
+              transform: scale(1);
+            }
+          }
+        }
+
+        &[disabled] + .mint-radio-core {
+          background-color: $color-grey;
+          border-color: #ccc;
+        }
+      }
+
       @descendent core {
-        appearance: none;
-        outline: 0;
+        display: inline-block;
         background-color: $color-white;
         border-radius: 100%;
         border: 1px solid #ccc;
@@ -106,21 +127,6 @@ export default {
           size: 8px;
           transition: transform .2s;
           transform: scale(0);
-        }
-
-        &:checked {
-          background-color: $color-blue;
-          border-color: $color-blue;
-
-          &::after {
-            background-color: $color-white;
-            transform: scale(1);
-          }
-        }
-
-        &[disabled] {
-          background-color: $color-grey;
-          border-color: #ccc;
         }
       }
     }

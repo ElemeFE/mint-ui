@@ -1,5 +1,5 @@
 <template>
-  <div class="mint-switch">
+  <div class="mint-switch" @click="value = !value">
     <input class="mint-switch-input" type="checkbox" v-model="value">
     <span class="mint-switch-core"></span>
     <div class="mint-switch-label"><slot></slot></div>
@@ -45,6 +45,7 @@ export default {
       }
 
       @descendent core {
+        display: inline-block;
         position: relative;
         size: 52px 32px;
         border: 1px solid $color-grey;
@@ -72,13 +73,7 @@ export default {
       }
 
       @descendent input {
-        appearance: none;
-        outline: 0;
-        size: 52px 32px;
-        position: absolute;
-        z-index: 1;
-        border: none;
-        background-color: transparent;
+        display: none;
 
         &:checked {
           + .mint-switch-core {

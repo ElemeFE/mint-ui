@@ -1,5 +1,6 @@
 var cooking = require('cooking');
 var path = require('path');
+var config = require('../../build/config');
 
 cooking.set({
   entry: {
@@ -10,21 +11,9 @@ cooking.set({
   format: 'umd',
   moduleName: 'MintDatetimePicker',
   extractCSS: 'style.css',
-
-  extends: ['vue', 'saladcss']
+  extends: config.extends,
+  alias: config.alias,
+  externals: config.externals
 });
 
-cooking.add('resolve.alias', {
-  'main': path.join(__dirname, '../../src'),
-  'mint-ui': path.join(__dirname, '..')
-});
-
-cooking.add('externals', {
-  vue: {
-    root: 'Vue',
-    commonjs: 'vue',
-    commonjs2: 'vue',
-    amd: 'vue'
-  }
-});
 module.exports = cooking.resolve();

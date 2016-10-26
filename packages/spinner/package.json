@@ -1,6 +1,6 @@
 {
   "name": "mint-spinner",
-  "version": "0.2.1",
+  "version": "2.0.0",
   "description": "A spinner component for vue.js",
   "main": "lib/index.js",
   "files": [
@@ -17,6 +17,5 @@
   "author": "qingwei-li<cinwell.li@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "webpack-shell-plugin": "^0.4.2"
   }
 }

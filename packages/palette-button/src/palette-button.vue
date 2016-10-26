@@ -1,5 +1,5 @@
 <template>
-	<div class="palette-button" :class="{ expand: expand, 'palette-button-active': transforming }" @animationend="onMainAnimationEnd">
+	<div class="palette-button" :class="{ expand: expanded, 'palette-button-active': transforming }" @animationend="onMainAnimationEnd">
     <div class="sub-button-container">
       <slot></slot>
     </div>
@@ -14,7 +14,8 @@
     name: 'mt-palette-button',
     data: function() {
       return {
-        transforming: false     // 是否正在执行动画
+        transforming: false,    // 是否正在执行动画
+        expanded: false           // 是否已经展开子按钮
       };
     },
     props: {
@@ -33,22 +34,30 @@
       radius: {
         type: Number,
         default: 90
-      },
-      expand: {
-        type: Boolean,
-        default: false           // 是否已经展开子按钮
       }
     },
     methods: {
       onMainClick(event) {
         if (!this.transforming) {
-          this.expand = this.expand !== true;
-          this.transforming = true;
-          this.$emit('click', event);
+          if (this.expanded) {
+            this.collapse(event);
+          } else {
+            this.expand(event);
+          }
         }
       },
       onMainAnimationEnd(event) {
         this.transforming = false;
+        this.$emit('expanded');
+      },
+      expand(event) {
+        this.expanded = true;
+        this.transforming = true;
+        this.$emit('expand', event);
+      },
+      collapse(event) {
+        this.expanded = false;
+        this.$emit('collapse', event);
       }
     },
     mounted() {
@@ -107,7 +116,6 @@
     height:100%;
     border-radius:50%;
     background-color:blue;
-    color:#FFF;
     font-size:2em;
   }
   .palette-button-active{

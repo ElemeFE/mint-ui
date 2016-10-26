@@ -7,11 +7,12 @@
           :class="{'is-right': align === 'right'}"
           class="mint-checkbox">
           <input
-            class="mint-checkbox-core"
+            class="mint-checkbox-input"
             type="checkbox"
             v-model="currentValue"
             :disabled="option.disabled"
             :value="option.value || option">
+          <span class="mint-checkbox-core"></span>
         </span>
         <span class="mint-checkbox-label" v-text="option.label || option"></span>
       </label>
@@ -121,9 +122,29 @@ export default {
         margin-left: 6px;
       }
 
+      @descendent input {
+        display: none;
+
+        &:checked {
+          + .mint-checkbox-core {
+            background-color: $color-blue;
+            border-color: $color-blue;
+
+            &::after {
+              border-color: $color-white;
+              transform: rotate(45deg) scale(1);
+            }
+          }
+        }
+
+        &[disabled] + .mint-checkbox-core {
+          background-color: $color-grey;
+          border-color: #ccc;
+        }
+      }
+
       @descendent core {
-        appearance: none;
-        outline: 0;
+        display: inline-block;
         background-color: $color-white;
         border-radius: 100%;
         border: 1px solid #ccc;
@@ -140,21 +161,6 @@ export default {
           size: 4px 8px;
           transform: rotate(45deg) scale(0);
           transition: transform .2s;
-        }
-
-        &:checked {
-          background-color: $color-blue;
-          border-color: $color-blue;
-
-          &::after {
-            border-color: $color-white;
-            transform: rotate(45deg) scale(1);
-          }
-        }
-
-        &[disabled] {
-          background-color: $color-grey;
-          border-color: #ccc;
         }
       }
     }

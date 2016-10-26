@@ -1,9 +1,10 @@
 <template>
-	<div class="palette-button" :class="{ expand: expanded, 'palette-button-active': transforming }" @animationend="onMainAnimationEnd">
-    <div class="sub-button-container">
+  <div class="mint-palette-button" :class="{ expand: expanded, 'mint-palette-button-active': transforming }"
+    @animationend="onMainAnimationEnd" @webkitanimationend="onMainAnimationEnd" @mozanimationend="onMainAnimationEnd">
+    <div class="mint-sub-button-container">
       <slot></slot>
     </div>
-    <div @touchstart="toggle" class="main-button" :style="mainButtonStyle">
+    <div @touchstart="toggle" class="mint-main-button" :style="mainButtonStyle">
       {{content}}
     </div>
   </div>
@@ -36,7 +37,7 @@
         default: 90
       },
       mainButtonStyle: {
-        type: String,           // 应用到 main-button 上的 class
+        type: String,           // 应用到 mint-main-button 上的 class
         default: ''
       }
     },
@@ -74,7 +75,6 @@
 
       let css = '';
       let direction_arc = Math.PI * (3 + Math.max(['lt', 't', 'rt', 'r', 'rb', 'b', 'lb', 'l'].indexOf(this.direction), 0)) / 4;
-      console.log(this.direction, direction_arc, this);
       for (let i = 0; i < this.slotChildren.length; i++) {
         var arc = (Math.PI - this.offset * 2) / (this.slotChildren.length - 1) * i + this.offset + direction_arc;
         var x = Math.cos(arc) * this.radius;
@@ -100,8 +100,8 @@
   };
 </script>
 
-<style scoped>
-  .palette-button{
+<style>
+  .mint-palette-button{
     display:inline-block;
     position:relative;
     border-radius:50%;
@@ -112,7 +112,7 @@
     transition:transform .1s ease-in-out;
   }
 
-  .main-button{
+  .mint-main-button{
     position:absolute;
     top:0;
     left:0;
@@ -122,10 +122,10 @@
     background-color:blue;
     font-size:2em;
   }
-  .palette-button-active{
-    animation: zoom 0.5s ease-in-out;
+  .mint-palette-button-active{
+    animation: mint-zoom 0.5s ease-in-out;
   }
-  .sub-button-container>*{
+  .mint-sub-button-container>*{
     position:absolute;
     top:15px;
     left:15px;
@@ -134,7 +134,7 @@
     transition: transform .3s ease-in-out;
   }
 
-  @keyframes zoom{
+  @keyframes mint-zoom{
     0% {transform:scale(1)}
     10% {transform:scale(1.1)}
     30% {transform:scale(0.9)}

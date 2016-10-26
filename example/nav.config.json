@@ -76,6 +76,11 @@
         "path": "/index-list",
         "name": "Index List",
         "icon": "alphabet"
+      },
+      {
+        "path": "/palette-button",
+        "name": "Palette Button",
+        "icon": "alphabet"
       }
     ]
   },

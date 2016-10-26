@@ -1,8 +1,27 @@
 <template>
-  <div>
-    <mt-palette-button content="+" @expand="main_log('expand')" @collapse="main_log('collapse')" direction="lt" class="pb" :radius="100" ref="foo">
-      <div class="my-icon-button indexicon icon-pull-up" @touchstart="sub_log(1)"></div>
-      <div class="my-icon-button indexicon icon-infinite-scroll" @touchstart="sub_log(2)"></div>
+  <div style="text-align:center;padding-top:200px;">
+    <mt-palette-button content="+" @expand="main_log('expand')" @expanded="main_log('expanded')" @collapse="main_log('collapse')"
+      direction="rt" class="pb" :radius="80" ref="target_1" mainButtonStyle="color:#fff;background-color:#26a2ff;"
+      style="left:30px;">
+      <div class="my-icon-button indexicon icon-popup" @touchstart="sub_log(1)"></div>
+      <div class="my-icon-button indexicon icon-popup" @touchstart="sub_log(2)"></div>
+      <div class="my-icon-button indexicon icon-popup" @touchstart="sub_log(3)"></div>
+    </mt-palette-button>
+    <mt-palette-button content="+" @expand="main_log('expand')" @expanded="main_log('expanded')" @collapse="main_log('collapse')"
+      direction="t" class="pb" :radius="80" ref="target_2" mainButtonStyle="color:#fff;background-color:#26a2ff;" :offset="Math.PI / 12"
+      style="left:calc(50% - 30px);">
+      <div class="my-icon-button indexicon icon-popup" @touchstart="sub_log(1)"></div>
+      <div class="my-icon-button indexicon icon-popup" @touchstart="sub_log(2)"></div>
+      <div class="my-icon-button indexicon icon-popup" @touchstart="sub_log(3)"></div>
+      <div class="my-icon-button indexicon icon-popup" @touchstart="sub_log(4)"></div>
+      <div class="my-icon-button indexicon icon-popup" @touchstart="sub_log(5)"></div>
+      <div class="my-icon-button indexicon icon-popup" @touchstart="sub_log(6)"></div>
+    </mt-palette-button>
+    <mt-palette-button content="+" @expand="main_log('expand')" @expanded="main_log('expanded')" @collapse="main_log('collapse')"
+      direction="lt" class="pb" :radius="100" ref="target_3" mainButtonStyle="color:#fff;background-color:#26a2ff;"
+      style="right:30px;">
+      <div class="my-icon-button indexicon icon-popup" @touchstart="sub_log(1)"></div>
+      <div class="my-icon-button indexicon icon-popup" @touchstart="sub_log(2)"></div>
       <div class="my-icon-button indexicon icon-popup" @touchstart="sub_log(3)"></div>
       <div class="my-icon-button indexicon icon-popup" @touchstart="sub_log(4)"></div>
       <div class="my-icon-button indexicon icon-popup" @touchstart="sub_log(5)"></div>
@@ -18,7 +37,7 @@
       },
       sub_log(val) {
         console.log('sub_log', val);
-        this.$refs.foo.subClicked();
+        this.$refs.target_1.collapse();
       }
     }
   };
@@ -28,15 +47,17 @@
   .pb{
     width: 60px;
     height: 60px;
-    right: 50px;
     line-height: 60px;
     color: #FFF;
+    position:absolute;
+    bottom: 30px;
   }
   .my-icon-button{
     width:30px;
     height:30px;
     border-radius:50%;
-    background-color:red;
+    background-color:#26a2ff;
+    color: #fff;
     line-height:30px;
     text-align:center;
   }

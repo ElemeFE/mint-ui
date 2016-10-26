@@ -3,7 +3,7 @@
     <div class="sub-button-container">
       <slot></slot>
     </div>
-    <div @touchstart="onMainClick" class="main-button">
+    <div @touchstart="toggle" class="main-button" :style="mainButtonStyle">
       {{content}}
     </div>
   </div>
@@ -21,7 +21,7 @@
     props: {
       content: {
         type: String,
-        default: '+'
+        default: ''
       },
       offset: {
         type: Number,           // 扇面偏移角，默认是四分之π，配合默认方向lt
@@ -34,10 +34,14 @@
       radius: {
         type: Number,
         default: 90
+      },
+      mainButtonStyle: {
+        type: String,           // 应用到 main-button 上的 class
+        default: ''
       }
     },
     methods: {
-      onMainClick(event) {
+      toggle(event) {
         if (!this.transforming) {
           if (this.expanded) {
             this.collapse(event);
@@ -69,15 +73,16 @@
       }
 
       let css = '';
-      var direction_arc = Math.PI * (3 + Math.max(['lt', 't', 'rt', 'r', 'rb', 'b', 'lb', 'l'].indexOf(this.direction), 0)) / 4;
+      let direction_arc = Math.PI * (3 + Math.max(['lt', 't', 'rt', 'r', 'rb', 'b', 'lb', 'l'].indexOf(this.direction), 0)) / 4;
+      console.log(this.direction, direction_arc, this);
       for (let i = 0; i < this.slotChildren.length; i++) {
         var arc = (Math.PI - this.offset * 2) / (this.slotChildren.length - 1) * i + this.offset + direction_arc;
         var x = Math.cos(arc) * this.radius;
         var y = Math.sin(arc) * this.radius;
-        var item_css = '.expand .palette-button-sub-' + i + '{transform:translate(' + x + 'px,' + y + 'px) rotate(720deg);transition-delay:' + 0.03 * i + 's}';
+        var item_css = '.expand .palette-button-' + this._uid + '-sub-' + i + '{transform:translate(' + x + 'px,' + y + 'px) rotate(720deg);transition-delay:' + 0.03 * i + 's}';
         css += item_css;
 
-        this.slotChildren[i].elm.className += (' palette-button-sub-' + i);
+        this.slotChildren[i].elm.className += (' palette-button-' + this._uid + '-sub-' + i);
       }
 
       this.styleNode = document.createElement('style');
@@ -97,10 +102,9 @@
 
 <style scoped>
   .palette-button{
-    position:absolute;
+    display:inline-block;
+    position:relative;
     border-radius:50%;
-    right:20px;
-    bottom:20px;
     width: 56px;
     height:56px;
     line-height:56px;

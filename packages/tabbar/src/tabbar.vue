@@ -12,7 +12,7 @@
  * @module components/tabbar
  * @desc 底部 tab，依赖 tab-item
  * @param {boolean} [fixed=false] - 固定底部
- * @param {*} selected - 返回 item component 传入的 id
+ * @param {*} value - 返回 item component 传入的 id
  *
  * @example
  * <mt-tabbar :value.sync="selected">

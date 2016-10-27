@@ -42,12 +42,7 @@
 
 <script>
 export default {
-  name: 'button',
-
-  data() {
-    return {
-    };
-  }
+  name: 'button'
 };
 </script>
 

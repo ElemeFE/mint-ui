@@ -1,9 +1,9 @@
 <template>
-  <div class="mint-switch" @click="currentValue = !currentValue">
-    <input class="mint-switch-input" type="checkbox" v-model="currentValue">
+  <label class="mint-switch">
+    <input class="mint-switch-input" @change="$emit('change', currentValue)" type="checkbox" v-model="currentValue">
     <span class="mint-switch-core"></span>
     <div class="mint-switch-label"><slot></slot></div>
-  </div>
+  </label>
 </template>
 
 <script>

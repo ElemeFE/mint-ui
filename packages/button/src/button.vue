@@ -5,7 +5,7 @@
       'is-disabled': disabled,
       'is-plain': plain
     }]"
-    @touchstart="handleClick">
+    :disabled="disabled">
     <span class="mint-button-icon" v-if="icon || $slots.icon">
       <slot name="icon">
         <i v-if="icon" class="mintui" :class="'mintui-' + icon"></i>
@@ -62,15 +62,6 @@ export default {
           'normal',
           'large'
         ].indexOf(value) > -1;
-      }
-    }
-  },
-
-  methods: {
-    handleClick($event) {
-      if (this.disabled) {
-        $event.preventDefault();
-        $event.stopPropagation();
       }
     }
   }

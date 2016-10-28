@@ -5,6 +5,7 @@
       'is-disabled': disabled,
       'is-plain': plain
     }]"
+    @click="handleClick"
     :disabled="disabled">
     <span class="mint-button-icon" v-if="icon || $slots.icon">
       <slot name="icon">
@@ -37,6 +38,12 @@ if (process.env.NODE_ENV === 'component') {
  */
 export default {
   name: 'mt-button',
+
+  methods: {
+    handleClick(evt) {
+      this.$emit('click', evt);
+    }
+  },
 
   props: {
     icon: String,

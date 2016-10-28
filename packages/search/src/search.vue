@@ -28,7 +28,7 @@
     <div class="mint-search-list" v-show="currentValue">
       <div class="mint-search-list-warp">
         <slot>
-          <x-cell v-for="item in result" track-by="$index" :title="item"></x-cell>
+          <x-cell v-for="(item, index) in result" :key="index" :title="item"></x-cell>
         </slot>
       </div>
     </div>

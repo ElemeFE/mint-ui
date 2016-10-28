@@ -82,7 +82,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 module.exports = {
   install,
-  version: '2.0.2',
+  version: '2.0.3',
   Header,
   Button,
   Cell,

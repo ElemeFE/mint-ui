@@ -7,7 +7,7 @@
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
-.mint-header{
+.mint-header {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -25,7 +25,7 @@
     text-align: center;
     white-space: nowrap;
 }
-.mint-header .mint-button{
+.mint-header .mint-button {
     background-color: transparent;
     border: 0;
     box-shadow: none;
@@ -34,32 +34,36 @@
     padding: 0;
     font-size: inherit
 }
-.mint-header .mint-button::after{
+.mint-header .mint-button::after {
     content: none;
 }
-.mint-header.is-fixed{
+.mint-header.is-fixed {
     top: 0;
     right: 0;
     left: 0;
     position: fixed;
     z-index: 1;
 }
-.mint-header-button{
+.mint-header-button {
     -webkit-box-flex: .5;
         -ms-flex: .5;
             flex: .5;
 }
-.mint-header-button.is-right{
+.mint-header-button > a {
+    color: inherit;
+}
+.mint-header-button.is-right {
     text-align: right;
 }
-.mint-header-button.is-left{
+.mint-header-button.is-left {
     text-align: left;
 }
-.mint-header-title{
+.mint-header-title {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     font-size: inherit;
+    font-weight: 400;
     -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
@@ -223,15 +227,16 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    box-sizing: border-box;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     font-size: 16px;
     line-height: 1;
+    min-height: inherit;
     overflow: hidden;
     padding: 0 10px;
     position: relative;
-    min-height: inherit;
     width: 100%;
 }
 .mint-cell-mask {}
@@ -270,6 +275,9 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+}
+.mint-cell-value.is-link {
+    margin-right: 24px;
 }
 .mint-cell-left {
     position: absolute;
@@ -475,6 +483,7 @@
     margin-left: 0
 }
 .mint-switch-core {
+    display: inline-block;
     position: relative;
     width: 52px;
     height: 32px;
@@ -506,14 +515,7 @@
     background-color: #fdfdfd
 }
 .mint-switch-input {
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-    outline: 0;
-    width: 52px;
-    height: 32px;
-    position: absolute;
-    z-index: 1
+    display: none
 }
 .mint-switch-input:checked + .mint-switch-core {
     border-color: #26a2ff;
@@ -1036,11 +1038,24 @@ display: inline-block;
     vertical-align: middle;
     margin-left: 6px;
 }
+.mint-checkbox-input {
+    display: none;
+}
+.mint-checkbox-input:checked + .mint-checkbox-core {
+    background-color: #26a2ff;
+    border-color: #26a2ff;
+}
+.mint-checkbox-input:checked + .mint-checkbox-core::after {
+    border-color: #fff;
+    -webkit-transform: rotate(45deg) scale(1);
+            transform: rotate(45deg) scale(1);
+}
+.mint-checkbox-input[disabled] + .mint-checkbox-core {
+    background-color: #d9d9d9;
+    border-color: #ccc;
+}
 .mint-checkbox-core {
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-    outline: 0;
+    display: inline-block;
     background-color: #fff;
     border-radius: 100%;
     border: 1px solid #ccc;
@@ -1065,19 +1080,6 @@ display: inline-block;
     transition: -webkit-transform .2s;
     transition: transform .2s;
     transition: transform .2s, -webkit-transform .2s;
-}
-.mint-checkbox-core:checked {
-    background-color: #26a2ff;
-    border-color: #26a2ff;
-}
-.mint-checkbox-core:checked::after {
-    border-color: #fff;
-    -webkit-transform: rotate(45deg) scale(1);
-            transform: rotate(45deg) scale(1);
-}
-.mint-checkbox-core[disabled] {
-    background-color: #d9d9d9;
-    border-color: #ccc;
 }
 /* Cell Component */
 /* Header Component */
@@ -1109,11 +1111,24 @@ display: inline-block;
     vertical-align: middle;
     margin-left: 6px;
 }
+.mint-radio-input {
+    display: none;
+}
+.mint-radio-input:checked + .mint-radio-core {
+    background-color: #26a2ff;
+    border-color: #26a2ff;
+}
+.mint-radio-input:checked + .mint-radio-core::after {
+    background-color: #fff;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+}
+.mint-radio-input[disabled] + .mint-radio-core {
+    background-color: #d9d9d9;
+    border-color: #ccc;
+}
 .mint-radio-core {
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-    outline: 0;
+    display: inline-block;
     background-color: #fff;
     border-radius: 100%;
     border: 1px solid #ccc;
@@ -1136,19 +1151,6 @@ display: inline-block;
     transition: transform .2s, -webkit-transform .2s;
     -webkit-transform: scale(0);
             transform: scale(0);
-}
-.mint-radio-core:checked {
-    background-color: #26a2ff;
-    border-color: #26a2ff;
-}
-.mint-radio-core:checked::after {
-    background-color: #fff;
-    -webkit-transform: scale(1);
-            transform: scale(1);
-}
-.mint-radio-core[disabled] {
-    background-color: #d9d9d9;
-    border-color: #ccc;
 }
 
 .mint-loadmore {
@@ -1220,7 +1222,6 @@ display: inline-block;
           transform: translate3d(-50%, 100%, 0);
 }
 .v-modal-enter{-webkit-animation:v-modal-in .2s ease;animation:v-modal-in .2s ease}.v-modal-leave{-webkit-animation:v-modal-out .2s ease forwards;animation:v-modal-out .2s ease forwards}@-webkit-keyframes v-modal-in{0%{opacity:0}}@keyframes v-modal-in{0%{opacity:0}}@-webkit-keyframes v-modal-out{to{opacity:0}}@keyframes v-modal-out{to{opacity:0}}.v-modal{position:fixed;left:0;top:0;width:100%;height:100%;opacity:.5;background:#000}
-/*# sourceMappingURL=popup.css.map*/
 .mint-popup {
   position: fixed;
   background: #fff;
@@ -1284,11 +1285,11 @@ display: inline-block;
 .popup-fade-enter, .popup-fade-leave-active {
   opacity: 0;
 }
-.v-modal-enter{-webkit-animation:v-modal-in .2s ease;animation:v-modal-in .2s ease}.v-modal-leave{-webkit-animation:v-modal-out .2s ease forwards;animation:v-modal-out .2s ease forwards}@-webkit-keyframes v-modal-in{0%{opacity:0}}@keyframes v-modal-in{0%{opacity:0}}@-webkit-keyframes v-modal-out{to{opacity:0}}@keyframes v-modal-out{to{opacity:0}}.v-modal{position:fixed;left:0;top:0;width:100%;height:100%;opacity:.5;background:#000}
-/*# sourceMappingURL=popup.css.map*/
+
 .mint-swipe {
     overflow: hidden;
     position: relative;
+    height: 100%;
 }
 .mint-swipe-items-wrap {
     position: relative;
@@ -1904,6 +1905,77 @@ to{opacity:0
 .mint-indexsection-index {
     padding: 10px;
     background-color: #fafafa
+}
+
+.mint-palette-button{
+  display:inline-block;
+  position:relative;
+  border-radius:50%;
+  width: 56px;
+  height:56px;
+  line-height:56px;
+  text-align:center;
+  -webkit-transition:-webkit-transform .1s ease-in-out;
+  transition:-webkit-transform .1s ease-in-out;
+  transition:transform .1s ease-in-out;
+  transition:transform .1s ease-in-out, -webkit-transform .1s ease-in-out;
+}
+.mint-main-button{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background-color:blue;
+  font-size:2em;
+}
+.mint-palette-button-active{
+  -webkit-animation: mint-zoom 0.5s ease-in-out;
+          animation: mint-zoom 0.5s ease-in-out;
+}
+.mint-sub-button-container>*{
+  position:absolute;
+  top:15px;
+  left:15px;
+  width:25px;
+  height:25px;
+  -webkit-transition:-webkit-transform .3s ease-in-out;
+  transition:-webkit-transform .3s ease-in-out;
+  transition:transform .3s ease-in-out;
+  transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
+}
+@-webkit-keyframes mint-zoom{
+0% {-webkit-transform:scale(1);transform:scale(1)
+}
+10% {-webkit-transform:scale(1.1);transform:scale(1.1)
+}
+30% {-webkit-transform:scale(0.9);transform:scale(0.9)
+}
+50% {-webkit-transform:scale(1.05);transform:scale(1.05)
+}
+70% {-webkit-transform:scale(0.95);transform:scale(0.95)
+}
+90% {-webkit-transform:scale(1.01);transform:scale(1.01)
+}
+100% {-webkit-transform:scale(1);transform:scale(1)
+}
+}
+@keyframes mint-zoom{
+0% {-webkit-transform:scale(1);transform:scale(1)
+}
+10% {-webkit-transform:scale(1.1);transform:scale(1.1)
+}
+30% {-webkit-transform:scale(0.9);transform:scale(0.9)
+}
+50% {-webkit-transform:scale(1.05);transform:scale(1.05)
+}
+70% {-webkit-transform:scale(0.95);transform:scale(0.95)
+}
+90% {-webkit-transform:scale(1.01);transform:scale(1.01)
+}
+100% {-webkit-transform:scale(1);transform:scale(1)
+}
 }
 
 @font-face {font-family: "mintui";

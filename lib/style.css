@@ -16,7 +16,7 @@
 
 /* z-index */
 
-.mint-header{
+.mint-header {
 
     -webkit-box-align: center;
 
@@ -49,9 +49,11 @@
     text-align: center;
 
     white-space: nowrap;
+
+    font-weight: 400;
 }
 
-.mint-header .mint-button{
+.mint-header .mint-button {
 
     background-color: transparent;
 
@@ -68,12 +70,12 @@
     font-size: inherit
 }
 
-.mint-header .mint-button::after{
+.mint-header .mint-button::after {
 
     content: none;
 }
 
-.mint-header.is-fixed{
+.mint-header.is-fixed {
 
     top: 0;
 
@@ -86,7 +88,7 @@
     z-index: 1;
 }
 
-.mint-header-button{
+.mint-header-button {
 
     -webkit-box-flex: .5;
 
@@ -95,17 +97,22 @@
             flex: .5;
 }
 
-.mint-header-button.is-right{
+.mint-header-button > a {
+
+    color: inherit;
+}
+
+.mint-header-button.is-right {
 
     text-align: right;
 }
 
-.mint-header-button.is-left{
+.mint-header-button.is-left {
 
     text-align: left;
 }
 
-.mint-header-title{
+.mint-header-title {
 
     overflow: hidden;
 
@@ -413,6 +420,8 @@
 
             align-items: center;
 
+    box-sizing: border-box;
+
     display: -webkit-box;
 
     display: -ms-flexbox;
@@ -423,13 +432,13 @@
 
     line-height: 1;
 
+    min-height: inherit;
+
     overflow: hidden;
 
     padding: 0 10px;
 
     position: relative;
-
-    min-height: inherit;
 
     width: 100%;
 }
@@ -500,6 +509,11 @@
         -ms-flex-align: center;
 
             align-items: center;
+}
+
+.mint-cell-value.is-link {
+
+    margin-right: 24px;
 }
 
 .mint-cell-left {
@@ -829,6 +843,8 @@
 
 .mint-switch-core {
 
+    display: inline-block;
+
     position: relative;
 
     width: 52px;
@@ -887,21 +903,7 @@
 
 .mint-switch-input {
 
-    -webkit-appearance: none;
-
-       -moz-appearance: none;
-
-            appearance: none;
-
-    outline: 0;
-
-    width: 52px;
-
-    height: 32px;
-
-    position: absolute;
-
-    z-index: 1
+    display: none
 }
 
 .mint-switch-input:checked + .mint-switch-core {
@@ -1110,6 +1112,7 @@
             transform: scale(1.0);
   }
 }
+
 
 
 
@@ -1819,15 +1822,37 @@
     margin-left: 6px;
 }
 
+.mint-checkbox-input {
+
+    display: none;
+}
+
+.mint-checkbox-input:checked + .mint-checkbox-core {
+
+    background-color: #26a2ff;
+
+    border-color: #26a2ff;
+}
+
+.mint-checkbox-input:checked + .mint-checkbox-core::after {
+
+    border-color: #fff;
+
+    -webkit-transform: rotate(45deg) scale(1);
+
+            transform: rotate(45deg) scale(1);
+}
+
+.mint-checkbox-input[disabled] + .mint-checkbox-core {
+
+    background-color: #d9d9d9;
+
+    border-color: #ccc;
+}
+
 .mint-checkbox-core {
 
-    -webkit-appearance: none;
-
-       -moz-appearance: none;
-
-            appearance: none;
-
-    outline: 0;
+    display: inline-block;
 
     background-color: #fff;
 
@@ -1875,29 +1900,6 @@
     transition: transform .2s;
 
     transition: transform .2s, -webkit-transform .2s;
-}
-
-.mint-checkbox-core:checked {
-
-    background-color: #26a2ff;
-
-    border-color: #26a2ff;
-}
-
-.mint-checkbox-core:checked::after {
-
-    border-color: #fff;
-
-    -webkit-transform: rotate(45deg) scale(1);
-
-            transform: rotate(45deg) scale(1);
-}
-
-.mint-checkbox-core[disabled] {
-
-    background-color: #d9d9d9;
-
-    border-color: #ccc;
 }
 /* Cell Component */
 
@@ -1954,15 +1956,37 @@
     margin-left: 6px;
 }
 
+.mint-radio-input {
+
+    display: none;
+}
+
+.mint-radio-input:checked + .mint-radio-core {
+
+    background-color: #26a2ff;
+
+    border-color: #26a2ff;
+}
+
+.mint-radio-input:checked + .mint-radio-core::after {
+
+    background-color: #fff;
+
+    -webkit-transform: scale(1);
+
+            transform: scale(1);
+}
+
+.mint-radio-input[disabled] + .mint-radio-core {
+
+    background-color: #d9d9d9;
+
+    border-color: #ccc;
+}
+
 .mint-radio-core {
 
-    -webkit-appearance: none;
-
-       -moz-appearance: none;
-
-            appearance: none;
-
-    outline: 0;
+    display: inline-block;
 
     background-color: #fff;
 
@@ -2006,29 +2030,6 @@
     -webkit-transform: scale(0);
 
             transform: scale(0);
-}
-
-.mint-radio-core:checked {
-
-    background-color: #26a2ff;
-
-    border-color: #26a2ff;
-}
-
-.mint-radio-core:checked::after {
-
-    background-color: #fff;
-
-    -webkit-transform: scale(1);
-
-            transform: scale(1);
-}
-
-.mint-radio-core[disabled] {
-
-    background-color: #d9d9d9;
-
-    border-color: #ccc;
 }
 
 
@@ -2226,8 +2227,7 @@
 .popup-fade-enter, .popup-fade-leave {
   opacity: 0;
 }
-.v-modal-enter{-webkit-animation:v-modal-in .2s ease;animation:v-modal-in .2s ease}.v-modal-leave{-webkit-animation:v-modal-out .2s ease forwards;animation:v-modal-out .2s ease forwards}@-webkit-keyframes v-modal-in{0%{opacity:0}}@keyframes v-modal-in{0%{opacity:0}}@-webkit-keyframes v-modal-out{to{opacity:0}}@keyframes v-modal-out{to{opacity:0}}.v-modal{position:fixed;left:0;top:0;width:100%;height:100%;opacity:.5;background:#000}
-/*# sourceMappingURL=popup.css.map*/.swipe, .swipe-items-wrap{overflow:hidden;position:relative}.swipe-items-wrap{height:100%}.swipe-items-wrap>div{position:absolute;-webkit-transform:translateX(-100%);transform:translateX(-100%);width:100%;height:100%;display:none}.swipe-items-wrap>div.active{display:block;-webkit-transform:none;transform:none}.swipe-indicators{position:absolute;bottom:10px;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}.swipe-indicator{width:8px;height:8px;display:inline-block;border-radius:100%;background:#000;opacity:.2;margin:0 3px}.swipe-indicator.active{background:#fff}
+.swipe, .swipe-items-wrap{overflow:hidden;position:relative;height:100%}.swipe-items-wrap>div{position:absolute;-webkit-transform:translateX(-100%);transform:translateX(-100%);width:100%;height:100%;display:none}.swipe-items-wrap>div.active{display:block;-webkit-transform:none;transform:none}.swipe-indicators{position:absolute;bottom:10px;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}.swipe-indicator{width:8px;height:8px;display:inline-block;border-radius:100%;background:#000;opacity:.2;margin:0 3px}.swipe-indicator.active{background:#fff}
 
 
 
@@ -2836,62 +2836,36 @@
   color: #26a2ff;
 }
 /* Cell Component */
-
 /* Header Component */
-
 /* Button Component */
-
 /* Tab Item Component */
-
 /* Tabbar Component */
-
 /* Navbar Component */
-
 /* Checklist Component */
-
 /* Radio Component */
-
 /* z-index */
-
 .mint-datetime {
-
     width: 100%;
 }
-
 .mint-datetime .picker-slot-wrapper, .mint-datetime .picker-item {
-
     -webkit-backface-visibility: hidden;
-
             backface-visibility: hidden;
 }
-
 .mint-datetime .picker-toolbar {
-
     border-bottom: solid 1px #eaeaea;
 }
-
 .mint-datetime-action {
-
     display: inline-block;
-
     width: 50%;
-
     text-align: center;
-
     line-height: 40px;
-
     font-size: 16px;
-
     color: #26a2ff;
 }
-
 .mint-datetime-cancel {
-
     float: left;
 }
-
 .mint-datetime-confirm {
-
     float: right;
 }
 /* Cell Component */

@@ -48,6 +48,7 @@ if (process.env.NODE_ENV === 'component') {
  * @param {string} value - 绑定值
  * @param {string} [cancel-text=取消] - 取消按钮文字
  * @param {string} [placeholder=取消] - 搜索框占位内容
+ * @param {boolean} [autofocus=false] - 自动 focus
  * @param {string[]} [result] - 结果列表
  * @param {slot} 结果列表
  *
@@ -79,6 +80,7 @@ export default {
 
   props: {
     value: String,
+    autofocus: Boolean,
     cancelText: {
       default: '取消'
     },
@@ -86,6 +88,10 @@ export default {
       default: '搜索'
     },
     result: Array
+  },
+
+  mounted() {
+    this.autofocus && this.$refs.input.focus();
   }
 };
 </script>

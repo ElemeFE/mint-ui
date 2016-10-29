@@ -1,6 +1,6 @@
 <template>
   <div class="page-search">
-    <mt-search v-model="value" :result="filterResult"></mt-search>
+    <mt-search autofocus v-model="value" :result="filterResult"></mt-search>
   </div>
 </template>
 

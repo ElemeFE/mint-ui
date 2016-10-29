@@ -26,14 +26,12 @@ module.exports = {
 
   close() {
     if (instance) {
-      Vue.nextTick(() => {
-        instance.visible = false;
-        timer = setTimeout(() => {
-          if (instance.$el) {
-            instance.$el.style.display = 'none';
-          }
-        }, 400);
-      });
+      instance.visible = false;
+      timer = setTimeout(() => {
+        if (instance.$el) {
+          instance.$el.style.display = 'none';
+        }
+      }, 400);
     }
   }
 };

@@ -50,39 +50,41 @@ var MessageBoxConstructor = Vue.extend(msgboxVue);
 var currentMsg, instance;
 var msgQueue = [];
 
+const defaultCallback = action => {
+  if (currentMsg) {
+    var callback = currentMsg.callback;
+    if (typeof callback === 'function') {
+      if (instance.showInput) {
+        callback(instance.inputValue, action);
+      } else {
+        callback(action);
+      }
+    }
+    if (currentMsg.resolve) {
+      var $type = currentMsg.options.$type;
+      if ($type === 'confirm' || $type === 'prompt') {
+        if (action === 'confirm') {
+          if (instance.showInput) {
+            currentMsg.resolve({ value: instance.inputValue, action });
+          } else {
+            currentMsg.resolve(action);
+          }
+        } else if (action === 'cancel' && currentMsg.reject) {
+          currentMsg.reject(action);
+        }
+      } else {
+        currentMsg.resolve(action);
+      }
+    }
+  }
+};
+
 var initInstance = function() {
   instance = new MessageBoxConstructor({
     el: document.createElement('div')
   });
 
-  instance.callback = function(action) {
-    if (currentMsg) {
-      var callback = currentMsg.callback;
-      if (typeof callback === 'function') {
-        if (instance.showInput) {
-          callback(instance.inputValue, action);
-        } else {
-          callback(action);
-        }
-      }
-      if (currentMsg.resolve) {
-        var $type = currentMsg.options.$type;
-        if ($type === 'confirm' || $type === 'prompt') {
-          if (action === 'confirm') {
-            if (instance.showInput) {
-              currentMsg.resolve({ value: instance.inputValue, action });
-            } else {
-              currentMsg.resolve(action);
-            }
-          } else if (action === 'cancel' && currentMsg.reject) {
-            currentMsg.reject(action);
-          }
-        } else {
-          currentMsg.resolve(action);
-        }
-      }
-    }
-  };
+  instance.callback = defaultCallback;
 };
 
 var showNextMsg = function() {
@@ -99,6 +101,9 @@ var showNextMsg = function() {
         if (options.hasOwnProperty(prop)) {
           instance[prop] = options[prop];
         }
+      }
+      if (options.callback === undefined) {
+        instance.callback = defaultCallback;
       }
       ['modal', 'showClose', 'closeOnClickModal', 'closeOnPressEscape'].forEach(prop => {
         if (instance[prop] === undefined) {

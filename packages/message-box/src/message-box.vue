@@ -6,7 +6,7 @@
           <div class="mint-msgbox-title">{{ title }}</div>
         </div>
         <div class="mint-msgbox-content" v-if="message !== ''">
-          <div class="mint-msgbox-message"><p>{{ message }}</p></div>
+          <div class="mint-msgbox-message" v-html="message"></div>
           <div class="mint-msgbox-input" v-show="showInput">
             <input v-model="inputValue" :placeholder="inputPlaceholder" ref="input">
             <div class="mint-msgbox-errormsg" :style="{ visibility: !!editorErrorMessage ? 'visible' : 'hidden' }">{{ editorErrorMessage }}</div>

@@ -10,7 +10,7 @@ Object.keys(Components).forEach(function(key) {
 Object.keys(dependencies).forEach(function(key) {
   externals[key] = key;
 });
-g
+
 exports.externals = Object.assign({
   vue: {
     root: 'Vue',

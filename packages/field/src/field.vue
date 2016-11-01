@@ -105,7 +105,7 @@ export default {
   methods: {
     handleClear() {
       if (this.disabled || this.readonly) return;
-      this.vulue = '';
+      this.value = '';
     }
   },
 

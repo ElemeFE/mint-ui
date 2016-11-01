@@ -385,6 +385,9 @@
     },
 
     watch: {
+      value() {
+        this.handleExceededValue();
+      },
       rims(val, oldVal) {
         let same = Object.keys(val).every(key => val[key][0] === oldVal[key][0] &&
           val[key][1] === oldVal[key][1]);

@@ -103,32 +103,36 @@ export default {
 
 <style lang="css">
   @import "../../../src/style/var.css";
-  @import "../../../src/style/border.css";
 
   @component-namespace mint {
     @component cell {
-      @mixin border-top $color-grey;
-      @mixin border-bottom $color-grey;
       background-color: $color-white;
       box-sizing: border-box;
       color: inherit;
       min-height: 48px;
       display: block;
       overflow: hidden;
+      position: relative;
 
-      & + .mint-cell::after {
-        content: none;
+      &:first-child {
+        .mint-cell-wrapper {
+          background-origin: border-box;
+        }
       }
 
-      &::before {
-        left: 10px;
-      }
-
-      &:last-child::before {
-        left: 0;
+      &:last-child {
+        background-image: linear-gradient(0deg, $color-grey, $color-grey 50%, transparent 50%);
+        background-size: 100% 1px;
+        background-repeat: no-repeat;
+        background-position: bottom;
       }
 
       @descendent wrapper {
+        background-image:linear-gradient(180deg, $color-grey, $color-grey 50%, transparent 50%);
+        background-size: 120% 1px;
+        background-repeat: no-repeat;
+        background-position: top left;
+        background-origin: content-box;
         align-items: center;
         box-sizing: border-box;
         display: flex;
@@ -137,7 +141,6 @@ export default {
         min-height: inherit;
         overflow: hidden;
         padding: 0 10px;
-        position: relative;
         width: 100%;
       }
 

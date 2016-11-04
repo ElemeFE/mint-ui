@@ -20,7 +20,7 @@
         color: #666;
         padding-bottom: 5px;
       }
-      
+
       @descendent wrapper {
         width: 100%;
         border-top: solid 1px #ddd;

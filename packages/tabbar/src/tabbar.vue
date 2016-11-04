@@ -41,11 +41,14 @@ export default {
 
 <style lang="css">
   @import "../../../src/style/var.css";
-  @import "../../../src/style/border.css";
 
   @component-namespace mint {
     @component tabbar {
-      @mixin border-top $color-grey;
+      background-image:linear-gradient(180deg, $color-grey, $color-grey 50%, transparent 50%);
+      background-size: 100% 1px;
+      background-repeat: no-repeat;
+      background-position: top left;
+      position: relative;
       background-color: $tabbar-background-color;
       display: flex;
       position: absolute * 0 0 0;

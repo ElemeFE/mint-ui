@@ -68,9 +68,7 @@ export default {
     };
   },
 
-  components: {
-    XCell
-  },
+  components: { XCell },
 
   watch: {
     currentValue(val) {
@@ -102,7 +100,6 @@ export default {
 
 <style lang="css">
   @import "../../../src/style/var.css";
-  @import "../../../src/style/border.css";
 
   @component-namespace mint {
     @component search {
@@ -112,7 +109,7 @@ export default {
     }
 
     @component searchbar {
-      @mixin border-bottom $border-color;
+      position: relative;
       align-items: center;
       background-color: $color-grey;
       box-sizing: border-box;

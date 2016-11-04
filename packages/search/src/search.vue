@@ -25,7 +25,7 @@
         <span class="mint-searchbar-text" v-text="placeholder"></span>
       </label>
     </div>
-    <div class="mint-search-list" v-show="currentValue">
+    <div class="mint-search-list" v-show="show || currentValue">
       <div class="mint-search-list-warp">
         <slot>
           <x-cell v-for="(item, index) in result" :key="index" :title="item"></x-cell>
@@ -49,6 +49,7 @@ if (process.env.NODE_ENV === 'component') {
  * @param {string} [cancel-text=取消] - 取消按钮文字
  * @param {string} [placeholder=取消] - 搜索框占位内容
  * @param {boolean} [autofocus=false] - 自动 focus
+ * @param {boolean} [show=false] - 始终显示列表
  * @param {string[]} [result] - 结果列表
  * @param {slot} 结果列表
  *
@@ -85,6 +86,7 @@ export default {
   props: {
     value: String,
     autofocus: Boolean,
+    show: Boolean,
     cancelText: {
       default: '取消'
     },

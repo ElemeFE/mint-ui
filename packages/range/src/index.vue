@@ -75,7 +75,7 @@
   }
 </style>
 
-<script type="text/ecmascript-6">
+<script type="text/babel">
   import draggable from './draggable';
 
   export default {
@@ -158,6 +158,7 @@
         },
         end: () => {
           if (this.disabled) return;
+          this.$emit('change', this.value);
           dragState = {};
         }
       });

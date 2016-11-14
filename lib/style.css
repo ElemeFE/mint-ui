@@ -166,64 +166,35 @@
 /* Radio Component */
 /* z-index */
 .mint-cell {
-    position: relative;
-    position: relative;
-    background-color: #fff;
-    box-sizing: border-box;
-    color: inherit;
-    min-height: 48px;
-    display: block;
-    overflow: hidden;
+    background-color:#fff;
+    box-sizing:border-box;
+    color:inherit;
+    min-height:48px;
+    display:block;
+    overflow:hidden;
+    position:relative;
+    text-decoration:none;
 }
 .mint-cell img {
-    vertical-align: middle;
+    vertical-align:middle;
 }
-.mint-cell::after {
-    color: #d9d9d9;
-    content: " ";
-    width: 100%;
-    height: 1;
-    border-top: 1px solid;
-    top: 0;
-    left: 0;
-    position: absolute;
-    -webkit-transform-origin: 0 0;
-            transform-origin: 0 0;
+.mint-cell:first-child .mint-cell-wrapper {
+    background-origin:border-box;
 }
-@media screen and (-webkit-min-device-pixel-ratio: 2) {
-    .mint-cell::after {
-        -webkit-transform: scaleY(.5);
-                transform: scaleY(.5);
-    }
-}
-.mint-cell::before {
-    color: #d9d9d9;
-    content: " ";
-    width: 100%;
-    height: 1;
-    border-bottom: 1px solid;
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    -webkit-transform-origin: 0 100%;
-            transform-origin: 0 100%;
-}
-@media screen and (-webkit-min-device-pixel-ratio: 2) {
-    .mint-cell::before {
-        -webkit-transform: scaleY(.5);
-                transform: scaleY(.5);
-    }
-}
-.mint-cell + .mint-cell::after {
-    content: none;
-}
-.mint-cell::before {
-    left: 10px;
-}
-.mint-cell:last-child::before {
-    left: 0;
+.mint-cell:last-child {
+    background-image:-webkit-linear-gradient(bottom, #d9d9d9, #d9d9d9 50%, transparent 50%);
+    background-image:linear-gradient(0deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
+    background-size:100% 1px;
+    background-repeat:no-repeat;
+    background-position:bottom;
 }
 .mint-cell-wrapper {
+    background-image:-webkit-linear-gradient(top, #d9d9d9, #d9d9d9 50%, transparent 50%);
+    background-image:linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
+    background-size: 120% 1px;
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-origin: content-box;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -236,22 +207,21 @@
     min-height: inherit;
     overflow: hidden;
     padding: 0 10px;
-    position: relative;
     width: 100%;
 }
 .mint-cell-mask {}
 .mint-cell-mask::after {
-    background-color: #000;
-    content: " ";
-    opacity: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    position: absolute;
+    background-color:#000;
+    content:" ";
+    opacity:0;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    position:absolute;
 }
 .mint-cell-mask:active::after {
-    opacity: .1;
+    opacity:.1;
 }
 .mint-cell-text {
     vertical-align: middle;
@@ -277,7 +247,7 @@
             align-items: center;
 }
 .mint-cell-value.is-link {
-    margin-right: 24px;
+    margin-right:24px;
 }
 .mint-cell-left {
     position: absolute;
@@ -299,11 +269,11 @@
     border-bottom-width: 0;
     border-left-width: 0;
     content: " ";
-    top: 50%;
-    right: 20px;
+    top:50%;
+    right:20px;
     position: absolute;
-    width: 5px;
-    height: 5px;
+    width:5px;
+    height:5px;
     -webkit-transform: translateY(-50%) rotate(45deg);
             transform: translateY(-50%) rotate(45deg);
 }
@@ -366,7 +336,6 @@
 .mint-field.is-textarea {
     -webkit-box-align: inherit;
         -ms-flex-align: inherit;
-                -ms-grid-row-align: inherit;
             align-items: inherit;
 }
 .mint-field.is-textarea .mint-cell-title {
@@ -770,7 +739,8 @@ display: inline-block;
     padding: 7px 0;
     -webkit-box-flex: 1;
         -ms-flex: 1;
-            flex: 1
+            flex: 1;
+    text-decoration: none
 }
 .mint-tab-item-icon {
     width: 24px;
@@ -857,6 +827,11 @@ display: inline-block;
 /* Radio Component */
 /* z-index */
 .mint-tabbar {
+    background-image: -webkit-linear-gradient(top, #d9d9d9, #d9d9d9 50%, transparent 50%);
+    background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: top left;
     position: relative;
     background-color: #fafafa;
     display: -webkit-box;
@@ -871,24 +846,6 @@ display: inline-block;
 .mint-tabbar > .mint-tab-item.is-selected {
     background-color: #eaeaea;
     color: #26a2ff;
-}
-.mint-tabbar::after {
-    color: #d9d9d9;
-    content: " ";
-    width: 100%;
-    height: 1;
-    border-top: 1px solid;
-    top: 0;
-    left: 0;
-    position: absolute;
-    -webkit-transform-origin: 0 0;
-            transform-origin: 0 0;
-}
-@media screen and (-webkit-min-device-pixel-ratio: 2) {
-    .mint-tabbar::after {
-        -webkit-transform: scaleY(.5);
-                transform: scaleY(.5);
-    }
 }
 .mint-tabbar.is-fixed {
     right: 0;
@@ -923,24 +880,6 @@ display: inline-block;
     display: flex;
     padding: 8px 10px;
     z-index: 1;
-}
-.mint-searchbar::before {
-    color: #c8c8cd;
-    content: " ";
-    width: 100%;
-    height: 1;
-    border-bottom: 1px solid;
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    -webkit-transform-origin: 0 100%;
-            transform-origin: 0 100%;
-}
-@media screen and (-webkit-min-device-pixel-ratio: 2) {
-    .mint-searchbar::before {
-        -webkit-transform: scaleY(.5);
-                transform: scaleY(.5);
-    }
 }
 .mint-searchbar-inner {
     -webkit-box-align: center;
@@ -994,6 +933,7 @@ display: inline-block;
 .mint-searchbar-cancel {
     color: #26a2ff;
     margin-left: 10px;
+    text-decoration: none;
 }
 .mint-search-list {
     overflow: auto;
@@ -1839,6 +1779,8 @@ to{opacity:0
     overflow: hidden
 }
 .mint-indexlist-content {
+    margin: 0;
+    padding: 0;
     overflow: auto
 }
 .mint-indexlist-nav {
@@ -1863,6 +1805,8 @@ to{opacity:0
             justify-content: center
 }
 .mint-indexlist-navlist {
+    padding: 0;
+    margin: 0;
     list-style: none;
     max-height: 100%;
     display: -webkit-box;
@@ -1903,8 +1847,12 @@ to{opacity:0
     margin: 0
 }
 .mint-indexsection-index {
+    margin: 0;
     padding: 10px;
     background-color: #fafafa
+}
+.mint-indexsection-index + ul {
+    padding: 0
 }
 
 .mint-palette-button{

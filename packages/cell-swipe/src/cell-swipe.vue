@@ -9,6 +9,7 @@
     :title="title"
     :icon="icon"
     :label="label"
+    :to="to"
     :is-link="isLink"
     ref="cell"
     :value="value">
@@ -82,6 +83,7 @@ export default {
   directives: { Clickoutside },
 
   props: {
+    to: String,
     left: Array,
     right: Array,
     icon: String,

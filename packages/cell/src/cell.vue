@@ -113,6 +113,7 @@ export default {
       display: block;
       overflow: hidden;
       position: relative;
+      text-decoration: none;
 
       &:first-child {
         .mint-cell-wrapper {

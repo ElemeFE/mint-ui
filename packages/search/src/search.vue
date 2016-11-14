@@ -158,6 +158,7 @@ export default {
       @descendent cancel {
         color: $color-blue;
         margin-left: 10px;
+        text-decoration: none;
       }
     }
 

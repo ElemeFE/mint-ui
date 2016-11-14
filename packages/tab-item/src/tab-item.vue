@@ -37,6 +37,7 @@ export default {
       display: block;
       padding: 7px 0;
       flex: 1;
+      text-decoration: none;
 
       @descendent icon {
         size: 24px;

@@ -5,6 +5,7 @@ const registerRoute = (config) => {
   config.map(nav =>
     nav.list.map(page =>
       route.push({
+        name: page.name,
         path: page.path,
         component: require(`./pages${page.path}`),
         meta: {

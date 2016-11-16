@@ -17,5 +17,8 @@
     </mt-cell>
 
     <mt-cell title="标题" label="描述信息" is-link></mt-cell>
+
+    <mt-cell title="原生跳转" label="跳转到 https://mint-ui.github.io" is-link to="https://mint-ui.github.io"></mt-cell>
+    <mt-cell title="路由跳转" label="跳转到 /#/toast" is-link :to="{ name: 'Toast' }"></mt-cell>
   </div>
 </template>

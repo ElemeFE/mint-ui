@@ -32,15 +32,11 @@ if (process.env.NODE_ENV === 'component') {
   require('mint-ui/packages/font/style.css');
 }
 
-function cleanPath(path) {
-  return path.replace(/\/\//g, '/');
-}
-
 /**
  * mt-cell
  * @module components/cell
  * @desc 单元格
- * @param {string} [to] - 跳转链接
+ * @param {string|Object} [to] - 跳转链接，使用 vue-router 的情况下 to 会传递给 router.push，否则作为 a 标签的 href 属性处理
  * @param {string} [icon] - 图标，提供 more, back，或者自定义的图标（传入不带前缀的图标类名，最后拼接成 .mintui-xxx）
  * @param {string} [title] - 标题
  * @param {string} [label] - 备注信息
@@ -60,7 +56,7 @@ export default {
   name: 'mt-cell',
 
   props: {
-    to: String,
+    to: [String, Object],
     icon: String,
     title: String,
     label: String,
@@ -70,25 +66,17 @@ export default {
 
   computed: {
     href() {
-      let href;
-
-      if (this.$router && this.to) {
-        const base = this.$router.history.base;
+      if (this.to && !this.added && this.$router) {
         const resolved = this.$router.match(this.to);
-        const fullPath = resolved.redirectedFrom || resolved.fullPath;
+        if (!resolved.matched.length) return this.to;
 
-        href = base ? cleanPath(base + fullPath) : fullPath;
-      } else {
-        href = this.to;
-      }
-
-      if (href && !this.added && this.$router) {
         this.$nextTick(() => {
           this.added = true;
           this.$el.addEventListener('click', this.handleClick);
         });
+        return resolved.path;
       }
-      return href;
+      return this.to;
     }
   },
 

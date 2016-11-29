@@ -9,7 +9,6 @@
     class="mint-tab-container">
     <div
       ref="wrap"
-      :class="{ 'swipe-transition': swipeLeave }"
       class="mint-tab-container-wrap">
       <slot></slot>
     </div>
@@ -63,7 +62,6 @@ export default {
     return {
       start: { x: 0, y: 0 },
       swiping: false,
-      swipeLeave: false,
       activeItems: [],
       pageWidth: 0,
       currentActive: this.value
@@ -101,12 +99,12 @@ export default {
       }
 
       setTimeout(() => {
-        this.swipeLeave = true;
+        this.wrap.classList.add('swipe-transition');
         this.swipeMove(-this.index * this.pageWidth);
 
         once(this.wrap, 'webkitTransitionEnd', _ => {
+          this.wrap.classList.remove('swipe-transition');
           this.wrap.style.webkitTransform = '';
-          this.swipeLeave = false;
           this.swiping = false;
           this.index = null;
         });

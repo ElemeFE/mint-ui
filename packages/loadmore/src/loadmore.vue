@@ -123,7 +123,6 @@
 
     data() {
       return {
-        uuid: null,
         translate: 0,
         scrollEventTarget: null,
         containerFilled: false,
@@ -174,28 +173,24 @@
     },
 
     methods: {
-      onTopLoaded(id) {
-        if (id === this.uuid) {
-          this.translate = 0;
-          setTimeout(() => {
-            this.topStatus = 'pull';
-          }, 200);
-        }
+      onTopLoaded() {
+        this.translate = 0;
+        setTimeout(() => {
+          this.topStatus = 'pull';
+        }, 200);
       },
 
-      onBottomLoaded(id) {
+      onBottomLoaded() {
         this.bottomStatus = 'pull';
         this.bottomDropped = false;
-        if (id === this.uuid) {
-          this.$nextTick(() => {
-            if (this.scrollEventTarget === window) {
-              document.body.scrollTop += 50;
-            } else {
-              this.scrollEventTarget.scrollTop += 50;
-            }
-            this.translate = 0;
-          });
-        }
+        this.$nextTick(() => {
+          if (this.scrollEventTarget === window) {
+            document.body.scrollTop += 50;
+          } else {
+            this.scrollEventTarget.scrollTop += 50;
+          }
+          this.translate = 0;
+        });
         if (!this.bottomAllLoaded && !this.containerFilled) {
           this.fillContainer();
         }
@@ -254,7 +249,7 @@
             }
             if (!this.containerFilled) {
               this.bottomStatus = 'loading';
-              this.bottomMethod(this.uuid);
+              this.bottomMethod();
             }
           });
         }
@@ -330,7 +325,7 @@
           if (this.topStatus === 'drop') {
             this.translate = '50';
             this.topStatus = 'loading';
-            this.topMethod(this.uuid);
+            this.topMethod();
           } else {
             this.translate = '0';
             this.topStatus = 'pull';
@@ -342,7 +337,7 @@
           if (this.bottomStatus === 'drop') {
             this.translate = '-50';
             this.bottomStatus = 'loading';
-            this.bottomMethod(this.uuid);
+            this.bottomMethod();
           } else {
             this.translate = '0';
             this.bottomStatus = 'pull';
@@ -353,7 +348,6 @@
     },
 
     mounted() {
-      this.uuid = Math.random().toString(36).substring(3, 8);
       this.init();
     }
   };

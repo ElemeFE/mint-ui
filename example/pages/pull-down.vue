@@ -81,13 +81,13 @@
         this.topStatus = status;
       },
 
-      loadTop(id) {
+      loadTop() {
         setTimeout(() => {
           let firstValue = this.list[0];
           for (let i = 1; i <= 10; i++) {
             this.list.unshift(firstValue - i);
           }
-          this.$refs.loadmore.onTopLoaded(id);
+          this.$refs.loadmore.onTopLoaded();
         }, 1500);
       }
     },

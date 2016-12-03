@@ -81,7 +81,7 @@
         this.bottomStatus = status;
       },
 
-      loadBottom(id) {
+      loadBottom() {
         setTimeout(() => {
           let lastValue = this.list[this.list.length - 1];
           if (lastValue < 40) {
@@ -91,7 +91,7 @@
           } else {
             this.allLoaded = true;
           }
-          this.$refs.loadmore.onBottomLoaded(id);
+          this.$refs.loadmore.onBottomLoaded();
         }, 1500);
       }
     },

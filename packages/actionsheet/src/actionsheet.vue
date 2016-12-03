@@ -2,9 +2,9 @@
   <transition name="actionsheet-float">
     <div v-show="currentValue" class="mint-actionsheet">
       <ul class="mint-actionsheet-list" :style="{ 'margin-bottom': cancelText ? '5px' : '0' }">
-        <li v-for="item in actions" class="mint-actionsheet-listitem" @click="itemClick(item)">{{ item.name }}</li>
+        <li v-for="item in actions" class="mint-actionsheet-listitem" @click.stop="itemClick(item)">{{ item.name }}</li>
       </ul>
-      <a class="mint-actionsheet-button" @click="currentValue = false" v-if="cancelText">{{ cancelText }}</a>
+      <a class="mint-actionsheet-button" @click.stop="currentValue = false" v-if="cancelText">{{ cancelText }}</a>
     </div>
   </transition>
 </template>

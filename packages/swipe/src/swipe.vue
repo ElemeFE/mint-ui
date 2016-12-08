@@ -90,6 +90,11 @@
         default: 300
       },
 
+      defaultIndex: {
+        type: Number,
+        default: 0
+      },
+
       auto: {
         type: Number,
         default: 3000
@@ -169,14 +174,16 @@
         this.noDrag = children.length === 1 && this.noDragWhenSingle;
 
         var pages = [];
-        this.index = 0;
+        var intDefaultIndex = Math.floor(this.defaultIndex);
+        var defaultIndex = (intDefaultIndex >= 0 && intDefaultIndex < children.length) ? intDefaultIndex : 0;
+        this.index = defaultIndex;
 
         children.forEach(function(child, index) {
           pages.push(child.$el);
 
           removeClass(child.$el, 'is-active');
 
-          if (index === 0) {
+          if (index === defaultIndex) {
             addClass(child.$el, 'is-active');
           }
         });

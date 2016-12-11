@@ -121,6 +121,8 @@
   };
 
   export default {
+    name: 'picker-slot',
+
     props: {
       values: {
         type: Array,

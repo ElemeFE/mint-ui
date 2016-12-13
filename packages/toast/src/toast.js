@@ -48,10 +48,10 @@ let Toast = (options = {}) => {
   Vue.nextTick(function() {
     instance.visible = true;
     instance.$el.removeEventListener('transitionend', removeDom);
-    ~duration && instance.timer = setTimeout(function() {
+    ~duration && (instance.timer = setTimeout(function() {
       if (instance.closed) return;
       instance.close();
-    }, duration);
+    }, duration));
   });
   return instance;
 };

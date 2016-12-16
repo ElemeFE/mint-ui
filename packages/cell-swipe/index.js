@@ -1,1 +1,1 @@
-module.exports = require('./src/cell-swipe.vue');
+export { default } from './src/cell-swipe.vue';

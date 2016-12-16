@@ -5,11 +5,12 @@ var uppercamelcase = require('uppercamelcase');
 var path = require('path');
 
 var OUTPUT_PATH = path.join(__dirname, '../../src/index.js');
-var IMPORT_TEMPLATE = 'import {{name}} from \'../packages/{{package}}/index.js\';';
+var IMPORT_TEMPLATE = 'import {{name}} from \'../packages/{{package}}\';';
 var ISNTALL_COMPONENT_TEMPLATE = '  Vue.component({{name}}.name, {{name}});';
 var MAIN_TEMPLATE = `{{include}}
 import '../src/assets/font/iconfont.css';
 
+const version = '{{version}}';
 const install = function(Vue) {
   if (install.installed) return;
 
@@ -30,9 +31,9 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 };
 
-module.exports = {
-  install,
-  version: '{{version}}',
+export {
+  install as default,
+  version,
 {{list}}
 };
 `;

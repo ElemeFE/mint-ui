@@ -17,5 +17,6 @@ cooking.set({
 cooking.remove('output.publicPath');
 cooking.add('output.filename', 'index.js');
 cooking.add('loader.js.exclude', config.jsexclude);
+cooking.add('vue.preserveWhitespace', false);
 
 module.exports = cooking.resolve();

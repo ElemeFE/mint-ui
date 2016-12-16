@@ -1,2 +1,1 @@
-import Field from './src/field.vue';
-module.exports = Field;
+export { default } from './src/field.vue';

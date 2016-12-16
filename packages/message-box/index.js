@@ -1,2 +1,1 @@
-import MessageBox from './src/message-box.js';
-module.exports = MessageBox;
+export { default } from './src/message-box.js';

@@ -1,2 +1,1 @@
-import PaletteButton from './src/palette-button.vue';
-module.exports = PaletteButton;
+export { default } from './src/palette-button.vue';

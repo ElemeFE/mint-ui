@@ -1,2 +1,1 @@
-import TabContainer from './src/switch.vue';
-module.exports = TabContainer;
+export { default } from './src/switch.vue';

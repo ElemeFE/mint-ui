@@ -1,2 +1,1 @@
-import Toast from './src/toast.js';
-module.exports = Toast;
+export { default } from './src/toast.js';

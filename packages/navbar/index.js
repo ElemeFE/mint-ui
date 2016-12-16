@@ -1,2 +1,1 @@
-import Navbar from './src/navbar.vue';
-module.exports = Navbar;
+export { default } from './src/navbar.vue';

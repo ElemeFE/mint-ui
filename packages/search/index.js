@@ -1,2 +1,1 @@
-import Search from './src/search.vue';
-module.exports = Search;
+export { default } from './src/search.vue';

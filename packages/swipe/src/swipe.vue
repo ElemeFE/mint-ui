@@ -121,6 +121,12 @@
       }
     },
 
+    watch: {
+      index(newIndex) {
+        this.$emit('change', newIndex);
+      }
+    },
+
     methods: {
       swipeItemCreated() {
         if (!this.ready) return;

@@ -1,2 +1,1 @@
-import Loadmore from './src/loadmore.vue';
-module.exports = Loadmore;
+export { default } from './src/loadmore.vue';

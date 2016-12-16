@@ -1,2 +1,1 @@
-import Header from './src/header.vue';
-module.exports = Header;
+export { default } from './src/header.vue';

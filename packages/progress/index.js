@@ -1,2 +1,1 @@
-import Progress from './src/progress.vue';
-module.exports = Progress;
+export { default } from './src/progress.vue';

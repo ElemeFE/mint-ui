@@ -1,2 +1,1 @@
-import Picker from './src/picker.vue';
-module.exports = Picker;
+export { default } from './src/picker.vue';

@@ -1,2 +1,1 @@
-import TabItem from './src/tab-item.vue';
-module.exports = TabItem;
+export { default } from './src/tab-item.vue';

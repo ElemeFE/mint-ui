@@ -1,2 +1,1 @@
-import Cell from './src/cell.vue';
-module.exports = Cell;
+export { default } from './src/cell.vue';

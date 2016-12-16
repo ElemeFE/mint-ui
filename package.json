@@ -17,8 +17,8 @@
   ],
   "scripts": {
     "dev": "npm run bootstrap && npm run build:entry && cooking watch -c build/cooking.demo.js -p",
-    "bootstrap": "npm i",
-    "dist": "npm run bootstrap && npm run clean && npm run build:entry && npm run lint && cooking build -c build/cooking.conf.js,build/cooking.common.js,build/cooking.component.js -p",
+    "bootstrap": "yarn",
+    "dist": "npm run clean && npm run build:entry && npm run lint && cooking build -c build/cooking.conf.js,build/cooking.common.js,build/cooking.component.js -p",
     "deploy": "npm run build:entry && cooking build -c build/cooking.demo.js -p && gh-pages -d example/dist --remote eleme",
     "build:entry": "node build/bin/build-entry",
     "pub": "sh build/release.sh",
@@ -44,13 +44,14 @@
     "wind-dom": "0.0.3"
   },
   "devDependencies": {
-    "cooking": "^1.1.0",
+    "cooking": "^1.2.4",
     "cooking-buble": "^0.1.2",
     "cooking-lint": "^0.1.2",
     "cooking-saladcss": "^0.4.0",
     "cooking-vue2": "^0.2.2",
     "css-loader": "^0.25.0",
-    "extract-text-webpack-plugin": "2.0.0-beta.4",
+    "eslint": "^3.12.2",
+    "extract-text-webpack-plugin": "beta",
     "fastclick": "^1.0.6",
     "file-loader": "^0.9.0",
     "gh-pages": "^0.11.0",
@@ -66,11 +67,12 @@
     "style-loader": "^0.13.1",
     "uppercamelcase": "^1.1.0",
     "url-loader": "^0.5.7",
-    "vue": "^2.0.2",
-    "vue-loader": "^9.5.3",
+    "vue": "2.0.5",
+    "vue-template-compiler": "2.0.5",
+    "vue-loader": "10",
     "vue-router": "^2.0.0",
-    "webpack": "2.1.0-beta.22",
-    "webpack-dev-server": "2.1.0-beta.6",
+    "webpack": "beta",
+    "webpack-dev-server": "beta",
     "webpack-shell-plugin": "^0.4.3"
   }
 }

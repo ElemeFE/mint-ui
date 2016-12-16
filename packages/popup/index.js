@@ -1,2 +1,1 @@
-import Popup from './src/popup.vue';
-module.exports = Popup;
+export { default } from './src/popup.vue';

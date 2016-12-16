@@ -1,2 +1,1 @@
-import Checklist from './src/checklist.vue';
-module.exports = Checklist;
+export { default } from './src/checklist.vue';

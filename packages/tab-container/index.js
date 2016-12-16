@@ -1,2 +1,1 @@
-import TabContainer from './src/tab-container.vue';
-module.exports = TabContainer;
+export { default } from './src/tab-container.vue';

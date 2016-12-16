@@ -1,2 +1,1 @@
-import Swipe from './src/swipe.vue';
-module.exports = Swipe;
+export { default } from './src/swipe.vue';

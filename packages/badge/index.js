@@ -1,2 +1,1 @@
-import Badge from './src/badge.vue';
-module.exports = Badge;
+export { default } from './src/badge.vue';

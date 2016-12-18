@@ -21,7 +21,9 @@
       </div>
 
       <div class="mint-cell-ft">
-          <slot name="right"></slot>
+          <slot name="right">
+
+          </slot>
       </div>
     </div>
     <div class="mint-cell-right">
@@ -170,7 +172,7 @@ export default {
       }
 
       @descendent ft {
-          margin-right: -10px;
+          transform: translateX(10px);
       }
 
       @descendent value {

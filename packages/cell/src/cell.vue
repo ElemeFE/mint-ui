@@ -6,7 +6,7 @@
     </div>
     <div class="mint-cell-wrapper">
       <div class="mint-cell-title">
-        <slot name="icon">
+          <slot name="icon">
           <i v-if="icon" class="mintui" :class="'mintui-' + icon"></i>
         </slot>
         <slot name="title">
@@ -19,9 +19,15 @@
           <span v-text="value"></span>
         </slot>
       </div>
+
+      <div class="mint-cell-ft">
+          <slot name="right">
+
+          </slot>
+      </div>
     </div>
     <div class="mint-cell-right">
-      <slot name="right"></slot>
+      <!--<slot name="right"></slot>-->
     </div>
     <i v-if="isLink" class="mint-cell-allow-right"></i>
   </a>
@@ -163,6 +169,10 @@ export default {
 
       @descendent title {
         flex: 1;
+      }
+
+      @descendent ft {
+          transform: translateX(10px);
       }
 
       @descendent value {

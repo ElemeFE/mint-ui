@@ -7,6 +7,11 @@
       'is-textarea': type === 'textarea',
       'is-nolabel': !label
     }]">
+
+      <template slot="icon">
+          <slot  name="left"></slot>
+      </template>
+
     <textarea
       @change="$emit('change', currentValue)"
       ref="textarea"
@@ -42,8 +47,13 @@
       <i class="mintui" :class="['mintui-field-' + state]"></i>
     </span>
     <div class="mint-field-other">
-      <slot></slot>
+
     </div>
+
+    <template slot="right">
+        <slot name="right"></slot>
+    </template>
+
   </x-cell>
 </template>
 

@@ -1,38 +1,39 @@
-import Header from '../packages/header/index.js';
-import Button from '../packages/button/index.js';
-import Cell from '../packages/cell/index.js';
-import CellSwipe from '../packages/cell-swipe/index.js';
-import Field from '../packages/field/index.js';
-import Badge from '../packages/badge/index.js';
-import Switch from '../packages/switch/index.js';
-import Spinner from '../packages/spinner/index.js';
-import TabItem from '../packages/tab-item/index.js';
-import TabContainerItem from '../packages/tab-container-item/index.js';
-import TabContainer from '../packages/tab-container/index.js';
-import Navbar from '../packages/navbar/index.js';
-import Tabbar from '../packages/tabbar/index.js';
-import Search from '../packages/search/index.js';
-import Checklist from '../packages/checklist/index.js';
-import Radio from '../packages/radio/index.js';
-import Loadmore from '../packages/loadmore/index.js';
-import Actionsheet from '../packages/actionsheet/index.js';
-import Popup from '../packages/popup/index.js';
-import Swipe from '../packages/swipe/index.js';
-import SwipeItem from '../packages/swipe-item/index.js';
-import Range from '../packages/range/index.js';
-import Picker from '../packages/picker/index.js';
-import Progress from '../packages/progress/index.js';
-import Toast from '../packages/toast/index.js';
-import Indicator from '../packages/indicator/index.js';
-import MessageBox from '../packages/message-box/index.js';
-import InfiniteScroll from '../packages/infinite-scroll/index.js';
-import Lazyload from '../packages/lazyload/index.js';
-import DatetimePicker from '../packages/datetime-picker/index.js';
-import IndexList from '../packages/index-list/index.js';
-import IndexSection from '../packages/index-section/index.js';
-import PaletteButton from '../packages/palette-button/index.js';
+import Header from '../packages/header';
+import Button from '../packages/button';
+import Cell from '../packages/cell';
+import CellSwipe from '../packages/cell-swipe';
+import Field from '../packages/field';
+import Badge from '../packages/badge';
+import Switch from '../packages/switch';
+import Spinner from '../packages/spinner';
+import TabItem from '../packages/tab-item';
+import TabContainerItem from '../packages/tab-container-item';
+import TabContainer from '../packages/tab-container';
+import Navbar from '../packages/navbar';
+import Tabbar from '../packages/tabbar';
+import Search from '../packages/search';
+import Checklist from '../packages/checklist';
+import Radio from '../packages/radio';
+import Loadmore from '../packages/loadmore';
+import Actionsheet from '../packages/actionsheet';
+import Popup from '../packages/popup';
+import Swipe from '../packages/swipe';
+import SwipeItem from '../packages/swipe-item';
+import Range from '../packages/range';
+import Picker from '../packages/picker';
+import Progress from '../packages/progress';
+import Toast from '../packages/toast';
+import Indicator from '../packages/indicator';
+import MessageBox from '../packages/message-box';
+import InfiniteScroll from '../packages/infinite-scroll';
+import Lazyload from '../packages/lazyload';
+import DatetimePicker from '../packages/datetime-picker';
+import IndexList from '../packages/index-list';
+import IndexSection from '../packages/index-section';
+import PaletteButton from '../packages/palette-button';
 import '../src/assets/font/iconfont.css';
 
+const version = '2.0.4';
 const install = function(Vue) {
   if (install.installed) return;
 
@@ -80,9 +81,9 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 };
 
-module.exports = {
-  install,
-  version: '2.0.6',
+export {
+  install as default,
+  version,
   Header,
   Button,
   Cell,

@@ -237,6 +237,9 @@
         -ms-flex: 1;
             flex: 1;
 }
+.mint-cell-ft {
+    margin-right: -10px;
+}
 .mint-cell-value {
     color: #888;
     display: -webkit-box;
@@ -336,7 +339,6 @@
 .mint-field.is-textarea {
     -webkit-box-align: inherit;
         -ms-flex-align: inherit;
-                -ms-grid-row-align: inherit;
             align-items: inherit;
 }
 .mint-field.is-textarea .mint-cell-title {

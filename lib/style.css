@@ -336,7 +336,6 @@
 .mint-field.is-textarea {
     -webkit-box-align: inherit;
         -ms-flex-align: inherit;
-                -ms-grid-row-align: inherit;
             align-items: inherit;
 }
 .mint-field.is-textarea .mint-cell-title {

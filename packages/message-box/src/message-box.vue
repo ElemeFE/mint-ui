@@ -148,7 +148,7 @@
   let CONFIRM_TEXT = '确定';
   let CANCEL_TEXT = '取消';
 
-  import Popup from 'vue-popup';
+  import Popup from 'mint-ui/src/utils/popup';
 
   export default {
     mixins: [ Popup ],

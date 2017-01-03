@@ -104,7 +104,9 @@
   import { once } from 'mint-ui/src/utils/dom';
   import { addClass, removeClass } from 'mint-ui/src/utils/dom';
   import emitter from 'mint-ui/src/mixins/emitter';
-  import 'raf.js';
+  if (typeof window !== 'undefined') {
+    require('raf.js');
+  }
 
   var rotateElement = function(element, angle) {
     if (!element) return;

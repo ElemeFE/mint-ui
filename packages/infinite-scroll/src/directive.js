@@ -42,7 +42,7 @@ var getScrollTop = function(element) {
   return element.scrollTop;
 };
 
-var getComputedStyle = document.defaultView.getComputedStyle;
+var getComputedStyle = typeof document==='undefined'?{}:document.defaultView.getComputedStyle;
 
 var getScrollEventTarget = function(element) {
   var currentNode = element;

@@ -16,7 +16,7 @@
     mixins: [common],
 
     created() {
-      if (typeof document === 'undefined') return;
+      if (this.$isServer) return;
       this.styleNode = document.createElement('style');
       const css = `.circle-color-${this._uid} > div::before { background-color: ${this.spinnerColor}; }`;
 

@@ -1,5 +1,6 @@
 var exportObj = {};
-if (typeof document !== 'undefined') {
+import Vue from 'vue';
+if ( !Vue.prototype.$isServer ) {
   var docStyle = document.documentElement.style;
   var engine;
   var translate3d = false;

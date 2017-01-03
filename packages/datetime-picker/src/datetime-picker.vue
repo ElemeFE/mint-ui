@@ -51,7 +51,8 @@
 <script type="text/babel">
   import picker from 'mint-ui/packages/picker/index.js';
   import popup from 'mint-ui/packages/popup/index.js';
-  if (typeof window !== 'undefined' && process.env.NODE_ENV === 'component') {
+  import Vue from 'vue';
+  if ( !Vue.prototype.$isServer && process.env.NODE_ENV === 'component') {
     require('mint-ui/packages/picker/style.css');
     require('mint-ui/packages/popup/style.css');
   }

@@ -79,7 +79,8 @@
 
 <script type="text/babel">
   import Popup from 'mint-ui/src/utils/popup';
-  if (typeof window !== 'undefined') {
+  import Vue from 'vue';
+  if ( !Vue.prototype.$isServer ) {
     require('vue-popup/lib/popup.css');
   }
 

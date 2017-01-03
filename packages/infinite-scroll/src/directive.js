@@ -1,3 +1,4 @@
+import Vue from 'vue';
 const ctx = '@@InfiniteScroll';
 
 var throttle = function(fn, delay) {
@@ -42,7 +43,7 @@ var getScrollTop = function(element) {
   return element.scrollTop;
 };
 
-var getComputedStyle = document.defaultView.getComputedStyle;
+var getComputedStyle = Vue.prototype.$isServer ? {} : document.defaultView.getComputedStyle;
 
 var getScrollEventTarget = function(element) {
   var currentNode = element;

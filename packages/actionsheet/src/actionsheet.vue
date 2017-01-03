@@ -54,7 +54,7 @@
 </style>
 
 <script type="text/babel">
-  import Popup from 'vue-popup';
+  import Popup from 'mint-ui/src/utils/popup';
   import 'vue-popup/lib/popup.css';
 
   export default {

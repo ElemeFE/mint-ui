@@ -60,8 +60,8 @@
 </template>
 
 <script>
-  import { once } from 'wind-dom/src/event';
-  import { addClass, removeClass } from 'wind-dom/src/class';
+  import { once } from 'mint-ui/src/utils/dom';
+  import { addClass, removeClass } from 'mint-ui/src/utils/dom';
 
   export default {
     name: 'mt-swipe',

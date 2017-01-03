@@ -56,7 +56,7 @@
 <script type="text/babel">
   import Spinner from 'mint-ui/packages/spinner/index.js';
   import Vue from 'vue';
-  if ( !Vue.prototype.$isServer && process.env.NODE_ENV === 'component') {
+  if (!Vue.prototype.$isServer && process.env.NODE_ENV === 'component') {
     require('mint-ui/packages/spinner/style.css');
   }
 

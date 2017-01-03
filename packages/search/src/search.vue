@@ -38,7 +38,7 @@
 <script>
 import XCell from 'mint-ui/packages/cell/index.js';
 import Vue from 'vue';
-if ( !Vue.prototype.$isServer && process.env.NODE_ENV === 'component') {
+if (!Vue.prototype.$isServer && process.env.NODE_ENV === 'component') {
   require('mint-ui/packages/cell/style.css');
 }
 

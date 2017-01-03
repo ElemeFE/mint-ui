@@ -105,7 +105,7 @@
   import { addClass, removeClass } from 'mint-ui/src/utils/dom';
   import emitter from 'mint-ui/src/mixins/emitter';
   import Vue from 'vue';
-  if ( !Vue.prototype.$isServer ) {
+  if (!Vue.prototype.$isServer) {
     require('raf.js');
   }
 

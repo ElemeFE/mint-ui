@@ -90,4 +90,4 @@ if (typeof document !== 'undefined') {
   };
 };
 
-export default exportObj;
+export default exportObj ;

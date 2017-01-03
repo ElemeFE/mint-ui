@@ -101,8 +101,8 @@
 <script type="text/babel">
   import draggable from './draggable';
   import translateUtil from './translate';
-  import { once } from 'wind-dom/src/event';
-  import { addClass, removeClass } from 'wind-dom/src/class';
+  import { once } from 'mint-ui/src/utils/dom';
+  import { addClass, removeClass } from 'mint-ui/src/utils/dom';
   import emitter from 'mint-ui/src/mixins/emitter';
   import 'raf.js';
 

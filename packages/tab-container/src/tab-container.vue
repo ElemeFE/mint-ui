@@ -33,7 +33,7 @@
 </style>
 
 <script>
-import { once } from 'wind-dom/src/event';
+import { once } from 'mint-ui/src/utils/dom';
 import arrayFindIndex from 'array-find-index';
 
 /**

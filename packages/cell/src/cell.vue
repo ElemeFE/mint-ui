@@ -28,7 +28,7 @@
 </template>
 
 <script>
-if (process.env.NODE_ENV === 'component') {
+if (typeof window !== 'undefined' && process.env.NODE_ENV === 'component') {
   require('mint-ui/packages/font/style.css');
 }
 

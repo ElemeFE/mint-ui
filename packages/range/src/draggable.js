@@ -1,5 +1,5 @@
 let isDragging = false;
-const supportTouch = 'ontouchstart' in window;
+const supportTouch = typeof window !=='undefined'&&'ontouchstart' in window;
 
 export default function(element, options) {
   const moveFn = function(event) {

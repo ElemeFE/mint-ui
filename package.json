@@ -1,6 +1,6 @@
 {
   "name": "mint-ui",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Mobile UI elements for vue.js",
   "keywords": [
     "component",
@@ -67,10 +67,10 @@
     "style-loader": "^0.13.1",
     "uppercamelcase": "^1.1.0",
     "url-loader": "^0.5.7",
-    "vue": "2.0.5",
-    "vue-template-compiler": "2.0.5",
+    "vue": "^2.1.8",
     "vue-loader": "10",
     "vue-router": "^2.0.0",
+    "vue-template-compiler": "^2.1.8",
     "webpack": "beta",
     "webpack-dev-server": "beta",
     "webpack-shell-plugin": "^0.4.3"

@@ -2715,13 +2715,13 @@ mime-types@^2.1.12, mime-types@~2.1.11, mime-types@~2.1.13, mime-types@~2.1.7:
   dependencies:
     mime-db "~1.25.0"
 
-mime@^1.2.11, mime@^1.3.4, mime@1.3.4:
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/mime/-/mime-1.3.4.tgz#115f9e3b6b3daf2959983cb38f149a2d40eb5d53"
-
-mime@1.2.x:
+mime@1.2.x, mime@^1.2.11:
   version "1.2.11"
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.2.11.tgz#58203eed86e3a5ef17aed2b7d9ebd47f0a60dd10"
+
+mime@1.3.4, mime@^1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/mime/-/mime-1.3.4.tgz#115f9e3b6b3daf2959983cb38f149a2d40eb5d53"
 
 mimeparse@^0.1.4:
   version "0.1.4"
@@ -4825,20 +4825,20 @@ vue-style-loader@^1.0.0:
   dependencies:
     loader-utils "^0.2.7"
 
-vue-template-compiler@2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.0.5.tgz#6a8c454e7d4ed03cc295ae9733a432e31df25ea3"
+vue-template-compiler@^2.1.8:
+  version "2.1.8"
+  resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.1.8.tgz#12dd1cc63793f59be580c694a61610cb9369d629"
   dependencies:
     de-indent "^1.0.2"
     he "^1.1.0"
 
 vue-template-es2015-compiler@^1.2.2:
-  version "1.4.0"
+  version "1.4.2"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.4.0.tgz#7b88853ca4bf8d84ae54ab9e56771de271e60198"
 
-vue@2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-2.0.5.tgz#b99dc7180a802d1148a508db3d84b52c09b5ca8e"
+vue@^2.1.8:
+  version "2.1.8"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.1.8.tgz#ae30aa86024fccf5535292ce414e7b4c221a1756"
 
 watchpack@^1.0.0:
   version "1.1.0"

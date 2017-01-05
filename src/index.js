@@ -33,7 +33,7 @@ import IndexSection from '../packages/index-section';
 import PaletteButton from '../packages/palette-button';
 import '../src/assets/font/iconfont.css';
 
-const version = '2.0.7';
+const version = '2.1.0';
 const install = function(Vue) {
   if (install.installed) return;
 

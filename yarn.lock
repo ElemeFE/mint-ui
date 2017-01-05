@@ -4811,12 +4811,6 @@ vue-loader@10, vue-loader@>=9.4.2:
     vue-style-loader "^1.0.0"
     vue-template-es2015-compiler "^1.2.2"
 
-vue-popup@^0.2.9:
-  version "0.2.12"
-  resolved "https://registry.yarnpkg.com/vue-popup/-/vue-popup-0.2.12.tgz#61a504883cf4ad69ce83e8a16f0a53f0d58bf738"
-  dependencies:
-    wind-dom "0.0.3"
-
 vue-router@^2.0.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-2.1.1.tgz#10c31bbdcb6da92bd3e0223fa12345e73018625a"
@@ -4835,7 +4829,7 @@ vue-template-compiler@^2.1.8:
     he "^1.1.0"
 
 vue-template-es2015-compiler@^1.2.2:
-  version "1.4.2"
+  version "1.4.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.4.0.tgz#7b88853ca4bf8d84ae54ab9e56771de271e60198"
 
 vue@^2.1.8:
@@ -4958,10 +4952,6 @@ wide-align@^1.1.0:
   resolved "https://registry.yarnpkg.com/wide-align/-/wide-align-1.1.0.tgz#40edde802a71fea1f070da3e62dcda2e7add96ad"
   dependencies:
     string-width "^1.0.1"
-
-wind-dom@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/wind-dom/-/wind-dom-0.0.3.tgz#3456e3d959dbebdcbf76ca68c6a4e8142f26360f"
 
 window-size@0.1.0:
   version "0.1.0"

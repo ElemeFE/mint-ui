@@ -21,7 +21,7 @@
       transform: translate3d(-50%, 0, 0);
       backface-visibility: hidden;
       transition: transform .3s ease-out;
-  
+
       @descendent list {
         list-style: none;
         padding: 0;
@@ -55,7 +55,7 @@
 
 <script type="text/babel">
   import Popup from 'mint-ui/src/utils/popup';
-  import 'vue-popup/lib/popup.css';
+  import 'mint-ui/src/style/popup.css';
 
   export default {
     name: 'mt-actionsheet',

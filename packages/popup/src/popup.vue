@@ -16,7 +16,7 @@
       transform: translate3d(-50%, -50%, 0);
       backface-visibility: hidden;
       transition: .2s ease-out;
-  
+
       @descendent top {
         top: 0;
         right: auto;
@@ -81,7 +81,7 @@
   import Popup from 'mint-ui/src/utils/popup';
   import Vue from 'vue';
   if (!Vue.prototype.$isServer) {
-    require('vue-popup/lib/popup.css');
+    require('mint-ui/src/style/popup.css');
   }
 
   export default {

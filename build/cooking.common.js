@@ -1,5 +1,4 @@
 var cooking = require('cooking');
-var webpack = require('webpack');
 var config = require('./config');
 
 cooking.set({
@@ -13,15 +12,13 @@ cooking.set({
   extractCSS: 'style.css',
   extends: ['vue2', 'saladcss', 'buble'],
   alias: config.alias,
-  externals: config.externals
+  externals: config.pkg
 });
 
+console.log(config.pkg)
 cooking.remove('output.publicPath');
 cooking.add('output.filename', 'mint-ui.common.js');
 cooking.add('performance.hints', false);
 cooking.add('loader.js.exclude', config.jsexclude);
-cooking.add('plugins.Define', new webpack.DefinePlugin({
-  'process.env.NODE_ENV': JSON.stringify('component')
-}));
 
 module.exports = cooking.resolve();

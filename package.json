@@ -39,9 +39,7 @@
   "dependencies": {
     "array-find-index": "^1.0.2",
     "raf.js": "0.0.4",
-    "vue-lazyload": "^0.8.0",
-    "vue-popup": "^0.2.9",
-    "wind-dom": "0.0.3"
+    "vue-lazyload": "^0.8.0"
   },
   "devDependencies": {
     "cooking": "^1.2.4",

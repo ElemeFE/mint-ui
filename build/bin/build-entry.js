@@ -31,8 +31,8 @@ if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue);
 };
 
-export {
-  install as default,
+module.exports = {
+  install,
   version,
 {{list}}
 };

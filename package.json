@@ -41,6 +41,9 @@
     "raf.js": "0.0.4",
     "vue-lazyload": "^0.8.0"
   },
+  "peerDependencies": {
+    "vue": "^2.1.8"
+  },
   "devDependencies": {
     "cooking": "^1.2.4",
     "cooking-buble": "^0.1.2",
@@ -69,6 +72,7 @@
     "vue-loader": "10",
     "vue-router": "^2.0.0",
     "vue-template-compiler": "^2.1.8",
+    "vue-template-es2015-compiler": "^1.4.2",
     "webpack": "beta",
     "webpack-dev-server": "beta",
     "webpack-shell-plugin": "^0.4.3"

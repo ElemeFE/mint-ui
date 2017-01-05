@@ -15,7 +15,6 @@ cooking.set({
   externals: config.pkg
 });
 
-console.log(config.pkg)
 cooking.remove('output.publicPath');
 cooking.add('output.filename', 'mint-ui.common.js');
 cooking.add('performance.hints', false);

@@ -4828,9 +4828,9 @@ vue-template-compiler@^2.1.8:
     de-indent "^1.0.2"
     he "^1.1.0"
 
-vue-template-es2015-compiler@^1.2.2:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.4.0.tgz#7b88853ca4bf8d84ae54ab9e56771de271e60198"
+vue-template-es2015-compiler@^1.4.2:
+  version "1.4.2"
+  resolved "http://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.4.2.tgz#0bc595cda68fc27779568926fcead13553a335df"
 
 vue@^2.1.8:
   version "2.1.8"

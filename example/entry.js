@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import App from './app';
 import routes from './route';
-import Mint from 'src/index';
+import { install as Mint } from 'src/index';
 import VueRouter from 'vue-router';
 
 document.addEventListener('DOMContentLoaded', function() {

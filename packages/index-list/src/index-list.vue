@@ -98,7 +98,7 @@
         firstSection: null,
         currentIndicator: '',
         currentHeight: this.height,
-        navOffsetX: 0;
+        navOffsetX: 0
       };
     },
 

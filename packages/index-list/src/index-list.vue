@@ -97,7 +97,8 @@
         moving: false,
         firstSection: null,
         currentIndicator: '',
-        currentHeight: this.height
+        currentHeight: this.height,
+        navOffsetX: 0;
       };
     },
 
@@ -122,6 +123,7 @@
         if (e.target.tagName !== 'LI') {
           return;
         }
+        this.navOffsetX = e.changedTouches[0].clientX;
         this.scrollList(e.changedTouches[0].clientY);
         if (this.indicatorTime) {
           clearTimeout(this.indicatorTime);
@@ -146,7 +148,7 @@
       },
 
       scrollList(y) {
-        let currentItem = document.elementFromPoint(document.body.clientWidth - 10, y);
+        let currentItem = document.elementFromPoint(this.navOffsetX, y);
         if (!currentItem || !currentItem.classList.contains('mint-indexlist-navitem')) {
           return;
         }

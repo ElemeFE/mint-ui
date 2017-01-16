@@ -116,6 +116,12 @@ export default {
   },
 
   methods: {
+    resetSwipeStatus() {
+      this.swiping = false;
+      this.opened = true;
+      this.offsetLeft = 0;
+    },
+
     translate3d(offset) {
       return `translate3d(${offset}px, 0, 0)`;
     },
@@ -134,14 +140,12 @@ export default {
         // left
         if (direction > 0 && -this.offsetLeft > this.rightWidth * 0.4) {
           this.swipeMove(-this.rightWidth);
-          this.swiping = false;
-          this.opened = true;
+          this.resetSwipeStatus();
           return;
         // right
         } else if (direction < 0 && this.offsetLeft > this.leftWidth * 0.4) {
           this.swipeMove(this.leftWidth);
-          this.swiping = false;
-          this.opened = true;
+          this.resetSwipeStatus();
           return;
         }
 

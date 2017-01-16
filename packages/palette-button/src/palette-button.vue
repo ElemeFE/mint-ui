@@ -59,7 +59,6 @@
       },
 
       onMainAnimationEnd(event) {
-        console.log('animationend');
         this.transforming = false;
         this.$emit('expanded');
       },
@@ -87,8 +86,8 @@
       let direction_arc = Math.PI * (3 + Math.max(['lt', 't', 'rt', 'r', 'rb', 'b', 'lb', 'l'].indexOf(this.direction), 0)) / 4;
       for (let i = 0; i < this.slotChildren.length; i++) {
         var arc = (Math.PI - this.offset * 2) / (this.slotChildren.length - 1) * i + this.offset + direction_arc;
-        var x = Math.cos(arc) * this.radius;
-        var y = Math.sin(arc) * this.radius;
+        var x = (Math.cos(arc) * this.radius).toFixed(2);
+        var y = (Math.sin(arc) * this.radius).toFixed(2);
         var item_css = '.expand .palette-button-' + this._uid + '-sub-' + i + '{transform:translate(' + x + 'px,' + y + 'px) rotate(720deg);transition-delay:' + 0.03 * i + 's}';
         css += item_css;
 
@@ -102,7 +101,7 @@
       this.styleNode.appendChild(document.createTextNode(css));
       document.getElementsByTagName('head')[0].appendChild(this.styleNode);
     },
-    
+
     destroyed() {
       if (this.styleNode) {
         this.styleNode.parentNode.removeChild(this.styleNode);

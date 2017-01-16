@@ -1,6 +1,6 @@
 <template>
   <div class="mint-palette-button" :class="{ expand: expanded, 'mint-palette-button-active': transforming }"
-    @animationend="onMainAnimationEnd" @webkitanimationend="onMainAnimationEnd" @mozanimationend="onMainAnimationEnd">
+    @animationend="onMainAnimationEnd" @webkitAnimationEnd="onMainAnimationEnd" @mozAnimationEnd="onMainAnimationEnd">
     <div class="mint-sub-button-container">
       <slot></slot>
     </div>
@@ -13,29 +13,35 @@
 <script>
   export default {
     name: 'mt-palette-button',
+
     data: function() {
       return {
         transforming: false,    // 是否正在执行动画
         expanded: false           // 是否已经展开子按钮
       };
     },
+
     props: {
       content: {
         type: String,
         default: ''
       },
+
       offset: {
         type: Number,           // 扇面偏移角，默认是四分之π，配合默认方向lt
         default: Math.PI / 4
       },
+
       direction: {
         type: String,
         default: 'lt'           // lt t rt this.radius rb b lb l 取值有8个方向，左上、上、右上、右、右下、下、左下、左，默认为左上
       },
+
       radius: {
         type: Number,
         default: 90
       },
+
       mainButtonStyle: {
         type: String,           // 应用到 mint-main-button 上的 class
         default: ''
@@ -51,15 +57,19 @@
           }
         }
       },
+
       onMainAnimationEnd(event) {
+        console.log('animationend');
         this.transforming = false;
         this.$emit('expanded');
       },
+
       expand(event) {
         this.expanded = true;
         this.transforming = true;
         this.$emit('expand', event);
       },
+
       collapse(event) {
         this.expanded = false;
         this.$emit('collapse', event);
@@ -92,6 +102,7 @@
       this.styleNode.appendChild(document.createTextNode(css));
       document.getElementsByTagName('head')[0].appendChild(this.styleNode);
     },
+    
     destroyed() {
       if (this.styleNode) {
         this.styleNode.parentNode.removeChild(this.styleNode);

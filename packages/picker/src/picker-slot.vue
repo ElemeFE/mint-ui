@@ -1,7 +1,7 @@
 <template>
   <div class="picker-slot" :class="classNames" :style="flexStyle">
     <div v-if="!divider" ref="wrapper" class="picker-slot-wrapper" :class="{ dragging: dragging }" :style="{ height: contentHeight + 'px' }">
-      <div class="picker-item" v-for="itemValue in mutatingValues" :class="{ 'picker-selected': itemValue === currentValue }">
+      <div class="picker-item" v-for="itemValue in mutatingValues" :class="{ 'picker-selected': itemValue === currentValue }" :style="{ height: itemHeight + 'px', lineHeight: itemHeight + 'px' }">
         {{ typeof itemValue === 'object' && itemValue[valueKey] ? itemValue[valueKey] : itemValue }}
       </div>
     </div>
@@ -152,7 +152,11 @@
       },
       flex: {},
       className: {},
-      content: {}
+      content: {},
+      itemHeight: {
+        type: Number,
+        default: ITEM_HEIGHT
+      }
     },
 
     data() {
@@ -197,7 +201,7 @@
         return resultArray.join(' ');
       },
       contentHeight() {
-        return ITEM_HEIGHT * this.visibleItemCount;
+        return this.itemHeight * this.visibleItemCount;
       },
       valueIndex() {
         return this.mutatingValues.indexOf(this.currentValue);
@@ -205,8 +209,9 @@
       dragRange() {
         var values = this.mutatingValues;
         var visibleItemCount = this.visibleItemCount;
+        var itemHeight = this.itemHeight;
 
-        return [ -ITEM_HEIGHT * (values.length - Math.ceil(visibleItemCount / 2)), ITEM_HEIGHT * Math.floor(visibleItemCount / 2) ];
+        return [ -itemHeight * (values.length - Math.ceil(visibleItemCount / 2)), itemHeight * Math.floor(visibleItemCount / 2) ];
       }
     },
 
@@ -215,15 +220,17 @@
         var values = this.mutatingValues;
         var valueIndex = values.indexOf(value);
         var offset = Math.floor(this.visibleItemCount / 2);
+        var itemHeight = this.itemHeight;
 
         if (valueIndex !== -1) {
-          return (valueIndex - offset) * -ITEM_HEIGHT;
+          return (valueIndex - offset) * -itemHeight;
         }
       },
 
       translate2Value(translate) {
-        translate = Math.round(translate / ITEM_HEIGHT) * ITEM_HEIGHT;
-        var index = -(translate - Math.floor(this.visibleItemCount / 2) * ITEM_HEIGHT) / ITEM_HEIGHT;
+        var itemHeight = this.itemHeight;
+        translate = Math.round(translate / itemHeight) * itemHeight;
+        var index = -(translate - Math.floor(this.visibleItemCount / 2) * itemHeight) / itemHeight;
 
         return this.mutatingValues[index];
       },
@@ -245,10 +252,10 @@
         var angleUnit = VISIBLE_ITEMS_ANGLE_MAP[this.visibleItemCount] || -20;
 
         [].forEach.call(pickerItems, (item, index) => {
-          var itemOffsetTop = index * ITEM_HEIGHT;
+          var itemOffsetTop = index * this.itemHeight;
           var translateOffset = dragRange[1] - currentTranslate;
           var itemOffset = itemOffsetTop - translateOffset;
-          var percentage = itemOffset / ITEM_HEIGHT;
+          var percentage = itemOffset / this.itemHeight;
 
           var angle = angleUnit * percentage;
           if (angle > 180) angle = 180;
@@ -319,37 +326,40 @@
           },
 
           end: () => {
-            this.dragging = false;
+            if (this.dragging) {
+              this.dragging = false;
 
-            var momentumRatio = 7;
-            var currentTranslate = translateUtil.getElementTranslate(el).top;
-            var duration = new Date() - dragState.start;
+              var momentumRatio = 7;
+              var currentTranslate = translateUtil.getElementTranslate(el).top;
+              var duration = new Date() - dragState.start;
 
-            var momentumTranslate;
-            if (duration < 300) {
-              momentumTranslate = currentTranslate + velocityTranslate * momentumRatio;
+              var momentumTranslate;
+              if (duration < 300) {
+                momentumTranslate = currentTranslate + velocityTranslate * momentumRatio;
+              }
+
+              var dragRange = dragState.range;
+
+              this.$nextTick(() => {
+                var translate;
+                var itemHeight = this.itemHeight;
+                if (momentumTranslate) {
+                  translate = Math.round(momentumTranslate / itemHeight) * itemHeight;
+                } else {
+                  translate = Math.round(currentTranslate / itemHeight) * itemHeight;
+                }
+
+                translate = Math.max(Math.min(translate, dragRange[1]), dragRange[0]);
+
+                translateUtil.translateElement(el, null, translate);
+
+                this.currentValue = this.translate2Value(translate);
+
+                if (this.rotateEffect) {
+                  this.planUpdateRotate();
+                }
+              });
             }
-
-            var dragRange = dragState.range;
-
-            this.$nextTick(() => {
-              var translate;
-              if (momentumTranslate) {
-                translate = Math.round(momentumTranslate / ITEM_HEIGHT) * ITEM_HEIGHT;
-              } else {
-                translate = Math.round(currentTranslate / ITEM_HEIGHT) * ITEM_HEIGHT;
-              }
-
-              translate = Math.max(Math.min(translate, dragRange[1]), dragRange[0]);
-
-              translateUtil.translateElement(el, null, translate);
-
-              this.currentValue = this.translate2Value(translate);
-
-              if (this.rotateEffect) {
-                this.planUpdateRotate();
-              }
-            });
 
             dragState = {};
           }
@@ -367,7 +377,7 @@
         var el = this.$el;
         var items = el.querySelectorAll('.picker-item');
         [].forEach.call(items, (item, index) => {
-          translateUtil.translateElement(item, null, ITEM_HEIGHT * index);
+          translateUtil.translateElement(item, null, this.itemHeight * index);
         });
         if (this.rotateEffect) {
           this.planUpdateRotate();

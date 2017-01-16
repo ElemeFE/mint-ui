@@ -1,6 +1,6 @@
 <template>
   <div class="mint-palette-button" :class="{ expand: expanded, 'mint-palette-button-active': transforming }"
-    @animationend="onMainAnimationEnd" @webkitanimationend="onMainAnimationEnd" @mozanimationend="onMainAnimationEnd">
+    @animationend="onMainAnimationEnd" @webkitAnimationEnd="onMainAnimationEnd" @mozAnimationEnd="onMainAnimationEnd">
     <div class="mint-sub-button-container">
       <slot></slot>
     </div>
@@ -13,29 +13,35 @@
 <script>
   export default {
     name: 'mt-palette-button',
+
     data: function() {
       return {
         transforming: false,    // 是否正在执行动画
         expanded: false           // 是否已经展开子按钮
       };
     },
+
     props: {
       content: {
         type: String,
         default: ''
       },
+
       offset: {
         type: Number,           // 扇面偏移角，默认是四分之π，配合默认方向lt
         default: Math.PI / 4
       },
+
       direction: {
         type: String,
         default: 'lt'           // lt t rt this.radius rb b lb l 取值有8个方向，左上、上、右上、右、右下、下、左下、左，默认为左上
       },
+
       radius: {
         type: Number,
         default: 90
       },
+
       mainButtonStyle: {
         type: String,           // 应用到 mint-main-button 上的 class
         default: ''
@@ -51,15 +57,18 @@
           }
         }
       },
+
       onMainAnimationEnd(event) {
         this.transforming = false;
         this.$emit('expanded');
       },
+
       expand(event) {
         this.expanded = true;
         this.transforming = true;
         this.$emit('expand', event);
       },
+
       collapse(event) {
         this.expanded = false;
         this.$emit('collapse', event);
@@ -77,8 +86,8 @@
       let direction_arc = Math.PI * (3 + Math.max(['lt', 't', 'rt', 'r', 'rb', 'b', 'lb', 'l'].indexOf(this.direction), 0)) / 4;
       for (let i = 0; i < this.slotChildren.length; i++) {
         var arc = (Math.PI - this.offset * 2) / (this.slotChildren.length - 1) * i + this.offset + direction_arc;
-        var x = Math.cos(arc) * this.radius;
-        var y = Math.sin(arc) * this.radius;
+        var x = (Math.cos(arc) * this.radius).toFixed(2);
+        var y = (Math.sin(arc) * this.radius).toFixed(2);
         var item_css = '.expand .palette-button-' + this._uid + '-sub-' + i + '{transform:translate(' + x + 'px,' + y + 'px) rotate(720deg);transition-delay:' + 0.03 * i + 's}';
         css += item_css;
 
@@ -92,6 +101,7 @@
       this.styleNode.appendChild(document.createTextNode(css));
       document.getElementsByTagName('head')[0].appendChild(this.styleNode);
     },
+
     destroyed() {
       if (this.styleNode) {
         this.styleNode.parentNode.removeChild(this.styleNode);

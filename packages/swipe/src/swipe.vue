@@ -80,7 +80,8 @@
         pages: [],
         timer: null,
         reInitTimer: null,
-        noDrag: false
+        noDrag: false,
+        isDone: false
       };
     },
 
@@ -264,6 +265,9 @@
 
             this.index = newIndex;
           }
+          if (this.isDone) {
+            this.end();
+          }
 
           if (prevPage) {
             prevPage.style.display = '';
@@ -276,16 +280,21 @@
 
         setTimeout(() => {
           if (towards === 'next') {
+            this.isDone = true;
+            this.before(currentPage);
             this.translate(currentPage, -pageWidth, speed, callback);
             if (nextPage) {
               this.translate(nextPage, 0, speed);
             }
           } else if (towards === 'prev') {
+            this.isDone = true;
+            this.before(currentPage);
             this.translate(currentPage, pageWidth, speed, callback);
             if (prevPage) {
               this.translate(prevPage, 0, speed);
             }
           } else {
+            this.isDone = false;
             this.translate(currentPage, 0, speed, callback);
             if (typeof offsetLeft !== 'undefined') {
               if (prevPage && offsetLeft > 0) {
@@ -312,6 +321,14 @@
 
       prev() {
         this.doAnimate('prev');
+      },
+
+      before() {
+        this.$emit('before', this.index);
+      },
+
+      end() {
+        this.$emit('end', this.index);
       },
 
       doOnTouchStart(event) {
@@ -439,13 +456,17 @@
         });
 
         this.dragState = {};
+      },
+
+      clearTimer() {
+        clearInterval(this.timer);
+        this.timer = null;
       }
     },
 
     destroyed() {
       if (this.timer) {
-        clearInterval(this.timer);
-        this.timer = null;
+        this.clearTimer();
       }
       if (this.reInitTimer) {
         clearTimeout(this.reInitTimer);
@@ -458,6 +479,9 @@
 
       if (this.auto > 0) {
         this.timer = setInterval(() => {
+          if (!this.continuous && (this.index >= this.pages.length - 1)) {
+            return this.clearTimer();
+          }
           if (!this.dragging && !this.animating) {
             this.next();
           }

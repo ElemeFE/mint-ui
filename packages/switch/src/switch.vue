@@ -45,6 +45,10 @@ export default {
       align-items: center;
       position: relative;
 
+      * {
+        pointer-events: none;
+      }
+
       @descendent label {
         margin-left: 10px;
         display: inline-block;

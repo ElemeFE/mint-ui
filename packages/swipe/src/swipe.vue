@@ -439,13 +439,17 @@
         });
 
         this.dragState = {};
+      },
+
+      clearTimer() {
+        clearInterval(this.timer);
+        this.timer = null;
       }
     },
 
     destroyed() {
       if (this.timer) {
-        clearInterval(this.timer);
-        this.timer = null;
+        this.clearTimer();
       }
       if (this.reInitTimer) {
         clearTimeout(this.reInitTimer);
@@ -458,6 +462,9 @@
 
       if (this.auto > 0) {
         this.timer = setInterval(() => {
+          if (!this.continuous && (this.index >= this.pages.length - 1)) {
+            return this.clearTimer();
+          }
           if (!this.dragging && !this.animating) {
             this.next();
           }

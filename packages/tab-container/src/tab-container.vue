@@ -117,6 +117,7 @@ export default {
     },
 
     startDrag(evt) {
+      if (!this.swipeable) return;
       evt = evt.changedTouches ? evt.changedTouches[0] : evt;
       this.dragging = true;
       this.start.x = evt.pageX;

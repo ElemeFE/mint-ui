@@ -36,7 +36,7 @@ if (!Vue.prototype.$isServer) {
     if (element === null || element.style === null) return result;
 
     var transform = element.style[transformProperty];
-    var matches = /translate\(\s*(-?\d+(\.?\d+?)?)px,\s*(-?\d+(\.\d+)?)px\)\s*translateZ\(0px\)/g.exec(transform);
+    var matches = /translate\(\s*(-?\d+(\.?\d+?)?)px,\s*(-?\d+(\.\d+)?)px\)\s*translateZ\(0px\)/ig.exec(transform);
     if (matches) {
       result.left = +matches[1];
       result.top = +matches[3];

@@ -98,10 +98,11 @@
       this.values = [];
       var values = this.values;
       var valueIndexCount = 0;
-      slots.forEach(function(slot) {
+      slots.forEach(slot => {
         if (!slot.divider) {
           slot.valueIndex = valueIndexCount++;
           values[slot.valueIndex] = (slot.values || [])[slot.defaultIndex || 0];
+          this.slotValueChange();
         }
       });
     },

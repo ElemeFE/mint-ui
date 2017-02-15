@@ -326,38 +326,40 @@
           },
 
           end: () => {
-            this.dragging = false;
+            if (this.dragging) {
+              this.dragging = false;
 
-            var momentumRatio = 7;
-            var currentTranslate = translateUtil.getElementTranslate(el).top;
-            var duration = new Date() - dragState.start;
+              var momentumRatio = 7;
+              var currentTranslate = translateUtil.getElementTranslate(el).top;
+              var duration = new Date() - dragState.start;
 
-            var momentumTranslate;
-            if (duration < 300) {
-              momentumTranslate = currentTranslate + velocityTranslate * momentumRatio;
+              var momentumTranslate;
+              if (duration < 300) {
+                momentumTranslate = currentTranslate + velocityTranslate * momentumRatio;
+              }
+
+              var dragRange = dragState.range;
+
+              this.$nextTick(() => {
+                var translate;
+                var itemHeight = this.itemHeight;
+                if (momentumTranslate) {
+                  translate = Math.round(momentumTranslate / itemHeight) * itemHeight;
+                } else {
+                  translate = Math.round(currentTranslate / itemHeight) * itemHeight;
+                }
+
+                translate = Math.max(Math.min(translate, dragRange[1]), dragRange[0]);
+
+                translateUtil.translateElement(el, null, translate);
+
+                this.currentValue = this.translate2Value(translate);
+
+                if (this.rotateEffect) {
+                  this.planUpdateRotate();
+                }
+              });
             }
-
-            var dragRange = dragState.range;
-
-            this.$nextTick(() => {
-              var translate;
-              var itemHeight = this.itemHeight;
-              if (momentumTranslate) {
-                translate = Math.round(momentumTranslate / itemHeight) * itemHeight;
-              } else {
-                translate = Math.round(currentTranslate / itemHeight) * itemHeight;
-              }
-
-              translate = Math.max(Math.min(translate, dragRange[1]), dragRange[0]);
-
-              translateUtil.translateElement(el, null, translate);
-
-              this.currentValue = this.translate2Value(translate);
-
-              if (this.rotateEffect) {
-                this.planUpdateRotate();
-              }
-            });
 
             dragState = {};
           }

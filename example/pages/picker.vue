@@ -15,6 +15,12 @@
       <mt-picker :slots="addressSlots" @change="onAddressChange" :visible-item-count="5"></mt-picker>
     </div>
     <p class="page-picker-desc">地址: {{ addressProvince }} {{ addressCity }}</p>
+    
+    <!-- defaultIndex 参数变化 -->
+    <div class="page-picker-wrapper">
+      <mt-picker :slots="numberSlot" @change="onNumberChange" :visible-item-count="3"></mt-picker>
+    </div>
+    <p class="page-picker-desc">动态默认选项: {{ number }}</p>
   </div>
 </template>
 
@@ -82,6 +88,10 @@
         this.year = values[0];
       },
 
+      onNumberChange(picker, values) {
+        this.number = values[0];
+      },
+
       onDateChange(picker, values) {
         if (values[0] > values[1]) {
           picker.setSlotValue(1, values[0]);
@@ -100,9 +110,16 @@
     data() {
       return {
         year: '1984',
+        number: 0,
         yearSlot: [{
           flex: 1,
           values: ['1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995'],
+          className: 'slot1'
+        }],
+        numberSlot: [{
+          flex: 1,
+          defaultIndex: 0,
+          values: [0, 1, 2, 3, 4, 5, 6],
           className: 'slot1'
         }],
         dateSlots: [
@@ -144,6 +161,18 @@
         addressProvince: '北京',
         addressCity: '北京'
       };
+    },
+
+    mounted() {
+      this.$nextTick(() => {
+        let step = 0;
+        setInterval(() => {
+          this.numberSlot[0].defaultIndex = step++;
+          if (step > this.numberSlot[0].values.length - 1) {
+            step = 0;
+          }
+        }, 1000);
+      });
     }
   };
 </script>

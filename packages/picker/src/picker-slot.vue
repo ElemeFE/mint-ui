@@ -156,6 +156,11 @@
       itemHeight: {
         type: Number,
         default: ITEM_HEIGHT
+      },
+      defaultIndex: {
+        type: Number,
+        default: 0,
+        require: false
       }
     },
 
@@ -421,6 +426,11 @@
         }
         this.$emit('input', val);
         this.dispatch('picker', 'slotValueChange', this);
+      },
+      defaultIndex(val) {
+        if ((this.mutatingValues[val] !== undefined) && (this.mutatingValues.length >= val + 1)) {
+          this.currentValue = this.mutatingValues[val];
+        }
       }
     }
   };

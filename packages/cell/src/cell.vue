@@ -117,6 +117,7 @@ export default {
       }
 
       @descendent wrapper {
+        position: relative;
         background-image:linear-gradient(180deg, $color-grey, $color-grey 50%, transparent 50%);
         background-size: 120% 1px;
         background-repeat: no-repeat;

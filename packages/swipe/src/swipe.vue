@@ -119,6 +119,11 @@
       prevent: {
         type: Boolean,
         default: false
+      },
+
+      stopPropagation: {
+        type: Boolean,
+        default: false
       }
     },
 
@@ -493,9 +498,8 @@
       var element = this.$el;
 
       element.addEventListener('touchstart', (event) => {
-        if (this.prevent) {
-          event.preventDefault();
-        }
+        if (this.prevent) event.preventDefault();
+        if (this.stopPropagation) event.stopPropagation();
         if (this.animating) return;
         this.dragging = true;
         this.userScrolling = false;

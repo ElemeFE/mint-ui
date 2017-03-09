@@ -3,7 +3,7 @@
     <mt-picker
       :slots="dateSlots"
       @change="onChange"
-      :visible-item-count="7"
+      :visible-item-count="visibleItemCount"
       class="mint-datetime-picker"
       ref="picker"
       show-toolbar>
@@ -119,6 +119,10 @@
       minuteFormat: {
         type: String,
         default: '{value}'
+      },
+      visibleItemCount: {
+        type: Number,
+        default: 7
       },
       value: null
     },

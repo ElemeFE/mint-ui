@@ -14,7 +14,8 @@
     font-size: 18px;
     overflow: hidden;
     position: relative;
-    max-height: 100%
+    max-height: 100%;
+
   }
 
   .picker-slot.picker-slot-left {
@@ -61,6 +62,7 @@
     box-sizing: border-box;
     transition-duration: .3s;
     backface-visibility: hidden;
+
   }
 
   .picker-slot-absolute .picker-item {
@@ -241,6 +243,7 @@
       },
 
       updateRotate: function(currentTranslate, pickerItems) {
+
         if (this.divider) return;
         var dragRange = this.dragRange;
         var wrapper = this.$refs.wrapper;
@@ -265,7 +268,6 @@
           var angle = angleUnit * percentage;
           if (angle > 180) angle = 180;
           if (angle < -180) angle = -180;
-
           rotateElement(item, angle);
 
           if (Math.abs(percentage) > itemsFit) {
@@ -328,12 +330,13 @@
             if (this.rotateEffect) {
               this.updateRotate(prevTranslate, pickerItems);
             }
+
           },
 
           end: () => {
+
             if (this.dragging) {
               this.dragging = false;
-
               var momentumRatio = 7;
               var currentTranslate = translateUtil.getElementTranslate(el).top;
               var duration = new Date() - dragState.start;
@@ -391,9 +394,10 @@
     },
 
     mounted() {
+      let obj = document.querySelector('.page-datetime');
+      obj && (obj.ontouchmove = function() { return false; });
       this.ready = true;
       this.$emit('input', this.currentValue);
-
       if (!this.divider) {
         this.initEvents();
         this.doOnValueChange();

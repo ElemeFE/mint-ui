@@ -5,7 +5,6 @@ const supportTouch = !Vue.prototype.$isServer && 'ontouchstart' in window;
 
 export default function(element, options) {
   const moveFn = function(event) {
-    event.stopPropagation();
     if (options.drag) {
       options.drag(supportTouch ? event.changedTouches[0] || event.touches[0] : event);
     }
@@ -30,6 +29,7 @@ export default function(element, options) {
     if (isDragging) return;
     document.onselectstart = function() { return false; };
     document.ondragstart = function() { return false; };
+
     if (!supportTouch) {
       document.addEventListener('mousemove', moveFn);
       document.addEventListener('mouseup', endFn);
@@ -38,7 +38,6 @@ export default function(element, options) {
 
     if (options.start) {
       event.preventDefault();
-      event.stopPropagation();
       options.start(supportTouch ? event.changedTouches[0] || event.touches[0] : event);
     }
   });

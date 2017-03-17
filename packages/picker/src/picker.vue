@@ -136,7 +136,7 @@
       },
       valueKey: String,
       rotateEffect: {
-        type: true,
+        type: Boolean,
         default: true
       },
       itemHeight: {

@@ -5,7 +5,6 @@
       <div class="mask-top border-bottom-1px"></div>
       <div class="mask-bottom border-top-1px"></div>
       <picker-slot v-for="slot in slots" :valueKey="valueKey" :values="slot.values || []" :text-align="slot.textAlign || 'center'" :visible-item-count="visibleItemCount" :class-name="slot.className" :flex="slot.flex" v-model="values[slot.valueIndex]" :rotate-effect="rotateEffect" :divider="slot.divider" :content="slot.content" :itemHeight="itemHeight" :default-index="slot.defaultIndex"></picker-slot>
-      <div class="picker-center-highlight" :style="{ height: itemHeight + 'px', marginTop: -itemHeight / 2 + 'px' }"></div>
     </div>
   </div>
 </template>
@@ -27,16 +26,6 @@
     text-align: right;
     font-size: 24px;
     position: relative;
-  }
-
-  .picker-center-highlight {
-    box-sizing: border-box;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    top: 50%;
-    margin-top: -18px;
-    pointer-events: none;
   }
 
   .border-bottom-1px,
@@ -98,21 +87,6 @@
 
   .picker-3d .picker-items {
     perspective:none!important;
-  }
-
-
-  .picker-center-highlight:before {
-    left: 0;
-    top: 0;
-    bottom: auto;
-    right: auto;
-  }
-
-  .picker-center-highlight:after {
-    left: 0;
-    bottom: 0;
-    right: auto;
-    top: auto;
   }
 </style>
 

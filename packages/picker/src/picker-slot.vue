@@ -291,6 +291,10 @@
       },
 
       initEvents() {
+
+        var pickerWrap = document.querySelector('.page-datetime');
+        pickerWrap && (pickerWrap.ontouchmove = function() { return false; });
+
         var el = this.$refs.wrapper;
         var dragState = {};
 
@@ -391,8 +395,6 @@
     },
 
     mounted() {
-      let obj = document.querySelector('.page-datetime');
-      obj && (obj.ontouchmove = function() { return false; });
       this.ready = true;
       this.$emit('input', this.currentValue);
 

@@ -128,6 +128,7 @@ export default {
       }
 
       @descendent core {
+        box-sizing: border-box;
         display: inline-block;
         background-color: $color-white;
         border-radius: 100%;

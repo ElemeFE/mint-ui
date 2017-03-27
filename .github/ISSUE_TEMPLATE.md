@@ -1,5 +1,5 @@
 <!--
-请使用 [issue-generator](https://eleme-issue.surge.sh?repo=mint) 提交 issue，否则 issue 会被直接关闭。提交 issue 前请务必查看 FAQ：https://github.com/ElemeFE/mint-ui/blob/master/FAQ.md。
+请使用 https://eleme-issue.surge.sh?repo=mint 提交 issue，否则 issue 会被直接关闭。提交 issue 前请务必查看 FAQ：https://github.com/ElemeFE/mint-ui/blob/master/FAQ.md。
  -->
 
 <!--

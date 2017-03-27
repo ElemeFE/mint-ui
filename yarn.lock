@@ -1214,10 +1214,6 @@ es6-map@^0.1.3:
     es6-symbol "~3.1.0"
     event-emitter "~0.3.4"
 
-es6-promise@^3.1.2:
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-3.3.1.tgz#a08cdde84ccdbf34d027a1451bc91d4bcd28a613"
-
 es6-set@~0.1.3:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/es6-set/-/es6-set-0.1.4.tgz#9516b6761c2964b92ff479456233a247dc707ce8"
@@ -4766,11 +4762,9 @@ vue-hot-reload-api@^2.0.1:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.0.7.tgz#45bd46cfeee7fd22550b467a76fa0c4a0ceae51b"
 
-vue-lazyload@^0.8.0:
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/vue-lazyload/-/vue-lazyload-0.8.3.tgz#7118859eb2e6ed69ee132a80da5507671dc88640"
-  dependencies:
-    es6-promise "^3.1.2"
+vue-lazyload@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/vue-lazyload/-/vue-lazyload-1.0.1.tgz#b9f9cf221b51acf2b1e741f96cf6b87e246fd585"
 
 vue-loader@10, vue-loader@>=9.4.2:
   version "10.0.2"

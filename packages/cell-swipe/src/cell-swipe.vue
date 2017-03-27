@@ -130,7 +130,7 @@ export default {
       this.wrap.style.webkitTransform = this.translate3d(offset);
       this.rightWrapElm.style.webkitTransform = this.translate3d(this.rightWidth + offset);
       this.leftWrapElm.style.webkitTransform = this.translate3d(-this.leftWidth + offset);
-      this.swiping = true;
+      offset && (this.swiping = true);
     },
 
     swipeLeaveTransition(direction) {

@@ -173,7 +173,7 @@ export default {
       expression: binding.value
     };
     const args = arguments;
-    el[ctx].vm.$on('hook:mounted', function() {
+    var cb = function() {
       el[ctx].vm.$nextTick(function() {
         if (isAttached(el)) {
           doBind.call(el[ctx], args);
@@ -193,7 +193,12 @@ export default {
 
         tryBind();
       });
-    });
+    };
+    if (el[ctx].vm._isMounted) {
+      cb();
+      return;
+    }
+    el[ctx].vm.$on('hook:mounted', cb);
   },
 
   unbind(el) {

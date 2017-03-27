@@ -219,7 +219,7 @@ export default {
       }
 
       @descendent other {
-        position: absolute 0 0 * *;
+        position: relative 0 0 * *;
       }
 
       @when nolabel {

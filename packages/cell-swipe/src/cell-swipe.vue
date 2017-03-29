@@ -220,6 +220,10 @@ export default {
         line-height: 48px;
       }
 
+      .mint-cell-wrapper {
+        position: relative;
+      }
+
       .mint-cell-wrapper,
       .mint-cell-left,
       .mint-cell-right {

@@ -285,8 +285,8 @@
         });
 
         once(el, translateUtil.transitionEndProperty, () => {
-          this.animationFrameId = null;
           cancelAnimationFrame(this.animationFrameId);
+          this.animationFrameId = null;
         });
       },
 

@@ -2,7 +2,7 @@
   <transition name="actionsheet-float">
     <div v-show="currentValue" class="mint-actionsheet">
       <ul class="mint-actionsheet-list" :style="{ 'margin-bottom': cancelText ? '5px' : '0' }">
-        <li v-for="item in actions" class="mint-actionsheet-listitem" @click.stop="itemClick(item)">{{ item.name }}</li>
+        <li v-for="( item, index ) in actions" class="mint-actionsheet-listitem" @click.stop="itemClick(item, index)">{{ item.name }}</li>
       </ul>
       <a class="mint-actionsheet-button" @click.stop="currentValue = false" v-if="cancelText">{{ cancelText }}</a>
     </div>
@@ -107,9 +107,9 @@
     },
 
     methods: {
-      itemClick(item) {
+      itemClick(item, index) {
         if (item.method && typeof item.method === 'function') {
-          item.method(item);
+          item.method(item, index);
         }
         this.currentValue = false;
       }

@@ -109,7 +109,7 @@
     methods: {
       itemClick(item) {
         if (item.method && typeof item.method === 'function') {
-          item.method();
+          item.method(item);
         }
         this.currentValue = false;
       }

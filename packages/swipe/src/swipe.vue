@@ -463,6 +463,17 @@
         this.dragState = {};
       },
 
+      initTimer() {
+        this.timer = setInterval(() => {
+          if (!this.continuous && (this.index >= this.pages.length - 1)) {
+            return this.clearTimer();
+          }
+          if (!this.dragging && !this.animating) {
+            this.next();
+          }
+        }, this.auto);
+      },
+
       clearTimer() {
         clearInterval(this.timer);
         this.timer = null;
@@ -483,14 +494,7 @@
       this.ready = true;
 
       if (this.auto > 0) {
-        this.timer = setInterval(() => {
-          if (!this.continuous && (this.index >= this.pages.length - 1)) {
-            return this.clearTimer();
-          }
-          if (!this.dragging && !this.animating) {
-            this.next();
-          }
-        }, this.auto);
+        this.initTimer();
       }
 
       this.reInitPages();
@@ -508,6 +512,7 @@
 
       element.addEventListener('touchmove', (event) => {
         if (!this.dragging) return;
+        if (this.timer) this.clearTimer();
         this.doOnTouchMove(event);
       });
 
@@ -518,6 +523,7 @@
           return;
         }
         if (!this.dragging) return;
+        this.initTimer();
         this.doOnTouchEnd(event);
         this.dragging = false;
       });

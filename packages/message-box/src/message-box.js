@@ -27,6 +27,7 @@ var defaults = {
 };
 
 import Vue from 'vue';
+import { on, off } from 'mint-ui/src/utils/dom';
 import msgboxVue from './message-box.vue';
 
 var merge = function(target) {
@@ -45,6 +46,10 @@ var merge = function(target) {
   return target;
 };
 
+var offHashchange = function() {
+  off(window, 'hashchange', MessageBox.close);
+};
+
 var MessageBoxConstructor = Vue.extend(msgboxVue);
 
 var currentMsg, instance;
@@ -53,6 +58,7 @@ var msgQueue = [];
 const defaultCallback = action => {
   if (currentMsg) {
     var callback = currentMsg.callback;
+
     if (typeof callback === 'function') {
       if (instance.showInput) {
         callback(instance.inputValue, action);
@@ -60,6 +66,7 @@ const defaultCallback = action => {
         callback(action);
       }
     }
+
     if (currentMsg.resolve) {
       var $type = currentMsg.options.$type;
       if ($type === 'confirm' || $type === 'prompt') {
@@ -76,6 +83,8 @@ const defaultCallback = action => {
         currentMsg.resolve(action);
       }
     }
+
+    offHashchange();
   }
 };
 
@@ -120,6 +129,8 @@ var showNextMsg = function() {
 };
 
 var MessageBox = function(options, callback) {
+  on(window, 'hashchange', MessageBox.close);
+
   if (typeof options === 'string') {
     options = {
       title: options
@@ -205,6 +216,7 @@ MessageBox.close = function() {
   instance.value = false;
   msgQueue = [];
   currentMsg = null;
+  offHashchange();
 };
 
 export default MessageBox;

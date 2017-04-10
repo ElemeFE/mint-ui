@@ -34,7 +34,7 @@ import PaletteButton from '../packages/palette-button';
 import '../src/assets/font/iconfont.css';
 
 const version = '2.2.3';
-const install = function(Vue) {
+const install = function(Vue, config = {}) {
   if (install.installed) return;
 
   Vue.component(Header.name, Header);
@@ -68,7 +68,8 @@ const install = function(Vue) {
   Vue.use(InfiniteScroll);
   Vue.use(Lazyload, {
     loading: require('./assets/loading-spin.svg'),
-    try: 3
+    attempt: 3,
+    ...config.lazyload
   });
 
   Vue.$messagebox = Vue.prototype.$messagebox = MessageBox;

@@ -15,7 +15,7 @@
         <div slot="top" class="mint-loadmore-top">
           <span v-show="topStatus !== 'loading'" :class="{ 'is-rotate': topStatus === 'drop' }">↓</span>
           <span v-show="topStatus === 'loading'">
-            <mt-spinner type="snake" :style="{ height: wrapperHeight + 'px' }"></mt-spinner>
+            <mt-spinner type="snake"></mt-spinner>
           </span>
         </div>
       </mt-loadmore>

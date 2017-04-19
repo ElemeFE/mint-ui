@@ -8,7 +8,7 @@
       translateScale : {{ moveTranslate }} 
     </div>
     <div class="page-loadmore-wrapper" ref="wrapper" >
-      <mt-loadmore :top-method="loadTop" :translateMethod="translateChange" @top-status-change="handleTopChange" ref="loadmore">
+      <mt-loadmore :top-method="loadTop" @translate-change="translateChange" @top-status-change="handleTopChange" ref="loadmore">
         <ul class="page-loadmore-list">
           <li v-for="item in list" class="page-loadmore-listitem">{{ item }}</li>
         </ul>
@@ -94,11 +94,11 @@
         this.topStatus = status;
       },
       translateChange(translate) {
-        var translateNum = translate
-        if(typeof translate === 'string'){
-          translateNum = Number(translate)
+        var translateNum = translate;
+        if (typeof translate === 'string') {
+          translateNum = Number(translate);
         }
-        this.translate = translateNum.toFixed(2)
+        this.translate = translateNum.toFixed(2);
         this.moveTranslate = (1 + translateNum / 70).toFixed(2);
       },
       loadTop() {

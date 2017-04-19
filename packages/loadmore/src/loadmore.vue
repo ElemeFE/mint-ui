@@ -118,6 +118,9 @@
       bottomAllLoaded: {
         type: Boolean,
         default: false
+      },
+      translateMethod: {
+        type: Function
       }
     },
 
@@ -317,6 +320,9 @@
           }
           this.bottomStatus = -this.translate >= this.bottomDistance ? 'drop' : 'pull';
         }
+        if (typeof this.translateMethod === 'function') {
+          this.translateMethod(this.translate);
+        }
       },
 
       handleTouchEnd() {
@@ -342,6 +348,9 @@
             this.translate = '0';
             this.bottomStatus = 'pull';
           }
+        }
+        if (typeof this.translateMethod === 'function') {
+          this.translateMethod(this.translate);
         }
         this.direction = '';
       }

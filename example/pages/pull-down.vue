@@ -4,7 +4,7 @@
     <p class="page-loadmore-desc">在列表顶端, 按住 - 下拉 - 释放可以获取更多数据</p>
     <p class="page-loadmore-desc">此例请使用手机查看</p>
     <p class="page-loadmore-desc">translate : {{ translate }}</p>
-    <div class="loading-background" :style="{transform:'scale3d('+moveTranslate + ',' + moveTranslate+',1)'}">
+    <div class="loading-background" :style="{ transform: 'scale3d(' + moveTranslate + ',' + moveTranslate + ',1)' }">
       translateScale : {{ moveTranslate }} 
     </div>
     <div class="page-loadmore-wrapper" ref="wrapper" >
@@ -94,10 +94,7 @@
         this.topStatus = status;
       },
       translateChange(translate) {
-        var translateNum = translate;
-        if (typeof translate === 'string') {
-          translateNum = Number(translate);
-        }
+        const translateNum = +translate;
         this.translate = translateNum.toFixed(2);
         this.moveTranslate = (1 + translateNum / 70).toFixed(2);
       },

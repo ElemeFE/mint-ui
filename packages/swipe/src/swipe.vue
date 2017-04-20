@@ -464,14 +464,16 @@
       },
 
       initTimer() {
-        this.timer = setInterval(() => {
-          if (!this.continuous && (this.index >= this.pages.length - 1)) {
-            return this.clearTimer();
-          }
-          if (!this.dragging && !this.animating) {
-            this.next();
-          }
-        }, this.auto);
+        if (this.auto > 0) {
+          this.timer = setInterval(() => {
+            if (!this.continuous && (this.index >= this.pages.length - 1)) {
+              return this.clearTimer();
+            }
+            if (!this.dragging && !this.animating) {
+              this.next();
+            }
+          }, this.auto);
+        }
       },
 
       clearTimer() {
@@ -493,9 +495,7 @@
     mounted() {
       this.ready = true;
 
-      if (this.auto > 0) {
-        this.initTimer();
-      }
+      this.initTimer();
 
       this.reInitPages();
 

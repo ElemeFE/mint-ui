@@ -93,6 +93,6 @@ Upon loaded, `loadmore` will automatically check if it is tall enough to fill it
 | bottomDistance    | distance threshold that triggers `bottomMethod`                  | Number   | 70          |
 | bottomMethod      | downward load-more function                                      | Function |             |
 | bottomAllLoaded   | if `true`, `bottomMethod` can no longer be triggered             | Boolean  | false       |
-| translateMethod   | translate changed function                                       | Funtion  |             |
+
 # License
 MIT

@@ -3,8 +3,12 @@
     <h1 class="page-title">Pull down</h1>
     <p class="page-loadmore-desc">在列表顶端, 按住 - 下拉 - 释放可以获取更多数据</p>
     <p class="page-loadmore-desc">此例请使用手机查看</p>
-    <div class="page-loadmore-wrapper" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
-      <mt-loadmore :top-method="loadTop" @top-status-change="handleTopChange" ref="loadmore">
+    <p class="page-loadmore-desc">translate : {{ translate }}</p>
+    <div class="loading-background" :style="{ transform: 'scale3d(' + moveTranslate + ',' + moveTranslate + ',1)' }">
+      translateScale : {{ moveTranslate }} 
+    </div>
+    <div class="page-loadmore-wrapper" ref="wrapper" >
+      <mt-loadmore :top-method="loadTop" @translate-change="translateChange" @top-status-change="handleTopChange" ref="loadmore">
         <ul class="page-loadmore-list">
           <li v-for="item in list" class="page-loadmore-listitem">{{ item }}</li>
         </ul>
@@ -52,7 +56,13 @@
       }
     }
   }
-
+  @component loading-background{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    transition: .2s linear;
+  }
   @component mint-loadmore-top {
     span {
       display: inline-block;
@@ -72,15 +82,22 @@
       return {
         list: [],
         topStatus: '',
-        wrapperHeight: 0
+        wrapperHeight: 0,
+        translate: 0,
+        moveTranslate: 0
       };
     },
 
     methods: {
       handleTopChange(status) {
+        this.moveTranslate = 1;
         this.topStatus = status;
       },
-
+      translateChange(translate) {
+        const translateNum = +translate;
+        this.translate = translateNum.toFixed(2);
+        this.moveTranslate = (1 + translateNum / 70).toFixed(2);
+      },
       loadTop() {
         setTimeout(() => {
           let firstValue = this.list[0];

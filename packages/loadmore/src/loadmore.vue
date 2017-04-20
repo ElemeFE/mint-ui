@@ -317,6 +317,7 @@
           }
           this.bottomStatus = -this.translate >= this.bottomDistance ? 'drop' : 'pull';
         }
+        this.$emit('translate-change', this.translate);
       },
 
       handleTouchEnd() {
@@ -343,6 +344,7 @@
             this.bottomStatus = 'pull';
           }
         }
+        this.$emit('translate-change', this.translate);
         this.direction = '';
       }
     },

@@ -25,8 +25,9 @@ npm i mint-ui@1 -S
 Import all components.
 
 ```javascript
-import Vue from 'vue'
+import Vue from 'vue';
 import Mint from 'mint-ui';
+import 'mint-ui/lib/style.css';
 
 Vue.use(Mint);
 ```

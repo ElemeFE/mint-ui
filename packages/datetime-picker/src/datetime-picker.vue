@@ -7,7 +7,7 @@
       class="mint-datetime-picker"
       ref="picker"
       show-toolbar>
-      <span class="mint-datetime-action mint-datetime-cancel" @click="visible = false">{{ cancelText }}</span>
+      <span class="mint-datetime-action mint-datetime-cancel" @click="visible = false;$emit('cancel')">{{ cancelText }}</span>
       <span class="mint-datetime-action mint-datetime-confirm" @click="confirm">{{ confirmText }}</span>
     </mt-picker>
   </mt-popup>

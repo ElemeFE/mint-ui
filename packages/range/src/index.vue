@@ -125,27 +125,28 @@
 
         return {
           left: thumbBox.left - contentBox.left,
-          top: thumbBox.top - contentBox.top
+          top: thumbBox.top - contentBox.top,
+          thumbLeft: thumbBox.left
         };
       };
 
       let dragState = {};
       draggable(thumb, {
-        start: () => {
+        start: (event) => {
           if (this.disabled) return;
           const position = getThumbPosition();
           dragState = {
             thumbStartLeft: position.left,
-            thumbStartTop: position.top
+            thumbStartTop: position.top,
+            thumbDetalX: event.pageX - position.thumbLeft
           };
         },
         drag: (event) => {
           if (this.disabled) return;
           const contentBox = content.getBoundingClientRect();
-          const deltaX = event.pageX - contentBox.left - dragState.thumbStartLeft;
+          const deltaX = event.pageX - contentBox.left - dragState.thumbStartLeft - dragState.thumbDetalX;
           const stepCount = Math.ceil((this.max - this.min) / this.step);
           const newPosition = (dragState.thumbStartLeft + deltaX) - (dragState.thumbStartLeft + deltaX) % (contentBox.width / stepCount);
-
           let newProgress = newPosition / contentBox.width;
 
           if (newProgress < 0) {

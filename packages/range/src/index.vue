@@ -122,27 +122,29 @@
       const getThumbPosition = () => {
         const contentBox = content.getBoundingClientRect();
         const thumbBox = thumb.getBoundingClientRect();
-
         return {
           left: thumbBox.left - contentBox.left,
-          top: thumbBox.top - contentBox.top
+          top: thumbBox.top - contentBox.top,
+          thumbBoxLeft: thumbBox.left
         };
       };
 
       let dragState = {};
       draggable(thumb, {
-        start: () => {
+        start: (event) => {
           if (this.disabled) return;
           const position = getThumbPosition();
+          const thumbClickDetalX = event.clientX - position.thumbBoxLeft;
           dragState = {
             thumbStartLeft: position.left,
-            thumbStartTop: position.top
+            thumbStartTop: position.top,
+            thumbClickDetalX: thumbClickDetalX
           };
         },
         drag: (event) => {
           if (this.disabled) return;
           const contentBox = content.getBoundingClientRect();
-          const deltaX = event.pageX - contentBox.left - dragState.thumbStartLeft;
+          const deltaX = event.pageX - contentBox.left - dragState.thumbStartLeft - dragState.thumbClickDetalX;
           const stepCount = Math.ceil((this.max - this.min) / this.step);
           const newPosition = (dragState.thumbStartLeft + deltaX) - (dragState.thumbStartLeft + deltaX) % (contentBox.width / stepCount);
 

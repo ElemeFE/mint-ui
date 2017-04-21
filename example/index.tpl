@@ -8,8 +8,8 @@
   </head>
   <body>
     <div id="app"></div><% if (process.env.NODE_ENV === 'production') { %>
-    <script src="//unpkg.com/vue@2.0.2/dist/vue.js"></script>
-    <script src="//unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+    <script src="//unpkg.com/vue@2.2.6/dist/vue.js"></script>
+    <script src="//unpkg.com/vue-router@2.4.0/dist/vue-router.js"></script>
     <script src="//unpkg.com/fastclick@1.0.6/lib/fastclick.js"></script><% } %>
   </body>
 </html>

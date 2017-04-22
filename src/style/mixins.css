@@ -1,0 +1,65 @@
+/*
+@define-mixin bg $color 
+{
+    background-color: $color;
+} 
+
+
+@define-mixin px2rem $px $base-font-size: 75px
+{
+    @return ($px / $base-font-size) * 1rem;
+}
+
+
+
+@define-mixin font-dpr $font-size
+{
+    font-size: $font-size;
+
+    [data-dpr="2"] & {
+        font-size: $font-size * 2;
+    }
+
+    [data-dpr="3"] & {
+        font-size: ($font-size * 3);
+    }
+}
+
+html
+{
+    @mixin bg blue;
+
+    @mixin font-dpr 20px;
+
+    border: solid px2rem(5px) #f00;
+}*/
+
+
+/*
+@define-function px2rem $px 
+{
+    @return ($px / 75) * 1rem;
+}
+
+
+
+@define-mixin font-dpr $font-size
+{
+    font-size: $font-size;
+
+    [data-dpr="2"] & {
+        font-size: calc( $font-size * 2 );
+    }
+
+    [data-dpr="3"] & {
+        font-size: calc( $font-size * 3 );
+    }
+}
+
+html {
+    @mixin font-dpr 40px;
+
+    @mixin px2rem 50px border
+}
+*/
+

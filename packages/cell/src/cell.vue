@@ -1,5 +1,5 @@
 <template>
-  <a class="mint-cell" :href="href">
+  <a class="mint-cell" :href="href" @click="handleClick($event)">
     <span class="mint-cell-mask" v-if="isLink"></span>
     <div class="mint-cell-left">
       <slot name="left"></slot>

@@ -789,6 +789,18 @@ core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
 
+cosmiconfig@^2.1.0, cosmiconfig@^2.1.1:
+  version "2.1.3"
+  resolved "http://registry.npm.taobao.org/cosmiconfig/download/cosmiconfig-2.1.3.tgz#952771eb0dddc1cb3fa2f6fbe51a522e93b3ee0a"
+  dependencies:
+    is-directory "^0.3.1"
+    js-yaml "^3.4.3"
+    minimist "^1.2.0"
+    object-assign "^4.1.0"
+    os-homedir "^1.0.1"
+    parse-json "^2.2.0"
+    require-from-string "^1.1.0"
+
 create-ecdh@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/create-ecdh/-/create-ecdh-4.0.0.tgz#888c723596cdf7612f6498233eebd7a35301737d"
@@ -2170,6 +2182,10 @@ is-builtin-module@^1.0.0:
   dependencies:
     builtin-modules "^1.0.0"
 
+is-directory@^0.3.1:
+  version "0.3.1"
+  resolved "http://registry.npm.taobao.org/is-directory/download/is-directory-0.3.1.tgz#61339b6f2475fc772fd9c9d83f5c8575dc154ae1"
+
 is-dotfile@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/is-dotfile/-/is-dotfile-1.0.2.tgz#2c132383f39199f8edc268ca01b9b007d205cc4d"
@@ -2354,7 +2370,7 @@ js-tokens@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-2.0.0.tgz#79903f5563ee778cc1162e6dcf1a0027c97f9cb5"
 
-js-yaml@^3.5.1:
+js-yaml@^3.4.3, js-yaml@^3.5.1:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.7.0.tgz#5c967ddd837a9bfdca5f2de84253abe8a1c03b80"
   dependencies:
@@ -2507,6 +2523,14 @@ loader-utils@0.2.x, loader-utils@^0.2.10, loader-utils@^0.2.14, loader-utils@^0.
     emojis-list "^2.0.0"
     json5 "^0.5.0"
     object-assign "^4.0.1"
+
+loader-utils@^1.0.2, loader-utils@^1.1.0:
+  version "1.1.0"
+  resolved "http://registry.npm.taobao.org/loader-utils/download/loader-utils-1.1.0.tgz#c98aef488bcceda2ffb5e2de646d6a754429f5cd"
+  dependencies:
+    big.js "^3.1.3"
+    emojis-list "^2.0.0"
+    json5 "^0.5.0"
 
 lodash._createcompounder@^3.0.0:
   version "3.0.0"
@@ -3075,6 +3099,10 @@ path-is-inside@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/path-is-inside/-/path-is-inside-1.0.2.tgz#365417dede44430d1c11af61027facf074bdfc53"
 
+path-parse@^1.0.5:
+  version "1.0.5"
+  resolved "http://registry.npm.taobao.org/path-parse/download/path-parse-1.0.5.tgz#3c1adf871ea9cd6c9431b6ea2bd74a0ff055c4c1"
+
 path-to-regexp@0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
@@ -3283,6 +3311,29 @@ postcss-inline-svg@^1.4.0:
     postcss "^5.0.14"
     postcss-value-parser "^3.2.3"
     read-cache "^1.0.0"
+
+postcss-load-config@^1.1.0:
+  version "1.2.0"
+  resolved "http://registry.npm.taobao.org/postcss-load-config/download/postcss-load-config-1.2.0.tgz#539e9afc9ddc8620121ebf9d8c3673e0ce50d28a"
+  dependencies:
+    cosmiconfig "^2.1.0"
+    object-assign "^4.1.0"
+    postcss-load-options "^1.2.0"
+    postcss-load-plugins "^2.3.0"
+
+postcss-load-options@^1.2.0:
+  version "1.2.0"
+  resolved "http://registry.npm.taobao.org/postcss-load-options/download/postcss-load-options-1.2.0.tgz#b098b1559ddac2df04bc0bb375f99a5cfe2b6d8c"
+  dependencies:
+    cosmiconfig "^2.1.0"
+    object-assign "^4.1.0"
+
+postcss-load-plugins@^2.3.0:
+  version "2.3.0"
+  resolved "http://registry.npm.taobao.org/postcss-load-plugins/download/postcss-load-plugins-2.3.0.tgz#745768116599aca2f009fad426b00175049d8d92"
+  dependencies:
+    cosmiconfig "^2.1.1"
+    object-assign "^4.1.0"
 
 postcss-loader@^0.13.0:
   version "0.13.0"
@@ -4074,6 +4125,10 @@ require-directory@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/require-directory/-/require-directory-2.1.1.tgz#8c64ad5fd30dab1c976e2344ffe7f792a6a6df42"
 
+require-from-string@^1.1.0:
+  version "1.2.1"
+  resolved "http://registry.npm.taobao.org/require-from-string/download/require-from-string-1.2.1.tgz#529c9ccef27380adfec9a2f965b649bbee636418"
+
 require-main-filename@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/require-main-filename/-/require-main-filename-1.0.1.tgz#97f717b69d48784f5f526a6c5aa8ffdda055a4d1"
@@ -4096,6 +4151,12 @@ resolve-from@^1.0.0:
 resolve@^1.1.6, resolve@^1.1.7:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.2.0.tgz#9589c3f2f6149d1417a40becc1663db6ec6bc26c"
+
+resolve@^1.3.3:
+  version "1.3.3"
+  resolved "http://registry.npm.taobao.org/resolve/download/resolve-1.3.3.tgz#655907c3469a8680dc2de3a275a8fdd69691f0e5"
+  dependencies:
+    path-parse "^1.0.5"
 
 restore-cursor@^1.0.1:
   version "1.0.1"
@@ -4762,11 +4823,33 @@ vue-hot-reload-api@^2.0.1:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.0.7.tgz#45bd46cfeee7fd22550b467a76fa0c4a0ceae51b"
 
+vue-hot-reload-api@^2.1.0:
+  version "2.1.0"
+  resolved "http://registry.npm.taobao.org/vue-hot-reload-api/download/vue-hot-reload-api-2.1.0.tgz#9ca58a6e0df9078554ce1708688b6578754d86de"
+
 vue-lazyload@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/vue-lazyload/-/vue-lazyload-1.0.1.tgz#b9f9cf221b51acf2b1e741f96cf6b87e246fd585"
 
-vue-loader@10, vue-loader@>=9.4.2:
+vue-loader@12.0.3:
+  version "12.0.3"
+  resolved "http://registry.npm.taobao.org/vue-loader/download/vue-loader-12.0.3.tgz#78d9c500f36a2e400ca61a1dbad45dc91897b24c"
+  dependencies:
+    consolidate "^0.14.0"
+    hash-sum "^1.0.2"
+    js-beautify "^1.6.3"
+    loader-utils "^1.1.0"
+    lru-cache "^4.0.1"
+    postcss "^5.0.21"
+    postcss-load-config "^1.1.0"
+    postcss-selector-parser "^2.0.0"
+    resolve "^1.3.3"
+    source-map "^0.5.6"
+    vue-hot-reload-api "^2.1.0"
+    vue-style-loader "^3.0.0"
+    vue-template-es2015-compiler "^1.2.2"
+
+vue-loader@>=9.4.2:
   version "10.0.2"
   resolved "https://registry.yarnpkg.com/vue-loader/-/vue-loader-10.0.2.tgz#6fe7bcefb32c5439bd0338464aa22673ad62299c"
   dependencies:
@@ -4793,9 +4876,16 @@ vue-style-loader@^1.0.0:
   dependencies:
     loader-utils "^0.2.7"
 
-vue-template-compiler@^2.1.8:
-  version "2.1.8"
-  resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.1.8.tgz#12dd1cc63793f59be580c694a61610cb9369d629"
+vue-style-loader@^3.0.0:
+  version "3.0.1"
+  resolved "http://registry.npm.taobao.org/vue-style-loader/download/vue-style-loader-3.0.1.tgz#c8b639bb2f24baf9d78274dc17e4f264c1deda08"
+  dependencies:
+    hash-sum "^1.0.2"
+    loader-utils "^1.0.2"
+
+vue-template-compiler@^2.3.2:
+  version "2.3.2"
+  resolved "http://registry.npm.taobao.org/vue-template-compiler/download/vue-template-compiler-2.3.2.tgz#d48a7f53df5f497033827182ceb4f0d340803017"
   dependencies:
     de-indent "^1.0.2"
     he "^1.1.0"
@@ -4804,9 +4894,9 @@ vue-template-es2015-compiler@^1.2.2, vue-template-es2015-compiler@^1.4.2:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.5.0.tgz#e4f672ab1718a3abf9171a080daefac31be117e1"
 
-vue@^2.1.8:
-  version "2.1.8"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-2.1.8.tgz#ae30aa86024fccf5535292ce414e7b4c221a1756"
+vue@^2.3.2:
+  version "2.3.2"
+  resolved "http://registry.npm.taobao.org/vue/download/vue-2.3.2.tgz#9e52aae3593480be235ff227557837e69f98203a"
 
 watchpack@^1.0.0:
   version "1.2.0"

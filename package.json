@@ -42,7 +42,7 @@
     "vue-lazyload": "^1.0.1"
   },
   "peerDependencies": {
-    "vue": "^2.1.8"
+    "vue": "^2.3.0"
   },
   "devDependencies": {
     "cooking": "^1.2.4",
@@ -68,10 +68,10 @@
     "style-loader": "^0.13.1",
     "uppercamelcase": "^1.1.0",
     "url-loader": "^0.5.7",
-    "vue": "^2.1.8",
-    "vue-loader": "10",
+    "vue": "^2.3.2",
+    "vue-loader": "12.0.3",
     "vue-router": "^2.0.0",
-    "vue-template-compiler": "^2.1.8",
+    "vue-template-compiler": "^2.3.2",
     "vue-template-es2015-compiler": "^1.4.2",
     "webpack": "beta",
     "webpack-dev-server": "beta",

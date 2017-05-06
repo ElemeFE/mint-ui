@@ -32,6 +32,7 @@ import IndexList from '../packages/index-list';
 import IndexSection from '../packages/index-section';
 import PaletteButton from '../packages/palette-button';
 import '../src/assets/font/iconfont.css';
+import merge from './utils/merge';
 
 const version = '2.2.5';
 const install = function(Vue, config = {}) {
@@ -66,11 +67,10 @@ const install = function(Vue, config = {}) {
   Vue.component(IndexSection.name, IndexSection);
   Vue.component(PaletteButton.name, PaletteButton);
   Vue.use(InfiniteScroll);
-  Vue.use(Lazyload, {
+  Vue.use(Lazyload, merge({
     loading: require('./assets/loading-spin.svg'),
-    attempt: 3,
-    ...config.lazyload
-  });
+    attempt: 3
+  }, config.lazyload));
 
   Vue.$messagebox = Vue.prototype.$messagebox = MessageBox;
   Vue.$toast = Vue.prototype.$toast = Toast;

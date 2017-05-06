@@ -9,6 +9,7 @@ var IMPORT_TEMPLATE = 'import {{name}} from \'../packages/{{package}}\';';
 var ISNTALL_COMPONENT_TEMPLATE = '  Vue.component({{name}}.name, {{name}});';
 var MAIN_TEMPLATE = `{{include}}
 import '../src/assets/font/iconfont.css';
+import merge from './utils/merge';
 
 const version = '{{version}}';
 const install = function(Vue, config = {}) {
@@ -16,11 +17,10 @@ const install = function(Vue, config = {}) {
 
 {{install}}
   Vue.use(InfiniteScroll);
-  Vue.use(Lazyload, {
+  Vue.use(Lazyload, merge({
     loading: require('./assets/loading-spin.svg'),
-    attempt: 3,
-    ...config.lazyload
-  });
+    attempt: 3
+  }, config.lazyload));
 
   Vue.$messagebox = Vue.prototype.$messagebox = MessageBox;
   Vue.$toast = Vue.prototype.$toast = Toast;

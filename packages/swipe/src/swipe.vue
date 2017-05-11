@@ -464,7 +464,7 @@
       },
 
       initTimer() {
-        if (this.auto > 0) {
+        if (this.auto > 0 && !this.timer) {
           this.timer = setInterval(() => {
             if (!this.continuous && (this.index >= this.pages.length - 1)) {
               return this.clearTimer();

@@ -3,13 +3,13 @@
     <ul class="mint-indexlist-content" ref="content" :style="{ 'height': currentHeight + 'px', 'margin-right': navWidth + 'px'}">
       <slot></slot>
     </ul>
-    
+
     <div class="mint-indexlist-nav" @touchstart="handleTouchStart" ref="nav">
       <ul class="mint-indexlist-navlist">
         <li class="mint-indexlist-navitem" v-for="section in sections">{{ section.index }}</li>
       </ul>
     </div>
-    
+
     <div class="mint-indexlist-indicator" v-if="showIndicator" v-show="moving">{{ currentIndicator }}</div>
   </div>
 </template>
@@ -22,13 +22,13 @@
       width: 100%;
       position: relative;
       overflow: hidden;
-      
+
       @descendent content {
         margin: 0;
         padding: 0;
         overflow: auto;
       }
-      
+
       @descendent nav {
         position: absolute;
         top: 0;
@@ -43,7 +43,7 @@
         flex-direction: column;
         justify-content: center;
       }
-      
+
       @descendent navlist {
         padding: 0;
         margin: 0;
@@ -52,14 +52,14 @@
         display: flex;
         flex-direction: column;
       }
-      
+
       @descendent navitem {
         padding: 2px 6px;
         font-size: 12px;
         user-select: none;
         -webkit-touch-callout: none;
       }
-      
+
       @descendent indicator {
         position: absolute;
         size: 50px;
@@ -105,6 +105,11 @@
     watch: {
       sections() {
         this.init();
+      },
+      height(val) {
+        if (!!val) {
+          this.currentHeight = val
+        }
       }
     },
 

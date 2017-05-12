@@ -105,6 +105,11 @@
     watch: {
       sections() {
         this.init();
+      },
+      height(val) {
+        if (val) {
+          this.currentHeight = val;
+        }
       }
     },
 

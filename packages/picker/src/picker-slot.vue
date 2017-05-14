@@ -14,7 +14,7 @@
     font-size: 18px;
     overflow: hidden;
     position: relative;
-    max-height: 100%
+    max-height: 100%;
   }
 
   .picker-slot.picker-slot-left {
@@ -291,6 +291,10 @@
       },
 
       initEvents() {
+
+        var pickerWrap = document.querySelector('.page-datetime');
+        pickerWrap && (pickerWrap.ontouchmove = function() { return false; });
+
         var el = this.$refs.wrapper;
         var dragState = {};
 

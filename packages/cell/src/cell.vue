@@ -118,10 +118,10 @@ export default {
 
       @descendent wrapper {
         background-image:linear-gradient(180deg, $color-grey, $color-grey 50%, transparent 50%);
-        background-size: 120% 1px;
+        background-size: 100% 1px;
         background-repeat: no-repeat;
         background-position: top left;
-        background-origin: content-box;
+        background-origin: border-box;
         align-items: center;
         box-sizing: border-box;
         display: flex;

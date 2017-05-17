@@ -191,10 +191,10 @@
 .mint-cell-wrapper {
     background-image:-webkit-linear-gradient(top, #d9d9d9, #d9d9d9 50%, transparent 50%);
     background-image:linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
-    background-size: 120% 1px;
+    background-size: 100% 1px;
     background-repeat: no-repeat;
     background-position: top left;
-    background-origin: content-box;
+    background-origin: border-box;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;

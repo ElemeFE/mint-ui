@@ -108,7 +108,7 @@ export default {
           this.swiping = false;
           this.index = null;
         });
-      }, 0);
+      }, 20);
     },
 
     swipeMove(offset) {

@@ -138,9 +138,18 @@ var MessageBox = function(options, callback) {
     return new Promise(function(resolve, reject) { // eslint-disable-line
       msgQueue.push({
         options: merge({}, defaults, MessageBox.defaults || {}, options),
-        callback: callback,
-        resolve: resolve,
-        reject: reject
+        callback: function(){
+          callback && callback.apply(this,arguments)
+          showNextMsg();
+        },
+        resolve: functiion(){
+          resolve.apply(this,arguments)
+          showNextMsg();
+        },
+        reject: function(){
+          reject.apply(this,arguments)
+          showNextMsg();
+        },
       });
 
       showNextMsg();
@@ -148,7 +157,10 @@ var MessageBox = function(options, callback) {
   } else {
     msgQueue.push({
       options: merge({}, defaults, MessageBox.defaults || {}, options),
-      callback: callback
+      callback: function(){
+        callback && callback.apply(this,arguments)
+        showNextMsg();
+      }
     });
 
     showNextMsg();

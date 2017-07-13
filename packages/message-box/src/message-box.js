@@ -138,16 +138,16 @@ var MessageBox = function(options, callback) {
     return new Promise(function(resolve, reject) { // eslint-disable-line
       msgQueue.push({
         options: merge({}, defaults, MessageBox.defaults || {}, options),
-        callback: function(){
-          callback && callback.apply(this,arguments)
+        callback: function (){
+          callback && callback.apply(this, arguments);
           showNextMsg();
         },
-        resolve: function(){
-          resolve.apply(this,arguments)
+        resolve: function (){
+          resolve.apply(this, arguments);
           showNextMsg();
         },
-        reject: function(){
-          reject.apply(this,arguments)
+        reject: function (){
+          reject.apply(this, arguments);
           showNextMsg();
         },
       });

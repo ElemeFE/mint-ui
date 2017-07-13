@@ -142,7 +142,7 @@ var MessageBox = function(options, callback) {
           callback && callback.apply(this,arguments)
           showNextMsg();
         },
-        resolve: functiion(){
+        resolve: function(){
           resolve.apply(this,arguments)
           showNextMsg();
         },

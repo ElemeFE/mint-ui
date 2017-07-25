@@ -7,7 +7,7 @@
     <div class="loading-background" :style="{ transform: 'scale3d(' + moveTranslate + ',' + moveTranslate + ',1)' }">
       translateScale : {{ moveTranslate }} 
     </div>
-    <div class="page-loadmore-wrapper" ref="wrapper" >
+    <div class="page-loadmore-wrapper" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
       <mt-loadmore :top-method="loadTop" @translate-change="translateChange" @top-status-change="handleTopChange" ref="loadmore">
         <ul class="page-loadmore-list">
           <li v-for="item in list" class="page-loadmore-listitem">{{ item }}</li>

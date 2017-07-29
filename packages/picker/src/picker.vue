@@ -173,7 +173,6 @@
     computed: {
       values() {
         var slots = this.slots || [];
-        var values = [];
         slots.forEach(function(slot) {
           if (!slot.divider) values.push(slot.value);
         });

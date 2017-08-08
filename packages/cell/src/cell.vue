@@ -68,7 +68,7 @@ export default {
     href() {
       if (this.to && !this.added && this.$router) {
         const resolved = this.$router.match(this.to);
-        if (!resolved.matched.length) return this.to;
+        if (resolved.matched.length) return this.to;
 
         this.$nextTick(() => {
           this.added = true;

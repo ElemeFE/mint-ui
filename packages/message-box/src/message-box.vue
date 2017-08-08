@@ -261,7 +261,10 @@
     watch: {
       inputValue() {
         if (this.$type === 'prompt') {
-          this.validate();
+          // See #1005
+          this.$nextTick(() => {
+            this.validate();
+          });
         }
       },
 

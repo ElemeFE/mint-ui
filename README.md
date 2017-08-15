@@ -9,8 +9,8 @@
 
 > Mobile UI elements for **Vue 2.0**
 
-- [Homepage](http://mint-ui.github.io)
-- [Documentation](http://mint-ui.github.io/docs)
+- [Homepage](https://mint-ui.github.io)
+- [Documentation](https://mint-ui.github.io/docs)
 
 ## Installation
 ```shell

@@ -15,7 +15,7 @@
       <mt-picker :slots="addressSlots" @change="onAddressChange" :visible-item-count="5"></mt-picker>
     </div>
     <p class="page-picker-desc">地址: {{ addressProvince }} {{ addressCity }}</p>
-    
+
     <!-- defaultIndex 参数变化 -->
     <div class="page-picker-wrapper">
       <mt-picker :slots="numberSlot" @change="onNumberChange" :visible-item-count="3"></mt-picker>
@@ -127,7 +127,9 @@
             flex: 1,
             values: ['2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016'],
             className: 'slot1',
-            textAlign: 'right'
+            textAlign: 'right',
+            defaultIndex: 1,
+            value: '2003'
           }, {
             divider: true,
             content: '-',
@@ -136,11 +138,13 @@
             flex: 1,
             values: ['2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016'],
             className: 'slot3',
-            textAlign: 'left'
+            textAlign: 'left',
+            defaultIndex: 3,
+            value: '2005'
           }
         ],
-        dateStart: '2002',
-        dateEnd: '2002',
+        dateStart: '2003',
+        dateEnd: '2005',
         addressSlots: [
           {
             flex: 1,

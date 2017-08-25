@@ -159,14 +159,14 @@
       },
       defaultIndex: {
         type: Number,
-        default: 0,
+        default: -1,
         require: false
       }
     },
 
     data() {
       return {
-        currentValue: this.value,
+        currentValue: this.defaultIndex > -1 ? this.values[this.defaultIndex] : this.value,
         mutatingValues: this.values,
         dragging: false,
         animationFrameId: null

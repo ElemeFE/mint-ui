@@ -296,7 +296,7 @@
         const setSlotValue = this.$refs.picker.setSlotValue;
         if (this.type === 'time') {
           setSlotValue(0, values[0]);
-          setSlotValue(1, values[1]);
+          setSlotValue(2, values[1]);
         }
         if (this.type !== 'time') {
           setSlotValue(0, values[0]);

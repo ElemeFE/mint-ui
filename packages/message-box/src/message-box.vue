@@ -196,6 +196,8 @@
 
     methods: {
       doClose() {
+        if (!this.opened) return;
+
         this.value = false;
         this._closing = true;
 

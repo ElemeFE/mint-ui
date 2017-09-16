@@ -271,7 +271,7 @@ export default {
 
       if (this.lockScroll) {
         setTimeout(() => {
-          if (this.modal && this.bodyOverflow !== 'hidden') {
+          if (this.modal && this.bodyOverflow !== null && this.bodyOverflow !== 'hidden') {
             document.body.style.overflow = this.bodyOverflow;
             document.body.style.paddingRight = this.bodyPaddingRight;
           }

@@ -122,7 +122,12 @@ export default {
     PopupManager.deregister(this._popupId);
     PopupManager.closeModal(this._popupId);
     if (this.modal && this.bodyOverflow !== null && this.bodyOverflow !== 'hidden') {
-      document.body.style.overflow = this.bodyOverflow;
+      if (this.bodyOverflow.overflow) {
+        document.body.style.overflow = this.bodyOverflow.overflow;
+      } else {
+        document.body.style.overflowX = this.bodyOverflow.overflowX;
+        document.body.style.overflowY = this.bodyOverflow.overflowY;
+      }
       document.body.style.paddingRight = this.bodyPaddingRight;
     }
     this.bodyOverflow = null;
@@ -212,7 +217,11 @@ export default {
         if (props.lockScroll) {
           if (!this.bodyOverflow) {
             this.bodyPaddingRight = document.body.style.paddingRight;
-            this.bodyOverflow = document.body.style.overflow;
+            this.bodyOverflow = {
+              overflow: document.body.style.overflow,
+              overflowX: document.body.style.overflowX,
+              overflowY: document.body.style.overflowY
+            };
           }
           scrollBarWidth = getScrollBarWidth();
           let bodyHasOverflow = document.documentElement.clientHeight < document.body.scrollHeight;
@@ -272,7 +281,12 @@ export default {
       if (this.lockScroll) {
         setTimeout(() => {
           if (this.modal && this.bodyOverflow !== null && this.bodyOverflow !== 'hidden') {
-            document.body.style.overflow = this.bodyOverflow;
+            if (this.bodyOverflow.overflow) {
+              document.body.style.overflow = this.bodyOverflow.overflow;
+            } else {
+              document.body.style.overflowX = this.bodyOverflow.overflowX;
+              document.body.style.overflowY = this.bodyOverflow.overflowY;
+            }
             document.body.style.paddingRight = this.bodyPaddingRight;
           }
           this.bodyOverflow = null;

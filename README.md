@@ -12,6 +12,10 @@
 - [Homepage](http://mint-ui.github.io)
 - [Documentation](http://mint-ui.github.io/docs)
 
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/bD3dKbdDE2F7Ky9LUN1kjTFK/ElemeFE/mint-ui'>
+  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/bD3dKbdDE2F7Ky9LUN1kjTFK/ElemeFE/mint-ui.svg' />
+</a>
+
 ## Installation
 ```shell
 npm i mint-ui -S

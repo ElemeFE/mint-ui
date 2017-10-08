@@ -95,7 +95,8 @@
     created() {
       this.$on('slotValueChange', this.slotValueChange);
       var slots = this.slots || [];
-      var values = [];
+      this.values = [];
+      var values = this.values;
       var valueIndexCount = 0;
       slots.forEach(slot => {
         if (!slot.divider) {
@@ -170,14 +171,26 @@
     },
 
     computed: {
-      values() {
-        var slots = this.slots || [];
-        var values = [];
-        slots.forEach(function(slot) {
-          if (!slot.divider) values.push(slot.value);
-        });
+      values: {
+        get() {
+          var slots = this.slots || [];
+          var values = [];
+          slots.forEach(function(slot) {
+            if (!slot.divider) values.push(slot.value);
+          });
 
-        return values;
+          return values;
+        },
+        set(values) {
+          var slots = this.slots || [];
+          var valueIndexCount = 0;
+          slots.forEach(function(slot) {
+            if (!slot.divider) {
+              slots.value = values[valueIndexCount];
+              valueIndexCount = valueIndexCount + 1;
+            }
+          });
+        }
       },
       slotCount() {
         var slots = this.slots || [];

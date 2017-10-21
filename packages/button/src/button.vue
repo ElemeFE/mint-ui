@@ -101,6 +101,7 @@ export default {
         content: " ";
         opacity: 0;
         position: absolute 0 0 0 0;
+        border-radius: inherit;
       }
 
       &:not(.is-disabled):active::after {

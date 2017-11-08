@@ -74,7 +74,7 @@ export default {
           this.added = true;
           this.$el.addEventListener('click', this.handleClick);
         });
-        return resolved.path;
+        return resolved.fullPath || resolved.path;
       }
       return this.to;
     }

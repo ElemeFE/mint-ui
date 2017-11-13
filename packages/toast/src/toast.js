@@ -44,7 +44,8 @@ let Toast = (options = {}) => {
   instance.className = options.className || '';
   instance.iconClass = options.iconClass || '';
 
-  document.body.appendChild(instance.$el);
+  let parentEle = options.context || document.body;
+  parentEle.appendChild(instance.$el);
   Vue.nextTick(function() {
     instance.visible = true;
     instance.$el.removeEventListener('transitionend', removeDom);

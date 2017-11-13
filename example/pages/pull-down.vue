@@ -26,6 +26,9 @@
 <style>
   @component-namespace page {
     @component loadmore {
+      width: 100%;
+      overflow-x: hidden;
+
       @descendent desc {
         text-align: center;
         color: #666;

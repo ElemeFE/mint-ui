@@ -209,7 +209,17 @@
         return this.itemHeight * this.visibleItemCount;
       },
       valueIndex() {
-        return this.mutatingValues.indexOf(this.currentValue);
+        var valueKey = this.valueKey;
+        if (this.currentValue instanceof Object) {
+          for (var i = 0, len = this.mutatingValues.length; i < len ; i++) {
+            if (this.currentValue[valueKey] === this.mutatingValues[i][valueKey]) {
+              return i;
+            }
+          }
+          return -1;
+        } else {
+          return this.mutatingValues.indexOf(this.currentValue);
+        }
       },
       dragRange() {
         var values = this.mutatingValues;

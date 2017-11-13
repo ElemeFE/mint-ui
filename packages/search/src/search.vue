@@ -142,7 +142,6 @@ export default {
 
     // 对外可用的方法
     focus() {
-      console.log('here');
       this.status = 'focus';
       this.expand = true;
       this.$refs.input.focus();

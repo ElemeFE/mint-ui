@@ -169,7 +169,10 @@
 
     mounted() {
       if (!this.currentHeight) {
-        this.currentHeight = document.documentElement.clientHeight - this.$refs.content.getBoundingClientRect().top;
+        window.scrollTo(0, 0);
+        requestAnimationFrame(()=>{
+          this.currentHeight = document.documentElement.clientHeight - this.$refs.content.getBoundingClientRect().top;
+        });
       }
       this.init();
     }

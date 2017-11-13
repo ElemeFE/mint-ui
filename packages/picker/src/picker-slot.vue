@@ -209,7 +209,17 @@
         return this.itemHeight * this.visibleItemCount;
       },
       valueIndex() {
-        return this.mutatingValues.indexOf(this.currentValue);
+        var valueKey = this.valueKey;
+        if (this.currentValue instanceof Object) {
+          for (var i = 0, len = this.mutatingValues.length; i < len ; i++) {
+            if (this.currentValue[valueKey] === this.mutatingValues[i][valueKey]) {
+              return i;
+            }
+          }
+          return -1;
+        } else {
+          return this.mutatingValues.indexOf(this.currentValue);
+        }
       },
       dragRange() {
         var values = this.mutatingValues;
@@ -217,6 +227,12 @@
         var itemHeight = this.itemHeight;
 
         return [ -itemHeight * (values.length - Math.ceil(visibleItemCount / 2)), itemHeight * Math.floor(visibleItemCount / 2) ];
+      },
+      minTranslateY() {
+        return this.itemHeight * (Math.ceil(this.visibleItemCount / 2) - this.mutatingValues.length);
+      },
+      maxTranslateY() {
+        return this.itemHeight * Math.floor(this.visibleItemCount / 2);
       }
     },
 
@@ -330,41 +346,54 @@
             }
           },
 
-          end: () => {
-            if (this.dragging) {
-              this.dragging = false;
+          end: (event) => {
+            this.dragging = false;
 
-              var momentumRatio = 7;
-              var currentTranslate = translateUtil.getElementTranslate(el).top;
-              var duration = new Date() - dragState.start;
+            var momentumRatio = 7;
+            var currentTranslate = translateUtil.getElementTranslate(el).top;
+            var duration = new Date() - dragState.start;
+            let distance = Math.abs(dragState.startTranslateTop - currentTranslate);
+            var itemHeight = this.itemHeight;
+            var visibleItemCount = this.visibleItemCount;
 
-              var momentumTranslate;
-              if (duration < 300) {
-                momentumTranslate = currentTranslate + velocityTranslate * momentumRatio;
+            let rect, offset;
+            if (distance < 6) {
+              rect = this.$el.getBoundingClientRect();
+              offset = Math.floor((event.clientY - (rect.top + (visibleItemCount - 1) * itemHeight / 2)) / itemHeight) * itemHeight;
+
+              if (offset > this.maxTranslateY) {
+                offset = this.maxTranslateY;
               }
 
-              var dragRange = dragState.range;
-
-              this.$nextTick(() => {
-                var translate;
-                var itemHeight = this.itemHeight;
-                if (momentumTranslate) {
-                  translate = Math.round(momentumTranslate / itemHeight) * itemHeight;
-                } else {
-                  translate = Math.round(currentTranslate / itemHeight) * itemHeight;
-                }
-
-                translate = Math.max(Math.min(translate, dragRange[1]), dragRange[0]);
-
-                translateUtil.translateElement(el, null, translate);
-
-                this.currentValue = this.translate2Value(translate);
-
-                if (this.rotateEffect) {
-                  this.planUpdateRotate();
-                }
-              });
+              velocityTranslate = 0;
+              currentTranslate -= offset;
             }
+
+            var momentumTranslate;
+            if (duration < 300) {
+              momentumTranslate = currentTranslate + velocityTranslate * momentumRatio;
+            }
+
+            var dragRange = dragState.range;
+
+            this.$nextTick(() => {
+              var translate;
+              if (momentumTranslate) {
+                translate = Math.round(momentumTranslate / itemHeight) * itemHeight;
+              } else {
+                translate = Math.round(currentTranslate / itemHeight) * itemHeight;
+              }
+
+              translate = Math.max(Math.min(translate, dragRange[1]), dragRange[0]);
+
+              translateUtil.translateElement(el, null, translate);
+
+              this.currentValue = this.translate2Value(translate);
+
+              if (this.rotateEffect) {
+                this.planUpdateRotate();
+              }
+            });
 
             dragState = {};
           }

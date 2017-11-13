@@ -19,11 +19,11 @@
           <span v-text="value"></span>
         </slot>
       </div>
+      <i v-if="isLink" class="mint-cell-allow-right"></i>
     </div>
     <div class="mint-cell-right">
       <slot name="right"></slot>
     </div>
-    <i v-if="isLink" class="mint-cell-allow-right"></i>
   </a>
 </template>
 

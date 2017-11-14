@@ -53,6 +53,9 @@ if (process.env.NODE_ENV === 'component') {
  * @param {boolean} [show=false] - 始终显示列表
  * @param {string[]} [result] - 结果列表
  * @param {slot} 结果列表
+ * @param {boolean} [showCancelBtn=true] 是否显示取消按钮
+ * @param {boolean} [fixedCancelBtn=false] 是否固定取消按钮
+ * @param {string} [lang=zh] 取消按钮文字部分为中文
  *
  * @example
  * <mt-search :value.sync="value" :result.sync="result"></mt-search>
@@ -108,7 +111,13 @@ export default {
     },
     lang: {
       type: String,
-      default: 'zh'
+      default: 'zh',
+      validator(value) {
+        return [
+          'zh',
+          'en'
+        ].indexOf(value) > -1;
+      }
     }
   },
 

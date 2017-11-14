@@ -165,38 +165,60 @@ export default {
       this.dragging = true;
       this.start.x = evt.pageX;
       this.start.y = evt.pageY;
+      this.direction = null;
     },
 
     onDrag(evt) {
       if (this.opened) {
-        !this.swiping && this.swipeMove(0);
+        if (!this.swiping) {
+          this.swipeMove(0);
+          this.wrap.style.transitionDuration = null;
+          this.rightWrapElm.style.transitionDuration = null;
+          this.leftWrapElm.style.transitionDuration = null;
+        }
         this.opened = false;
         return;
       }
       if (!this.dragging) return;
+
       let swiping;
       const e = evt.changedTouches ? evt.changedTouches[0] : evt;
       const offsetTop = e.pageY - this.start.y;
       const offsetLeft = this.offsetLeft = e.pageX - this.start.x;
 
-      if ((offsetLeft < 0 && -offsetLeft > this.rightWidth) ||
-        (offsetLeft > 0 && offsetLeft > this.leftWidth) ||
-        (offsetLeft > 0 && !this.leftWidth) ||
-        (offsetLeft < 0 && !this.rightWidth)) {
-        return;
-      }
-
       const y = Math.abs(offsetTop);
       const x = Math.abs(offsetLeft);
 
-      swiping = !(x < 5 || (x >= 5 && y >= x * 1.73));
-      if (!swiping) return;
-      evt.preventDefault();
+      this.wrap.style.transitionDuration = '0ms';
+      this.rightWrapElm.style.transitionDuration = '0ms';
+      this.leftWrapElm.style.transitionDuration = '0ms';
 
-      this.swipeMove(offsetLeft);
+      if (this.direction === null) {
+        this.direction = x > y ? 'horizonal' : 'vertical';
+      }
+
+      if (this.direction === 'horizonal') {
+        evt.preventDefault();
+        evt.stopPropagation();
+
+        swiping = !(x < 5 || (x >= 5 && y >= x * 1.73));
+        if (!swiping) return;
+
+        if ((offsetLeft < 0 && -offsetLeft > this.rightWidth) ||
+          (offsetLeft > 0 && offsetLeft > this.leftWidth) ||
+          (offsetLeft > 0 && !this.leftWidth) ||
+          (offsetLeft < 0 && !this.rightWidth)) {
+        } else {
+          this.swipeMove(offsetLeft);
+        }
+      }
     },
 
     endDrag() {
+      this.direction = null;
+      this.wrap.style.transitionDuration = null;
+      this.rightWrapElm.style.transitionDuration = null;
+      this.leftWrapElm.style.transitionDuration = null;
       if (!this.swiping) return;
       this.swipeLeaveTransition(this.offsetLeft > 0 ? -1 : 1);
     }
@@ -230,5 +252,9 @@ export default {
         transition: transform 150ms ease-in-out;
       }
     }
+  }
+
+  body{
+    height: 130vh;
   }
 </style>

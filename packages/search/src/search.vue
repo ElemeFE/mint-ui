@@ -16,10 +16,10 @@
             @input="_input"
             v-model="currentValue"
           >
-          <div class="btn-clear" @click="_clear" v-show="showCancelBtn"></div>
+          <div class="btn-clear" @click="clear" v-show="showCancelBtn"></div>
         </div>
       </div>
-      <div class="btn-cancel" @click="_cancel">
+      <div class="btn-cancel" @click="cancel">
         <span class="btn-cancel-container">{{cancelText}}</span>
         <div class="btn-cancel-takeplace">{{cancelText}}</div>
       </div>
@@ -56,6 +56,9 @@ if (process.env.NODE_ENV === 'component') {
  * @param {boolean} [showCancelBtn=true] 是否显示取消按钮
  * @param {boolean} [fixedCancelBtn=false] 是否固定取消按钮
  * @param {string} [lang=zh] 取消按钮文字部分为中文
+ * @method focus 获取焦点
+ * @method cancel 取消
+ * @method clear 清空输入
  *
  * @example
  * <mt-search :value.sync="value" :result.sync="result"></mt-search>
@@ -128,17 +131,6 @@ export default {
   },
 
   methods: {
-    _clear(focus = true) {
-      focus && this.focus();
-      this.currentValue = '';
-      this.hasValue = false;
-    },
-
-    _cancel() {
-      this._clear(false);
-      this.expand = false;
-    },
-
     _input() {
       this.hasValue = !!this.currentValue;
     },
@@ -146,7 +138,7 @@ export default {
     _blur() {
       this.status = 'blur';
       if (this.hasValue) return;
-      this._cancel();
+      this.cancel();
     },
 
     // 对外可用的方法
@@ -154,6 +146,17 @@ export default {
       this.status = 'focus';
       this.expand = true;
       this.$refs.input.focus();
+    },
+
+    cancel() {
+      this.clear(false);
+      this.expand = false;
+    },
+
+    clear(focus = true) {
+      focus && this.focus();
+      this.currentValue = '';
+      this.hasValue = false;
     }
   }
 };

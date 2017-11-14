@@ -32,3 +32,9 @@
     }
   };
 </script>
+
+<style>
+  .page-cell{
+    height: 130vh;
+  }
+</style>

@@ -253,8 +253,4 @@ export default {
       }
     }
   }
-
-  body{
-    height: 130vh;
-  }
 </style>

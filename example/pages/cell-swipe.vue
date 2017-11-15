@@ -33,7 +33,7 @@
   };
 </script>
 
-<style>
+<style scoped>
   .page-cell{
     height: 130vh;
   }

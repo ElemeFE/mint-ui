@@ -1,5 +1,5 @@
 <template>
-  <div class="page-cell">
+  <div class="page-cell make-overflow">
     <div class="page-title">Cell Swipe</div>
     <mt-cell-swipe
       v-for="n in 10"
@@ -33,8 +33,8 @@
   };
 </script>
 
-<style scoped>
-  .page-cell{
+<style>
+  .make-overflow{
     height: 130vh;
   }
 </style>

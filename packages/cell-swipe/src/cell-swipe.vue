@@ -126,8 +126,7 @@ export default {
       return `translate3d(${offset}px, 0, 0)`;
     },
 
-    setAnimations(on) {
-      var val = on ? null : '0ms';
+    setAnimations(val) {
       this.wrap.style.transitionDuration = val;
       this.rightWrapElm.style.transitionDuration = val;
       this.leftWrapElm.style.transitionDuration = val;
@@ -172,14 +171,14 @@ export default {
       this.dragging = true;
       this.start.x = evt.pageX;
       this.start.y = evt.pageY;
-      this.direction = null;
+      this.direction = '';
     },
 
     onDrag(evt) {
       if (this.opened) {
         if (!this.swiping) {
           this.swipeMove(0);
-          this.setAnimations(true);
+          this.setAnimations('');
         }
         this.opened = false;
         return;
@@ -194,9 +193,9 @@ export default {
       const y = Math.abs(offsetTop);
       const x = Math.abs(offsetLeft);
 
-      this.setAnimations(false);
+      this.setAnimations('0ms');
 
-      if (this.direction === null) {
+      if (this.direction === '') {
         this.direction = x > y ? 'horizonal' : 'vertical';
       }
 
@@ -218,8 +217,8 @@ export default {
     },
 
     endDrag() {
-      this.direction = null;
-      this.setAnimations(true);
+      this.direction = '';
+      this.setAnimations('');
       if (!this.swiping) return;
       this.swipeLeaveTransition(this.offsetLeft > 0 ? -1 : 1);
     }

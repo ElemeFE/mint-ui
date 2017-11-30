@@ -95,16 +95,16 @@
     created() {
       this.$on('slotValueChange', this.slotValueChange);
       var slots = this.slots || [];
-      this.values = [];
-      var values = this.values;
+      var values = [];
       var valueIndexCount = 0;
       slots.forEach(slot => {
         if (!slot.divider) {
           slot.valueIndex = valueIndexCount++;
           values[slot.valueIndex] = (slot.values || [])[slot.defaultIndex || 0];
-          this.slotValueChange();
         }
       });
+      this.values = values;
+      this.slotValueChange();
     },
 
     methods: {
@@ -185,10 +185,7 @@
           var slots = this.slots || [];
           var valueIndexCount = 0;
           slots.forEach(function(slot) {
-            if (!slot.divider) {
-              slots.value = values[valueIndexCount];
-              valueIndexCount = valueIndexCount + 1;
-            }
+            if (!slot.divider) slot.value = values[valueIndexCount++];
           });
         }
       },

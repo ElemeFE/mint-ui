@@ -421,7 +421,6 @@
 
     mounted() {
       this.ready = true;
-      this.$emit('input', this.currentValue);
 
       if (!this.divider) {
         this.initEvents();

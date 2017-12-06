@@ -212,8 +212,10 @@
           this.selfTriggered = false;
           return;
         }
-        this.currentValue = this.getValue(values);
-        this.handleValueChange();
+        if (values.length !== 0) {
+          this.currentValue = this.getValue(values);
+          this.handleValueChange();
+        }
       },
 
       fillValues(type, start, end) {

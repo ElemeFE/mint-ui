@@ -11,6 +11,7 @@
     <mt-datetime-picker
       ref="picker1"
       v-model="value"
+      @close="handleClose"
       @confirm="handleChange">
     </mt-datetime-picker>
     <mt-datetime-picker
@@ -89,6 +90,10 @@
           message: '已选择 ' + value.toString(),
           position: 'bottom'
         });
+      },
+
+      handleClose() {
+        Toast('Close picker1');
       }
     }
   };

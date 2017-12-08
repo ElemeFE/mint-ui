@@ -412,6 +412,12 @@
 
       rims() {
         this.generateSlots();
+      },
+
+      visible(val) {
+        if (!val) {
+          this.$emit('close');
+        }
       }
     },
 

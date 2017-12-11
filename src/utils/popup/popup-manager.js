@@ -63,6 +63,7 @@ const PopupManager = {
     const instance = PopupManager.getInstance(topItem.id);
     if (instance && instance.closeOnClickModal) {
       instance.close();
+      instance.$emit('closeOnclickModal');
     }
   },
 

@@ -150,7 +150,7 @@ export default {
         } else {
           this.open();
         }
-      } else {
+      } else if (this.visible) {
         this.close();
       }
     }

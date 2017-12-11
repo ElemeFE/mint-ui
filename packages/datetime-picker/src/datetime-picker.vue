@@ -1,5 +1,5 @@
 <template>
-  <mt-popup v-model="visible" position="bottom" class="mint-datetime">
+  <mt-popup v-model="visible" position="bottom" @closeOnclickModal="handleCloseOnClickModal" class="mint-datetime">
     <mt-picker
       :slots="dateSlots"
       @change="onChange"
@@ -368,6 +368,10 @@
 
       handleValueChange() {
         this.$emit('input', this.currentValue);
+      },
+
+      handleCloseOnClickModal() {
+        this.$emit('close-on-click-modal');
       }
     },
 
@@ -415,9 +419,7 @@
       },
 
       visible(val) {
-        if (!val) {
-          this.$emit('close');
-        }
+        this.$emit('change-visible', val);
       }
     },
 

@@ -11,6 +11,8 @@
     <mt-datetime-picker
       ref="picker1"
       v-model="value"
+      @change-visible="handleClose"
+      @close-on-click-modal="handleCloseOnClickModal"
       @confirm="handleChange">
     </mt-datetime-picker>
     <mt-datetime-picker
@@ -88,6 +90,19 @@
         Toast({
           message: '已选择 ' + value.toString(),
           position: 'bottom'
+        });
+      },
+
+      handleClose(val) {
+        if (!val) {
+          Toast('Close picker1');
+        }
+      },
+
+      handleCloseOnClickModal() {
+        Toast({
+          message: 'Close on click modal',
+          position: 'top'
         });
       }
     }

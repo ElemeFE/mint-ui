@@ -1,5 +1,5 @@
 <template>
-  <mt-popup v-model="visible" position="bottom" class="mint-datetime">
+  <mt-popup v-model="visible" :closeOnClickModal="closeOnClickModal" position="bottom" class="mint-datetime">
     <mt-picker
       :slots="dateSlots"
       @change="onChange"
@@ -123,6 +123,10 @@
       visibleItemCount: {
         type: Number,
         default: 7
+      },
+      closeOnClickModal: {
+        type: Boolean,
+        default: true
       },
       value: null
     },
@@ -412,6 +416,10 @@
 
       rims() {
         this.generateSlots();
+      },
+
+      visible(val) {
+        this.$emit('visible-change', val);
       }
     },
 

@@ -11,6 +11,8 @@
     <mt-datetime-picker
       ref="picker1"
       v-model="value"
+      :closeOnClickModal="false"
+      @visible-change="handleVisibleChange"
       @confirm="handleChange">
     </mt-datetime-picker>
     <mt-datetime-picker
@@ -89,6 +91,10 @@
           message: '已选择 ' + value.toString(),
           position: 'bottom'
         });
+      },
+
+      handleVisibleChange(isVisible) {
+        console.log('弹窗是否展示:', isVisible);
       }
     }
   };

@@ -159,8 +159,7 @@
       },
       defaultIndex: {
         type: Number,
-        default: 0,
-        require: false
+        default: 0
       }
     },
 

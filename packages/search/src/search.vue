@@ -5,7 +5,6 @@
         <i class="mintui mintui-search"></i>
         <input
         ref="input"
-        @click="visible = true"
         type="search"
         v-model="currentValue"
         :placeholder="placeholder"
@@ -13,8 +12,7 @@
       </div>
       <a
         class="mint-searchbar-cancel"
-        @click="visible = false, currentValue = ''"
-        v-show="visible"
+        @click="this.$router.push('/')"
         v-text="cancelText">
       </a>
     </div>

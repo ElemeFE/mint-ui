@@ -135,7 +135,7 @@ export default {
 
       @descendent mask {
         &::after {
-          background-color: #000;
+          background-color: $color-black;
           content: " ";
           opacity: 0;
           position: absolute 0;
@@ -151,7 +151,7 @@ export default {
       }
 
       @descendent label {
-        color: #888;
+        color: $cell-value-color;
         display: block;
         font-size: 12px;
         margin-top: 6px;

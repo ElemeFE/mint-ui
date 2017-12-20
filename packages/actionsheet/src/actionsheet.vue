@@ -10,10 +10,12 @@
 </template>
 
 <style>
+  @import "../../../src/style/var.css";
+
   @component-namespace mint {
     @component actionsheet {
       position: fixed;
-      background: #e0e0e0;
+      background: $actionsheet-background-color;
       width: 100%;
       text-align: center;
       bottom: 0;
@@ -29,7 +31,7 @@
       }
 
       @descendent listitem {
-        border-bottom: solid 1px #e0e0e0;
+        border-bottom: solid 1px $actionsheet-background-color;
       }
 
       @descendent listitem, button {
@@ -38,10 +40,10 @@
         height: 45px;
         line-height: 45px;
         font-size: 18px;
-        color: #333;
-        background-color: #fff;
+        color: $actionsheet-item-color;
+        background-color: $color-white;
         &:active {
-           background-color: #f0f0f0;
+           background-color: $actionsheet-item-active-background-color;
         }
       }
     }

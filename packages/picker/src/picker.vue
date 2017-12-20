@@ -9,6 +9,8 @@
 </template>
 
 <style>
+  @import "../../../src/style/var.css";
+
   .picker {
     overflow: hidden;
   }
@@ -42,7 +44,7 @@
     position: absolute;
     height: 1px;
     width: 100%;
-    background-color: #eaeaea;
+    background-color: $picker-border-color;
     display: block;
     z-index: 15;
     transform: scaleY(0.5);

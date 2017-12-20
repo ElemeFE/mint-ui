@@ -10,6 +10,8 @@
 </template>
 
 <style>
+  @import "../../../src/style/var.css";
+
   .picker-slot {
     font-size: 18px;
     overflow: hidden;
@@ -30,7 +32,7 @@
   }
 
   .picker-slot.picker-slot-divider {
-    color: #000;
+    color: black;
     display: flex;
     align-items: center
   }
@@ -54,7 +56,7 @@
     position: relative;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: #707274;
+    color: $picker-slot-color;
     left: 0;
     top: 0;
     width: 100%;
@@ -72,7 +74,7 @@
   }
 
   .picker-item.picker-selected {
-    color: #000;
+    color: black;
     transform: translate3d(0, 0, 0) rotateX(0);
   }
 

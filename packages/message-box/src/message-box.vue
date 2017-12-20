@@ -22,13 +22,15 @@
 </template>
 
 <style>
+  @import "../../../src/style/var.css";
+
   @component-namespace mint {
     @component msgbox {
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate3d(-50%, -50%, 0);
-      background-color: #fff;
+      background-color: white;
       width: 85%;
       border-radius: 3px;
       font-size: 16px;
@@ -43,7 +45,7 @@
 
       @descendent content {
         padding: 10px 20px 15px;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid $messagebox-border-color;
         min-height: 36px;
         position: relative;
       }
@@ -51,7 +53,7 @@
       @descendent input {
         padding-top: 15px;
         & input {
-          border: 1px solid #dedede;
+          border: 1px solid $messagebox-input-border-color;
           border-radius: 5px;
           padding: 4px 5px;
           width: 100%;
@@ -59,9 +61,9 @@
           outline: none;
         }
         & input.invalid {
-          border-color: #ff4949;
+          border-color: $messagebox-input-invalid-border-color;
           &:focus {
-            border-color: #ff4949;
+            border-color: $messagebox-input-invalid-border-color;
           }
         }
       }
@@ -79,11 +81,11 @@
         margin-bottom: 0;
         font-size: 16px;
         font-weight: bold;
-        color: #333;
+        color: $messagebox-title-color;
       }
 
       @descendent message {
-        color: #999;
+        color: $messagebox-content-color;
         margin: 0;
         text-align: center;
         line-height: 36px;
@@ -101,7 +103,7 @@
       @descendent btn {
         line-height: 35px;
         display: block;
-        background-color: #fff;
+        background-color: white;
         flex: 1;
         margin: 0;
         border: 0;
@@ -111,23 +113,23 @@
         }
 
         &:active {
-          background-color: #fff;
+          background-color: white;
         }
       }
 
       @descendent cancel {
         width: 50%;
-        border-right: 1px solid #ddd;
+        border-right: 1px solid $messagebox-border-color;
         &:active {
-          color: #000;
+          color: black;
         }
       }
 
       @descendent confirm {
-        color: #26a2ff;
+        color: $color-blue;
         width: 50%;
         &:active {
-         color: #26a2ff;
+         color: $color-blue;
         }
       }
     }

@@ -11,6 +11,8 @@
 </template>
 
 <style>
+  @import "../../../src/style/var.css";
+
   @component-namespace mt {
     @component range {
       position: relative;
@@ -43,12 +45,12 @@
         transform: translateY(-50%);
         left: 0;
         right: -30px;
-        border-top-color: #a9acb1;
+        border-top-color: $range-border-color;
         border-top-style: solid;
       }
 
       @descendent thumb {
-        background-color: #fff;
+        background-color: white;
         position: absolute;
         left: 0;
         top: 0;
@@ -56,13 +58,13 @@
         height: 30px;
         border-radius: 100%;
         cursor: move;
-        box-shadow: 0 1px 3px rgba(0,0,0,.4);
+        box-shadow: $default-box-shadow;
       }
 
       @descendent progress {
         position: absolute;
         display: block;
-        background-color: #26a2ff;
+        background-color: $color-blue;
         top: 50%;
         transform: translateY(-50%);
         width: 0;

@@ -139,7 +139,7 @@ export default {
 
         &[disabled] + .mint-checkbox-core {
           background-color: $color-grey;
-          border-color: #ccc;
+          border-color: $checklist-border-color;
         }
       }
 
@@ -147,7 +147,7 @@ export default {
         display: inline-block;
         background-color: $color-white;
         border-radius: 100%;
-        border: 1px solid #ccc;
+        border: 1px solid $checklist-border-color;
         position: relative;
         size: 20px;
         vertical-align: middle;

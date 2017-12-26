@@ -34,12 +34,12 @@
         size: 8px 8px;
         display: inline-block;
         border-radius: 100%;
-        background: #000;
+        background: $color-black;
         opacity: 0.2;
         margin: 0 3px;
 
         @when active {
-          background: #fff;
+          background: $color-white;
         }
       }
     }

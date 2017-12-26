@@ -123,7 +123,7 @@ export default {
 
         &[disabled] + .mint-radio-core {
           background-color: $color-grey;
-          border-color: #ccc;
+          border-color: $radio-border-color;
         }
       }
 
@@ -132,7 +132,7 @@ export default {
         display: inline-block;
         background-color: $color-white;
         border-radius: 100%;
-        border: 1px solid #ccc;
+        border: 1px solid $radio-border-color;
         position: relative;
         size: 20px;
         vertical-align: middle;

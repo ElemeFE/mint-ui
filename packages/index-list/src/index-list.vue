@@ -35,8 +35,8 @@
         bottom: 0;
         right: 0;
         margin: 0;
-        background-color: #fff;
-        border-left: solid 1px #ddd;
+        background-color: $color-white;
+        border-left: solid 1px $indexlist-border-color;
         text-align: center;
         max-height: 100%;
         display: flex;
@@ -68,9 +68,9 @@
         transform: translate(-50%, -50%);
         text-align: center;
         line-height: 50px;
-        background-color: rgba(0, 0, 0, .7);
+        background-color: $ind-background-color;
         border-radius: 5px;
-        color: #fff;
+        color: $color-white;
         font-size: 22px;
       }
     }

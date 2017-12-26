@@ -10,6 +10,8 @@
 </template>
 
 <style>
+  @import "../../../src/style/var.css";
+
   @component-namespace mt {
     @component progress {
       position: relative;
@@ -41,14 +43,14 @@
         top: 50%;
         left: 0;
         right: 0;
-        background-color: #ebebeb;
+        background-color: $progress-background-color;
         height: 3px;
       }
 
       @descendent progress {
         position: absolute;
         display: block;
-        background-color: #26a2ff;
+        background-color: $color-blue;
         top: 50%;
         transform: translate(0, -50%);
         width: 0;

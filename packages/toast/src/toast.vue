@@ -8,13 +8,15 @@
 </template>
 
 <style>
+  @import "../../../src/style/var.css";
+
   @component-namespace mint {
     @component toast {
       position: fixed;
       max-width: 80%;
       border-radius: 5px;
-      background: rgba(0, 0, 0, 0.7);
-      color: #fff;
+      background: $ind-background-color;
+      color: white;
       box-sizing: border-box;
       text-align: center;
       z-index: 1000;

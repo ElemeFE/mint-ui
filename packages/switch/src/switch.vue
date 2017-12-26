@@ -81,12 +81,12 @@ export default {
         &::after {
           size: 30px;
           background-color: $color-white;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+          box-shadow: $default-box-shadow;
         }
 
         &::before {
           size: 50px 30px;
-          background-color: #fdfdfd;
+          background-color: $switch-background-color;
         }
       }
 

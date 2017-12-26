@@ -10,7 +10,7 @@
   @component-namespace mint {
     @component popup {
       position: fixed;
-      background: #fff;
+      background: white;
       top: 50%;
       left: 50%;
       transform: translate3d(-50%, -50%, 0);

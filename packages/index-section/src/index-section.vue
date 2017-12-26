@@ -8,6 +8,8 @@
 </template>
 
 <style lang="css">
+  @import "../../../src/style/var.css";
+
   @component-namespace mint {
     @component indexsection {
       padding: 0;
@@ -16,7 +18,7 @@
       @descendent index {
         margin: 0;
         padding: 10px;
-        background-color: #fafafa;
+        background-color: $indexsection-background-color;
 
         & + ul {
           padding: 0;

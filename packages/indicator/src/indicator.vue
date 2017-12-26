@@ -11,46 +11,48 @@
 </template>
 
 <style>
-@component-namespace mint {
-  @component indicator {
-    transition: opacity .2s linear;
+  @import "../../../src/style/var.css";
 
-    @descendent wrapper {
-      position: fixed 50% * * 50%;
-      transform: translate(-50%, -50%);
-      border-radius: 5px;
-      background: rgba(0, 0, 0, 0.7);
-      color: white;
-      box-sizing: border-box;
-      text-align: center;
-    }
+  @component-namespace mint {
+    @component indicator {
+      transition: opacity .2s linear;
 
-    @descendent text {
-      display: block;
-      color: #fff;
-      text-align: center;
-      margin-top: 10px;
-      font-size: 16px;
-    }
+      @descendent wrapper {
+        position: fixed 50% * * 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 5px;
+        background: $ind-background-color;
+        color: white;
+        box-sizing: border-box;
+        text-align: center;
+      }
 
-    @descendent spin {
-      display: inline-block;
-      text-align: center;
-    }
+      @descendent text {
+        display: block;
+        color: white;
+        text-align: center;
+        margin-top: 10px;
+        font-size: 16px;
+      }
 
-    @descendent mask {
-      position: fixed 0 * * 0;
-      size: 100%;
-      opacity: 0;
-      background: transparent;
+      @descendent spin {
+        display: inline-block;
+        text-align: center;
+      }
+
+      @descendent mask {
+        position: fixed 0 * * 0;
+        size: 100%;
+        opacity: 0;
+        background: transparent;
+      }
     }
   }
-}
 
-.mint-indicator-enter,
-.mint-indicator-leave-active {
-  opacity: 0;
-}
+  .mint-indicator-enter,
+  .mint-indicator-leave-active {
+    opacity: 0;
+  }
 </style>
 
 <script type="text/babel">

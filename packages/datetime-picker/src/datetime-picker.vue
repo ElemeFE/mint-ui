@@ -25,7 +25,7 @@
       }
 
       .picker-toolbar {
-        border-bottom: solid 1px #eaeaea;
+        border-bottom: solid 1px $picker-border-color;
       }
 
       @descendent action {

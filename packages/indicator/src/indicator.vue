@@ -23,6 +23,7 @@
       color: white;
       box-sizing: border-box;
       text-align: center;
+      z-index: 999;
     }
 
     @descendent text {
@@ -43,6 +44,7 @@
       size: 100%;
       opacity: 0;
       background: transparent;
+      z-index: 999;
     }
   }
 }

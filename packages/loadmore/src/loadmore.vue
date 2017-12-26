@@ -263,7 +263,10 @@
 
       checkBottomReached() {
         if (this.scrollEventTarget === window) {
-          return document.body.scrollTop + document.documentElement.clientHeight >= document.body.scrollHeight;
+          /**
+           * fix:scrollTop===0
+           */
+          return document.documentElement.scrollTop || document.body.scrollTop + document.documentElement.clientHeight >= document.body.scrollHeight;
         } else {
           return this.$el.getBoundingClientRect().bottom <= this.scrollEventTarget.getBoundingClientRect().bottom + 1;
         }

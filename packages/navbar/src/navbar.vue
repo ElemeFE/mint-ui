@@ -62,7 +62,6 @@ export default {
         &.is-selected {
           border-bottom: 3px solid $color-blue;
           color: $color-blue;
-          margin-bottom: -3px;
         }
       }
     }

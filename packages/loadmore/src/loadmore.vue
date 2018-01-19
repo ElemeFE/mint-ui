@@ -136,7 +136,8 @@
         startScrollTop: 0,
         currentY: 0,
         topStatus: '',
-        bottomStatus: ''
+        bottomStatus: '',
+        isAutoFill: false
       };
     },
 
@@ -184,18 +185,27 @@
         setTimeout(() => {
           this.topStatus = 'pull';
         }, 200);
+        this.$nextTick(() => {
+          this.checkContainerFilled();
+          if (!this.bottomAllLoaded && !this.containerFilled) {
+            this.fillContainer();
+          }
+        });
       },
 
       onBottomLoaded() {
         this.bottomStatus = 'pull';
         this.bottomDropped = false;
         this.$nextTick(() => {
-          if (this.scrollEventTarget === window) {
-            document.body.scrollTop += 50;
-          } else {
-            this.scrollEventTarget.scrollTop += 50;
+          if (!this.isAutoFill) {
+            if (this.scrollEventTarget === window) {
+              document.body.scrollTop += 50;
+            } else {
+              this.scrollEventTarget.scrollTop += 50;
+            }
           }
           this.translate = 0;
+          this.isAutoFill = false;
         });
         if (!this.bottomAllLoaded && !this.containerFilled) {
           this.fillContainer();
@@ -243,17 +253,22 @@
         }
       },
 
+      checkContainerFilled() {
+        if (this.scrollEventTarget === window) {
+          this.containerFilled = this.$el.getBoundingClientRect().bottom >=
+            document.documentElement.getBoundingClientRect().bottom;
+        } else {
+          this.containerFilled = this.$el.getBoundingClientRect().bottom >=
+            this.scrollEventTarget.getBoundingClientRect().bottom;
+        }
+      },
+
       fillContainer() {
         if (this.autoFill) {
           this.$nextTick(() => {
-            if (this.scrollEventTarget === window) {
-              this.containerFilled = this.$el.getBoundingClientRect().bottom >=
-                document.documentElement.getBoundingClientRect().bottom;
-            } else {
-              this.containerFilled = this.$el.getBoundingClientRect().bottom >=
-                this.scrollEventTarget.getBoundingClientRect().bottom;
-            }
+            this.checkContainerFilled();
             if (!this.containerFilled) {
+              this.isAutoFill = true;
               this.bottomStatus = 'loading';
               this.bottomMethod();
             }

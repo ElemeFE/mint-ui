@@ -202,8 +202,13 @@
         this.onClose && this.onClose();
 
         setTimeout(() => {
-          if (this.modal && this.bodyOverflow !== 'hidden') {
-            document.body.style.overflow = this.bodyOverflow;
+          if (this.modal && this.bodyOverflow !== null && this.bodyOverflow !== 'hidden') {
+            if (this.bodyOverflow.overflow) {
+              document.body.style.overflow = this.bodyOverflow.overflow;
+            } else {
+              document.body.style.overflowX = this.bodyOverflow.overflowX;
+              document.body.style.overflowY = this.bodyOverflow.overflowY;
+            }
             document.body.style.paddingRight = this.bodyPaddingRight;
           }
           this.bodyOverflow = null;

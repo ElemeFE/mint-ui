@@ -5,7 +5,7 @@
     <div class="mint-header-button is-left">
       <slot name="left"></slot>
     </div>
-    <h1 class="mint-header-title" v-text="title"></h1>
+    <h1 class="mint-header-title" v-html="title"></h1>
     <div class="mint-header-button is-right">
       <slot name="right"></slot>
     </div>

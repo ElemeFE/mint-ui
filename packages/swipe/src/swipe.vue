@@ -558,6 +558,8 @@
       });
 
       element.addEventListener('touchmove', (event) => {
+        if (this.prevent) event.preventDefault();
+        if (this.stopPropagation) event.stopPropagation();
         if (!this.dragging) return;
         if (this.timer) this.clearTimer();
         this.doOnTouchMove(event);

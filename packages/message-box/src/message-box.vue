@@ -1,5 +1,5 @@
 <template>
-  <div class="mint-msgbox-wrapper">
+  <div class="mint-msgbox-wrapper" :class="[ messageBoxClass ]">
     <transition name="msgbox-bounce">
       <div class="mint-msgbox" v-show="value">
         <div class="mint-msgbox-header" v-if="title !== ''">
@@ -299,6 +299,7 @@
         confirmButtonClass: '',
         confirmButtonDisabled: false,
         cancelButtonClass: '',
+        messageBoxClass: '',
         editorErrorMessage: null,
         callback: null
       };

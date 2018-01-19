@@ -1842,7 +1842,9 @@ display: inline-block;
 .mint-indexlist-content {
     margin: 0;
     padding: 0;
-    overflow: auto
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch
 }
 .mint-indexlist-nav {
     position: absolute;

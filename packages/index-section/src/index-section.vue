@@ -17,9 +17,19 @@
         margin: 0;
         padding: 10px;
         background-color: #fafafa;
-
         & + ul {
           padding: 0;
+        }
+      }
+    }
+  }
+  @supports (position: sticky) {
+    @component-namespace mint {
+      @component indexsection {        
+        @descendent index {
+          position: sticky;
+          top: 0px;
+          z-index: 1;
         }
       }
     }

@@ -24,6 +24,7 @@
     text-align: right;
     font-size: 24px;
     position: relative;
+    min-width: 0.1%;
   }
 
   .picker-center-highlight {

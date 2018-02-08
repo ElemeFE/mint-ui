@@ -175,6 +175,14 @@
             this.bottomText = this.bottomLoadingText;
             break;
         }
+      },
+
+      bottomAllLoaded(val) {
+        if (val) {
+          this.removeTouchEvents();
+        } else {
+          this.bindTouchEvents();
+        }
       }
     },
 
@@ -227,6 +235,12 @@
         this.$el.addEventListener('touchstart', this.handleTouchStart);
         this.$el.addEventListener('touchmove', this.handleTouchMove);
         this.$el.addEventListener('touchend', this.handleTouchEnd);
+      },
+
+      removeTouchEvents() {
+        this.$el.removeEventListener('touchstart', this.handleTouchStart);
+        this.$el.removeEventListener('touchmove', this.handleTouchMove);
+        this.$el.removeEventListener('touchend', this.handleTouchEnd);
       },
 
       init() {

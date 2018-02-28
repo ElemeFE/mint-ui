@@ -2,6 +2,7 @@
   <mt-popup v-model="visible" :closeOnClickModal="closeOnClickModal" position="bottom" class="mint-datetime">
     <mt-picker
       :slots="dateSlots"
+      :itemHeight="itemHeight"
       @change="onChange"
       :visible-item-count="visibleItemCount"
       class="mint-datetime-picker"
@@ -127,6 +128,10 @@
       closeOnClickModal: {
         type: Boolean,
         default: true
+      },
+      itemHeight: {
+        type: Number,
+        default: 36
       },
       value: null
     },

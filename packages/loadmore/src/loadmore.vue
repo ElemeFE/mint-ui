@@ -268,7 +268,7 @@
            */
           return document.documentElement.scrollTop || document.body.scrollTop + document.documentElement.clientHeight >= document.body.scrollHeight;
         } else {
-          return parseInt(this.$el.getBoundingClientRect().bottom) <= parseInt(this.scrollEventTarget.getBoundingClientRect().bottom) + 1;
+          return parseInt(this.$el.getBoundingClientRect().bottom, 10) <= parseInt(this.scrollEventTarget.getBoundingClientRect().bottom, 10) + 1;
         }
       },
 

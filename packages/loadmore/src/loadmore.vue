@@ -263,10 +263,8 @@
 
       checkBottomReached() {
         if (this.scrollEventTarget === window) {
-          /**
-           * fix:scrollTop===0
-           */
-          return document.documentElement.scrollTop || document.body.scrollTop + document.documentElement.clientHeight >= document.body.scrollHeight;
+          // @scrollTop 兼容性处理
+          return (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.clientHeight >= document.body.scrollHeight;
         } else {
           return parseInt(this.$el.getBoundingClientRect().bottom) <= parseInt(this.scrollEventTarget.getBoundingClientRect().bottom) + 1;
         }

@@ -11,7 +11,7 @@
             type="checkbox"
             v-model="currentValue"
             :disabled="option.disabled"
-            :value="option.value || option">
+            :value="option.value">
           <span class="mint-checkbox-core"></span>
         </span>
         <span class="mint-checkbox-label" v-text="option.label || option"></span>

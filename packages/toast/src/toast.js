@@ -4,11 +4,7 @@ const ToastConstructor = Vue.extend(require('./toast.vue'));
 let toastPool = [];
 
 let getAnInstance = () => {
-  if (toastPool.length > 0) {
-    let instance = toastPool[0];
-    toastPool.splice(0, 1);
-    return instance;
-  }
+  if (toastPool.length > 0) { return toastPool.shift() }
   return new ToastConstructor({
     el: document.createElement('div')
   });

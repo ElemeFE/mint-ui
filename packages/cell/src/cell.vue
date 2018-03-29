@@ -71,8 +71,10 @@ export default {
         if (!resolved.matched.length) return this.to;
 
         this.$nextTick(() => {
-          this.added = true;
-          this.$el.addEventListener('click', this.handleClick);
+          if (this.$el) { // 服务端渲染时无法添加事件监听器
+            this.added = true;
+            this.$el.addEventListener('click', this.handleClick);
+          }
         });
         return resolved.fullPath || resolved.path;
       }

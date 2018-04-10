@@ -76,6 +76,7 @@ const defaultCallback = action => {
         currentMsg.resolve(action);
       }
     }
+    showNextMsg();
   }
 };
 
@@ -112,9 +113,7 @@ var showNextMsg = function() {
       });
       document.body.appendChild(instance.$el);
 
-      Vue.nextTick(() => {
-        instance.value = true;
-      });
+      instance.value = true;
     }
   }
 };

@@ -120,7 +120,8 @@ export default {
     handleClear() {
       if (this.disabled || this.readonly) return;
       this.currentValue = '';
-    }
+    },
+
     focus(evt) {
       this.active = true;
       this.$emit('focus', evt);	

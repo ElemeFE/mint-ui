@@ -26,7 +26,7 @@
       :number="type === 'number'"
       v-else
       :type="type"
-      @focus="focus"
+      @focus="active = true"
       :disabled="disabled"
       :readonly="readonly"
       :value="currentValue"
@@ -109,10 +109,6 @@ export default {
   components: { XCell },
 
   methods: {
-    focus(evt) {
-      this.active = true;
-      this.$emit('focus', evt);
-    },
     doCloseActive() {
       this.active = false;
     },

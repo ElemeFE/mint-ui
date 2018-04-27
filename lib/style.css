@@ -1115,8 +1115,6 @@ display: inline-block;
   text-align: center;
   bottom: 0;
   left: 50%;
-  max-height: 100%;
-  overflow-y: auto;
   -webkit-transform: translate3d(-50%, 0, 0);
           transform: translate3d(-50%, 0, 0);
   -webkit-backface-visibility: hidden;
@@ -1611,7 +1609,6 @@ display: inline-block;
   color: white;
   box-sizing: border-box;
   text-align: center;
-  z-index: 3000;
 }
 .mint-indicator-text {
   display: block;
@@ -1632,7 +1629,6 @@ display: inline-block;
   height: 100%;
   opacity: 0;
   background: transparent;
-  z-index: 3000;
 }
 .mint-indicator-enter, .mint-indicator-leave-active {
   opacity: 0;

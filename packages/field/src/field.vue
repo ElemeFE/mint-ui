@@ -26,7 +26,7 @@
       :number="type === 'number'"
       v-else
       :type="type"
-      @focus="active = true"
+      @focus="focus"
       :disabled="disabled"
       :readonly="readonly"
       :value="currentValue"
@@ -120,6 +120,11 @@ export default {
     handleClear() {
       if (this.disabled || this.readonly) return;
       this.currentValue = '';
+    },
+
+    focus(evt) {
+      this.active = true;
+      this.$emit('focus', evt);	
     }
   },
 

@@ -1,0 +1,78 @@
+{
+  "name": "mint-ui",
+  "version": "2.2.13",
+  "description": "Mobile UI elements for vue.js",
+  "keywords": [
+    "component",
+    "vue",
+    "mobile",
+    "eleme"
+  ],
+  "main": "lib/mint-ui.common.js",
+  "style": "lib/style.css",
+  "files": [
+    "lib",
+    "src",
+    "packages"
+  ],
+  "scripts": {
+    "dev": "npm run bootstrap && npm run build:entry && cooking watch -c build/cooking.demo.js -p",
+    "bootstrap": "yarn || npm i",
+    "dist": "npm run clean && npm run build:entry && npm run lint && cooking build -c build/cooking.conf.js,build/cooking.common.js,build/cooking.component.js -p",
+    "deploy": "npm run build:entry && cooking build -c build/cooking.demo.js -p && gh-pages -d example/dist --remote eleme",
+    "build:entry": "node build/bin/build-entry",
+    "pub": "sh build/release.sh",
+    "pub:all": "node build/bin/build-all.js && lerna publish",
+    "clean": "rimraf lib && rimraf packages/*/lib",
+    "lint": "eslint src/**/*.js packages/**/*.{js,vue} build/**/*.js --quiet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElemeFE/mint-ui.git"
+  },
+  "homepage": "https://github.com/ElemeFE/mint-ui#readme",
+  "bugs": {
+    "url": "https://github.com/ElemeFE/mint-ui/issues"
+  },
+  "author": "elemefe",
+  "license": "MIT",
+  "dependencies": {
+    "array-find-index": "^1.0.2",
+    "raf.js": "0.0.4",
+    "vue-lazyload": "^1.0.1"
+  },
+  "peerDependencies": {
+    "vue": "^2.3.0"
+  },
+  "devDependencies": {
+    "cooking": "^1.2.4",
+    "cooking-buble": "^0.1.2",
+    "cooking-lint": "^0.1.2",
+    "cooking-saladcss": "^0.4.0",
+    "cooking-vue2": "^0.2.2",
+    "css-loader": "^0.25.0",
+    "eslint": "^3.12.2",
+    "extract-text-webpack-plugin": "beta",
+    "fastclick": "^1.0.6",
+    "file-loader": "^0.9.0",
+    "gh-pages": "^0.11.0",
+    "html-loader": "^0.4.3",
+    "html-webpack-plugin": "^2.22.0",
+    "json-loader": "^0.5.4",
+    "json-templater": "^1.0.4",
+    "lerna": "2.0.0-beta.18",
+    "my-local-ip": "^1.0.0",
+    "postcss": "^5.2.0",
+    "postcss-loader": "^0.13.0",
+    "rimraf": "^2.5.4",
+    "style-loader": "^0.13.1",
+    "uppercamelcase": "^1.1.0",
+    "url-loader": "^0.5.7",
+    "vue": "^2.3.2",
+    "vue-loader": "12.0.3",
+    "vue-router": "^2.0.0",
+    "vue-template-compiler": "^2.3.2",
+    "vue-template-es2015-compiler": "^1.4.2",
+    "webpack-shell-plugin": "^0.4.3"
+  }
+}

@@ -15,6 +15,7 @@
           <span class="mint-radio-core"></span>
         </span>
         <span class="mint-radio-label" v-text="option.label || option"></span>
+        <div v-if="option.raw" v-html="option.raw"></div>
       </label>
     </x-cell>
   </div>

@@ -113,7 +113,7 @@
         if (item.method && typeof item.method === 'function') {
           item.method(item, index);
         }
-        if (item.autoClose === undefined || item.autoClose !== false) {
+        if (item.autoClose !== false) {
           this.currentValue = false;
         }
       }

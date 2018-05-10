@@ -113,7 +113,9 @@
         if (item.method && typeof item.method === 'function') {
           item.method(item, index);
         }
-        this.currentValue = false;
+        if (item.autoClose === undefined || item.autoClose !== false) {
+          this.currentValue = false;
+        }
       }
     },
 

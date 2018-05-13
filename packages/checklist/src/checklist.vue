@@ -1,7 +1,7 @@
 <template>
   <div @change="$emit('change', currentValue)" class="mint-checklist" :class="{ 'is-limit': max <= currentValue.length }">
     <label class="mint-checklist-title" v-text="title"></label>
-    <x-cell v-for="option in options">
+    <x-cell v-for="(option,index) in options" :key="index">
       <label class="mint-checklist-label" slot="title">
         <span
           :class="{'is-right': align === 'right'}"

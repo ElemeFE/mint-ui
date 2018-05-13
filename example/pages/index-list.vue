@@ -4,8 +4,8 @@
     <p class="page-indexlist-desc">此例请使用手机查看</p>
     <div class="page-indexlist-wrapper">
       <mt-index-list>
-        <mt-index-section v-for="item in alphabet" :index="item.initial">
-          <mt-cell v-for="cell in item.cells" :title="cell"></mt-cell>
+        <mt-index-section v-for="(item,index) in alphabet" :key="index" :index="item.initial">
+          <mt-cell v-for="(cell,index) in item.cells" :key="index" :title="cell"></mt-cell>
         </mt-index-section>
       </mt-index-list>
     </div>

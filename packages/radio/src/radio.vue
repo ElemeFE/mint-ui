@@ -1,7 +1,7 @@
 <template>
   <div class="mint-radiolist" @change="$emit('change', currentValue)">
     <label class="mint-radiolist-title" v-text="title"></label>
-    <x-cell v-for="option in options">
+    <x-cell v-for="(option,index) in options" :key="index">
       <label class="mint-radiolist-label" slot="title">
         <span
           :class="{'is-right': align === 'right'}"

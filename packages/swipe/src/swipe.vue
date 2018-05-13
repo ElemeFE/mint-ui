@@ -152,6 +152,42 @@
         }, 100);
       },
 
+      rafTranslate(element, initOffset, offset, callback, nextElement) {
+        let ALPHA = 0.88;
+        this.animating = true;
+        var _offset = initOffset;
+        var raf = 0;
+
+        function animationLoop() {
+          if (Math.abs(_offset - offset) < 0.5) {
+            this.animating = false;
+            _offset = offset;
+            element.style.webkitTransform = '';
+            if (nextElement) {
+              nextElement.style.webkitTransform = '';
+            }
+            cancelAnimationFrame(raf);
+
+            if (callback) {
+              callback();
+            }
+
+            return;
+          }
+
+          _offset = ALPHA * _offset + (1.0 - ALPHA) * offset;
+          element.style.webkitTransform = `translate3d(${_offset}px, 0, 0)`;
+
+          if (nextElement) {
+            nextElement.style.webkitTransform = `translate3d(${_offset - offset}px, 0, 0)`;
+          }
+
+          raf = requestAnimationFrame(animationLoop.bind(this));
+        }
+
+        animationLoop.call(this);
+      },
+
       translate(element, offset, speed, callback) {
         if (speed) {
           this.animating = true;
@@ -207,7 +243,7 @@
         if (this.$children.length === 0) return;
         if (!options && this.$children.length < 2) return;
 
-        var prevPage, nextPage, currentPage, pageWidth, offsetLeft;
+        var prevPage, nextPage, currentPage, pageWidth, offsetLeft, speedX;
         var speed = this.speed || 300;
         var index = this.index;
         var pages = this.pages;
@@ -240,6 +276,7 @@
           nextPage = options.nextPage;
           pageWidth = options.pageWidth;
           offsetLeft = options.offsetLeft;
+          speedX = options.speedX;
         }
 
         var newIndex;
@@ -287,16 +324,24 @@
           if (towards === 'next') {
             this.isDone = true;
             this.before(currentPage);
-            this.translate(currentPage, -pageWidth, speed, callback);
-            if (nextPage) {
-              this.translate(nextPage, 0, speed);
+            if (speedX) {
+              this.rafTranslate(currentPage, offsetLeft, -pageWidth, callback, nextPage);
+            } else {
+              this.translate(currentPage, -pageWidth, speed, callback);
+              if (nextPage) {
+                this.translate(nextPage, 0, speed);
+              }
             }
           } else if (towards === 'prev') {
             this.isDone = true;
             this.before(currentPage);
-            this.translate(currentPage, pageWidth, speed, callback);
-            if (prevPage) {
-              this.translate(prevPage, 0, speed);
+            if (speedX) {
+              this.rafTranslate(currentPage, offsetLeft, pageWidth, callback, prevPage);
+            } else {
+              this.translate(currentPage, pageWidth, speed, callback);
+              if (prevPage) {
+                this.translate(prevPage, 0, speed);
+              }
             }
           } else {
             this.isDone = false;
@@ -383,6 +428,7 @@
         var dragState = this.dragState;
         var touch = event.touches[0];
 
+        dragState.speedX = touch.pageX - dragState.currentLeft;
         dragState.currentLeft = touch.pageX;
         dragState.currentTop = touch.pageY;
         dragState.currentTopAbsolute = touch.clientY;
@@ -457,7 +503,8 @@
           pageWidth: dragState.pageWidth,
           prevPage: dragState.prevPage,
           currentPage: dragState.dragPage,
-          nextPage: dragState.nextPage
+          nextPage: dragState.nextPage,
+          speedX: dragState.speedX
         });
 
         this.dragState = {};

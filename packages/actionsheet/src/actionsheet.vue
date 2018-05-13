@@ -18,6 +18,8 @@
       text-align: center;
       bottom: 0;
       left: 50%;
+      max-height: 100%;
+      overflow-y: auto;
       transform: translate3d(-50%, 0, 0);
       backface-visibility: hidden;
       transition: transform .3s ease-out;

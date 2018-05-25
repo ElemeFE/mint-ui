@@ -3,8 +3,6 @@
     @touchstart="startDrag"
     @mousedown="startDrag"
     @touchmove="onDrag"
-    @mousemove="onDrag"
-    @mouseup="endDrag"
     @touchend="endDrag"
     class="mint-tab-container">
     <div
@@ -33,7 +31,7 @@
 </style>
 
 <script>
-import { once } from 'mint-ui/src/utils/dom';
+import { once,on,off } from 'mint-ui/src/utils/dom';
 import arrayFindIndex from 'array-find-index';
 
 /**
@@ -90,6 +88,11 @@ export default {
     this.limitWidth = this.pageWidth / 4;
   },
 
+  destroyed() {
+    off(document.documentElement,'mousemove',this.onDrag);
+    off(document.documentElement,'mouseup',this.endDrag);
+  },
+
   methods: {
     swipeLeaveTransition(lastIndex = 0) {
       if (typeof this.index !== 'number') {
@@ -122,6 +125,10 @@ export default {
       this.dragging = true;
       this.start.x = evt.pageX;
       this.start.y = evt.pageY;
+      if (!evt.changedTouches) {
+        on(document.documentElement,'mousemove',this.onDrag);
+        once(document.documentElement,'mouseup',this.endDrag);
+      }
     },
 
     onDrag(evt) {
@@ -155,7 +162,7 @@ export default {
       this.swipeMove(offset);
     },
 
-    endDrag() {
+    endDrag(evt) {
       if (!this.swiping) return;
       this.dragging = false;
       const direction = this.offsetLeft > 0 ? -1 : 1;
@@ -171,6 +178,9 @@ export default {
       }
 
       this.swipeLeaveTransition();
+      if (!evt.changedTouches) {
+        off(document.documentElement,'mousemove',this.onDrag);
+      }
     }
   }
 };

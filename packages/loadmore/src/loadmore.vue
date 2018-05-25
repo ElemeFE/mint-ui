@@ -291,16 +291,16 @@
           return;
         }
         this.currentY = event.touches[0].clientY;
-        let distance = (this.currentY - this.startY) / this.distanceIndex;
+        let distance = this.currentY - this.startY;
         this.direction = distance > 0 ? 'down' : 'up';
         if (typeof this.topMethod === 'function' && this.direction === 'down' &&
           this.getScrollTop(this.scrollEventTarget) === 0 && this.topStatus !== 'loading') {
           event.preventDefault();
           event.stopPropagation();
           if (this.maxDistance > 0) {
-            this.translate = distance <= this.maxDistance ? distance - this.startScrollTop : this.translate;
+            this.translate = distance <= this.maxDistance ? (distance - this.startScrollTop) / this.distanceIndex : this.translate;
           } else {
-            this.translate = distance - this.startScrollTop;
+            this.translate = (distance - this.startScrollTop) / this.distanceIndex;
           }
           if (this.translate < 0) {
             this.translate = 0;
@@ -317,9 +317,9 @@
           event.stopPropagation();
           if (this.maxDistance > 0) {
             this.translate = Math.abs(distance) <= this.maxDistance
-              ? this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance : this.translate;
+              ? (this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance ) / this.distanceIndex: this.translate;
           } else {
-            this.translate = this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance;
+            this.translate = (this.getScrollTop(this.scrollEventTarget) - this.startScrollTop + distance) / this.distanceIndex;
           }
           if (this.translate > 0) {
             this.translate = 0;

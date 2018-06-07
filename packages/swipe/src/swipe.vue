@@ -384,6 +384,8 @@
       doOnTouchStart(event) {
         if (this.noDrag) return;
 
+        this.$emit('touch-state', 'start');
+
         var element = this.$el;
         var dragState = this.dragState;
         var touch = event.touches[0];
@@ -425,6 +427,8 @@
       doOnTouchMove(event) {
         if (this.noDrag) return;
 
+        this.$emit('touch-state', 'move');
+
         var dragState = this.dragState;
         var touch = event.touches[0];
 
@@ -460,6 +464,8 @@
 
       doOnTouchEnd() {
         if (this.noDrag) return;
+
+        this.$emit('touch-state', 'end');
 
         var dragState = this.dragState;
 

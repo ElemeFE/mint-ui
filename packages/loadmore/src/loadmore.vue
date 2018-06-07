@@ -132,8 +132,10 @@
         bottomDropped: false,
         bottomReached: false,
         direction: '',
+        startX: 0,
         startY: 0,
         startScrollTop: 0,
+        currentX: 0,
         currentY: 0,
         topStatus: '',
         bottomStatus: ''
@@ -273,6 +275,7 @@
       },
 
       handleTouchStart(event) {
+        this.startX = event.touches[0].clientX;
         this.startY = event.touches[0].clientY;
         this.startScrollTop = this.getScrollTop(this.scrollEventTarget);
         this.bottomReached = false;
@@ -290,7 +293,14 @@
         if (this.startY < this.$el.getBoundingClientRect().top && this.startY > this.$el.getBoundingClientRect().bottom) {
           return;
         }
-        this.currentY = event.touches[0].clientY;
+        let touchesEvent = event.touches[0];
+        this.currentX = touchesEvent.clientX;
+        this.currentY = touchesEvent.clientY;
+        let moveX = Math.abs(this.currentX - this.startX)
+        let moveY = Math.abs(this.currentY - this.startY)
+        if (moveX * 2 > moveY) {
+          return;
+        }
         let distance = (this.currentY - this.startY) / this.distanceIndex;
         this.direction = distance > 0 ? 'down' : 'up';
         if (typeof this.topMethod === 'function' && this.direction === 'down' &&

@@ -57,6 +57,7 @@
 </style>
 
 <script type="text/babel">
+  /* eslint-disable radix */
   import spinner from 'mint-ui/packages/spinner/src/spinner/fading-circle.vue';
   export default {
     name: 'mt-loadmore',
@@ -296,8 +297,8 @@
         let touchesEvent = event.touches[0];
         this.currentX = touchesEvent.clientX;
         this.currentY = touchesEvent.clientY;
-        let moveX = Math.abs(this.currentX - this.startX)
-        let moveY = Math.abs(this.currentY - this.startY)
+        let moveX = Math.abs(this.currentX - this.startX);
+        let moveY = Math.abs(this.currentY - this.startY);
         if (moveX * 2 > moveY) {
           return;
         }

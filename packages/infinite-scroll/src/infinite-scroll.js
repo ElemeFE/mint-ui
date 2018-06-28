@@ -6,7 +6,7 @@ const install = function(Vue) {
   Vue.directive('InfiniteScroll', InfiniteScroll);
 };
 
-if (!Vue.prototype.$isServer && window.Vue) {
+if (window.Vue && !Vue.prototype.$isServer) {
   window.infiniteScroll = InfiniteScroll;
   Vue.use(install); // eslint-disable-line
 }

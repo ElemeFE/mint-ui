@@ -104,7 +104,6 @@ export default {
 
         once(this.wrap, 'webkitTransitionEnd', _ => {
           this.wrap.classList.remove('swipe-transition');
-          this.wrap.style.webkitTransform = '';
           this.swiping = false;
           this.index = null;
         });

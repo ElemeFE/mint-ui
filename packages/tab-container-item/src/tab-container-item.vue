@@ -1,6 +1,5 @@
 <template>
   <div
-    v-show="$parent.swiping || id === $parent.currentActive"
     class="mint-tab-container-item">
     <slot></slot>
   </div>

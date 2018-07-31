@@ -4,7 +4,7 @@
     @mousedown="startDrag"
     @touchmove="onDrag"
     @mousemove="onDrag"
-    @mouseleave="endDrag"
+    @mouseup="endDrag"
     @touchend="endDrag"
     class="mint-tab-container">
     <div
@@ -157,7 +157,7 @@ export default {
 
     endDrag() {
       if (!this.swiping) return;
-
+      this.dragging = false;
       const direction = this.offsetLeft > 0 ? -1 : 1;
       const isChange = Math.abs(this.offsetLeft) > this.limitWidth;
 

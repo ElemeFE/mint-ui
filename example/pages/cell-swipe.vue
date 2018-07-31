@@ -2,7 +2,7 @@
   <div class="page-cell">
     <div class="page-title">Cell Swipe</div>
     <mt-cell-swipe
-      v-for="n in 10"
+      v-for="n in 15"
       :right="rightButtons"
       title="swipe me">
     </mt-cell-swipe>

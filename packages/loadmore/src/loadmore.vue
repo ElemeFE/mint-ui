@@ -1,6 +1,6 @@
 <template>
   <div class="mint-loadmore">
-    <div class="mint-loadmore-content" :class="{ 'is-dropped': topDropped || bottomDropped}" :style="{ 'transform': 'translate3d(0, ' + translate + 'px, 0)' }">
+    <div class="mint-loadmore-content" :class="{ 'is-dropped': topDropped || bottomDropped}" :style="{ 'transform': transform }">
       <slot name="top">
         <div class="mint-loadmore-top" v-if="topMethod">
           <spinner v-if="topStatus === 'loading'" class="mint-loadmore-spinner" :size="20" type="fading-circle"></spinner>
@@ -140,6 +140,12 @@
       };
     },
 
+    computed: {
+      transform() {
+        return this.translate === 0 ? null : 'translate3d(0, ' + this.translate + 'px, 0)';
+      }
+    },
+
     watch: {
       topStatus(val) {
         this.$emit('top-status-change', val);
@@ -257,9 +263,12 @@
 
       checkBottomReached() {
         if (this.scrollEventTarget === window) {
-          return document.body.scrollTop + document.documentElement.clientHeight >= document.body.scrollHeight;
+          /**
+           * fix:scrollTop===0
+           */
+          return document.documentElement.scrollTop || document.body.scrollTop + document.documentElement.clientHeight >= document.body.scrollHeight;
         } else {
-          return this.$el.getBoundingClientRect().bottom <= this.scrollEventTarget.getBoundingClientRect().bottom + 1;
+          return parseInt(this.$el.getBoundingClientRect().bottom) <= parseInt(this.scrollEventTarget.getBoundingClientRect().bottom) + 1;
         }
       },
 

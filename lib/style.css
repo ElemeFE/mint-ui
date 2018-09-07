@@ -7,6 +7,9 @@
 /* Checklist Component */
 /* Radio Component */
 /* z-index */
+html,body{
+	background: #000!important;
+}
 .mint-header {
     -webkit-box-align: center;
         -ms-flex-align: center;

@@ -60,7 +60,10 @@
 <script type="text/babel">
   export default {
     props: {
-      message: String,
+      message: {
+        type: String,
+        default: ''
+      },
       className: {
         type: String,
         default: ''

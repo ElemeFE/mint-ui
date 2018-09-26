@@ -26,6 +26,16 @@
       title="右对齐"
       v-model="value3"
       :options="options3" />
+
+    <mt-radio
+      class="page-part"
+      title="渲染选项为html元素"
+      v-model="value4"
+      renderAsHtml
+      :options="options4" />
+      <div>
+      <mt-cell title="选中的项">{{ value4 }}</mt-cell>
+    </div>
   </div>
 </template>
 
@@ -37,13 +47,15 @@ export default {
     return {
       value1: '',
       value2: '值A',
-      value3: ''
+      value3: '',
+      value4: ''
     };
   },
 
   created() {
     this.options1 = ['选项A', '选项B', '选项C'];
     this.options3 = ['选项A', '选项B', '选项C'];
+    this.options4 = ['<i class="indexicon icon-indicator"></i> <- icon 😁', '<i class="indexicon icon-indicator"></i>  <- icon 😁', '<i class="indexicon icon-indicator"></i> <- icon 😁'];
     this.options2 = [
       {
         label: '被禁用',

@@ -14,7 +14,8 @@
             :value="option.value || option">
           <span class="mint-radio-core"></span>
         </span>
-        <span class="mint-radio-label" v-text="option.label || option"></span>
+        <span class="mint-radio-label" v-if="renderAsHtml" v-html="option.label || option"></span>
+        <span class="mint-radio-label" v-else v-text="option.label || option"></span>
       </label>
     </x-cell>
   </div>
@@ -34,6 +35,7 @@ if (process.env.NODE_ENV === 'component') {
  * @param {string} value - 选中值
  * @param {string} title - 标题
  * @param {string} [align=left] - checkbox 对齐位置，`left`, `right`
+ * @param {boolean} renderAsHtml - 是否渲染为html
  *
  * @example
  * <mt-radio v-model="value" :options="['a', 'b', 'c']"></mt-radio>
@@ -47,6 +49,10 @@ export default {
     options: {
       type: Array,
       required: true
+    },
+    renderAsHtml: {
+      type: Boolean,
+      default: false
     },
     value: String
   },

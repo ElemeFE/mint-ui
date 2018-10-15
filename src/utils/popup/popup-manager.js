@@ -26,6 +26,22 @@ const getModal = function() {
   return modalDom;
 };
 
+/**
+ * 判断modalDom 是否是再其他 popup中嵌套，如果是嵌套则将modal 移动到最外层modal的父节点下面
+ * @param {最后一次生成的modalDom} modalDom 
+ */
+const ifIsNested = function(modalDom) {
+  if (modalDom) {
+    if (modalDom.parentNode && modalDom.parentNode !== document.body) {
+      if (modalDom.parentNode.parentNode && modalDom.parentNode.parentNode.className && modalDom.parentNode.parentNode.className.indexOf('mint-popup') !== -1) {
+        modalDom.parentNode.parentNode.parentNode.appendChild(modalDom)
+      }  else {
+        isNested(modalDom.parentNode)
+      }
+    }
+  }
+}
+
 const instances = {};
 
 const PopupManager = {

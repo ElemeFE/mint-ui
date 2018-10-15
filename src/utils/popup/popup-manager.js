@@ -149,6 +149,8 @@ const PopupManager = {
         }
       }
     }
+    
+    ifIsNested(modalDom)
 
     if (modalStack.length === 0) {
       if (this.modalFade) {

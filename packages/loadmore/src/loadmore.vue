@@ -295,7 +295,9 @@
         this.direction = distance > 0 ? 'down' : 'up';
         if (typeof this.topMethod === 'function' && this.direction === 'down' &&
           this.getScrollTop(this.scrollEventTarget) === 0 && this.topStatus !== 'loading') {
-          event.preventDefault();
+          if (event.cancelable) {
+            event.preventDefault();
+          }
           event.stopPropagation();
           if (this.maxDistance > 0) {
             this.translate = distance <= this.maxDistance ? distance - this.startScrollTop : this.translate;
@@ -313,7 +315,9 @@
         }
         if (typeof this.bottomMethod === 'function' && this.direction === 'up' &&
           this.bottomReached && this.bottomStatus !== 'loading' && !this.bottomAllLoaded) {
-          event.preventDefault();
+          if (event.cancelable) {
+            event.preventDefault();
+          }
           event.stopPropagation();
           if (this.maxDistance > 0) {
             this.translate = Math.abs(distance) <= this.maxDistance

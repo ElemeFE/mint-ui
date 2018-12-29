@@ -159,6 +159,11 @@
         var raf = 0;
 
         function animationLoop() {
+          if (Math.abs(_offset - offset) < 10) {
+            if (callback) {
+              callback();
+            }
+          }
           if (Math.abs(_offset - offset) < 0.5) {
             this.animating = false;
             _offset = offset;
@@ -167,10 +172,6 @@
               nextElement.style.webkitTransform = '';
             }
             cancelAnimationFrame(raf);
-
-            if (callback) {
-              callback();
-            }
 
             return;
           }
@@ -552,6 +553,7 @@
         if (this.prevent) event.preventDefault();
         if (this.stopPropagation) event.stopPropagation();
         if (this.animating) return;
+        if (event.touches > 1) return;
         this.dragging = true;
         this.userScrolling = false;
         this.doOnTouchStart(event);
@@ -559,6 +561,7 @@
 
       element.addEventListener('touchmove', (event) => {
         if (!this.dragging) return;
+        if (event.touches > 1) return;
         if (this.timer) this.clearTimer();
         this.doOnTouchMove(event);
       });

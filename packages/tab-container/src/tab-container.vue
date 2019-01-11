@@ -62,6 +62,7 @@ export default {
     return {
       start: { x: 0, y: 0 },
       swiping: false,
+      verSwipingDuringDragging: false, // vertical swiping
       activeItems: [],
       pageWidth: 0,
       currentActive: this.value
@@ -126,6 +127,7 @@ export default {
 
     onDrag(evt) {
       if (!this.dragging) return;
+      if (this.verSwipingDuringDragging) return;
       let swiping;
       const e = evt.changedTouches ? evt.changedTouches[0] : evt;
       const offsetTop = e.pageY - this.start.y;
@@ -134,7 +136,10 @@ export default {
       const x = Math.abs(offsetLeft);
 
       swiping = !(x < 5 || (x >= 5 && y >= x * 1.73));
-      if (!swiping) return;
+      if (!swiping) {
+        this.verSwipingDuringDragging = true;
+        return;
+      }
       evt.preventDefault();
 
       const len = this.$children.length - 1;
@@ -156,6 +161,7 @@ export default {
     },
 
     endDrag() {
+      this.verSwipingDuringDragging = false;
       if (!this.swiping) return;
       this.dragging = false;
       const direction = this.offsetLeft > 0 ? -1 : 1;

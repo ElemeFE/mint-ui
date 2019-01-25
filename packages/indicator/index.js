@@ -17,11 +17,11 @@ export default {
 
     Vue.nextTick(() => {
       instance.visible = true;
-      if (options.duration) {
-        timerId = setTimeout(
-          () => instance.visible && (instance.visible = false),
-          options.duration
-        );
+      if (options.duration && options.duration > 0) {
+        timerId = setTimeout(() => {
+          if (instance.visible) instance.visible = false;
+          if (typeof options.closeFn === 'function') options.closeFn();
+        }, options.duration);
       }
     });
   },

@@ -5,6 +5,7 @@
       <mt-button @click.native="openIndicator" size="large">点击弹出 Indicator</mt-button>
       <mt-button @click.native="openIndicatorWithSpinner" size="large">可配置 spinner</mt-button>
       <mt-button @click.native="openIndicatorWithText" size="large">点击弹出带有文字的 Indicator</mt-button>
+      <mt-button @click.native="openIndicatorWithTimer" size="large">点击弹出带有定时回调的 Indicator</mt-button>
     </div>
   </div>
 </template>
@@ -31,8 +32,8 @@
   export default {
     methods: {
       openIndicator() {
-        Indicator.open({duration: 3000 });
-        // setTimeout(() => Indicator.close(), 2000);
+        Indicator.open();
+        setTimeout(() => Indicator.close(), 2000);
       },
 
       openIndicatorWithSpinner() {
@@ -43,9 +44,12 @@
       openIndicatorWithText() {
         Indicator.open('加载中...');
         setTimeout(() => Indicator.close(), 2000);
+      },
+
+      openIndicatorWithTimer() {
+        Indicator.open({ duration: 3000, closeFn: () => alert('Indicator 定时回调成功') });
       }
     },
-
     beforeDestroy() {
       Indicator.close();
     }

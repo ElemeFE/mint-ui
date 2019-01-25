@@ -31,8 +31,8 @@
   export default {
     methods: {
       openIndicator() {
-        Indicator.open();
-        setTimeout(() => Indicator.close(), 2000);
+        Indicator.open({duration: 3000 });
+        // setTimeout(() => Indicator.close(), 2000);
       },
 
       openIndicatorWithSpinner() {

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 
 const Indicator = Vue.extend(require('./src/indicator.vue'));
-let instance;
+let instance, timerId;
 
 export default {
   open(options = {}) {
@@ -17,12 +17,19 @@ export default {
 
     Vue.nextTick(() => {
       instance.visible = true;
+      if (options.duration) {
+        timerId = setTimeout(
+          () => instance.visible && (instance.visible = false),
+          options.duration
+        );
+      }
     });
   },
 
   close() {
     if (instance) {
       instance.visible = false;
+      timerId && clearTimeout(timerId);
     }
   }
 };

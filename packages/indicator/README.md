@@ -29,8 +29,9 @@ Indicator.open('Loading...');
 
 Open an indicator with an object:
 ```Javascript
-Indicator.open({ text:'Loading...', spinnerType: 'fading-circle' });
+Indicator.open({ text:'Loading...', spinnerType: 'fading-circle', duration: 10000 });
 ```
+&emsp;&emsp;If you have duration, it will close automatically
 
 Then close it:
 ```Javascript
@@ -42,6 +43,7 @@ Indicator.close();
 |-------------|----------------|-------------------------------------------------------------|---------|
 | text        | indicator text | String                                                      |         |
 | spinnerType | spinner type   | 'snake', 'fading-circle', 'double-bounce', 'triple-bounce'  | 'snake' |
+| duration    | duration time  | Number, Number of milliseconds  |       |
 
 # License
 MIT

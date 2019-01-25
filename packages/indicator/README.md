@@ -43,7 +43,7 @@ Indicator.close();
 |-------------|----------------|-------------------------------------------------------------|---------|
 | text        | indicator text | String                                                      |         |
 | spinnerType | spinner type   | 'snake', 'fading-circle', 'double-bounce', 'triple-bounce'  | 'snake' |
-| duration    | duration time  | Number, Number of milliseconds                                            |         |
+| duration    | duration time  | Number, Number of milliseconds                              |         |
 
 # License
 MIT

@@ -337,7 +337,7 @@
             this.topStatus = 'loading';
             this.topMethod();
           } else {
-            this.translate = '0';
+            this.translate = 0;
             this.topStatus = 'pull';
           }
         }
@@ -349,7 +349,7 @@
             this.bottomStatus = 'loading';
             this.bottomMethod();
           } else {
-            this.translate = '0';
+            this.translate = 0;
             this.bottomStatus = 'pull';
           }
         }

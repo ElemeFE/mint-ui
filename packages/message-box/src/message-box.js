@@ -70,7 +70,7 @@ const defaultCallback = action => {
             currentMsg.resolve(action);
           }
         } else if (action === 'cancel' && currentMsg.reject) {
-          currentMsg.reject(action);
+          currentMsg.resolve({value: instance.inputValue,action});
         }
       } else {
         currentMsg.resolve(action);

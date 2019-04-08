@@ -1,0 +1,45 @@
+
+.mt-progress {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 30px;
+    line-height: 30px
+}
+.mt-progress > * {
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-box
+}
+.mt-progress *[slot="start"] {
+    margin-right: 5px
+}
+.mt-progress *[slot="end"] {
+    margin-left: 5px
+}
+.mt-progress-content {
+    position: relative;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1
+}
+.mt-progress-runway {
+    position: absolute;
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+    top: 50%;
+    left: 0;
+    right: 0;
+    background-color: #ebebeb;
+    height: 3px
+}
+.mt-progress-progress {
+    position: absolute;
+    display: block;
+    background-color: #26a2ff;
+    top: 50%;
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
+    width: 0
+}

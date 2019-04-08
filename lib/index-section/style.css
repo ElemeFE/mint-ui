@@ -1,0 +1,13 @@
+
+.mint-indexsection {
+    padding: 0;
+    margin: 0
+}
+.mint-indexsection-index {
+    margin: 0;
+    padding: 10px;
+    background-color: #fafafa
+}
+.mint-indexsection-index + ul {
+    padding: 0
+}

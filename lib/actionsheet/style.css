@@ -1,0 +1,94 @@
+
+.mint-actionsheet {
+  position: fixed;
+  background: #e0e0e0;
+  width: 100%;
+  text-align: center;
+  bottom: 0;
+  left: 50%;
+  max-height: 100%;
+  overflow-y: auto;
+  -webkit-transform: translate3d(-50%, 0, 0);
+          transform: translate3d(-50%, 0, 0);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transition: -webkit-transform .3s ease-out;
+  transition: -webkit-transform .3s ease-out;
+  transition: transform .3s ease-out;
+  transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+}
+.mint-actionsheet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.mint-actionsheet-listitem {
+  border-bottom: solid 1px #e0e0e0;
+}
+.mint-actionsheet-listitem, .mint-actionsheet-button {
+  display: block;
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  font-size: 18px;
+  color: #333;
+  background-color: #fff;
+}
+.mint-actionsheet-listitem:active, .mint-actionsheet-button:active {
+  background-color: #f0f0f0;
+}
+.actionsheet-float-enter, .actionsheet-float-leave-active {
+  -webkit-transform: translate3d(-50%, 100%, 0);
+          transform: translate3d(-50%, 100%, 0);
+}
+.v-modal-enter {
+  -webkit-animation: v-modal-in .2s ease;
+          animation: v-modal-in .2s ease;
+}
+
+.v-modal-leave {
+  -webkit-animation: v-modal-out .2s ease forwards;
+          animation: v-modal-out .2s ease forwards;
+}
+
+@-webkit-keyframes v-modal-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+  }
+}
+
+@keyframes v-modal-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+  }
+}
+
+@-webkit-keyframes v-modal-out {
+  0% {
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes v-modal-out {
+  0% {
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.v-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  background: #000;
+}

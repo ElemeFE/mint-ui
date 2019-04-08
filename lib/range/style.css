@@ -1,0 +1,60 @@
+
+.mt-range {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 30px;
+    line-height: 30px
+}
+.mt-range > * {
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-box
+}
+.mt-range *[slot=start] {
+    margin-right: 5px
+}
+.mt-range *[slot=end] {
+    margin-left: 5px
+}
+.mt-range-content {
+    position: relative;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    margin-right: 30px
+}
+.mt-range-runway {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    left: 0;
+    right: -30px;
+    border-top-color: #a9acb1;
+    border-top-style: solid
+}
+.mt-range-thumb {
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    cursor: move;
+    box-shadow: 0 1px 3px rgba(0,0,0,.4)
+}
+.mt-range-progress {
+    position: absolute;
+    display: block;
+    background-color: #26a2ff;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    width: 0
+}
+.mt-range--disabled {
+    opacity: 0.5
+}

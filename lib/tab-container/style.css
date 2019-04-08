@@ -1,0 +1,16 @@
+
+.mint-tab-container {
+    overflow: hidden;
+    position: relative;
+}
+.mint-tab-container .swipe-transition {
+    -webkit-transition: -webkit-transform 150ms ease-in-out;
+    transition: -webkit-transform 150ms ease-in-out;
+    transition: transform 150ms ease-in-out;
+    transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
+}
+.mint-tab-container-wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}

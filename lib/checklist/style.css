@@ -1,0 +1,77 @@
+/* Cell Component */
+/* Header Component */
+/* Button Component */
+/* Tab Item Component */
+/* Tabbar Component */
+/* Navbar Component */
+/* Checklist Component */
+/* Radio Component */
+/* z-index */
+.mint-checklist .mint-cell {
+    padding: 0;
+}
+.mint-checklist.is-limit .mint-checkbox-core:not(:checked) {
+    background-color: #d9d9d9;
+    border-color: #d9d9d9;
+}
+.mint-checklist-label {
+    display: block;
+    padding: 0 10px;
+}
+.mint-checklist-title {
+    color: #888;
+    display: block;
+    font-size: 12px;
+    margin: 8px;
+}
+.mint-checkbox {}
+.mint-checkbox.is-right {
+    float: right;
+}
+.mint-checkbox-label {
+    vertical-align: middle;
+    margin-left: 6px;
+}
+.mint-checkbox-input {
+    display: none;
+}
+.mint-checkbox-input:checked + .mint-checkbox-core {
+    background-color: #26a2ff;
+    border-color: #26a2ff;
+}
+.mint-checkbox-input:checked + .mint-checkbox-core::after {
+    border-color: #fff;
+    -webkit-transform: rotate(45deg) scale(1);
+            transform: rotate(45deg) scale(1);
+}
+.mint-checkbox-input[disabled] + .mint-checkbox-core {
+    background-color: #d9d9d9;
+    border-color: #ccc;
+}
+.mint-checkbox-core {
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 100%;
+    border: 1px solid #ccc;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+.mint-checkbox-core::after {
+    border: 2px solid transparent;
+    border-left: 0;
+    border-top: 0;
+    content: " ";
+    top: 3px;
+    left: 6px;
+    position: absolute;
+    width: 4px;
+    height: 8px;
+    -webkit-transform: rotate(45deg) scale(0);
+            transform: rotate(45deg) scale(0);
+    -webkit-transition: -webkit-transform .2s;
+    transition: -webkit-transform .2s;
+    transition: transform .2s;
+    transition: transform .2s, -webkit-transform .2s;
+}

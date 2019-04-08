@@ -1,0 +1,137 @@
+
+.picker {
+  overflow: hidden;
+}
+.picker-toolbar {
+  height: 40px;
+}
+.picker-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0;
+  text-align: right;
+  font-size: 24px;
+  position: relative;
+}
+.picker-center-highlight {
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 50%;
+  margin-top: -18px;
+  pointer-events: none
+}
+.picker-center-highlight:before, .picker-center-highlight:after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background-color: #eaeaea;
+  display: block;
+  z-index: 15;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+}
+.picker-center-highlight:before {
+  left: 0;
+  top: 0;
+  bottom: auto;
+  right: auto;
+}
+.picker-center-highlight:after {
+  left: 0;
+  bottom: 0;
+  right: auto;
+  top: auto;
+}
+
+.picker-slot {
+  font-size: 18px;
+  overflow: hidden;
+  position: relative;
+  max-height: 100%
+}
+.picker-slot.picker-slot-left {
+  text-align: left;
+}
+.picker-slot.picker-slot-center {
+  text-align: center;
+}
+.picker-slot.picker-slot-right {
+  text-align: right;
+}
+.picker-slot.picker-slot-divider {
+  color: #000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center
+}
+.picker-slot-wrapper {
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+          transition-timing-function: ease-out;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.picker-slot-wrapper.dragging, .picker-slot-wrapper.dragging .picker-item {
+  -webkit-transition-duration: 0s;
+          transition-duration: 0s;
+}
+.picker-item {
+  height: 36px;
+  line-height: 36px;
+  padding: 0 10px;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #707274;
+  left: 0;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-transition-duration: .3s;
+          transition-duration: .3s;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.picker-slot-absolute .picker-item {
+  position: absolute;
+}
+.picker-item.picker-item-far {
+  pointer-events: none
+}
+.picker-item.picker-selected {
+  color: #000;
+  -webkit-transform: translate3d(0, 0, 0) rotateX(0);
+          transform: translate3d(0, 0, 0) rotateX(0);
+}
+.picker-3d .picker-items {
+  overflow: hidden;
+  -webkit-perspective: 700px;
+          perspective: 700px;
+}
+.picker-3d .picker-item, .picker-3d .picker-slot, .picker-3d .picker-slot-wrapper {
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d
+}
+.picker-3d .picker-slot {
+  overflow: visible
+}
+.picker-3d .picker-item {
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transition-timing-function: ease-out;
+          transition-timing-function: ease-out
+}

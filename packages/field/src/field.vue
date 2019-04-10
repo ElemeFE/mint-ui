@@ -2,6 +2,7 @@
   <x-cell
     class="mint-field"
     :title="label"
+    :isReq="isReq"
     v-clickoutside="doCloseActive"
     :class="[{
       'is-textarea': type === 'textarea',
@@ -103,7 +104,8 @@ export default {
       default: 'default'
     },
     value: {},
-    attr: Object
+    attr: Object,
+    isReq:Boolean
   },
 
   components: { XCell },

@@ -10,7 +10,10 @@
           <i v-if="icon" class="mintui" :class="'mintui-' + icon"></i>
         </slot>
         <slot name="title">
-          <span class="mint-cell-text" v-text="title"></span>
+          <span class="mint-cell-text">
+            <span style="color:red" v-if="isReq">*</span>
+            {{title}}
+          </span>
           <span v-if="label" class="mint-cell-label" v-text="label"></span>
         </slot>
       </div>
@@ -61,7 +64,8 @@ export default {
     title: String,
     label: String,
     isLink: Boolean,
-    value: {}
+    value: {},
+    isReq:Boolean
   },
 
   computed: {

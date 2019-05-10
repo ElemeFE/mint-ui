@@ -9,6 +9,7 @@
           <input
             class="mint-radio-input"
             type="radio"
+            :name='radioName'
             v-model="currentValue"
             :disabled="option.disabled"
             :value="option.value || option">
@@ -48,7 +49,8 @@ export default {
       type: Array,
       required: true
     },
-    value: String
+    value: String,
+    radioName: parseInt(Math.random()*100 + 1)+'radioName'
   },
 
   data() {

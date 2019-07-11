@@ -1,4 +1,4 @@
-# Mint UI
+# (goon-mint-ui)Mint UI
 
 [![Build Status](https://travis-ci.org/ElemeFE/mint-ui.svg?branch=master)](https://travis-ci.org/ElemeFE/mint-ui)
 [![npm](https://img.shields.io/npm/v/mint-ui.svg?maxAge=3600)](https://www.npmjs.com/package/mint-ui)
@@ -12,9 +12,8 @@
 - [Homepage](http://mint-ui.github.io)
 - [Documentation](http://mint-ui.github.io/docs)
 
-
-
 ## Installation
+
 ```shell
 npm i mint-ui -S
 
@@ -27,9 +26,9 @@ npm i mint-ui@1 -S
 Import all components.
 
 ```javascript
-import Vue from 'vue';
-import Mint from 'mint-ui';
-import 'mint-ui/lib/style.css';
+import Vue from "vue";
+import Mint from "mint-ui";
+import "mint-ui/lib/style.css";
 
 Vue.use(Mint);
 ```
@@ -37,35 +36,36 @@ Vue.use(Mint);
 Or import specified component. (Use [babel-plugin-component](https://www.npmjs.com/package/babel-plugin-component))
 
 ```javascript
-import { Cell, Checklist } from 'mint-ui';
+import { Cell, Checklist } from "mint-ui";
 
 Vue.component(Cell.name, Cell);
 Vue.component(Checklist.name, Checklist);
 ```
 
-
 Equals to
 
 ```javascript
-import Vue from 'vue';
-import Mint from 'mint-ui';
-import 'mint-ui/lib/style.css';
+import Vue from "vue";
+import Mint from "mint-ui";
+import "mint-ui/lib/style.css";
 
 Vue.use(Mint);
 
 // import specified component
 
-import MtRadio from 'mint-ui/lib/radio';
-import 'mint-ui/lib/radio/style.css';
+import MtRadio from "mint-ui/lib/radio";
+import "mint-ui/lib/radio/style.css";
 
 Vue.component(MtRadio.name, MtRadio);
 ```
 
 ## babel-plugin-component
+
 - Auto import css file
 - Modular import component
 
 Installation
+
 ```shell
 npm i babel-plugin-component -D
 ```
@@ -73,15 +73,18 @@ npm i babel-plugin-component -D
 Usage
 
 .babelrc
+
 ```json
 {
-  "plugins": ["other-plugin", ["component", [
-    { "libraryName": "mint-ui", "style": true }
-  ]]]
+  "plugins": [
+    "other-plugin",
+    ["component", [{ "libraryName": "mint-ui", "style": true }]]
+  ]
 }
 ```
 
 ## CDN
+
 RawGit
 
 - https://cdn.rawgit.com/ElemeFE/mint-ui/master/lib/index.js
@@ -99,7 +102,9 @@ npm run dev
 ```
 
 ## Contribution
+
 Please make sure to read the [Contributing Guide](https://github.com/ElemeFE/mint-ui/blob/master/.github/CONTRIBUTING_en-us.md) before making a pull request.
 
 ## License
+
 MIT

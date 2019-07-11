@@ -1,6 +1,6 @@
 {
-  "name": "mint-ui",
-  "version": "2.2.13",
+  "name": "goon-mint-ui",
+  "version": "2.2.14",
   "description": "Mobile UI elements for vue.js",
   "keywords": [
     "component",
@@ -28,11 +28,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ElemeFE/mint-ui.git"
+    "url": "git+https://github.com/yoyo837/mint-ui.git"
   },
-  "homepage": "https://github.com/ElemeFE/mint-ui#readme",
+  "homepage": "https://github.com/yoyo837/mint-ui#readme",
   "bugs": {
-    "url": "https://github.com/ElemeFE/mint-ui/issues"
+    "url": "https://github.com/yoyo837/mint-ui/issues"
   },
   "author": "elemefe",
   "license": "MIT",

@@ -11,6 +11,7 @@
         </slot>
         <slot name="title">
           <span class="mint-cell-text" v-text="title"></span>
+          <span>1312312</span>
           <span v-if="label" class="mint-cell-label" v-text="label"></span>
         </slot>
       </div>

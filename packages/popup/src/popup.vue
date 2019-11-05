@@ -135,7 +135,7 @@
     },
 
     beforeMount() {
-      if (this.popupTransition !== 'popup-fade') {
+      if (this.popupTransition !== 'popup-fade' && this.position) {
         this.currentTransition = `popup-slide-${ this.position }`;
       }
     },

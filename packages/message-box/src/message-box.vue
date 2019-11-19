@@ -248,7 +248,7 @@
           }
         }
         this.editorErrorMessage = '';
-        this.$refs.input.classList.remove('invalid');
+        this.$refs.input && this.$refs.input.classList.remove('invalid');
         return true;
       },
 

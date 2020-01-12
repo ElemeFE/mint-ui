@@ -6,6 +6,7 @@
       :visible-item-count="visibleItemCount"
       class="mint-datetime-picker"
       ref="picker"
+      :item-height="itemHeight"
       show-toolbar>
       <span class="mint-datetime-action mint-datetime-cancel" @click="visible = false;$emit('cancel')">{{ cancelText }}</span>
       <span class="mint-datetime-action mint-datetime-confirm" @click="confirm">{{ confirmText }}</span>
@@ -127,6 +128,10 @@
       closeOnClickModal: {
         type: Boolean,
         default: true
+      },
+      itemHeight: {
+        type: Number,
+        default: 36
       },
       value: null
     },

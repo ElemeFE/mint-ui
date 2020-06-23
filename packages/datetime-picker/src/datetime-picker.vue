@@ -128,6 +128,10 @@
         type: Boolean,
         default: true
       },
+      isConfirmNotVisible: {
+        type: Boolean,
+        default: true
+      },
       value: null
     },
 
@@ -366,7 +370,9 @@
       },
 
       confirm() {
-        this.visible = false;
+        if (this.isConfirmNotVisible) {
+          this.visible = false;
+        }
         this.$emit('confirm', this.currentValue);
       },
 

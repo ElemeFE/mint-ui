@@ -8,6 +8,7 @@
 [![Join the chat at https://gitter.im/ElemeFE/mint-ui](https://badges.gitter.im/ElemeFE/mint-ui.svg)](https://gitter.im/ElemeFE/mint-ui?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 > Mobile UI elements for **Vue 2.0**
+> Mint UI provides abundant CSS and JS components for building mobile applications. With it, you can create web pages in cohesive style ever faster
 
 - [Homepage](http://mint-ui.github.io)
 - [Documentation](http://mint-ui.github.io/docs)
